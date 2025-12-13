@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Protection · Vokabulo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7fb;
+        --border: #e2e6ef;
+        --ink: #0f172a;
+        --muted: #6b7280;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Inter', system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        min-height: 100vh;
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 16px 48px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 16px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.12);
+        backdrop-filter: blur(12px);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      nav a {
+        color: #0f172a;
+        text-decoration: none;
+        transition: color 150ms ease;
+      }
+
+      nav a:hover {
+        color: #111827;
+      }
+
+      .logo {
+        height: 22px;
+        display: block;
+      }
+
+      main {
+        margin-top: 32px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        padding: 32px 28px;
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 32px;
+        line-height: 1.2;
+      }
+
+      h2 {
+        margin: 32px 0 12px;
+        font-size: 20px;
+      }
+
+      p,
+      li {
+        margin: 0 0 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+          --bg: #0b1220;
+          --border: #1f2937;
+          --ink: #e5e7eb;
+          --muted: #cbd5e1;
+        }
+
+        body {
+          background: #0b1220;
+        }
+
+        header {
+          background: rgba(15, 23, 42, 0.8);
+          border-color: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+        }
+
+        nav a {
+          color: #e5e7eb;
+        }
+
+        nav a:hover {
+          color: #ffffff;
+        }
+
+        main {
+          background: #0f1628;
+          border-color: #1f2937;
+          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="flex items-center gap-3">
+          <img src="logo on white.svg" alt="Vokabulo logo" class="logo" />
+        </div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="legal-notice.html">Legal Notice</a>
+        </nav>
+      </header>
+
+      <main>
+        <h1>Data Protection</h1>
+        <p>This page explains how Vokabulo handles your personal data.</p>
+
+        <h2>Controller</h2>
+        <p>
+          Vokabulo<br />
+          (Add your company or individual name)<br />
+          (Add address line 1)<br />
+          (Add address line 2)<br />
+          Email: (Add contact email)
+        </p>
+
+        <h2>What We Collect</h2>
+        <ul>
+          <li>Account details (e.g., email, name)</li>
+          <li>Usage data for learning progress and app performance</li>
+          <li>Device and log data for security and reliability</li>
+        </ul>
+
+        <h2>Why We Process Data</h2>
+        <ul>
+          <li>To provide and improve the Vokabulo service</li>
+          <li>To personalize learning recommendations</li>
+          <li>To ensure security, prevent abuse, and fulfill legal obligations</li>
+        </ul>
+
+        <h2>Legal Bases</h2>
+        <p>
+          We process data based on contract performance, legitimate interest in operating a secure and reliable service, and consent where required.
+        </p>
+
+        <h2>Sharing</h2>
+        <p>
+          We do not sell personal data. We use vetted processors for hosting, analytics, and essential functionality under data processing agreements.
+        </p>
+
+        <h2>Retention</h2>
+        <p>
+          We keep personal data only as long as necessary for the purposes above or as required by law.
+        </p>
+
+        <h2>Your Rights</h2>
+        <ul>
+          <li>Access, correction, deletion</li>
+          <li>Portability and restriction</li>
+          <li>Objection to processing where applicable</li>
+          <li>Withdraw consent at any time</li>
+          <li>File a complaint with your supervisory authority</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>
+          For any privacy questions, reach us at (Add contact email). We aim to respond promptly and transparently.
+        </p>
+      </main>
+    </div>
+  </body>
+</html>
+
