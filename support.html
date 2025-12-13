@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support · Vokabulo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7fb;
+        --border: #e2e6ef;
+        --ink: #0f172a;
+        --muted: #6b7280;
+        --accent: #0ea5e9;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Inter', system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        min-height: 100vh;
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 16px 48px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 16px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.12);
+        backdrop-filter: blur(12px);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      nav a {
+        color: #0f172a;
+        text-decoration: none;
+        transition: color 150ms ease;
+      }
+
+      nav a:hover {
+        color: #111827;
+      }
+
+      .logo {
+        height: 22px;
+        display: block;
+      }
+
+      main {
+        margin-top: 32px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        padding: 32px 28px;
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 32px;
+        line-height: 1.2;
+      }
+
+      h2 {
+        margin: 28px 0 12px;
+        font-size: 20px;
+      }
+
+      p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      ul {
+        padding-left: 20px;
+        margin: 0 0 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 9999px;
+        background: rgba(14, 165, 233, 0.12);
+        color: #0f172a;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+          --bg: #0b1220;
+          --border: #1f2937;
+          --ink: #e5e7eb;
+          --muted: #cbd5e1;
+          --accent: #38bdf8;
+        }
+
+        body {
+          background: #0b1220;
+        }
+
+        header {
+          background: rgba(15, 23, 42, 0.8);
+          border-color: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+        }
+
+        nav a {
+          color: #e5e7eb;
+        }
+
+        nav a:hover {
+          color: #ffffff;
+        }
+
+        main {
+          background: #0f1628;
+          border-color: #1f2937;
+          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+        }
+
+        .pill {
+          background: rgba(56, 189, 248, 0.16);
+          color: #e5e7eb;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="flex items-center gap-3">
+          <img src="logo on white.svg" alt="Vokabulo logo" class="logo" />
+        </div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="legal-notice.html">Legal Notice</a>
+          <a href="data-protection.html">Data Protection</a>
+        </nav>
+      </header>
+
+      <main>
+        <div class="pill">Support & Tips</div>
+        <h1>Make the most of Vokabulo</h1>
+        <p>Practical tips to learn faster, stay consistent, and keep every device in sync.</p>
+
+        <h2>Getting started quickly</h2>
+        <ul>
+          <li>Create one focused list per goal (e.g., “Travel Spanish A2”) to avoid noise.</li>
+          <li>Set a daily target you can always hit (10–15 cards) to build streaks reliably.</li>
+          <li>Use the “Start free” flow on mobile and desktop so both stay synchronized.</li>
+        </ul>
+
+        <h2>Better sessions</h2>
+        <ul>
+          <li>Turn on Focus mode for distraction-free reps and faster completion times.</li>
+          <li>Use keyboard shortcuts: arrow keys to rate, <kbd>space</kbd> to flip, <kbd>enter</kbd> to continue.</li>
+          <li>Study in short bursts (2–3 sessions/day) instead of one long block.</li>
+        </ul>
+
+        <h2>Spaced repetition wins</h2>
+        <ul>
+          <li>Always clear your “Due” cards before adding lots of new ones.</li>
+          <li>If a card keeps failing, rewrite it simpler or add a mnemonic.</li>
+          <li>Keep intervals honest: resist manual repeats; let the scheduler do the work.</li>
+        </ul>
+
+        <h2>Lists and importing</h2>
+        <ul>
+          <li>Group by theme (travel, work, exam) and level (A1, B1) for cleaner insights.</li>
+          <li>When importing CSV, keep columns consistent (front/back/hint) to avoid duplicates.</li>
+          <li>Share lists with teammates via exports to keep everyone aligned.</li>
+        </ul>
+
+        <h2>Streaks and motivation</h2>
+        <ul>
+          <li>Set a “minimum viable day” (even 5 cards) to avoid breaking streaks.</li>
+          <li>Review earlier in the day; late sessions risk rollovers and missed goals.</li>
+          <li>Track weekly gains (“+ words learned”) instead of just streak length.</li>
+        </ul>
+
+        <h2>Offline and sync</h2>
+        <ul>
+          <li>Download your main lists before traveling; Vokabulo caches progress and syncs when back online.</li>
+          <li>If you switch devices mid-day, refresh once to pull the latest due queue.</li>
+          <li>Keep one primary device for adding new cards; review anywhere.</li>
+        </ul>
+
+        <h2>Fixing common issues</h2>
+        <ul>
+          <li>Duplicates after import: run de-duplicate in list settings and keep one source of truth.</li>
+          <li>Cards feel too easy: lower ease only on the tough ones; don’t reset the whole deck.</li>
+          <li>Overdue pile: do two short sessions to clear “Due” before adding new cards.</li>
+        </ul>
+
+        <h2>Need more help?</h2>
+        <p>
+          Reach us at support@vokabulo.app for troubleshooting, imports, or account questions. We aim to respond quickly and keep you learning smoothly.
+        </p>
+      </main>
+    </div>
+  </body>
+</html>
+
