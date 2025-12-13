@@ -10,6 +10,17 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+            boxShadow: { soft: '0 16px 40px rgba(15, 23, 42, 0.06)' },
+          },
+        },
+      };
+    </script>
     <style>
       :root {
         color-scheme: light;
@@ -140,6 +151,10 @@
       .theme-toggle svg {
         width: 16px;
         height: 16px;
+      }
+
+      a {
+        text-decoration: none;
       }
 
       main {
@@ -373,6 +388,23 @@
         </p>
       </main>
     </div>
+    <footer class="border-t border-slate-200 bg-white/90 py-8">
+      <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 text-sm text-slate-600 md:flex-row md:items-center md:justify-between md:px-6">
+        <div class="flex items-center gap-2 text-slate-800">
+          <div class="flex h-8 w-8 items-center justify-center rounded-2xl bg-slate-900 text-white">V</div>
+          <span class="font-semibold">Vokabulo</span>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a class="hover:text-slate-900" href="index.html#features">Features</a>
+          <a class="hover:text-slate-900" href="index.html#pricing">Pricing</a>
+          <a class="hover:text-slate-900" href="index.html#faq">FAQ</a>
+          <a class="hover:text-slate-900" href="support.html">Support</a>
+          <a class="hover:text-slate-900" href="legal-notice.html">Legal Notice</a>
+          <a class="hover:text-slate-900" href="data-protection.html">Data Protection</a>
+        </div>
+        <p class="text-slate-500">Speak a little more fluently every day.</p>
+      </div>
+    </footer>
     <script>
       (() => {
         const root = document.documentElement;
