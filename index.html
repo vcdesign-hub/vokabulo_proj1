@@ -388,10 +388,9 @@
         window.__theme = initial;
       })();
     </script>
-    <div class="hero-animate relative w-full">
-      <div class="sticky top-0 z-20 bg-transparent">
-        <div class="nav-animate px-3 py-3 md:px-6">
-          <header class="nav-shell mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+    <div class="fixed top-0 left-0 right-0 z-50">
+      <div class="px-3 py-3 md:px-6">
+        <header class="nav-shell mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 md:px-6">
             <a href="index.html" class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900">
               <img src="logo on white.svg" alt="Vokabulo logo" class="logo-light" />
               <img src="logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
@@ -462,7 +461,7 @@
 
       <section
         id="hero"
-        class="relative w-full px-4 py-16 md:px-6 md:py-20 min-h-[calc(100vh-96px)] flex flex-col items-center justify-center"
+        class="hero-animate relative w-full px-4 pt-32 pb-16 md:px-6 md:pt-40 md:pb-20 min-h-screen flex flex-col items-center justify-center"
       >
         <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
           <div class="space-y-4">
@@ -524,7 +523,6 @@
           </div>
         </div>
       </section>
-    </div>
 
     <main class="mx-auto max-w-5xl space-y-16 px-4 pb-16 pt-12 md:space-y-24 md:px-6 md:pt-16">
       <section id="philosophy" class="space-y-10 px-4 pt-8 md:pt-12">
