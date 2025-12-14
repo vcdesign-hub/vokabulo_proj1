@@ -355,83 +355,82 @@
         window.__theme = initial;
       })();
     </script>
-    <div class="hero-animate relative w-full">
-      <div class="sticky top-0 z-20 bg-transparent">
-        <div class="px-3 py-3 md:px-6">
-          <header class="nav-shell mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 md:px-6">
-            <a href="index.html" class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900">
-              <img src="logo on white.svg" alt="Vokabulo logo" class="logo-light" />
-              <img src="logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
-            </a>
-            <nav class="hidden items-center gap-8 text-sm font-semibold text-slate-700 md:flex">
-              <a class="transition hover:text-slate-900" href="#features">Features</a>
-              <a class="transition hover:text-slate-900" href="#pricing">Pricing</a>
-              <a class="transition hover:text-slate-900" href="#faq">FAQ</a>
-              <a class="transition hover:text-slate-900" href="support.html">Support</a>
-            </nav>
-            <div class="hidden md:flex items-center gap-3 text-sm font-semibold">
-              <button
-                id="theme-toggle"
-                class="theme-toggle"
-                type="button"
-                aria-label="Toggle theme"
-              >
-                <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v-2m0 19v-2m7.5-7.5h2m-19 0h2M17.303 6.697l1.414-1.414M5.283 18.717l1.414-1.414m0-10.606L5.283 5.283m13.434 13.434-1.414-1.414M12 8.25A3.75 3.75 0 1 0 12 15.75 3.75 3.75 0 0 0 12 8.25Z" />
-                </svg>
-                <svg id="icon-moon" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12.79A9 9 0 0 1 11.21 3 7.5 7.5 0 1 0 21 12.79Z" />
-                </svg>
-                <span id="theme-label">Light</span>
-              </button>
-              <a class="text-slate-800 transition hover:text-slate-900" href="#pricing">Sign in</a>
-              <a
-                href="#hero"
-                class="btn-accent px-4 py-2 shadow-soft"
-              >
-                Sign up
-              </a>
-            </div>
+    <div class="sticky top-0 z-20 bg-transparent">
+      <div class="px-3 py-3 md:px-6">
+        <header class="nav-shell mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+          <a href="index.html" class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900">
+            <img src="logo on white.svg" alt="Vokabulo logo" class="logo-light" />
+            <img src="logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
+          </a>
+          <nav class="hidden items-center gap-8 text-sm font-semibold text-slate-700 md:flex">
+            <a class="transition hover:text-slate-900" href="#features">Features</a>
+            <a class="transition hover:text-slate-900" href="#pricing">Pricing</a>
+            <a class="transition hover:text-slate-900" href="#faq">FAQ</a>
+            <a class="transition hover:text-slate-900" href="support.html">Support</a>
+          </nav>
+          <div class="hidden md:flex items-center gap-3 text-sm font-semibold">
             <button
-              class="ml-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/70 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft md:hidden"
-              aria-label="Open menu"
-              onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle theme"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
+              <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v-2m0 19v-2m7.5-7.5h2m-19 0h2M17.303 6.697l1.414-1.414M5.283 18.717l1.414-1.414m0-10.606L5.283 5.283m13.434 13.434-1.414-1.414M12 8.25A3.75 3.75 0 1 0 12 15.75 3.75 3.75 0 0 0 12 8.25Z" />
               </svg>
+              <svg id="icon-moon" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12.79A9 9 0 0 1 11.21 3 7.5 7.5 0 1 0 21 12.79Z" />
+              </svg>
+              <span id="theme-label">Light</span>
             </button>
-          </header>
-        </div>
-        <div id="mobile-menu" class="mx-auto hidden max-w-5xl px-4 pb-4 md:hidden">
-          <div class="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-            <a class="py-1 text-sm font-medium text-slate-800" href="#features">Features</a>
-            <a class="py-1 text-sm font-medium text-slate-800" href="#pricing">Pricing</a>
-            <a class="py-1 text-sm font-medium text-slate-800" href="#faq">FAQ</a>
-            <a class="py-1 text-sm font-medium text-slate-800" href="support.html">Support</a>
-            <div class="flex gap-2 pt-2">
-              <a
-                href="#pricing"
-                class="btn-ghost flex-1 border border-slate-200 px-4 py-2 text-center text-sm font-semibold text-slate-800"
-              >
-                Sign in
-              </a>
-              <a
-                href="#hero"
-                class="btn-accent flex-1 px-4 py-2 text-center text-sm font-semibold shadow-soft"
-              >
-                Sign up
-              </a>
-            </div>
+            <a class="text-slate-800 transition hover:text-slate-900" href="#pricing">Sign in</a>
+            <a
+              href="#hero"
+              class="btn-accent px-4 py-2 shadow-soft"
+            >
+              Sign up
+            </a>
+          </div>
+          <button
+            class="ml-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/70 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft md:hidden"
+            aria-label="Open menu"
+            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </header>
+      </div>
+      <div id="mobile-menu" class="mx-auto hidden max-w-5xl px-4 pb-4 md:hidden">
+        <div class="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <a class="py-1 text-sm font-medium text-slate-800" href="#features">Features</a>
+          <a class="py-1 text-sm font-medium text-slate-800" href="#pricing">Pricing</a>
+          <a class="py-1 text-sm font-medium text-slate-800" href="#faq">FAQ</a>
+          <a class="py-1 text-sm font-medium text-slate-800" href="support.html">Support</a>
+          <div class="flex gap-2 pt-2">
+            <a
+              href="#pricing"
+              class="btn-ghost flex-1 border border-slate-200 px-4 py-2 text-center text-sm font-semibold text-slate-800"
+            >
+              Sign in
+            </a>
+            <a
+              href="#hero"
+              class="btn-accent flex-1 px-4 py-2 text-center text-sm font-semibold shadow-soft"
+            >
+              Sign up
+            </a>
           </div>
         </div>
       </div>
+    </div>
 
-      <section
-        id="hero"
-        class="relative w-full px-4 py-16 md:px-6 md:py-20 min-h-[calc(100vh-96px)] flex flex-col items-center justify-center"
-      >
-        <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
+    <section
+      id="hero"
+      class="hero-animate relative w-full px-4 py-16 md:px-6 md:py-20 min-h-[calc(100vh-96px)] flex flex-col items-center justify-center"
+    >
+      <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
           <div class="space-y-4">
             <h1 class="text-5xl font-bold leading-[1.4] tracking-tight text-slate-900 sm:text-6xl sm:leading-[1.4]">
               Every journey begins<br />with the right words
