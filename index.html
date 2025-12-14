@@ -299,6 +299,39 @@
         box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
       }
 
+      /* Nav ambient animation */
+      .nav-animate {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .nav-animate::before,
+      .nav-animate::after {
+        content: '';
+        position: absolute;
+        inset: -120%;
+        background: radial-gradient(circle at 30% 30%, rgba(247, 126, 90, 0.28), transparent 45%),
+          radial-gradient(circle at 70% 20%, rgba(147, 180, 210, 0.28), transparent 40%),
+          radial-gradient(circle at 50% 70%, rgba(255, 205, 178, 0.2), transparent 50%);
+        filter: blur(10px);
+        animation: heroFloat 24s ease-in-out infinite;
+        z-index: -1;
+      }
+
+      .nav-animate::after {
+        animation-direction: reverse;
+        animation-duration: 30s;
+        opacity: 0.7;
+      }
+
+      .theme-dark .nav-animate::before,
+      .theme-dark .nav-animate::after {
+        background: radial-gradient(circle at 30% 30%, rgba(248, 113, 113, 0.22), transparent 45%),
+          radial-gradient(circle at 70% 20%, rgba(56, 189, 248, 0.2), transparent 40%),
+          radial-gradient(circle at 50% 70%, rgba(147, 197, 253, 0.14), transparent 50%);
+      }
+
       /* Hero ambient animation */
       .hero-animate {
         position: relative;
@@ -357,7 +390,7 @@
     </script>
     <div class="hero-animate relative w-full">
       <div class="sticky top-0 z-20 bg-transparent">
-        <div class="px-3 py-3 md:px-6">
+        <div class="nav-animate px-3 py-3 md:px-6">
           <header class="nav-shell mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 md:px-6">
             <a href="index.html" class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900">
               <img src="logo on white.svg" alt="Vokabulo logo" class="logo-light" />
@@ -432,12 +465,6 @@
         class="relative w-full px-4 py-16 md:px-6 md:py-20 min-h-[calc(100vh-96px)] flex flex-col items-center justify-center"
       >
         <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
-
-    <section
-      id="hero"
-      class="hero-animate relative w-full px-4 py-16 md:px-6 md:py-20 min-h-[calc(100vh-96px)] flex flex-col items-center justify-center"
-    >
-      <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
           <div class="space-y-4">
             <h1 class="text-5xl font-bold leading-[1.4] tracking-tight text-slate-900 sm:text-6xl sm:leading-[1.4]">
               Every journey begins<br />with the right words
