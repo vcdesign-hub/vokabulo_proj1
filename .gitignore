@@ -39,3 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Note: content/ directory IS tracked in git (Keystatic uses file-based storage)
