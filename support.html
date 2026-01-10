@@ -1,0 +1,1516 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support · Vokabulo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+            boxShadow: { soft: '0 16px 40px rgba(15, 23, 42, 0.06)' },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Support page-specific styles */
+      :root {
+        --accent: #0ea5e9;
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px 16px 48px;
+      }
+
+      main {
+        padding: 48px 40px;
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      h2 {
+        margin: 28px 0 12px;
+        font-size: 20px;
+      }
+
+      h3 {
+        margin: 20px 0 10px;
+        font-size: 16px;
+        color: var(--ink);
+      }
+
+      p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      ul {
+        padding-left: 20px;
+        margin: 0 0 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .theme-toggle svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 9999px;
+        background: rgba(14, 165, 233, 0.12);
+        color: #0f172a;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      /* Support page (Notion-like) layout */
+      .help-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      @media (min-width: 768px) {
+        .help-layout {
+          grid-template-columns: 280px 1fr;
+          gap: 28px;
+        }
+      }
+
+      .help-nav {
+        display: none;
+      }
+
+      @media (min-width: 768px) {
+        .help-nav {
+          display: flex;
+          flex-direction: column;
+          position: sticky;
+          top: 120px;
+          align-self: start;
+          border-right: 1px solid var(--border);
+          padding-right: 18px;
+          margin-right: 6px;
+          max-height: calc(100vh - 140px);
+          overflow-y: auto;
+        }
+      }
+
+      .help-nav-search {
+        margin-bottom: 16px;
+      }
+
+      .help-nav-search input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--ink);
+        font-size: 14px;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+      }
+
+      .help-nav-search input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+      }
+
+      .help-nav-section.hidden-by-search,
+      .help-nav-items li.hidden-by-search {
+        display: none;
+      }
+
+      .help-nav-items li.highlight-match a {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .help-nav-content {
+        flex: 1;
+        overflow-y: auto;
+        padding-right: 4px;
+      }
+
+      .help-nav-content::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .help-nav-content::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .help-nav-content::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 3px;
+      }
+
+      .help-nav-content::-webkit-scrollbar-thumb:hover {
+        background: var(--muted);
+      }
+
+      .help-nav-title {
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin: 0 0 12px;
+        display: none;
+      }
+
+      .help-nav-section {
+        margin: 0 0 16px;
+      }
+
+      .help-nav-section-header {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .help-nav-section-header a {
+        flex: 1;
+        display: block;
+        padding: 6px 10px;
+        border-radius: 12px;
+        font-weight: 700;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .help-nav-section-header:hover a {
+        background: rgba(15, 23, 42, 0.06);
+      }
+
+      .help-nav-section > a {
+        display: block;
+        padding: 6px 10px;
+        border-radius: 12px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .help-nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        transition: transform 200ms ease, color 150ms ease;
+        flex-shrink: 0;
+        border-radius: 4px;
+      }
+
+      .help-nav-toggle:hover {
+        color: var(--ink);
+        background: rgba(15, 23, 42, 0.06);
+      }
+
+      .help-nav-toggle svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .help-nav-section.expanded .help-nav-toggle {
+        transform: rotate(90deg);
+      }
+
+      .help-nav-section.collapsed .help-nav-items {
+        display: none;
+      }
+
+      .help-nav-section.expanded .help-nav-items {
+        display: block;
+      }
+
+      .help-nav-items {
+        list-style: none;
+        padding: 0;
+        margin: 6px 0 0;
+      }
+
+      .help-nav-items a {
+        display: block;
+        padding: 6px 10px;
+        border-radius: 12px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .help-nav a:hover {
+        background: rgba(15, 23, 42, 0.06);
+      }
+
+      .help-nav a[aria-current="page"] {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .help-nav a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      .help-nav-mobile {
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .help-nav-mobile summary {
+        cursor: pointer;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .help-nav-mobile .help-nav-items a {
+        padding: 8px 10px;
+      }
+
+      .help-article h2,
+      .help-article h3 {
+        scroll-margin-top: 100px;
+      }
+
+      .help-article hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 22px 0;
+      }
+
+      .help-article strong {
+        color: var(--ink);
+      }
+
+      .help-article h2 {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.3;
+        margin: 48px 0 24px;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+      }
+
+      .help-article h3 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.4;
+        margin: 40px 0 16px;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+      }
+
+      .help-article > section > p:first-of-type {
+        font-size: 18px;
+        line-height: 1.7;
+        margin: 0 0 32px;
+        color: var(--muted);
+      }
+
+      .help-article p {
+        font-size: 16px;
+        line-height: 1.7;
+        margin: 0 0 20px;
+        color: var(--muted);
+      }
+
+      .help-article ul {
+        font-size: 16px;
+        line-height: 1.7;
+        margin: 0 0 20px;
+        color: var(--muted);
+        padding-left: 24px;
+      }
+
+      .help-article ul li {
+        margin: 0 0 12px;
+      }
+
+      .help-article ul li strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .video-placeholder {
+        margin: 32px 0;
+        padding: 24px;
+        border: 2px dashed var(--border);
+        border-radius: 12px;
+        background: rgba(14, 165, 233, 0.04);
+        text-align: center;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .video-placeholder::before {
+        content: '▶';
+        font-size: 48px;
+        color: var(--accent);
+        opacity: 0.6;
+      }
+
+      .video-placeholder-text {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 9999px;
+        background: rgba(14, 165, 233, 0.12);
+        color: #0f172a;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 9999px;
+        background: rgba(14, 165, 233, 0.12);
+        color: #0f172a;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .pill {
+          background: rgba(56, 189, 248, 0.16);
+          color: #e5e7eb;
+        }
+      }
+
+      .theme-dark .help-nav-search input {
+        background: #ffffff;
+        border-color: #1f2937;
+        color: var(--ink);
+      }
+
+      .theme-dark .video-placeholder {
+        background: rgba(56, 189, 248, 0.08);
+        border-color: #1f2937;
+      }
+
+      .theme-dark .help-nav-content::-webkit-scrollbar-thumb {
+        background: #1f2937;
+      }
+
+      .theme-dark .help-nav-content::-webkit-scrollbar-thumb:hover {
+        background: #334155;
+      }
+
+      .theme-dark .help-nav-toggle:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #e5e7eb;
+      }
+
+    </style>
+  </head>
+  <body class="antialiased">
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const stored = localStorage.getItem('theme');
+        const initial = stored || (prefersDark ? 'dark' : 'light');
+        if (initial === 'dark') document.documentElement.classList.add('theme-dark');
+        window.__theme = initial;
+      })();
+    </script>
+    <div class="fixed top-0 left-0 right-0 z-50">
+      <div class="px-3 py-3 md:px-6">
+        <header class="nav-shell mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+            <a href="index.html" class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900">
+              <img src="logo on white.svg" alt="Vokabulo logo" class="logo-light" />
+              <img src="logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
+            </a>
+            <nav class="hidden items-center gap-8 text-sm font-semibold text-slate-700 md:flex">
+              <a class="transition hover:text-slate-900" href="index.html#features">Features</a>
+              <a class="transition hover:text-slate-900" href="index.html#faq">FAQ</a>
+              <a class="transition hover:text-slate-900" href="support.html">Support</a>
+            </nav>
+            <div class="hidden md:flex items-center gap-3 text-sm font-semibold">
+              <button
+                id="theme-toggle"
+                class="theme-toggle"
+                type="button"
+                aria-label="Toggle theme"
+              >
+                <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v-2m0 19v-2m7.5-7.5h2m-19 0h2M17.303 6.697l1.414-1.414M5.283 18.717l1.414-1.414m0-10.606L5.283 5.283m13.434 13.434-1.414-1.414M12 8.25A3.75 3.75 0 1 0 12 15.75 3.75 3.75 0 0 0 12 8.25Z" />
+                </svg>
+                <svg id="icon-moon" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12.79A9 9 0 0 1 11.21 3 7.5 7.5 0 1 0 21 12.79Z" />
+                </svg>
+                <span id="theme-label">Light</span>
+              </button>
+              <a
+                href="index.html#hero"
+                class="btn-accent px-4 py-2 shadow-soft"
+              >
+                Sign up
+              </a>
+            </div>
+            <button
+              class="ml-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/70 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft md:hidden"
+              aria-label="Open menu"
+              onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            </button>
+          </header>
+        </div>
+        <div id="mobile-menu" class="mx-auto hidden max-w-5xl px-4 pb-4 md:hidden">
+          <div class="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+            <a class="py-1 text-sm font-medium text-slate-800" href="index.html#features">Features</a>
+            <a class="py-1 text-sm font-medium text-slate-800" href="index.html#faq">FAQ</a>
+            <a class="py-1 text-sm font-medium text-slate-800" href="support.html">Support</a>
+            <div class="flex gap-2 pt-2">
+              <a
+                href="index.html#hero"
+                class="btn-accent flex-1 px-4 py-2 text-center text-sm font-semibold shadow-soft"
+              >
+                Sign up
+              </a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="page">
+      <main>
+        <div class="help-layout">
+          <aside>
+            <details class="help-nav-mobile md:hidden">
+              <summary>On this page</summary>
+              <nav aria-label="Support navigation (mobile)">
+                <ul class="help-nav-items">
+                  <li><a href="#about-vokabulo">About Vokabulo</a></li>
+                  <li><a href="#start">Start</a></li>
+                  <li><a href="#words">Words</a></li>
+                  <li><a href="#study">Study</a></li>
+                  <li><a href="#situations">Situations</a></li>
+                  <li><a href="#community">Community</a></li>
+                </ul>
+              </nav>
+            </details>
+
+            <nav class="help-nav" aria-label="Support navigation">
+              <div class="help-nav-search">
+                <input type="search" id="help-search" placeholder="Search..." aria-label="Search help articles" />
+              </div>
+              <div class="help-nav-content">
+                <div class="help-nav-section expanded" data-section="about">
+                  <div class="help-nav-section-header">
+                    <a href="#about-vokabulo">About Vokabulo</a>
+                    <button class="help-nav-toggle" aria-label="Toggle section" aria-expanded="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <ul class="help-nav-items">
+                    <li><a href="#why-another-language-app">Why another language app?</a></li>
+                    <li><a href="#favorite-use-cases">My favorite use cases</a></li>
+                    <li><a href="#why-i-developed">Why I chose to develop Vokabulo</a></li>
+                    <li><a href="#who-benefits">Who benefits from using Vokabulo?</a></li>
+                    <li><a href="#why-ai">Why AI is a game changer</a></li>
+                    <li><a href="#platforms">Platforms</a></li>
+                    <li><a href="#limits-of-ai">Limits of AI</a></li>
+                  </ul>
+                </div>
+
+                <div class="help-nav-section expanded" data-section="start">
+                  <div class="help-nav-section-header">
+                    <a href="#start">Start</a>
+                    <button class="help-nav-toggle" aria-label="Toggle section" aria-expanded="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <ul class="help-nav-items">
+                    <li><a href="#basic-navigation">Basic navigation</a></li>
+                    <li><a href="#date-slider">Date slider (streak and progress)</a></li>
+                    <li><a href="#language-pair-containers">Language Pair containers</a></li>
+                  </ul>
+                </div>
+
+                <div class="help-nav-section expanded" data-section="words">
+                  <div class="help-nav-section-header">
+                    <a href="#words">Words</a>
+                    <button class="help-nav-toggle" aria-label="Toggle section" aria-expanded="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <ul class="help-nav-items">
+                    <li><a href="#about-words">About Words</a></li>
+                    <li><a href="#language-pairs">Language pairs (and why order matters)</a></li>
+                    <li><a href="#why-context-matters">Why context matters</a></li>
+                    <li><a href="#enter-new-word">Enter a new word (Magic Wand)</a></li>
+                    <li><a href="#edit-words">Edit words</a></li>
+                    <li><a href="#pronunciation">Pronunciation</a></li>
+                    <li><a href="#searching-duplicates">Searching and duplicate detection</a></li>
+                    <li><a href="#bulk-actions">Bulk actions (select, tag, clear)</a></li>
+                    <li><a href="#suggest-to-set">Suggest to Set</a></li>
+                    <li><a href="#why-tagging">Why tagging is key</a></li>
+                    <li><a href="#default-tags">Default tags (especially for books and videos)</a></li>
+                    <li><a href="#filter-by-tags">Filter by tags (single or multiple)</a></li>
+                    <li><a href="#tag-management">Tag management (long press)</a></li>
+                    <li><a href="#sorting-review-tabs">Sorting and review tabs</a></li>
+                    <li><a href="#words-tips">Tips</a></li>
+                  </ul>
+                </div>
+
+                <div class="help-nav-section expanded" data-section="study">
+                  <div class="help-nav-section-header">
+                    <a href="#study">Study</a>
+                    <button class="help-nav-toggle" aria-label="Toggle section" aria-expanded="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <ul class="help-nav-items">
+                    <li><a href="#about-study">About Study</a></li>
+                    <li><a href="#srs-system">The SRS system (and why it's not a quiz)</a></li>
+                    <li><a href="#five-levels">The 5 levels</a></li>
+                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="#study-by-cards-or-minutes">Study by number of cards or by minutes</a></li>
+                    <li><a href="#filters-tags-levels">Filters: tags and levels</a></li>
+                    <li><a href="#recent-filters">Recent Filters</a></li>
+                    <li><a href="#auto-button">The Auto button (Study by Number)</a></li>
+                    <li><a href="#reviewing-cards">Reviewing cards: "Got it" and "Not yet"</a></li>
+                    <li><a href="#editing-deleting">Editing and deleting (during study/quiz)</a></li>
+                    <li><a href="#study-pronunciation">Pronunciation</a></li>
+                    <li><a href="#display-options">Display options</a></li>
+                    <li><a href="#points-for-study">Points for Study</a></li>
+                    <li><a href="#study-reminders">Study reminders (and how to deactivate them)</a></li>
+                    <li><a href="#streaks">Streaks: what they are and why they matter</a></li>
+                    <li><a href="#streak-milestones">Streak milestones</a></li>
+                    <li><a href="#study-tips">Tips</a></li>
+                    <li><a href="#resetting-learning-progress">Resetting learning progress</a></li>
+                  </ul>
+                </div>
+
+                <div class="help-nav-section expanded" data-section="situations">
+                  <div class="help-nav-section-header">
+                    <a href="#situations">Situations</a>
+                    <button class="help-nav-toggle" aria-label="Toggle section" aria-expanded="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <ul class="help-nav-items">
+                    <li><a href="#about-situations">About Situations</a></li>
+                    <li><a href="#what-is-a-situation">What is a Situation?</a></li>
+                    <li><a href="#how-to-enter-a-situation">How to enter a Situation</a></li>
+                    <li><a href="#proficiency-level">Proficiency level</a></li>
+                    <li><a href="#generate-vocabulary-saving">Generate vocabulary and saving</a></li>
+                    <li><a href="#situations-tips">Tips</a></li>
+                  </ul>
+                </div>
+
+                <div class="help-nav-section expanded" data-section="community">
+                  <div class="help-nav-section-header">
+                    <a href="#community">Community</a>
+                    <button class="help-nav-toggle" aria-label="Toggle section" aria-expanded="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <ul class="help-nav-items">
+                    <li><a href="#about-community-sets">About Community Sets</a></li>
+                    <li><a href="#why-community-sets-are-different">Why Community Sets are different</a></li>
+                    <li><a href="#a-community-effort">A community effort (like Wikipedia)</a></li>
+                    <li><a href="#role-of-curator">The role of the Curator</a></li>
+                    <li><a href="#your-responsibility">Your responsibility</a></li>
+                    <li><a href="#follow-and-auto-download">Follow and auto-download</a></li>
+                    <li><a href="#suggest-new-words-or-edits">Suggest new words or edits</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </aside>
+
+          <article class="help-article">
+            <section id="about-vokabulo">
+              <h2>About Vokabulo</h2>
+              <p>Why Vokabulo exists, who it helps, and how AI fits into the workflow.</p>
+
+              <h3 id="why-another-language-app">Why another language app?</h3>
+              <p>
+                Most language apps try to teach everyone the same curriculum. That works for general progress, but it often fails the moment
+                real life gets specific: your job, your hobbies, your destination, the book you're reading, or the conversation you actually
+                want to have. Vokabulo exists to close that gap—so you can learn vocabulary that matches your life, not a textbook's.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="favorite-use-cases">My favorite use cases</h3>
+              <p>Vokabulo shines whenever you meet vocabulary "in the wild" and want to turn it into something you'll truly remember.</p>
+              <ul>
+                <li><strong>Reading a book or magazine:</strong> Save unfamiliar words with the sentence they appeared in, tag them by chapter or topic, and study them later with context.</li>
+                <li><strong>Watching a video:</strong> Capture phrases you hear, keep the tone and meaning, and build a set around a series, a YouTube channel, or a topic.</li>
+                <li><strong>Walking a city:</strong> Learn the words you need for signs, menus, transport, directions, and everyday interactions—exactly when they matter.</li>
+                <li><strong>Preparing for special situations:</strong> Build targeted vocabulary for interviews, appointments, travel, meetings, or any moment where you want to feel confident.</li>
+              </ul>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="why-i-developed">Why I chose to develop Vokabulo</h3>
+              <p>
+                Even advanced learners hit awkward "beginner moments." You may be an expert in one area, but feel stuck in another—because
+                language is not one skill, it's many contexts. I built Vokabulo to make it easy to collect the right words, keep them organized,
+                and actually retain them through consistent study.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="who-benefits">Who benefits from using Vokabulo?</h3>
+              <p>Vokabulo is especially helpful if you:</p>
+              <ul>
+                <li>already have some foundation but want to become fluent in real situations,</li>
+                <li>learn best from content (books, videos, conversations) instead of courses,</li>
+                <li>need vocabulary for a specific domain (work, travel, hobbies), or</li>
+                <li>like structure and progress, but want it centered around your own interests.</li>
+              </ul>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="why-ai">Why AI is a game changer</h3>
+              <p>
+                AI makes it fast to turn messy input—single words, phrases, or whole sentences—into clean, structured vocabulary with translations
+                and context. Instead of spending time formatting your notes, you spend time learning. It also helps you generate focused vocabulary
+                for situations and topics that would otherwise take hours to compile.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="platforms">Platforms</h3>
+              <p>
+                Vokabulo currently supports iOS on iPhone and iPadOS on iPad. macOS support is in preparation. There's currently no Android or
+                Windows version, because those platforms aren't part of my development stack.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="limits-of-ai">Limits of AI</h3>
+              <p>
+                AI is powerful, but not perfect. Sometimes it gets things wrong—especially with ambiguity, slang, rare meanings, or context that
+                isn't fully specified. Treat AI output as a strong assistant, not an unquestionable authority: if something looks off, edit it,
+                adjust the context, or regenerate with a clearer prompt.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+            </section>
+
+            <section id="start">
+              <h2>Start</h2>
+
+              <h3 id="basic-navigation">Basic navigation</h3>
+              <p>
+                The Start page is your home base. From here you can quickly jump into the core areas of Vokabulo—adding words,
+                studying, and managing your vocabulary—without having to dig through menus.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="date-slider">Date slider (streak and progress)</h3>
+              <p>
+                At the top you'll find a date slider that lets you look back and forth across days. It's a simple way to understand
+                your streak and your progress over time, and to get a quick feel for how consistent your learning has been.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="language-pair-containers">Language Pair containers</h3>
+              <p>
+                The Start page also shows your language pair containers. These act as shortcuts so you can switch contexts quickly—especially
+                if you learn more than one language or use different language directions. It's essentially another fast way to select a
+                language pair and immediately see and study the vocabulary that belongs to it.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+            </section>
+
+            <section id="words">
+              <h2>Words</h2>
+              <p>Everything about adding, organizing, and managing your vocabulary.</p>
+
+              <h3 id="about-words">About Words</h3>
+              <p>
+                The Words area is your personal vocabulary collection. It's where you add, edit, tag, search, and review everything you want to learn—so
+                your learning stays organized instead of becoming a random list.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="language-pairs">Language pairs (and why order matters)</h3>
+              <p>
+                A language pair defines the direction you're learning, for example <strong>DE → FR</strong> (German to French). The order matters because your cards,
+                translations, and which side is treated as "native" vs "target" depend on it—DE–FR is not the same as FR–DE. For Community Sets,
+                Vokabulo can display sets in both directions so you can use them regardless of which side you're starting from.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="why-context-matters">Why context matters</h3>
+              <p>
+                A word without context often doesn't mean much—or it means the wrong thing. That's why Vokabulo encourages learning vocabulary with a suitable
+                context (a phrase or sentence). Context makes meaning clearer, improves recall, and helps you use the word correctly when you actually speak or write.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="enter-new-word">Enter a new word (Magic Wand)</h3>
+              <p>
+                To add a word, tap the plus button in the top right (available in almost every view, except during flashcards in Study). You can type into any of the
+                fields, and you can even paste a full sentence. When you hit Translate, Vokabulo fills the other fields for you—best results come from only filling one
+                field and letting the Magic Wand complete the rest.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="edit-words">Edit words</h3>
+              <p>
+                You can edit words anytime to improve translations, adjust context, fix spelling, or refine the meaning. Keeping entries clean pays off later during Study,
+                because you'll review higher-quality cards.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="pronunciation">Pronunciation</h3>
+              <p>
+                Use the pronunciation feature to hear how a word is spoken. Pronunciation can be fine‑tuned in settings, and Vokabulo uses high-quality ElevenLabs voices
+                to make listening and repeating feel natural.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="searching-duplicates">Searching and duplicate detection</h3>
+              <p>
+                Words can be searched quickly, and Vokabulo performs automatic duplicate detection to prevent your collection from filling up with the same word multiple
+                times in slightly different forms.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="bulk-actions">Bulk actions (select, tag, clear)</h3>
+              <p>
+                When you want to manage many words at once, you can bulk select items, select all, or clear your current selection. Bulk editing lets you change tags
+                efficiently—including removing tags, not just adding them.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="suggest-to-set">Suggest to Set</h3>
+              <p>
+                If a word belongs in a Community Set, you can suggest it to the set. This helps improve shared sets while keeping your personal collection separate and flexible.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="why-tagging">Why tagging is key</h3>
+              <p>Tags are the fastest way to turn a big vocabulary list into a system. Tagging helps you:</p>
+              <ul>
+                <li>find words later,</li>
+                <li>study by topic,</li>
+                <li>build sets, and</li>
+                <li>stay consistent when you're learning from real life.</li>
+              </ul>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="default-tags">Default tags (especially for books and videos)</h3>
+              <p>
+                You can set a default tag so every new word automatically lands in the right bucket—useful when you're reading a book, watching a series, or working through
+                a theme and want to capture words quickly without extra steps.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="filter-by-tags">Filter by tags (single or multiple)</h3>
+              <p>
+                You can filter your Words list by one or multiple tags. This makes it easy to review just the vocabulary you care about right now. You can clear all filters anytime.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="tag-management">Tag management (long press)</h3>
+              <p>
+                Long‑press a selected tag to manage it: you can rename it, create a set from it, or delete all words with this tag (useful for cleanup when a tag was temporary
+                or imported by mistake).
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="sorting-review-tabs">Sorting and review tabs</h3>
+              <p>To review your collection from different angles, you can switch sorting modes such as frequency or alphabetical, and use list modes like:</p>
+              <ul>
+                <li>Newest/Latest</li>
+                <li>Random</li>
+                <li>Know least / know best</li>
+              </ul>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="words-tips">Tips</h3>
+              <ul>
+                <li>You can change the language pair directly in the add/edit dialog if you notice you're adding a word in the wrong direction.</li>
+                <li>Tagging improves everything: finding, filtering, studying, and building sets—start early, even with simple tags.</li>
+              </ul>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+            </section>
+
+            <section id="study">
+              <h2>Study</h2>
+              <p>How spaced repetition works in Vokabulo and how to make steady progress.</p>
+
+              <h3 id="about-study">About Study</h3>
+              <p>
+                Study is where your saved words turn into long-term memory. Vokabulo uses a spaced repetition system (SRS) to decide what you should review next and when—so
+                you spend time on the words that need it most.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="srs-system">The SRS system (and why it's not a quiz)</h3>
+              <p>
+                Study is not a test, and it's not about "winning." That's why you shouldn't cheat by looking up the answer first. Vokabulo doesn't award points for being right
+                in the moment—what matters is showing up consistently and keeping your reviews moving forward.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="five-levels">The 5 levels</h3>
+              <p>
+                Each word moves through five levels as you review it over time. Getting a word right pushes it forward to longer intervals; struggling with it brings it back sooner.
+                This is how Vokabulo keeps easy words from wasting your time while still rescuing the ones you're about to forget.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="philosophy">Philosophy</h3>
+              <p>
+                The key is consistency, not volume. A small daily session beats an occasional marathon. The goal is to keep your reviews sustainable so your vocabulary keeps
+                growing without piling up.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="study-by-cards-or-minutes">Study by number of cards or by minutes</h3>
+              <p>You can study in two ways:</p>
+              <ul>
+                <li><strong>By number of cards</strong> when you want a clear target ("I'll do 30 cards").</li>
+                <li><strong>By minutes</strong> when you want a time-box ("I'll study for 10 minutes").</li>
+              </ul>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="filters-tags-levels">Filters: tags and levels</h3>
+              <p>
+                You can narrow your session by tags (topic-based learning) or by levels (e.g., focus on newer or weaker words). This is useful when you want to prepare for a
+                specific situation or clean up a backlog.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="recent-filters">Recent Filters</h3>
+              <p>
+                Vokabulo remembers your last three filter selections so you can jump back into your usual study setup quickly. Clear all resets both your recent filters and any
+                active tag filters. You can also deactivate a recent filter if you want to return to an unfiltered session.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="auto-button">The Auto button (Study by Number)</h3>
+              <p>
+                If you're not sure what to pick, Auto chooses a sensible card count for you—making it easy to start without overthinking.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="reviewing-cards">Reviewing cards: "Got it" and "Not yet"</h3>
+              <p>During Study you can swipe:</p>
+              <ul>
+                <li><strong>Got it</strong> when you knew it well enough.</li>
+                <li><strong>Not yet</strong> when you didn't.</li>
+              </ul>
+              <p>Your choice updates the word's level and schedules the next review accordingly.</p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="editing-deleting">Editing and deleting (during study/quiz)</h3>
+              <p>
+                If a word is wrong, confusing, or no longer useful, you can edit it (to improve the translation/context) or delete it (to remove it from your learning queue).
+                Keeping your collection clean improves your future sessions.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="study-pronunciation">Pronunciation</h3>
+              <p>
+                Use the pronunciation feature to hear the word spoken. This is especially helpful for building listening confidence and avoiding "silent vocabulary" you can read
+                but not recognize in real conversation.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="display-options">Display options</h3>
+              <p>You can adjust how cards are shown, for example:</p>
+              <ul>
+                <li>Show native side first if you want recognition practice from your everyday language.</li>
+                <li>Show word instead of context if you want a more direct, vocabulary-first style of review.</li>
+              </ul>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="points-for-study">Points for Study</h3>
+              <p>Points are awarded for doing the work, not for being perfect. For every 10 cards reviewed, you get 1 point—regardless of whether you marked "Got it" or "Not yet."</p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="study-reminders">Study reminders (and how to deactivate them)</h3>
+              <p>
+                If you enable study reminders, Vokabulo nudges you to keep your routine. You can turn reminders off anytime in the app's settings/notifications preferences if you
+                don't want prompts.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="streaks">Streaks: what they are and why they matter</h3>
+              <p>
+                A streak counts how many days in a row you've studied. It's important because streaks protect the habit—when motivation dips, the streak keeps you showing up
+                for just a few minutes.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="streak-milestones">Streak milestones</h3>
+              <p>Milestones celebrate consistency and give you a long-term rhythm to aim for. Even small sessions count—what matters is keeping the chain unbroken.</p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="study-tips">Tips</h3>
+              <ul>
+                <li>If you feel overwhelmed, switch to minutes-based study and keep it small.</li>
+                <li>Use filters when you're preparing for something specific (travel, work, exam topics).</li>
+                <li>Keep your sets clean by editing/deleting entries that slow you down.</li>
+              </ul>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="resetting-learning-progress">Resetting learning progress</h3>
+              <p>
+                If you want a fresh start, you can reset your learning progress for words so they return to earlier levels and are scheduled more frequently again. This is useful
+                when you took a long break, changed your learning approach, or want to rebuild a foundation.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+            </section>
+
+            <section id="situations">
+              <h2>Situations</h2>
+              <p>Generate focused vocabulary for real-life moments and learn what you need right now.</p>
+
+              <h3 id="about-situations">About Situations</h3>
+              <p>
+                Situations help you learn the right words for the moments that matter. You might speak confidently about your job, but feel like a beginner when you need vocabulary
+                for the doctor, a date, small talk, or travel—Situations are built exactly for that gap.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="what-is-a-situation">What is a Situation?</h3>
+              <p>
+                A Situation is a short description of a real-life context where you want to express yourself better. Based on your briefing, Vokabulo generates a focused vocabulary
+                list that matches what you're trying to say—so you don't just learn random words, but words you'll actually use.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="how-to-enter-a-situation">How to enter a Situation</h3>
+              <p>
+                Write or dictate your Situation in natural language—just describe what's going on and what you want to be able to say. Vokabulo will automatically clean up your
+                text if needed.
+              </p>
+              <p><strong>Tip:</strong> Include a few details (who, where, topic, tone). There's a minimum length for the briefing, and generally: the better you describe the Situation, the better the vocabulary output.</p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="proficiency-level">Proficiency level</h3>
+              <p>
+                Choose your proficiency level so the generated words match where you are right now—whether you want safe, essential basics or more precise and advanced expressions.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="generate-vocabulary-saving">Generate vocabulary and saving</h3>
+              <p>
+                When you generate, Vokabulo creates a set of around 25 words (the exact number depends on your briefing and how many relevant words the AI finds). You can then save
+                the result to your collection and practice it like any other vocabulary set.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="situations-tips">Tips</h3>
+              <ul>
+                <li>You can run the same Situation multiple times with slightly different wording to discover new vocabulary or different angles.</li>
+                <li>Generation typically takes about 30 seconds.</li>
+                <li>If you like the result, you can turn your personal set into a community set so others can learn from it too.</li>
+              </ul>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+            </section>
+
+            <section id="community">
+              <h2>Community</h2>
+              <p>How Community Sets work and how you can contribute.</p>
+
+              <h3 id="about-community-sets">About Community Sets</h3>
+              <p>
+                Community Sets are shared vocabulary lists built by people who learn and use the language in real life. If you've ever seen word lists or "vocabulary packs" in
+                Facebook language groups, it's that idea—just structured, searchable, and designed to be practiced directly in Vokabulo. This makes getting started much easier,
+                especially when you don't yet know what to learn next.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="why-community-sets-are-different">Why Community Sets are different</h3>
+              <p>
+                Community Sets are often more useful than textbooks because they can be tailored to everyday needs: your job, your hobbies, your city, your travel plans, or the
+                situations you actually face. The goal is to create the best set of words for a specific topic in a specific language pair—focused, practical, and worth learning.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="a-community-effort">A community effort (like Wikipedia)</h3>
+              <p>
+                Each Community Set improves over time. People follow it, use it, and suggest better words, missing essentials, or clearer translations. Like Wikipedia, no single
+                person has to get everything perfect—quality comes from many small improvements.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="role-of-curator">The role of the Curator</h3>
+              <p>
+                Every Community Set has a Curator who keeps it consistent and high-quality. Curators review suggestions, decide what fits the purpose of the set, and keep the
+                vocabulary clean and coherent—so the set stays focused instead of becoming a random list.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="your-responsibility">Your responsibility</h3>
+              <p>
+                When you use Community Sets, you're benefiting from other learners' work—so it helps to give something back. If you notice missing words, wrong translations, or
+                better alternatives, you can suggest improvements and help make the set better for everyone.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="follow-and-auto-download">Follow and auto-download</h3>
+              <p>
+                When you follow a Community Set, Vokabulo keeps it handy and can auto-download updates, so you always have the newest version without needing to search again.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+
+              <h3 id="suggest-new-words-or-edits">Suggest new words or edits</h3>
+              <p>
+                You can contribute by suggesting new words, improved translations, or edits to existing entries. Your suggestions go to the Curator for review, helping the set
+                steadily become more accurate, complete, and useful.
+              </p>
+              <div class="video-placeholder">
+                <span class="video-placeholder-text">Video placeholder</span>
+              </div>
+            </section>
+          </article>
+        </div>
+      </main>
+    </div>
+    <footer class="border-t border-slate-200 bg-white/90 py-8">
+      <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 text-sm text-slate-600 md:flex-row md:items-center md:justify-between md:px-6">
+        <a href="index.html" class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-800">
+          <img src="logo on white.svg" alt="Vokabulo logo" class="logo-light" />
+          <img src="logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
+        </a>
+        <div class="flex flex-wrap gap-4">
+          <a class="hover:text-slate-900" href="index.html#features">Features</a>
+          <a class="hover:text-slate-900" href="index.html#faq">FAQ</a>
+          <a class="hover:text-slate-900" href="support.html">Support</a>
+          <a class="hover:text-slate-900" href="legal-notice.html">Legal Notice</a>
+          <a class="hover:text-slate-900" href="data-protection.html">Privacy Policy</a>
+        </div>
+        <p class="text-slate-500">Speak a little more fluently every day.</p>
+      </div>
+    </footer>
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const btn = document.getElementById('theme-toggle');
+        const iconSun = document.getElementById('icon-sun');
+        const iconMoon = document.getElementById('icon-moon');
+
+        const setTheme = (mode, persist = true) => {
+          if (mode === 'dark') {
+            root.classList.add('theme-dark');
+          } else {
+            root.classList.remove('theme-dark');
+          }
+          if (persist) localStorage.setItem('theme', mode);
+          const isDark = mode === 'dark';
+          iconSun.classList.toggle('hidden', isDark);
+          iconMoon.classList.toggle('hidden', !isDark);
+        };
+
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || stored === 'light') {
+          setTheme(stored, false);
+        }
+
+        btn?.addEventListener('click', () => {
+          const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
+          setTheme(next);
+        });
+      })();
+
+      // Expand/collapse navigation sections
+      (() => {
+        const navSections = document.querySelectorAll('.help-nav-section');
+        
+        // Load saved state from localStorage
+        const savedState = localStorage.getItem('help-nav-state');
+        const expandedSections = savedState ? JSON.parse(savedState) : ['about', 'start', 'words', 'study', 'situations', 'community'];
+        
+        navSections.forEach(section => {
+          const toggle = section.querySelector('.help-nav-toggle');
+          const sectionId = section.dataset.section;
+          const headerLink = section.querySelector('.help-nav-section-header a');
+          
+          if (!toggle) return; // Skip sections without toggle buttons
+          
+          // Set initial state
+          if (expandedSections.includes(sectionId)) {
+            section.classList.add('expanded');
+            section.classList.remove('collapsed');
+            toggle.setAttribute('aria-expanded', 'true');
+          } else {
+            section.classList.add('collapsed');
+            section.classList.remove('expanded');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+          
+          // Function to toggle section
+          const toggleSection = (e) => {
+            if (e) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+            
+            const isExpanded = section.classList.contains('expanded');
+            
+            if (isExpanded) {
+              section.classList.remove('expanded');
+              section.classList.add('collapsed');
+              toggle.setAttribute('aria-expanded', 'false');
+              expandedSections.splice(expandedSections.indexOf(sectionId), 1);
+            } else {
+              section.classList.remove('collapsed');
+              section.classList.add('expanded');
+              toggle.setAttribute('aria-expanded', 'true');
+              if (!expandedSections.includes(sectionId)) {
+                expandedSections.push(sectionId);
+              }
+            }
+            
+            // Save state to localStorage
+            localStorage.setItem('help-nav-state', JSON.stringify(expandedSections));
+          };
+          
+          // Function to expand section (without toggling)
+          const expandSection = () => {
+            const isExpanded = section.classList.contains('expanded');
+            if (!isExpanded) {
+              section.classList.remove('collapsed');
+              section.classList.add('expanded');
+              toggle.setAttribute('aria-expanded', 'true');
+              if (!expandedSections.includes(sectionId)) {
+                expandedSections.push(sectionId);
+              }
+              // Save state to localStorage
+              localStorage.setItem('help-nav-state', JSON.stringify(expandedSections));
+            }
+          };
+          
+          // Handle toggle button click
+          toggle.addEventListener('click', toggleSection);
+          
+          // Handle header link click - expand section if collapsed, then navigate
+          if (headerLink) {
+            headerLink.addEventListener('click', (e) => {
+              expandSection();
+              // Let default navigation proceed
+            });
+          }
+        });
+      })();
+
+      // Search functionality
+      (() => {
+        const searchInput = document.getElementById('help-search');
+        const allNavItems = document.querySelectorAll('.help-nav-items li');
+        const allNavSections = document.querySelectorAll('.help-nav-section');
+        
+        if (!searchInput) return;
+        
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          
+          if (query === '') {
+            // Show all items and remove highlights
+            allNavItems.forEach(item => {
+              item.classList.remove('hidden-by-search', 'highlight-match');
+            });
+            allNavSections.forEach(section => {
+              section.classList.remove('hidden-by-search');
+            });
+            return;
+          }
+          
+          // Search through navigation items
+          let hasMatches = false;
+          allNavItems.forEach(item => {
+            const link = item.querySelector('a');
+            const text = link ? link.textContent.toLowerCase() : '';
+            const href = link ? link.getAttribute('href') : '';
+            
+            if (text.includes(query) || (href && href.toLowerCase().includes(query))) {
+              item.classList.remove('hidden-by-search');
+              item.classList.add('highlight-match');
+              hasMatches = true;
+              
+              // Expand parent section if collapsed
+              const parentSection = item.closest('.help-nav-section');
+              if (parentSection) {
+                parentSection.classList.remove('hidden-by-search', 'collapsed');
+                parentSection.classList.add('expanded');
+                const toggle = parentSection.querySelector('.help-nav-toggle');
+                if (toggle) {
+                  toggle.setAttribute('aria-expanded', 'true');
+                }
+              }
+            } else {
+              item.classList.remove('highlight-match');
+              item.classList.add('hidden-by-search');
+            }
+          });
+          
+          // Hide sections that have no visible items
+          allNavSections.forEach(section => {
+            const items = section.querySelectorAll('.help-nav-items li');
+            const visibleItems = Array.from(items).filter(item => !item.classList.contains('hidden-by-search'));
+            const sectionHeader = section.querySelector('.help-nav-section-header a');
+            const sectionText = sectionHeader ? sectionHeader.textContent.toLowerCase() : '';
+            
+            // Show section if it has visible items or if the section title matches
+            if (visibleItems.length > 0 || sectionText.includes(query)) {
+              section.classList.remove('hidden-by-search');
+            } else {
+              section.classList.add('hidden-by-search');
+            }
+          });
+          
+          // Scroll to first match if there are matches
+          if (hasMatches) {
+            const firstMatch = document.querySelector('.help-nav-items li.highlight-match a');
+            if (firstMatch) {
+              setTimeout(() => {
+                firstMatch.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }, 100);
+            }
+          }
+        });
+      })();
+
+      // Handle anchor navigation and highlight active section
+      (() => {
+        const updateActiveSection = () => {
+          const sections = document.querySelectorAll('.help-article section[id]');
+          const navLinks = document.querySelectorAll('.help-nav-section-header a, .help-nav-items a');
+          
+          // Remove active state from all nav links
+          navLinks.forEach(link => {
+            link.removeAttribute('aria-current');
+            link.classList.remove('active');
+          });
+          
+          // Find which section is in view
+          const scrollPos = window.scrollY + 150;
+          let activeSection = null;
+          
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+              activeSection = section.id;
+            }
+          });
+          
+          // If no section found, check if we're at the top
+          if (!activeSection && window.scrollY < 200) {
+            activeSection = 'about-vokabulo';
+          }
+          
+          // Highlight the active section in navigation
+          if (activeSection) {
+            const mainLink = document.querySelector(`.help-nav-section-header a[href="#${activeSection}"]`);
+            if (mainLink) {
+              mainLink.setAttribute('aria-current', 'page');
+            }
+          }
+        };
+        
+        // Update on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(updateActiveSection, 100);
+        });
+        
+        // Update on load
+        updateActiveSection();
+        
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#' || !href) return;
+            
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const offsetTop = target.offsetTop - 120;
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+              
+              // Update active section after scroll
+              setTimeout(updateActiveSection, 500);
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
+
