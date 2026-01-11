@@ -159,9 +159,20 @@ vokabulo-landing/
 │   └── keystatic.ts             # Keystatic helper functions
 ├── content/                      # Keystatic content files
 │   ├── home/                    # Home page content by locale
-│   ├── support/                 # Support articles
+│   │   ├── en.mdoc              # English home page
+│   │   ├── de.mdoc              # German home page (add as needed)
+│   │   └── ...
+│   ├── support/                 # Support articles (multi-language)
+│   │   ├── en-why-another-language-app.mdoc
+│   │   ├── en-basic-navigation.mdoc
+│   │   ├── de-warum-noch-eine-app.mdoc  # German version (example)
+│   │   └── ...
 │   ├── legal-notice/            # Legal notices by locale
+│   │   ├── en.mdoc
+│   │   └── ...
 │   └── privacy-policy/          # Privacy policies by locale
+│       ├── en.mdoc
+│       └── ...
 ├── public/                       # Static assets
 │   ├── logo on white.svg
 │   └── logo on dark.svg

@@ -1,165 +1,30 @@
-'use client';
-
 import Link from 'next/link';
+import { getHomePage } from '@/lib/keystatic';
+import type { Locale } from '@/lib/i18n';
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  
+  // Load content from Keystatic based on URL locale
+  const homeContent = await getHomePage(locale);
+  
+  // Fallback to defaults if content not found
+  const heroTitle = homeContent?.heroTitle || 'Every journey begins with the right words';
+  const heroSubtitle = homeContent?.heroSubtitle || 'Language learning coming alive - AI-powered, community-inspired, pure magic';
+  const heroCTA = homeContent?.heroCTA || 'Discover the Magic of Vokabulo';
+  const philosophyTitle = homeContent?.philosophyTitle || 'No shortcuts. Just the right words.';
+  const philosophyDescription = homeContent?.philosophyDescription || 'Language learning takes endurance, but momentum starts with the words you actually use.';
+  const featuresTitle = homeContent?.featuresTitle || 'Built for real-time, focused learning.';
+  const featuresDescription = homeContent?.featuresDescription || 'Four essentials that keep you moving faster - across devices, lists, and daily sessions.';
+  const testimonialsTitle = homeContent?.testimonialsTitle || 'Learners love the focus.';
+  const faqTitle = homeContent?.faqTitle || 'Answers to your questions.';
+
   return (
-    <>
-      <style jsx global>{`
-        /* Index page-specific styles */
-        body {
-          background: radial-gradient(circle at 10% 20%, #f0f4ff 0, rgba(240, 244, 255, 0) 26%),
-            radial-gradient(circle at 80% 0%, #eef6ff 0, rgba(238, 246, 255, 0) 20%),
-            var(--bg);
-          color: var(--ink);
-        }
-
-        .card {
-          border: 1px solid var(--border);
-          background: #ffffff;
-          border-radius: calc(var(--radius) * 1.1);
-          box-shadow: var(--shadow, 0 18px 48px rgba(15, 23, 42, 0.05));
-        }
-
-        .btn-primary {
-          background: linear-gradient(135deg, #0f172a, #111827 60%, #0b1224);
-          color: #ffffff;
-          border-radius: 9999px;
-          transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, filter 150ms ease;
-        }
-
-        .btn-primary:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
-          filter: brightness(1.02);
-        }
-
-        .hero-panel {
-          position: relative;
-          border-radius: 28px;
-          border: 1px solid var(--border);
-          background: linear-gradient(135deg, #ffffff 0%, #f8fbff 60%, #f6f9ff 100%);
-          box-shadow: 0 24px 60px rgba(15, 23, 42, 0.07);
-          overflow: hidden;
-        }
-
-        .hero-panel::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08), transparent 45%),
-            radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.06), transparent 35%);
-          pointer-events: none;
-        }
-
-        .hero-card {
-          border-radius: 22px;
-          border: 1px solid rgba(255, 255, 255, 0.7);
-          background: #ffffff;
-          box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-        }
-
-        .feature-visual {
-          border-radius: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.6);
-          background: radial-gradient(120% 140% at 75% 25%, rgba(247, 94, 43, 0.35), rgba(247, 94, 43, 0) 55%),
-            radial-gradient(120% 140% at 20% 30%, rgba(144, 167, 192, 0.45), rgba(144, 167, 192, 0) 65%),
-            #f8fafc;
-          box-shadow: 0 22px 55px rgba(15, 23, 42, 0.12);
-        }
-
-        .hero-animate {
-          position: relative;
-          overflow: hidden;
-          isolation: isolate;
-        }
-
-        .hero-animate::before,
-        .hero-animate::after {
-          content: '';
-          position: absolute;
-          inset: -30%;
-          background: radial-gradient(circle at 30% 30%, rgba(247, 126, 90, 0.35), transparent 45%),
-            radial-gradient(circle at 70% 20%, rgba(147, 180, 210, 0.35), transparent 40%),
-            radial-gradient(circle at 40% 70%, rgba(255, 205, 178, 0.28), transparent 50%);
-          filter: blur(8px);
-          animation: heroFloat 18s ease-in-out infinite;
-          z-index: -1;
-        }
-
-        .hero-animate::after {
-          animation-direction: reverse;
-          animation-duration: 24s;
-          opacity: 0.7;
-        }
-
-        @keyframes heroFloat {
-          0% {
-            transform: translate3d(-6%, -4%, 0) scale(1);
-          }
-          50% {
-            transform: translate3d(6%, 6%, 0) scale(1.05);
-          }
-          100% {
-            transform: translate3d(-6%, -4%, 0) scale(1);
-          }
-        }
-
-        .theme-dark body {
-          background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.08) 0, rgba(34, 211, 238, 0) 26%),
-            radial-gradient(circle at 80% 0%, rgba(248, 113, 113, 0.12) 0, rgba(248, 113, 113, 0) 22%),
-            #0b1220;
-          color: var(--ink);
-        }
-
-        .theme-dark .card,
-        .theme-dark .hero-card,
-        .theme-dark .feature-visual {
-          background: #0f1628;
-          border-color: #1f2937;
-          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-        }
-
-        .theme-dark .btn-primary {
-          background: linear-gradient(135deg, #1f2937, #0f172a 60%, #0b1224);
-        }
-
-        .theme-dark .hero-animate::before,
-        .theme-dark .hero-animate::after {
-          background: radial-gradient(circle at 30% 30%, rgba(248, 113, 113, 0.28), transparent 45%),
-            radial-gradient(circle at 70% 20%, rgba(56, 189, 248, 0.25), transparent 40%),
-            radial-gradient(circle at 40% 70%, rgba(147, 197, 253, 0.18), transparent 50%);
-        }
-
-        .theme-dark .text-slate-900,
-        .theme-dark .text-slate-800,
-        .theme-dark .text-slate-700 {
-          color: #e5e7eb !important;
-        }
-
-        .theme-dark .text-slate-600,
-        .theme-dark .text-slate-500 {
-          color: #cbd5e1 !important;
-        }
-
-        .theme-dark .bg-white {
-          background-color: #0f1628 !important;
-        }
-
-        .theme-dark .bg-slate-50 {
-          background-color: #111827 !important;
-        }
-
-        .theme-dark .border-slate-200,
-        .theme-dark .border-slate-100 {
-          border-color: #1f2937 !important;
-        }
-
-        .theme-dark .shadow-soft {
-          box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
-        }
-      `}</style>
-
+    <div className="page-home">
       <section
         id="hero"
         className="hero-animate relative w-full px-4 pt-32 pb-16 md:px-6 md:pt-40 md:pb-20 min-h-screen flex flex-col items-center justify-center"
@@ -167,15 +32,15 @@ export default function Home() {
         <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
           <div className="space-y-4">
             <h1 className="text-5xl font-bold leading-[1.4] tracking-tight text-slate-900 sm:text-6xl sm:leading-[1.4]">
-              Every journey begins<br />with the right words
+              {heroTitle}
             </h1>
             <p className="text-lg text-slate-700 sm:text-xl">
-              Language learning coming alive - AI-powered, community-inspired, pure magic
+              {heroSubtitle}
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link className="btn-accent px-6 py-3 text-sm font-semibold shadow-soft" href="#features">
-              Discover the Magic of Vokabulo
+              {heroCTA}
             </Link>
           </div>
           <div className="relative z-10 mx-auto mt-10 max-w-lg">
@@ -230,10 +95,10 @@ export default function Home() {
           <div className="mx-auto max-w-4xl space-y-3 text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">Our philosophy</p>
             <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-              No shortcuts. Just the right words.
+              {philosophyTitle}
             </h2>
             <p className="text-lg leading-relaxed text-slate-700 sm:text-xl">
-              Language learning takes endurance, but momentum starts with the words you actually use.
+              {philosophyDescription}
             </p>
           </div>
           <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-3">
@@ -264,9 +129,9 @@ export default function Home() {
         <section id="feature-blocks" className="space-y-12 pt-4 md:space-y-16">
           <div className="space-y-3 text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">The magic of Vokabulo</p>
-            <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Built for real-time, focused learning.</h2>
+            <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">{featuresTitle}</h2>
             <p className="text-lg leading-relaxed text-slate-700 sm:text-xl">
-              Four essentials that keep you moving faster - across devices, lists, and daily sessions.
+              {featuresDescription}
             </p>
           </div>
 
@@ -383,7 +248,7 @@ export default function Home() {
         <section id="testimonials" className="space-y-8">
           <div className="flex flex-col gap-3">
             <p className="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">Testimonials</p>
-            <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">Learners love the focus.</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">{testimonialsTitle}</h2>
             <p className="max-w-3xl text-base text-slate-600">
               Vokabulo blends science and design—so you stay consistent and retain more.
             </p>
@@ -413,7 +278,7 @@ export default function Home() {
         <section id="faq" className="space-y-6">
           <div className="flex flex-col gap-3">
             <p className="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">FAQ</p>
-            <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">Answers to your questions.</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">{faqTitle}</h2>
             <p className="max-w-3xl text-base text-slate-600">
               If anything&apos;s missing, reach out anytime—we reply quickly and personally.
             </p>
@@ -467,6 +332,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 }

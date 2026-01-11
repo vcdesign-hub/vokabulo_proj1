@@ -15,12 +15,12 @@ export default config({
         locale: fields.slug({
           name: {
             label: 'Language Code',
-            description: 'ISO language code (e.g., en, de, fr, es, it)',
+            description: '📝 ISO language code (e.g., en, de, fr) | 🔗 Preview: http://localhost:3000/{locale}/ (replace {locale} with en, de, etc.)',
           },
         }),
         heroTitle: fields.text({
           label: 'Hero Title',
-          description: 'Main headline on the hero section',
+          description: '🔗 Preview: http://localhost:3000/{locale}/ | Main headline on the hero section',
         }),
         heroSubtitle: fields.text({
           label: 'Hero Subtitle',
@@ -61,10 +61,16 @@ export default config({
     // Support articles - organized by language and section
     supportArticles: collection({
       label: 'Support Articles',
-      slugField: 'title',
-      path: 'content/support/**/*',
+      slugField: 'slug',
+      path: 'content/support/*',
       format: { contentField: 'content' },
       schema: {
+        slug: fields.slug({
+          name: {
+            label: 'Article Slug',
+            description: '📝 Format: {locale}-{article-name} | 🔗 Preview: http://localhost:3000/{locale}/support (e.g., /en/support, /de/support)',
+          },
+        }),
         locale: fields.select({
           label: 'Language',
           options: [
@@ -91,6 +97,7 @@ export default config({
         }),
         title: fields.text({
           label: 'Article Title',
+          description: 'The human-readable title shown on the page',
         }),
         description: fields.text({
           label: 'Description',
@@ -116,6 +123,7 @@ export default config({
         locale: fields.slug({
           name: {
             label: 'Language Code',
+            description: '🔗 Preview: http://localhost:3000/{locale}/legal-notice (e.g., /en/legal-notice, /de/legal-notice)',
           },
         }),
         companyName: fields.text({
@@ -148,6 +156,7 @@ export default config({
         locale: fields.slug({
           name: {
             label: 'Language Code',
+            description: '🔗 Preview: http://localhost:3000/{locale}/data-protection (e.g., /en/data-protection, /de/data-protection)',
           },
         }),
         lastUpdated: fields.date({
