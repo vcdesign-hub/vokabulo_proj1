@@ -619,6 +619,18 @@ renderer.heading = (...args: any[]) => {
 
     // Highlight active section (based on scroll position)
     (() => {
+      const storageKey = `help-scroll-anchor:${location.pathname}`;
+
+      const scrollToSection = (id) => {
+        const safeId = String(id || '').replace(/^#/, '');
+        if (!safeId) return false;
+        const target = document.getElementById(safeId);
+        if (!target) return false;
+        const offsetTop = target.offsetTop - 120;
+        window.scrollTo({ top: offsetTop, behavior: 'auto' });
+        return true;
+      };
+
       const updateActiveSection = () => {
         const pageSections = document.querySelectorAll('.help-article section[id]');
         const navLinks = document.querySelectorAll('.help-nav-section-header a, .help-nav-items a');
@@ -636,6 +648,11 @@ renderer.heading = (...args: any[]) => {
         if (activeSection) {
           const mainLink = document.querySelector(`.help-nav-section-header a[href="#${activeSection}"]`);
           mainLink?.setAttribute('aria-current', 'page');
+
+          // Persist last viewed section so we can restore scroll position on revisit.
+          try {
+            localStorage.setItem(storageKey, activeSection);
+          } catch {}
         }
       };
 
@@ -644,6 +661,22 @@ renderer.heading = (...args: any[]) => {
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(updateActiveSection, 100);
       });
+
+      // Restore last viewed section on revisit (unless URL already has a hash).
+      // Use requestAnimationFrame to wait for layout/measurements.
+      if (!location.hash) {
+        try {
+          const saved = localStorage.getItem(storageKey);
+          if (saved) {
+            requestAnimationFrame(() => {
+              // If the first attempt runs too early (fonts/layout), try once more shortly after.
+              const ok = scrollToSection(saved);
+              if (!ok) setTimeout(() => scrollToSection(saved), 50);
+            });
+          }
+        } catch {}
+      }
+
       updateActiveSection();
 
       // Smooth scroll for anchors
@@ -656,6 +689,10 @@ renderer.heading = (...args: any[]) => {
             e.preventDefault();
             const offsetTop = target.offsetTop - 120;
             window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            // Also persist the anchor right away.
+            try {
+              localStorage.setItem(storageKey, href.replace('#', ''));
+            } catch {}
             setTimeout(updateActiveSection, 500);
           }
         });
