@@ -2,14 +2,15 @@
 title: "Legal Notice · Vokabulo"
 ---
 
-## Vokabulo
+# Legal Notice
 
-Vokabulo  
-(Add address line 1)  
-(Add address line 2)  
-(Add city and postal code)  
-(Add country)  
-Email: (Add contact email)  
+Vokabulo  is distributed by
+Tathos GmbH
+Zum Quellenpark 38
+65812 Bad Soden am Taunus
+Germany
+
+Email: info@vokabulo.com 
 (Add company registration number if applicable)
 
 ## Legal notice
