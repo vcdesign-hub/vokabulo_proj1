@@ -9,31 +9,9 @@
   --accent: #0ea5e9;
 }
 
-/* Minimal utility helpers to mirror nav layout */
-.flex { display: flex; }
-.inline-flex { display: inline-flex; }
-.hidden { display: none; }
-.items-center { align-items: center; }
-.justify-between { justify-content: space-between; }
-.gap-3 { gap: 12px; }
-.gap-4 { gap: 16px; }
-.gap-8 { gap: 32px; }
-.text-sm { font-size: 14px; }
-.text-lg { font-size: 18px; }
-.font-semibold { font-weight: 600; }
-.tracking-tight { letter-spacing: -0.01em; }
-.text-slate-900 { color: #0f172a; }
-.text-slate-800 { color: #1f2937; }
-.text-slate-700 { color: #334155; }
-.text-slate-600 { color: #475569; }
-.text-slate-500 { color: #64748b; }
-.text-slate-400 { color: #94a3b8; }
-.md\:flex { display: none; }
-.md\:hidden { display: block; }
-@media (min-width: 768px) {
-  .md\:flex { display: flex; }
-  .md\:hidden { display: none; }
-}
+/* Tailwind is bundled via @astrojs/tailwind.
+   Do not add Tailwind-like utility class definitions here (e.g. .hidden, .md\:hidden),
+   as they can override Tailwind and break responsive behavior (like the mobile menu). */
 
 * {
   box-sizing: border-box;
