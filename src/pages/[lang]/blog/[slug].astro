@@ -1,0 +1,340 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { SUPPORTED_LANGS, DEFAULT_LANG, isValidLanguage } from '../../../utils/i18n';
+import { loadBlogPost, getAllBlogSlugs, isUsingFallback } from '../../../utils/blog';
+
+export function getStaticPaths() {
+  const paths: Array<{ params: { lang: string; slug: string } }> = [];
+  
+  SUPPORTED_LANGS.forEach(lang => {
+    const slugs = getAllBlogSlugs(lang);
+    slugs.forEach(slug => {
+      paths.push({ params: { lang, slug } });
+    });
+  });
+  
+  return paths;
+}
+
+const { lang, slug } = Astro.params;
+
+// Validate language
+if (!isValidLanguage(lang)) {
+  return Astro.redirect(`/${DEFAULT_LANG}/blog`);
+}
+
+const post = loadBlogPost(lang, slug);
+
+// If post not found, redirect to blog index
+if (!post) {
+  return Astro.redirect(`/${lang}/blog`);
+}
+
+const showFallbackNote = isUsingFallback(lang);
+---
+
+<BaseLayout title={`${post.title} · Vokabulo Blog`} currentLang={lang} currentPath={`/blog/${slug}`}>
+  <style is:global>
+    /* Blog post styles - matching homepage aesthetic */
+    body {
+      background: radial-gradient(circle at 10% 20%, #f0f4ff 0, rgba(240, 244, 255, 0) 26%),
+        radial-gradient(circle at 80% 0%, #eef6ff 0, rgba(238, 246, 255, 0) 20%),
+        var(--bg);
+    }
+
+    .post-page {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 140px 24px 80px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 150ms ease, transform 150ms ease;
+    }
+
+    .back-link:hover {
+      color: var(--ink);
+      transform: translateX(-2px);
+    }
+
+    .back-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .translation-note {
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 32px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .post-header {
+      margin-bottom: 48px;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .post-date {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .post-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      border-radius: 9999px;
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--accent);
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .post-header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .post-hero-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 48px;
+      background: linear-gradient(135deg, #f0f4ff 0%, #eef6ff 100%);
+      box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+    }
+
+    .post-content {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .post-content h2 {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 48px 0 24px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .post-content h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 40px 0 16px;
+      line-height: 1.4;
+    }
+
+    .post-content h4 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 32px 0 12px;
+      line-height: 1.4;
+    }
+
+    .post-content p {
+      margin: 0 0 24px;
+    }
+
+    .post-content ul,
+    .post-content ol {
+      margin: 0 0 24px;
+      padding-left: 32px;
+    }
+
+    .post-content li {
+      margin-bottom: 12px;
+    }
+
+    .post-content strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .post-content a {
+      color: var(--accent);
+      text-decoration: underline;
+      transition: color 150ms ease;
+    }
+
+    .post-content a:hover {
+      color: #0284c7;
+    }
+
+    .post-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      margin: 32px 0;
+      box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+    }
+
+    .post-content blockquote {
+      border-left: 4px solid var(--border);
+      padding-left: 24px;
+      margin: 32px 0;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .post-content code {
+      background: rgba(15, 23, 42, 0.05);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+      color: var(--ink);
+    }
+
+    .post-content pre {
+      background: rgba(15, 23, 42, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin: 24px 0;
+      border: 1px solid var(--border);
+    }
+
+    .post-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root:not(.theme-dark) {
+        color-scheme: dark;
+        --bg: #0b1220;
+        --border: #1f2937;
+        --ink: #e5e7eb;
+        --muted: #cbd5e1;
+        --accent: #38bdf8;
+      }
+
+      body {
+        background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.08) 0, rgba(34, 211, 238, 0) 26%),
+          radial-gradient(circle at 80% 0%, rgba(248, 113, 113, 0.12) 0, rgba(248, 113, 113, 0) 22%),
+          #0b1220;
+      }
+    }
+
+    .theme-dark {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --border: #1f2937;
+      --ink: #e5e7eb;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+    }
+
+    .theme-dark body {
+      background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.08) 0, rgba(34, 211, 238, 0) 26%),
+        radial-gradient(circle at 80% 0%, rgba(248, 113, 113, 0.12) 0, rgba(248, 113, 113, 0) 22%),
+        #0b1220;
+    }
+
+    .theme-dark .post-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+    }
+
+    .theme-dark .post-content code {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .theme-dark .post-content pre {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: #1f2937;
+    }
+
+    .theme-dark .post-content a {
+      color: #38bdf8;
+    }
+
+    .theme-dark .post-content a:hover {
+      color: #7dd3fc;
+    }
+
+    .theme-dark .post-content img {
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .theme-dark .post-hero-image {
+      background: linear-gradient(135deg, #1f2937 0%, #0f1628 100%);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+
+  <div class="post-page">
+    <a href={`/${lang}/blog`} class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Blog
+    </a>
+
+    {showFallbackNote && (
+      <div class="translation-note">
+        Translation coming soon. Showing English version.
+      </div>
+    )}
+    
+    <div class="post-header">
+      <div class="post-meta">
+        {post.date && (
+          <div class="post-date">
+            {new Date(post.date).toLocaleDateString('en-US', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}
+          </div>
+        )}
+        {post.tag && <div class="post-tag">{post.tag}</div>}
+      </div>
+      <h1>{post.title}</h1>
+    </div>
+
+    <div class="post-hero-image"></div>
+
+    <article class="post-content">
+      <Fragment set:html={post.content} />
+    </article>
+  </div>
+</BaseLayout>
