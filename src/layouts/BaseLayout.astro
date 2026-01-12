@@ -75,27 +75,6 @@ const languages = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12.79A9 9 0 0 1 11.21 3 7.5 7.5 0 1 0 21 12.79Z" />
               </svg>
             </button>
-            
-            <!-- Language Switcher -->
-            <div class="relative group">
-              <button class="theme-toggle flex items-center gap-1">
-                <span>{languages.find(l => l.code === currentLang)?.code.toUpperCase()}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div class="absolute right-0 mt-2 w-40 rounded-lg border border-slate-200 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                {languages.map(lang => (
-                  <a 
-                    href={`/${lang.code}${currentPath}`}
-                    class={`block px-4 py-2 text-sm hover:bg-slate-50 first:rounded-t-lg last:rounded-b-lg ${lang.code === currentLang ? 'font-semibold text-slate-900' : 'text-slate-600'}`}
-                  >
-                    {lang.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-            
           </div>
           <button
             class="ml-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/70 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft md:hidden"
@@ -134,7 +113,25 @@ const languages = [
           <a class="hover:text-slate-900" href={`/${currentLang}/legal-notice`}>Legal Notice</a>
           <a class="hover:text-slate-900" href={`/${currentLang}/privacy`}>Privacy Policy</a>
         </div>
-        <p class="text-slate-500">Speak a little more fluently every day.</p>
+        <div class="relative">
+          <select 
+            id="footer-lang-select"
+            class="footer-lang-select appearance-none bg-transparent border-none text-slate-600 hover:text-slate-900 cursor-pointer pr-5 focus:outline-none"
+            onchange="window.location.href = this.value"
+          >
+            {languages.map(lang => (
+              <option 
+                value={`/${lang.code}${currentPath}`}
+                selected={lang.code === currentLang}
+              >
+                {lang.name}
+              </option>
+            ))}
+          </select>
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
       </div>
     </footer>
 

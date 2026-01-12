@@ -118,6 +118,15 @@ footer {
   padding: 32px 0;
 }
 
+.footer-lang-select {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-lang-select:hover {
+  color: var(--ink);
+}
+
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -193,3 +202,10 @@ footer {
   border-color: #1f2937;
 }
 
+.theme-dark .footer-lang-select {
+  color: #cbd5e1;
+}
+
+.theme-dark .footer-lang-select:hover {
+  color: #e5e7eb;
+}
