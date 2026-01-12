@@ -50,7 +50,7 @@ if (existsSync(contentPath)) {
 ---
 
 <BaseLayout title={`${title} · Vokabulo Blog`} currentLang={lang} currentPath={`/blog/${slug}`}>
-  <style>
+  <style is:global>
     .page {
       max-width: 750px;
       margin: 0 auto;
