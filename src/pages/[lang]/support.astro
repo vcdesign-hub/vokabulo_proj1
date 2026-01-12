@@ -619,7 +619,12 @@ renderer.heading = (...args: any[]) => {
 
     // Highlight active section (based on scroll position)
     (() => {
-      const storageKey = `help-scroll-anchor:${location.pathname}`;
+      const anchorKey = `help-scroll-anchor:${location.pathname}`;
+      const scrollKey = `help-scroll-y:${location.pathname}`;
+      // Use manual scroll restoration so the browser doesn't fight our saved position.
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      } catch {}
 
       const scrollToSection = (id) => {
         const safeId = String(id || '').replace(/^#/, '');
@@ -629,6 +634,45 @@ renderer.heading = (...args: any[]) => {
         const offsetTop = target.offsetTop - 120;
         window.scrollTo({ top: offsetTop, behavior: 'auto' });
         return true;
+      };
+
+      const restoreExactScroll = () => {
+        if (location.hash) return;
+        let savedY = null;
+        try {
+          const raw = localStorage.getItem(scrollKey);
+          if (raw != null) {
+            const parsed = parseInt(raw, 10);
+            if (!Number.isNaN(parsed) && parsed >= 0) savedY = parsed;
+          }
+        } catch {}
+        if (savedY == null) return;
+
+        // Try a few times in case fonts/layout shift after first paint.
+        let attempts = 0;
+        const maxAttempts = 20;
+        const tick = () => {
+          attempts += 1;
+          window.scrollTo({ top: savedY, behavior: 'auto' });
+          if (Math.abs(window.scrollY - savedY) < 2) return;
+          if (attempts >= maxAttempts) return;
+          setTimeout(tick, 50);
+        };
+
+        requestAnimationFrame(() => {
+          tick();
+        });
+      };
+
+      // Persist exact scroll position (throttled)
+      let saveTimer;
+      const saveScrollY = () => {
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(() => {
+          try {
+            localStorage.setItem(scrollKey, String(window.scrollY));
+          } catch {}
+        }, 100);
       };
 
       const updateActiveSection = () => {
@@ -651,7 +695,7 @@ renderer.heading = (...args: any[]) => {
 
           // Persist last viewed section so we can restore scroll position on revisit.
           try {
-            localStorage.setItem(storageKey, activeSection);
+            localStorage.setItem(anchorKey, activeSection);
           } catch {}
         }
       };
@@ -660,21 +704,15 @@ renderer.heading = (...args: any[]) => {
       window.addEventListener('scroll', () => {
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(updateActiveSection, 100);
+        saveScrollY();
       });
 
-      // Restore last viewed section on revisit (unless URL already has a hash).
-      // Use requestAnimationFrame to wait for layout/measurements.
-      if (!location.hash) {
-        try {
-          const saved = localStorage.getItem(storageKey);
-          if (saved) {
-            requestAnimationFrame(() => {
-              // If the first attempt runs too early (fonts/layout), try once more shortly after.
-              const ok = scrollToSection(saved);
-              if (!ok) setTimeout(() => scrollToSection(saved), 50);
-            });
-          }
-        } catch {}
+      // Restore exact scroll position on revisit (unless URL already has a hash).
+      // Run once early and again after full load (handles font/layout shifts).
+      restoreExactScroll();
+      window.addEventListener('load', restoreExactScroll, { once: true });
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(() => restoreExactScroll()).catch(() => {});
       }
 
       updateActiveSection();
@@ -691,8 +729,9 @@ renderer.heading = (...args: any[]) => {
             window.scrollTo({ top: offsetTop, behavior: 'smooth' });
             // Also persist the anchor right away.
             try {
-              localStorage.setItem(storageKey, href.replace('#', ''));
+              localStorage.setItem(anchorKey, href.replace('#', ''));
             } catch {}
+            saveScrollY();
             setTimeout(updateActiveSection, 500);
           }
         });
