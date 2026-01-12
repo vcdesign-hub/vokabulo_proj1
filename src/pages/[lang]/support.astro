@@ -508,7 +508,12 @@ renderer.heading = (...args: any[]) => {
     (() => {
       const navSections = document.querySelectorAll('.help-nav-section');
       const savedState = localStorage.getItem('help-nav-state');
+      // If there is no saved state yet (first visit), expand only the first section.
       const expandedSections = savedState ? JSON.parse(savedState) : [];
+      if (!savedState) {
+        const firstSectionId = document.querySelector('.help-nav-section')?.dataset?.section;
+        if (firstSectionId) expandedSections.push(firstSectionId);
+      }
 
       navSections.forEach(section => {
         const toggle = section.querySelector('.help-nav-toggle');
@@ -516,8 +521,8 @@ renderer.heading = (...args: any[]) => {
         const headerLink = section.querySelector('.help-nav-section-header a');
         if (!toggle || !sectionId) return;
 
-        // default expanded unless user previously collapsed it
-        const isExpanded = expandedSections.length === 0 ? true : expandedSections.includes(sectionId);
+        // default: only sections in expandedSections are open
+        const isExpanded = expandedSections.includes(sectionId);
         section.classList.toggle('expanded', isExpanded);
         section.classList.toggle('collapsed', !isExpanded);
         toggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
