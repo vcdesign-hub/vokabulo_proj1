@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SUPPORTED_LANGS, DEFAULT_LANG, isValidLanguage } from '../../utils/i18n';
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
+import { marked } from 'marked';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params;
+
+if (!isValidLanguage(lang)) {
+  return Astro.redirect(`/${DEFAULT_LANG}/legal-notice`);
+}
+
+// Load markdown content
+const contentPath = join(process.cwd(), 'content', 'pages', lang, 'legal-notice.md');
+let content = '';
+let title = 'Legal Notice · Vokabulo';
+
+if (existsSync(contentPath)) {
+  const fileContent = readFileSync(contentPath, 'utf-8');
+  const frontmatterMatch = fileContent.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (frontmatterMatch) {
+    const frontmatter = frontmatterMatch[1];
+    const markdown = frontmatterMatch[2];
+    const titleMatch = frontmatter.match(/title:\s*["'](.*)["']/);
+    if (titleMatch) title = titleMatch[1];
+    content = marked.parse(markdown);
+  } else {
+    content = marked.parse(fileContent);
+  }
+}
+---
+
+<BaseLayout title={title} currentLang={lang} currentPath="/legal-notice">
+  <style>
+    /* Legal Notice page-specific styles */
+    .page {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 140px 24px 48px;
+    }
+
+    main {
+      margin-top: 0;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      margin: 32px 0 12px;
+      font-size: 20px;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .theme-dark main {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+  </style>
+
+  <div class="page">
+    <main>
+      <Fragment set:html={content} />
+    </main>
+  </div>
+</BaseLayout>

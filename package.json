@@ -1,0 +1,27 @@
+{
+  "name": "110-vokabulo-landing-page-simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sapnho/vokabulo_landingpage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sapnho/vokabulo_landingpage/issues"
+  },
+  "homepage": "https://github.com/sapnho/vokabulo_landingpage#readme",
+  "dependencies": {
+    "@astrojs/vercel": "^9.0.3",
+    "astro": "^5.16.9",
+    "marked": "^17.0.1"
+  }
+}
