@@ -85,15 +85,32 @@ if (existsSync(contentPath)) {
 })();
 
 // Render markdown with stable heading ids (needed for anchor nav)
+// Note: marked v17 passes a token object to renderer.heading().
 const renderer = new marked.Renderer();
-renderer.heading = (text, level, raw) => {
-  if (level === 2 || level === 3) {
-    const id = slugify(String(raw ?? text));
-    return `<h${level} id="${id}">${text}</h${level}>`;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+renderer.heading = (...args: any[]) => {
+  // marked v17: heading(token)
+  if (args.length === 1 && typeof args[0] === 'object' && args[0]) {
+    const token = args[0];
+    const level = token.depth ?? token.level ?? token.depthLevel ?? 0;
+    const text = String(token.text ?? '');
+    if (level === 2 || level === 3) {
+      const id = slugify(text);
+      return `<h${level} id="${id}">${text}</h${level}>`;
+    }
+    return `<h${level}>${text}</h${level}>`;
   }
-  return `<h${level}>${text}</h${level}>`;
+
+  // older marked: heading(text, level, raw)
+  const [text, level, raw] = args;
+  const headingText = String(text ?? '');
+  const headingLevel = Number(level ?? 0);
+  if (headingLevel === 2 || headingLevel === 3) {
+    const id = slugify(String(raw ?? headingText));
+    return `<h${headingLevel} id="${id}">${headingText}</h${headingLevel}>`;
+  }
+  return `<h${headingLevel}>${headingText}</h${headingLevel}>`;
 };
-marked.setOptions({ renderer });
 ---
 
 <BaseLayout title={title} currentLang={lang} currentPath="/support">
@@ -476,7 +493,7 @@ marked.setOptions({ renderer });
         <article class="help-article">
           {sections.map((s) => (
             <section id={s.id}>
-              <Fragment set:html={marked.parse(s.markdown)} />
+              <Fragment set:html={marked.parse(s.markdown, { renderer })} />
             </section>
           ))}
         </article>
