@@ -173,7 +173,9 @@ renderer.heading = (...args: any[]) => {
       font-size: 16px;
     }
 
-    ul {
+    /* Only apply list typography spacing to the article content.
+       The left nav also uses <ul>/<li>, and we don't want big gaps there. */
+    .help-article ul {
       padding-left: 24px;
       margin: 0 0 20px;
       color: var(--muted);
@@ -181,11 +183,11 @@ renderer.heading = (...args: any[]) => {
       font-size: 16px;
     }
 
-    ul li {
+    .help-article ul li {
       margin: 0 0 12px;
     }
 
-    ul li strong {
+    .help-article ul li strong {
       color: var(--ink);
       font-weight: 600;
     }
