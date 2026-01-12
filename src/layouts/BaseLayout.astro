@@ -21,7 +21,7 @@ const languages = [
 ---
 
 <!doctype html>
-<html lang={currentLang}>
+<html lang={currentLang} style="scroll-behavior: smooth;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,7 +56,7 @@ const languages = [
             <img src="/images/logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
           </a>
           <nav class="hidden items-center gap-8 text-sm font-semibold text-slate-700 md:flex">
-            <a class="transition hover:text-slate-900" href={`/${currentLang}/#features`}>Features</a>
+            <a class="transition hover:text-slate-900" href={`/${currentLang}/#feature-blocks`}>Features</a>
             <a class="transition hover:text-slate-900" href={`/${currentLang}/#faq`}>FAQ</a>
             <a class="transition hover:text-slate-900" href={`/${currentLang}/support`}>Support</a>
             <a class="transition hover:text-slate-900" href={`/${currentLang}/blog`}>Blog</a>
@@ -89,7 +89,7 @@ const languages = [
       </div>
       <div id="mobile-menu" class="mx-auto hidden max-w-5xl px-4 pb-4 md:hidden">
         <div class="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-          <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/#features`}>Features</a>
+          <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/#feature-blocks`}>Features</a>
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/#faq`}>FAQ</a>
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/support`}>Support</a>
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/blog`}>Blog</a>
@@ -106,7 +106,7 @@ const languages = [
           <img src="/images/logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
         </a>
         <div class="flex flex-wrap gap-4">
-          <a class="hover:text-slate-900" href={`/${currentLang}/#features`}>Features</a>
+          <a class="hover:text-slate-900" href={`/${currentLang}/#feature-blocks`}>Features</a>
           <a class="hover:text-slate-900" href={`/${currentLang}/#faq`}>FAQ</a>
           <a class="hover:text-slate-900" href={`/${currentLang}/support`}>Support</a>
           <a class="hover:text-slate-900" href={`/${currentLang}/blog`}>Blog</a>
