@@ -227,6 +227,7 @@ renderer.heading = (...args: any[]) => {
     /* Only apply list typography spacing to the article content.
        The left nav also uses <ul>/<li>, and we don't want big gaps there. */
     .help-article ul {
+      list-style: disc;
       padding-left: 24px;
       margin: 0 0 20px;
       color: var(--muted);
@@ -234,8 +235,31 @@ renderer.heading = (...args: any[]) => {
       font-size: 16px;
     }
 
-    .help-article ul li {
-      margin: 0 0 12px;
+    .help-article ol {
+      list-style: decimal;
+      padding-left: 24px;
+      margin: 0 0 20px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .help-article li {
+      margin: 6px 0;
+    }
+
+    /* Some markdown renderers wrap list-item text in <p>, which adds extra gaps */
+    .help-article li > p {
+      margin: 0;
+    }
+
+    /* Nested lists */
+    .help-article ul ul,
+    .help-article ol ol,
+    .help-article ul ol,
+    .help-article ol ul {
+      margin-top: 8px;
+      margin-bottom: 0;
     }
 
     .help-article ul li strong {
