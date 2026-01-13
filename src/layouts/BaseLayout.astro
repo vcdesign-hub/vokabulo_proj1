@@ -1,23 +1,27 @@
 ---
 import '../styles/tailwind.css';
 import '../styles/styles.css';
+import { SUPPORTED_LANGS, LANGUAGES } from '../utils/i18n';
+import { buildCanonicalUrl, buildHreflangAlternates } from '../utils/seo';
 
 interface Props {
   title: string;
+  description?: string;
   currentLang?: string;
   currentPath?: string;
 }
 
-const { title, currentLang = 'en', currentPath = '' } = Astro.props;
+const { title, description, currentLang = 'en', currentPath = '' } = Astro.props;
 
-const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'de', name: 'Deutsch' },
-  { code: 'fr', name: 'Français' },
-  { code: 'it', name: 'Italiano' },
-  { code: 'es', name: 'Español' },
-  { code: 'pt', name: 'Português' }
-];
+const languages = SUPPORTED_LANGS.map(code => ({
+  code,
+  name: LANGUAGES[code]
+}));
+
+// Build SEO URLs
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://vokabulo.com';
+const canonicalUrl = buildCanonicalUrl(siteUrl, Astro.url.pathname);
+const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -26,6 +30,16 @@ const languages = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Hreflang alternates -->
+    {hreflangAlternates.map(({ lang, url }) => (
+      <link rel="alternate" hreflang={lang} href={url} />
+    ))}
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

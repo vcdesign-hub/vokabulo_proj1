@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SUPPORTED_LANGS, DEFAULT_LANG, isValidLanguage } from '../../utils/i18n';
+import { generateFallbackDescription } from '../../utils/seo';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { marked } from 'marked';
@@ -21,6 +22,7 @@ if (!isValidLanguage(lang)) {
 const contentPath = join(process.cwd(), 'content', 'pages', lang, 'privacy.md');
 let content = '';
 let title = 'Privacy Policy · Vokabulo';
+let description = '';
 
 if (existsSync(contentPath)) {
   const fileContent = readFileSync(contentPath, 'utf-8');
@@ -30,6 +32,14 @@ if (existsSync(contentPath)) {
     const markdown = frontmatterMatch[2];
     const titleMatch = frontmatter.match(/title:\s*["'](.*)["']/);
     if (titleMatch) title = titleMatch[1];
+    const descMatch = frontmatter.match(/description:\s*["'](.*)["']/);
+    if (descMatch) description = descMatch[1];
+    
+    // Generate fallback description if not in frontmatter
+    if (!description && markdown) {
+      description = generateFallbackDescription(markdown, 160);
+    }
+    
     content = marked.parse(markdown);
   } else {
     content = marked.parse(fileContent);
@@ -37,7 +47,7 @@ if (existsSync(contentPath)) {
 }
 ---
 
-<BaseLayout title={title} currentLang={lang} currentPath="/privacy">
+<BaseLayout title={title} description={description} currentLang={lang} currentPath="/privacy">
   <style is:global>
     /* Privacy Policy page-specific styles */
     :root {

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SUPPORTED_LANGS, DEFAULT_LANG, isValidLanguage } from '../../utils/i18n';
+import { generateFallbackDescription } from '../../utils/seo';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { marked } from 'marked';
@@ -30,6 +31,7 @@ function slugify(input: string): string {
 const contentPath = join(process.cwd(), 'content', 'pages', lang, 'support.md');
 let rawMarkdown = '';
 let title = 'Support · Vokabulo';
+let description = '';
 type SupportSection = { id: string; title: string; items: { id: string; title: string }[]; markdown: string };
 let sections: SupportSection[] = [];
 
@@ -42,8 +44,15 @@ if (existsSync(contentPath)) {
     rawMarkdown = frontmatterMatch[2];
     const titleMatch = frontmatter.match(/title:\s*["'](.*)["']/);
     if (titleMatch) title = titleMatch[1];
+    const descMatch = frontmatter.match(/description:\s*["'](.*)["']/);
+    if (descMatch) description = descMatch[1];
   } else {
     rawMarkdown = fileContent;
+  }
+  
+  // Generate fallback description if not in frontmatter
+  if (!description && rawMarkdown) {
+    description = generateFallbackDescription(rawMarkdown, 160);
   }
 }
 
@@ -113,7 +122,7 @@ renderer.heading = (...args: any[]) => {
 };
 ---
 
-<BaseLayout title={title} currentLang={lang} currentPath="/support">
+<BaseLayout title={title} description={description} currentLang={lang} currentPath="/support">
   <style is:global>
     /* Support page-specific styles */
     :root {
