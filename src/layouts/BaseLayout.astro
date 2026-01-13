@@ -114,6 +114,20 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}#faq`}>FAQ</a>
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/support`}>Support</a>
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/blog`}>Blog</a>
+          <button
+            id="theme-toggle-mobile"
+            class="theme-toggle-mobile flex items-center gap-2 py-1 text-sm font-medium text-slate-800"
+            type="button"
+            aria-label="Toggle light/dark theme"
+          >
+            <svg id="icon-sun-mobile" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v-2m0 19v-2m7.5-7.5h2m-19 0h2M17.303 6.697l1.414-1.414M5.283 18.717l1.414-1.414m0-10.606L5.283 5.283m13.434 13.434-1.414-1.414M12 8.25A3.75 3.75 0 1 0 12 15.75 3.75 3.75 0 0 0 12 8.25Z" />
+            </svg>
+            <svg id="icon-moon-mobile" class="hidden h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12.79A9 9 0 0 1 11.21 3 7.5 7.5 0 1 0 21 12.79Z" />
+            </svg>
+            <span id="theme-label-mobile">Dark mode</span>
+          </button>
         </div>
       </div>
     </div>
@@ -162,6 +176,12 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
         const btn = document.getElementById('theme-toggle');
         const iconSun = document.getElementById('icon-sun');
         const iconMoon = document.getElementById('icon-moon');
+        
+        // Mobile theme toggle elements
+        const btnMobile = document.getElementById('theme-toggle-mobile');
+        const iconSunMobile = document.getElementById('icon-sun-mobile');
+        const iconMoonMobile = document.getElementById('icon-moon-mobile');
+        const labelMobile = document.getElementById('theme-label-mobile');
 
         const setTheme = (mode, persist = true) => {
           if (mode === 'dark') {
@@ -171,8 +191,17 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
           }
           if (persist) localStorage.setItem('theme', mode);
           const isDark = mode === 'dark';
-          iconSun.classList.toggle('hidden', isDark);
-          iconMoon.classList.toggle('hidden', !isDark);
+          
+          // Update desktop toggle
+          iconSun?.classList.toggle('hidden', isDark);
+          iconMoon?.classList.toggle('hidden', !isDark);
+          
+          // Update mobile toggle
+          iconSunMobile?.classList.toggle('hidden', isDark);
+          iconMoonMobile?.classList.toggle('hidden', !isDark);
+          if (labelMobile) {
+            labelMobile.textContent = isDark ? 'Light mode' : 'Dark mode';
+          }
         };
 
         const stored = localStorage.getItem('theme');
@@ -180,10 +209,13 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
           setTheme(stored, false);
         }
 
-        btn?.addEventListener('click', () => {
+        const toggleTheme = () => {
           const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
           setTheme(next);
-        });
+        };
+
+        btn?.addEventListener('click', toggleTheme);
+        btnMobile?.addEventListener('click', toggleTheme);
       })();
     </script>
   </body>
