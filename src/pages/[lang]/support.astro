@@ -147,6 +147,7 @@ renderer.heading = (...args: any[]) => {
       <nav aria-label="Support navigation (floating)">
         <div class="help-nav-search">
           <input type="search" id="help-search-fab" placeholder="Search..." aria-label="Search help articles" />
+          <button class="help-nav-search-clear" id="help-search-fab-clear" aria-label="Clear search" type="button">×</button>
         </div>
         <ul class="help-nav-items">
           {sections.map((s) => (
@@ -288,11 +289,12 @@ renderer.heading = (...args: any[]) => {
 
     .help-nav-search {
       margin-bottom: 16px;
+      position: relative;
     }
 
     .help-nav-search input {
       width: 100%;
-      padding: 8px 12px;
+      padding: 8px 32px 8px 12px;
       border: 1px solid var(--border);
       border-radius: 8px;
       background: #ffffff;
@@ -305,6 +307,32 @@ renderer.heading = (...args: any[]) => {
       outline: none;
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    }
+
+    .help-nav-search-clear {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px 6px;
+      line-height: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 150ms ease, color 150ms ease;
+    }
+
+    .help-nav-search-clear.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .help-nav-search-clear:hover {
+      color: var(--ink);
     }
 
     .help-nav-section.hidden-by-search,
@@ -548,11 +576,12 @@ renderer.heading = (...args: any[]) => {
 
     .help-nav-fab-panel .help-nav-search {
       margin-bottom: 12px;
+      position: relative;
     }
 
     .help-nav-fab-panel .help-nav-search input {
       width: 100%;
-      padding: 10px 12px;
+      padding: 10px 32px 10px 12px;
       border: 1px solid var(--border);
       border-radius: 8px;
       font-size: 14px;
@@ -620,6 +649,14 @@ renderer.heading = (...args: any[]) => {
       color: var(--ink);
     }
 
+    .theme-dark .help-nav-search-clear {
+      color: #94a3b8;
+    }
+
+    .theme-dark .help-nav-search-clear:hover {
+      color: #e5e7eb;
+    }
+
     .theme-dark .help-nav-content::-webkit-scrollbar-thumb {
       background: #1f2937;
     }
@@ -677,6 +714,7 @@ renderer.heading = (...args: any[]) => {
           <nav class="help-nav" aria-label="Support navigation">
             <div class="help-nav-search">
               <input type="search" id="help-search" placeholder="Search..." aria-label="Search help articles" />
+              <button class="help-nav-search-clear" id="help-search-clear" aria-label="Clear search" type="button">×</button>
             </div>
             <div class="help-nav-content">
               {sections.map((s) => (
@@ -775,11 +813,19 @@ renderer.heading = (...args: any[]) => {
     // Search functionality
     (() => {
       const searchInput = document.getElementById('help-search');
+      const searchClear = document.getElementById('help-search-clear');
       const allNavItems = document.querySelectorAll('.help-nav-items li');
       const allNavSections = document.querySelectorAll('.help-nav-section');
       if (!searchInput) return;
 
+      const updateClearButton = () => {
+        if (searchClear) {
+          searchClear.classList.toggle('visible', searchInput.value.length > 0);
+        }
+      };
+
       searchInput.addEventListener('input', (e) => {
+        updateClearButton();
         const query = (e.target.value || '').toLowerCase().trim();
         if (query === '') {
           allNavItems.forEach(item => item.classList.remove('hidden-by-search', 'highlight-match'));
@@ -825,14 +871,32 @@ renderer.heading = (...args: any[]) => {
           firstMatch?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       });
+
+      if (searchClear) {
+        searchClear.addEventListener('click', () => {
+          searchInput.value = '';
+          searchInput.dispatchEvent(new Event('input'));
+          searchInput.focus();
+        });
+      }
+
+      updateClearButton();
     })();
 
     // Search functionality for floating navigation (small screens)
     (() => {
       const searchInput = document.getElementById('help-search-fab');
+      const searchClear = document.getElementById('help-search-fab-clear');
       if (!searchInput) return;
 
+      const updateClearButton = () => {
+        if (searchClear) {
+          searchClear.classList.toggle('visible', searchInput.value.length > 0);
+        }
+      };
+
       searchInput.addEventListener('input', (e) => {
+        updateClearButton();
         const query = (e.target.value || '').toLowerCase().trim();
         const fabPanel = document.querySelector('.help-nav-fab-panel');
         const allNavItems = fabPanel ? fabPanel.querySelectorAll('.help-nav-items li') : [];
@@ -873,6 +937,16 @@ renderer.heading = (...args: any[]) => {
           }
         });
       });
+
+      if (searchClear) {
+        searchClear.addEventListener('click', () => {
+          searchInput.value = '';
+          searchInput.dispatchEvent(new Event('input'));
+          searchInput.focus();
+        });
+      }
+
+      updateClearButton();
     })();
 
     // Highlight active section (based on scroll position)
