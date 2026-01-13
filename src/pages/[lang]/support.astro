@@ -826,40 +826,44 @@ renderer.heading = (...args: any[]) => {
         const headerLink = section.querySelector('.help-nav-section-header a');
         if (!toggle || !sectionId) return;
 
+        const persist = () => localStorage.setItem('help-nav-state', JSON.stringify(expandedSections));
+
+        const setExpanded = (targetId) => {
+          // Accordion behavior: only one section open at a time
+          navSections.forEach((s) => {
+            const id = s.dataset.section;
+            const t = s.querySelector('.help-nav-toggle');
+            const open = id === targetId;
+            s.classList.toggle('expanded', open);
+            s.classList.toggle('collapsed', !open);
+            if (t) t.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+
+          expandedSections.length = 0;
+          if (targetId) expandedSections.push(targetId);
+          persist();
+        };
+
         // default: only sections in expandedSections are open
         const isExpanded = expandedSections.includes(sectionId);
         section.classList.toggle('expanded', isExpanded);
         section.classList.toggle('collapsed', !isExpanded);
         toggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
 
-        const persist = () => localStorage.setItem('help-nav-state', JSON.stringify(expandedSections));
-
         const toggleSection = (e) => {
           e?.preventDefault?.();
           e?.stopPropagation?.();
           const currentlyExpanded = section.classList.contains('expanded');
           if (currentlyExpanded) {
-            section.classList.remove('expanded');
-            section.classList.add('collapsed');
-            toggle.setAttribute('aria-expanded', 'false');
-            const idx = expandedSections.indexOf(sectionId);
-            if (idx !== -1) expandedSections.splice(idx, 1);
+            setExpanded(null);
           } else {
-            section.classList.remove('collapsed');
-            section.classList.add('expanded');
-            toggle.setAttribute('aria-expanded', 'true');
-            if (!expandedSections.includes(sectionId)) expandedSections.push(sectionId);
+            setExpanded(sectionId);
           }
-          persist();
         };
 
         const expandSection = () => {
           if (section.classList.contains('expanded')) return;
-          section.classList.remove('collapsed');
-          section.classList.add('expanded');
-          toggle.setAttribute('aria-expanded', 'true');
-          if (!expandedSections.includes(sectionId)) expandedSections.push(sectionId);
-          persist();
+          setExpanded(sectionId);
         };
 
         toggle.addEventListener('click', toggleSection);
