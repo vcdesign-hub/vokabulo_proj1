@@ -145,6 +145,9 @@ renderer.heading = (...args: any[]) => {
     </summary>
     <div class="help-nav-fab-panel">
       <nav aria-label="Support navigation (floating)">
+        <div class="help-nav-search">
+          <input type="search" id="help-search-fab" placeholder="Search..." aria-label="Search help articles" />
+        </div>
         <ul class="help-nav-items">
           {sections.map((s) => (
             <li><a href={`#${s.id}`}>{s.title}</a></li>
@@ -541,6 +544,25 @@ renderer.heading = (...args: any[]) => {
       box-shadow: 0 12px 32px rgba(15, 23, 42, 0.2);
     }
 
+    .help-nav-fab-panel .help-nav-search {
+      margin-bottom: 12px;
+    }
+
+    .help-nav-fab-panel .help-nav-search input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      background: white;
+      transition: border-color 150ms ease;
+    }
+
+    .help-nav-fab-panel .help-nav-search input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
     .help-nav-fab-panel .help-nav-items {
       list-style: none;
       padding: 0;
@@ -624,6 +646,16 @@ renderer.heading = (...args: any[]) => {
     .theme-dark .help-nav-fab-panel {
       background: rgba(15, 23, 42, 0.98);
       border-color: #1f2937;
+    }
+
+    .theme-dark .help-nav-fab-panel .help-nav-search input {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: #1f2937;
+      color: #e5e7eb;
+    }
+
+    .theme-dark .help-nav-fab-panel .help-nav-search input::placeholder {
+      color: #94a3b8;
     }
 
     .theme-dark .help-nav-fab-panel .help-nav-items a:hover {
@@ -790,6 +822,54 @@ renderer.heading = (...args: any[]) => {
           const firstMatch = document.querySelector('.help-nav-items li.highlight-match a');
           firstMatch?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
+      });
+    })();
+
+    // Search functionality for floating navigation (small screens)
+    (() => {
+      const searchInput = document.getElementById('help-search-fab');
+      if (!searchInput) return;
+
+      searchInput.addEventListener('input', (e) => {
+        const query = (e.target.value || '').toLowerCase().trim();
+        const fabPanel = document.querySelector('.help-nav-fab-panel');
+        const allNavItems = fabPanel ? fabPanel.querySelectorAll('.help-nav-items li') : [];
+        
+        if (query === '') {
+          allNavItems.forEach(item => item.style.display = '');
+          return;
+        }
+
+        allNavItems.forEach(item => {
+          const link = item.querySelector('a');
+          if (!link) {
+            item.style.display = 'none';
+            return;
+          }
+          
+          // Get the section ID from the link's href
+          const sectionId = link.getAttribute('href')?.replace('#', '');
+          if (!sectionId) {
+            item.style.display = 'none';
+            return;
+          }
+          
+          // Find the corresponding section in the page
+          const section = document.getElementById(sectionId);
+          if (!section) {
+            item.style.display = 'none';
+            return;
+          }
+          
+          // Search through all text content in the section
+          const sectionText = section.textContent.toLowerCase();
+          
+          if (sectionText.includes(query)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
       });
     })();
 
