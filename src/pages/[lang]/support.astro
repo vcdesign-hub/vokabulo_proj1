@@ -412,6 +412,13 @@ renderer.heading = (...args: any[]) => {
       }
     }
 
+    /* Hide mobile nav on desktop (handled by .help-nav instead) */
+    @media (min-width: 768px) {
+      .help-nav-mobile {
+        display: none;
+      }
+    }
+
     .help-nav-mobile summary {
       cursor: pointer;
       font-weight: 700;
@@ -431,9 +438,17 @@ renderer.heading = (...args: any[]) => {
       z-index: 20;
     }
 
+    /* Show floating button only on very small screens */
     @media (max-width: 390px) {
       .help-nav-fab {
         display: block;
+      }
+    }
+
+    /* Ensure floating button is hidden on larger screens */
+    @media (min-width: 391px) {
+      .help-nav-fab {
+        display: none;
       }
     }
 
@@ -590,7 +605,7 @@ renderer.heading = (...args: any[]) => {
     <main>
       <div class="help-layout">
         <aside>
-          <details class="help-nav-mobile md:hidden">
+          <details class="help-nav-mobile">
             <summary>On this page</summary>
             <nav aria-label="Support navigation (mobile)">
               <ul class="help-nav-items">
