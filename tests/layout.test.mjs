@@ -60,6 +60,20 @@ describe('BaseLayout', () => {
       'Expected width scale calculation (1280px → 850px)'
     );
   });
+
+  test('renders footer in boxed shell style', () => {
+    const layoutPath = new URL('../src/layouts/BaseLayout.astro', import.meta.url);
+    const content = readFileSync(layoutPath, 'utf8');
+
+    assert.ok(
+      content.includes('class="site-footer'),
+      'Expected BaseLayout footer to have .site-footer class'
+    );
+    assert.ok(
+      content.includes('footer-shell'),
+      'Expected BaseLayout footer to include .footer-shell wrapper'
+    );
+  });
 });
 
 describe('Navbar smooth transition styles', () => {

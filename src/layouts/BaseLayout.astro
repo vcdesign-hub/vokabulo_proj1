@@ -128,38 +128,40 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
 
     <slot />
 
-    <footer class="border-t border-slate-200 bg-white/90 py-8">
-      <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 text-sm text-slate-600 md:flex-row md:items-center md:justify-between md:px-6">
-        <a href={`/${currentLang}`} class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-800">
-          <img src="/images/logo on white.svg" alt="Vokabulo logo" class="logo-light" />
-          <img src="/images/logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
-        </a>
-        <div class="flex flex-wrap gap-4">
-          <a class="hover:text-slate-900" href={`/${currentLang}#feature-blocks`}>FEATURES</a>
-          <a class="hover:text-slate-900" href={`/${currentLang}#faq`}>FAQ</a>
-          <a class="hover:text-slate-900" href={`/${currentLang}/support`}>HOW IT WORKS</a>
-          <a class="hover:text-slate-900" href={`/${currentLang}/blog`}>BLOG</a>
-          <a class="hover:text-slate-900" href={`/${currentLang}/legal-notice`}>LEGAL NOTICE</a>
-          <a class="hover:text-slate-900" href={`/${currentLang}/privacy`}>PRIVACY POLICY</a>
-        </div>
-        <div class="relative">
-          <select 
-            id="footer-lang-select"
-            class="footer-lang-select appearance-none bg-transparent border-none text-slate-600 hover:text-slate-900 cursor-pointer pr-5 focus:outline-none"
-            onchange="window.location.href = this.value"
-          >
-            {languages.map(lang => (
-              <option 
-                value={`/${lang.code}${currentPath}`}
-                selected={lang.code === currentLang}
-              >
-                {lang.name}
-              </option>
-            ))}
-          </select>
-          <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
+    <footer class="site-footer px-3 pb-6 pt-12 md:px-6 md:pb-8">
+      <div class="footer-shell mx-auto max-w-5xl">
+        <div class="flex flex-col gap-4 px-4 py-7 text-sm text-slate-600 md:flex-row md:items-center md:justify-between md:px-6 md:py-9">
+          <a href={`/${currentLang}`} class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-800">
+            <img src="/images/logo on white.svg" alt="Vokabulo logo" class="logo-light" />
+            <img src="/images/logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
+          </a>
+          <div class="flex flex-wrap gap-4">
+            <a class="hover:text-slate-900" href={`/${currentLang}#feature-blocks`}>FEATURES</a>
+            <a class="hover:text-slate-900" href={`/${currentLang}#faq`}>FAQ</a>
+            <a class="hover:text-slate-900" href={`/${currentLang}/support`}>HOW IT WORKS</a>
+            <a class="hover:text-slate-900" href={`/${currentLang}/blog`}>BLOG</a>
+            <a class="hover:text-slate-900" href={`/${currentLang}/legal-notice`}>LEGAL NOTICE</a>
+            <a class="hover:text-slate-900" href={`/${currentLang}/privacy`}>PRIVACY POLICY</a>
+          </div>
+          <div class="relative">
+            <select
+              id="footer-lang-select"
+              class="footer-lang-select appearance-none bg-transparent border-none text-slate-600 hover:text-slate-900 cursor-pointer pr-5 focus:outline-none"
+              onchange="window.location.href = this.value"
+            >
+              {languages.map(lang => (
+                <option
+                  value={`/${lang.code}${currentPath}`}
+                  selected={lang.code === currentLang}
+                >
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+            <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </div>
       </div>
     </footer>
