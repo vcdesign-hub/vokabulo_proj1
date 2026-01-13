@@ -123,6 +123,37 @@ renderer.heading = (...args: any[]) => {
 ---
 
 <BaseLayout title={title} description={description} currentLang={lang} currentPath="/support">
+  <!-- Mobile sticky nav (fixed to viewport, outside main content) -->
+  <details class="help-nav-mobile">
+    <summary>On this page</summary>
+    <nav aria-label="Support navigation (mobile)">
+      <ul class="help-nav-items">
+        {sections.map((s) => (
+          <li><a href={`#${s.id}`}>{s.title}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </details>
+
+  <!-- Floating button nav for very small screens -->
+  <details class="help-nav-fab">
+    <summary>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      On this page
+    </summary>
+    <div class="help-nav-fab-panel">
+      <nav aria-label="Support navigation (floating)">
+        <ul class="help-nav-items">
+          {sections.map((s) => (
+            <li><a href={`#${s.id}`}>{s.title}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </details>
+
   <style is:global>
     /* Support page-specific styles */
     :root {
@@ -397,7 +428,10 @@ renderer.heading = (...args: any[]) => {
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+      margin: 0 16px;
     }
 
     /* Show sticky nav on phones between 391px and 767px */
@@ -406,9 +440,10 @@ renderer.heading = (...args: any[]) => {
         display: block;
         position: sticky;
         top: 120px;
-        z-index: 10;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+        left: 0;
+        right: 0;
+        z-index: 40;
+        margin: 16px 16px 0;
       }
     }
 
@@ -605,35 +640,6 @@ renderer.heading = (...args: any[]) => {
     <main>
       <div class="help-layout">
         <aside>
-          <details class="help-nav-mobile">
-            <summary>On this page</summary>
-            <nav aria-label="Support navigation (mobile)">
-              <ul class="help-nav-items">
-                {sections.map((s) => (
-                  <li><a href={`#${s.id}`}>{s.title}</a></li>
-                ))}
-              </ul>
-            </nav>
-          </details>
-
-          <details class="help-nav-fab">
-            <summary>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              On this page
-            </summary>
-            <div class="help-nav-fab-panel">
-              <nav aria-label="Support navigation (floating)">
-                <ul class="help-nav-items">
-                  {sections.map((s) => (
-                    <li><a href={`#${s.id}`}>{s.title}</a></li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-          </details>
-
           <nav class="help-nav" aria-label="Support navigation">
             <div class="help-nav-search">
               <input type="search" id="help-search" placeholder="Search..." aria-label="Search help articles" />
