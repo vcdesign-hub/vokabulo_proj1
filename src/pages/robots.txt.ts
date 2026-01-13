@@ -3,14 +3,18 @@ import type { APIRoute } from 'astro';
 export const prerender = true;
 
 export const GET: APIRoute = () => {
-  const isProduction = process.env.VERCEL_ENV === 'production';
+  const isVercelPreview = process.env.VERCEL_ENV === 'preview';
+  const isVercelDev = process.env.VERCEL_ENV === 'development';
+  const isIndexable = import.meta.env.PROD && !isVercelPreview && !isVercelDev;
 
-  const robotsTxt = isProduction
+  const site = (import.meta.env.SITE || 'https://vokabulo.com').replace(/\/$/, '');
+
+  const robotsTxt = isIndexable
     ? `# Production robots.txt
 User-agent: *
 Allow: /
 
-Sitemap: https://vokabulo.com/sitemap-index.xml
+Sitemap: ${site}/sitemap-index.xml
 `
     : `# Preview/Development robots.txt
 User-agent: *
