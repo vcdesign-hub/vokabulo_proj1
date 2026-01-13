@@ -393,10 +393,23 @@ renderer.heading = (...args: any[]) => {
     }
 
     .help-nav-mobile {
+      display: none;
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 12px 14px;
       background: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Show sticky nav on phones between 391px and 767px */
+    @media (min-width: 391px) and (max-width: 767px) {
+      .help-nav-mobile {
+        display: block;
+        position: sticky;
+        top: 120px;
+        z-index: 10;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+      }
     }
 
     .help-nav-mobile summary {
@@ -407,6 +420,95 @@ renderer.heading = (...args: any[]) => {
 
     .help-nav-mobile .help-nav-items a {
       padding: 8px 10px;
+    }
+
+    /* Floating button for very small screens */
+    .help-nav-fab {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 16px;
+      z-index: 20;
+    }
+
+    @media (max-width: 390px) {
+      .help-nav-fab {
+        display: block;
+      }
+    }
+
+    .help-nav-fab summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
+      transition: transform 150ms ease, box-shadow 150ms ease;
+      list-style: none;
+    }
+
+    .help-nav-fab summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .help-nav-fab summary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25);
+    }
+
+    .help-nav-fab summary svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .help-nav-fab[open] summary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .help-nav-fab-panel {
+      position: fixed;
+      bottom: 88px;
+      right: 16px;
+      left: 16px;
+      max-height: 60vh;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.2);
+    }
+
+    .help-nav-fab-panel .help-nav-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .help-nav-fab-panel .help-nav-items a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 150ms ease;
+    }
+
+    .help-nav-fab-panel .help-nav-items a:hover {
+      background: rgba(15, 23, 42, 0.06);
     }
 
     .help-article {
@@ -456,6 +558,32 @@ renderer.heading = (...args: any[]) => {
       background: rgba(255, 255, 255, 0.08);
       color: #e5e7eb;
     }
+
+    .theme-dark .help-nav-fab summary {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #e5e7eb;
+    }
+
+    .theme-dark .help-nav-fab[open] summary {
+      background: var(--accent);
+      color: #0b1220;
+      border-color: var(--accent);
+    }
+
+    .theme-dark .help-nav-fab-panel {
+      background: rgba(15, 23, 42, 0.98);
+      border-color: #1f2937;
+    }
+
+    .theme-dark .help-nav-fab-panel .help-nav-items a:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .theme-dark .help-nav-mobile {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
   </style>
 
   <div class="page">
@@ -471,6 +599,24 @@ renderer.heading = (...args: any[]) => {
                 ))}
               </ul>
             </nav>
+          </details>
+
+          <details class="help-nav-fab">
+            <summary>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              On this page
+            </summary>
+            <div class="help-nav-fab-panel">
+              <nav aria-label="Support navigation (floating)">
+                <ul class="help-nav-items">
+                  {sections.map((s) => (
+                    <li><a href={`#${s.id}`}>{s.title}</a></li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
           </details>
 
           <nav class="help-nav" aria-label="Support navigation">
