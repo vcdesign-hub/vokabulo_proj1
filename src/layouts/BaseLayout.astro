@@ -65,13 +65,13 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
     <div class="fixed top-0 left-0 right-0 z-50">
       <div class="px-3 py-3 md:px-6">
         <header class="nav-shell mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 md:px-6">
-          <a href={`/${currentLang}/`} class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900">
+          <a href={`/${currentLang}`} class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900">
             <img src="/images/logo on white.svg" alt="Vokabulo logo" class="logo-light" />
             <img src="/images/logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
           </a>
           <nav class="hidden items-center gap-8 text-sm font-semibold text-slate-700 md:flex">
-            <a class="transition hover:text-slate-900" href={`/${currentLang}/#feature-blocks`}>Features</a>
-            <a class="transition hover:text-slate-900" href={`/${currentLang}/#faq`}>FAQ</a>
+            <a class="transition hover:text-slate-900" href={`/${currentLang}#feature-blocks`}>Features</a>
+            <a class="transition hover:text-slate-900" href={`/${currentLang}#faq`}>FAQ</a>
             <a class="transition hover:text-slate-900" href={`/${currentLang}/support`}>Support</a>
             <a class="transition hover:text-slate-900" href={`/${currentLang}/blog`}>Blog</a>
           </nav>
@@ -110,8 +110,8 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
 
       <div id="mobile-menu" class="mx-auto hidden max-w-5xl px-4 pb-4 md:hidden">
         <div class="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-          <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/#feature-blocks`}>Features</a>
-          <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/#faq`}>FAQ</a>
+          <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}#feature-blocks`}>Features</a>
+          <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}#faq`}>FAQ</a>
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/support`}>Support</a>
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/blog`}>Blog</a>
         </div>
@@ -122,13 +122,13 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
 
     <footer class="border-t border-slate-200 bg-white/90 py-8">
       <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 text-sm text-slate-600 md:flex-row md:items-center md:justify-between md:px-6">
-        <a href={`/${currentLang}/`} class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-800">
+        <a href={`/${currentLang}`} class="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-800">
           <img src="/images/logo on white.svg" alt="Vokabulo logo" class="logo-light" />
           <img src="/images/logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
         </a>
         <div class="flex flex-wrap gap-4">
-          <a class="hover:text-slate-900" href={`/${currentLang}/#feature-blocks`}>Features</a>
-          <a class="hover:text-slate-900" href={`/${currentLang}/#faq`}>FAQ</a>
+          <a class="hover:text-slate-900" href={`/${currentLang}#feature-blocks`}>Features</a>
+          <a class="hover:text-slate-900" href={`/${currentLang}#faq`}>FAQ</a>
           <a class="hover:text-slate-900" href={`/${currentLang}/support`}>Support</a>
           <a class="hover:text-slate-900" href={`/${currentLang}/blog`}>Blog</a>
           <a class="hover:text-slate-900" href={`/${currentLang}/legal-notice`}>Legal Notice</a>

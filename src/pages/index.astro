@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadHomeCopy } from '../utils/home';
 
 // Redirect root to /en/ by rendering the same content
 const lang = 'en';
+const home = loadHomeCopy('en');
+const { hero, philosophy, featureBlocks, features, testimonials, faq, cta } = home;
 ---
 
-<BaseLayout title="Vokabulo – Smarter Learning" currentLang={lang} currentPath="/">
+<BaseLayout title={hero.title} description={hero.description} currentLang={lang} currentPath="">
   <style is:global>
     /* Index page-specific styles */
     :root {
@@ -282,16 +285,17 @@ const lang = 'en';
   >
     <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
       <div class="space-y-4">
-        <h1 class="text-5xl font-bold leading-[1.4] tracking-tight text-slate-900 sm:text-6xl sm:leading-[1.4]">
-          Every journey begins<br />with the right words
-        </h1>
+        <h1
+          class="text-5xl font-bold leading-[1.4] tracking-tight text-slate-900 sm:text-6xl sm:leading-[1.4]"
+          set:html={hero.heroHeadingHtml}
+        />
         <p class="text-lg text-slate-700 sm:text-xl">
-          Language learning coming alive - AI-powered, community-inspired, pure magic
+          {hero.heroSubheading}
         </p>
       </div>
       <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <a class="btn-accent px-6 py-3 text-sm font-semibold shadow-soft" href="#feature-blocks">
-          Discover the Magic of Vokabulo
+        <a class="btn-accent px-6 py-3 text-sm font-semibold shadow-soft" href={hero.ctaHref}>
+          {hero.ctaText}
         </a>
       </div>
       <div class="relative z-10 mx-auto mt-10 max-w-lg">
@@ -344,34 +348,34 @@ const lang = 'en';
   <main class="mx-auto max-w-5xl space-y-16 px-4 pb-16 pt-12 md:space-y-24 md:px-6 md:pt-16">
     <section id="philosophy" class="space-y-10 px-4 pt-8 md:pt-12">
       <div class="mx-auto max-w-4xl space-y-3 text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">Our philosophy</p>
+        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">{philosophy.kicker}</p>
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          No shortcuts. Just the right words.
+          {philosophy.heading}
         </h2>
         <p class="text-lg leading-relaxed text-slate-700 sm:text-xl">
-          Language learning takes endurance, but momentum starts with the words you actually use.
+          {philosophy.subheading}
         </p>
       </div>
       <div class="mx-auto grid max-w-5xl gap-4 md:grid-cols-3">
         <article class="card flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft">
           <div class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-soft">⌁</div>
-          <h3 class="text-xl font-semibold text-slate-900">Context first</h3>
+          <h3 class="text-xl font-semibold text-slate-900">{philosophy.cards[0]?.title}</h3>
           <p class="text-lg leading-relaxed text-slate-700">
-            Words matter most when they're tied to real moments and emotions.
+            {philosophy.cards[0]?.body}
           </p>
         </article>
         <article class="card flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft">
           <div class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-soft">✓</div>
-          <h3 class="text-xl font-semibold text-slate-900">Built around your life</h3>
+          <h3 class="text-xl font-semibold text-slate-900">{philosophy.cards[1]?.title}</h3>
           <p class="text-lg leading-relaxed text-slate-700">
-            Work, hobbies, everyday situations. No one-size-fits-all lists.
+            {philosophy.cards[1]?.body}
           </p>
         </article>
         <article class="card flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft">
           <div class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-soft">⚡</div>
-          <h3 class="text-xl font-semibold text-slate-900">Learn together</h3>
+          <h3 class="text-xl font-semibold text-slate-900">{philosophy.cards[2]?.title}</h3>
           <p class="text-lg leading-relaxed text-slate-700">
-            Community Sets let you share and grow vocabulary with others.
+            {philosophy.cards[2]?.body}
           </p>
         </article>
       </div>
@@ -379,10 +383,10 @@ const lang = 'en';
 
     <section id="feature-blocks" class="space-y-12 pt-4 md:space-y-16">
       <div class="space-y-3 text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">The magic of Vokabulo</p>
-        <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">Built for real-time, focused learning.</h2>
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">{featureBlocks.kicker}</p>
+        <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{featureBlocks.heading}</h2>
         <p class="text-lg leading-relaxed text-slate-700 sm:text-xl">
-          Four essentials that keep you moving faster - across devices, lists, and daily sessions.
+          {featureBlocks.subheading}
         </p>
       </div>
 
@@ -390,16 +394,25 @@ const lang = 'en';
         <div class="grid items-center gap-8 md:grid-cols-2">
           <div class="order-1 space-y-4 md:order-1 md:pr-6">
             <div class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
-              Words
+              {featureBlocks.blocks[0]?.label}
             </div>
-            <h3 class="text-2xl font-semibold text-slate-900">A garden of vocabulary</h3>
+            <h3 class="text-2xl font-semibold text-slate-900">{featureBlocks.blocks[0]?.title}</h3>
             <p class="text-base text-slate-600">
-              A space where learning becomes lasting, and every word becomes yours.
+              {featureBlocks.blocks[0]?.body}
             </p>
             <div class="flex flex-wrap gap-2 text-sm text-slate-700">
-              <span class="rounded-full bg-slate-900 px-3 py-1 text-white">Full context</span>
-              <span class="rounded-full border border-slate-200 bg-white px-3 py-1">Pronunciation</span>
-              <span class="rounded-full border border-slate-200 bg-white px-3 py-1">Live sync</span>
+              {featureBlocks.blocks[0]?.pills?.map((pill, idx) => (
+                <span
+                  class:list={[
+                    'rounded-full',
+                    'px-3',
+                    'py-1',
+                    idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white'
+                  ]}
+                >
+                  {pill}
+                </span>
+              ))}
             </div>
           </div>
           <div class="order-2 feature-visual h-64 w-full md:order-2"></div>
@@ -409,16 +422,25 @@ const lang = 'en';
           <div class="order-2 feature-visual h-64 w-full md:order-1"></div>
           <div class="order-1 space-y-4 md:order-2 md:pl-6">
             <div class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
-              Quiz
+              {featureBlocks.blocks[1]?.label}
             </div>
-            <h3 class="text-2xl font-semibold text-slate-900">Turn practice into power</h3>
+            <h3 class="text-2xl font-semibold text-slate-900">{featureBlocks.blocks[1]?.title}</h3>
             <p class="text-base text-slate-600">
-              Where persistence becomes progress, and progress becomes mastery.
+              {featureBlocks.blocks[1]?.body}
             </p>
             <div class="flex flex-wrap gap-2 text-sm text-slate-700">
-              <span class="rounded-full bg-slate-900 px-3 py-1 text-white">Swiping</span>
-              <span class="rounded-full border border-slate-200 bg-white px-3 py-1">Keyword-focused</span>
-              <span class="rounded-full border border-slate-200 bg-white px-3 py-1">Memory optimized</span>
+              {featureBlocks.blocks[1]?.pills?.map((pill, idx) => (
+                <span
+                  class:list={[
+                    'rounded-full',
+                    'px-3',
+                    'py-1',
+                    idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white'
+                  ]}
+                >
+                  {pill}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -426,16 +448,25 @@ const lang = 'en';
         <div class="grid items-center gap-8 md:grid-cols-2">
           <div class="order-1 space-y-4 md:order-1 md:pr-6">
             <div class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
-              Situations
+              {featureBlocks.blocks[2]?.label}
             </div>
-            <h3 class="text-2xl font-semibold text-slate-900">The right words. Right on time</h3>
+            <h3 class="text-2xl font-semibold text-slate-900">{featureBlocks.blocks[2]?.title}</h3>
             <p class="text-base text-slate-600">
-              Set the scene, and the right vocabulary will appear to help you.
+              {featureBlocks.blocks[2]?.body}
             </p>
             <div class="flex flex-wrap gap-2 text-sm text-slate-700">
-              <span class="rounded-full bg-slate-900 px-3 py-1 text-white">Personal</span>
-              <span class="rounded-full border border-slate-200 bg-white px-3 py-1">Made to be used</span>
-              <span class="rounded-full border border-slate-200 bg-white px-3 py-1">Proficiency-adjusted</span>
+              {featureBlocks.blocks[2]?.pills?.map((pill, idx) => (
+                <span
+                  class:list={[
+                    'rounded-full',
+                    'px-3',
+                    'py-1',
+                    idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white'
+                  ]}
+                >
+                  {pill}
+                </span>
+              ))}
             </div>
           </div>
           <div class="order-2 feature-visual h-64 w-full md:order-2"></div>
@@ -445,16 +476,25 @@ const lang = 'en';
           <div class="order-2 feature-visual h-64 w-full md:order-1"></div>
           <div class="order-1 space-y-4 md:order-2 md:pl-6">
             <div class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
-              Community Sets
+              {featureBlocks.blocks[3]?.label}
             </div>
-            <h3 class="text-2xl font-semibold text-slate-900">Words we share</h3>
+            <h3 class="text-2xl font-semibold text-slate-900">{featureBlocks.blocks[3]?.title}</h3>
             <p class="text-base text-slate-600">
-              A living library of vocabulary, curated by the community and waiting to be explored.
+              {featureBlocks.blocks[3]?.body}
             </p>
             <div class="flex flex-wrap gap-2 text-sm text-slate-700">
-              <span class="rounded-full bg-slate-900 px-3 py-1 text-white">Curated</span>
-              <span class="rounded-full border border-slate-200 bg-white px-3 py-1">Share your own</span>
-              <span class="rounded-full border border-slate-200 bg-white px-3 py-1">Collaborate with others</span>
+              {featureBlocks.blocks[3]?.pills?.map((pill, idx) => (
+                <span
+                  class:list={[
+                    'rounded-full',
+                    'px-3',
+                    'py-1',
+                    idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white'
+                  ]}
+                >
+                  {pill}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -463,34 +503,34 @@ const lang = 'en';
 
     <section id="features" class="space-y-8">
       <div class="flex flex-col gap-3">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">Why Vokabulo</p>
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">{features.kicker}</p>
         <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">
-          Smart features that keep you on track.
+          {features.heading}
         </h2>
         <p class="max-w-3xl text-base text-slate-600">
-          Every detail is built for clear progress. Spend less time, remember more, and always know where you stand.
+          {features.subheading}
         </p>
       </div>
       <div class="grid gap-6 md:grid-cols-3">
         <article class="card flex flex-col gap-4 p-6 transition hover:-translate-y-1 hover:shadow-soft">
           <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white">↻</div>
-          <h3 class="text-lg font-semibold text-slate-900">Spaced Repetition</h3>
+          <h3 class="text-lg font-semibold text-slate-900">{features.cards[0]?.title}</h3>
           <p class="text-sm text-slate-600">
-            Adaptive intervals surface each word exactly when your memory needs it.
+            {features.cards[0]?.body}
           </p>
         </article>
         <article class="card flex flex-col gap-4 p-6 transition hover:-translate-y-1 hover:shadow-soft">
           <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white">✔</div>
-          <h3 class="text-lg font-semibold text-slate-900">Adjustable pronunciation</h3>
+          <h3 class="text-lg font-semibold text-slate-900">{features.cards[1]?.title}</h3>
           <p class="text-sm text-slate-600">
-            Select your voices, set the speed. Made to understand.
+            {features.cards[1]?.body}
           </p>
         </article>
         <article class="card flex flex-col gap-4 p-6 transition hover:-translate-y-1 hover:shadow-soft">
           <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white">⚡</div>
-          <h3 class="text-lg font-semibold text-slate-900">Built with magic</h3>
+          <h3 class="text-lg font-semibold text-slate-900">{features.cards[2]?.title}</h3>
           <p class="text-sm text-slate-600">
-            Uses the best AI tools to help you become a little better every day.
+            {features.cards[2]?.body}
           </p>
         </article>
       </div>
@@ -498,87 +538,71 @@ const lang = 'en';
 
     <section id="testimonials" class="space-y-8">
       <div class="flex flex-col gap-3">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">Testimonials</p>
-        <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">Learners love the focus.</h2>
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">{testimonials.kicker}</p>
+        <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">{testimonials.heading}</h2>
         <p class="max-w-3xl text-base text-slate-600">
-          Vokabulo blends science and design—so you stay consistent and retain more.
+          {testimonials.subheading}
         </p>
       </div>
       <div class="grid gap-6 md:grid-cols-3">
         <article class="card flex flex-col gap-4 p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-soft">
           <p class="text-sm text-slate-700">
-            "I hit my daily goals in 15 minutes. Everything is structured, nothing distracts me."
+            {testimonials.items[0]?.quote}
           </p>
-          <div class="text-sm font-semibold text-slate-900">Sophie, medical student</div>
+          <div class="text-sm font-semibold text-slate-900">{testimonials.items[0]?.author}</div>
         </article>
         <article class="card flex flex-col gap-4 p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-soft">
           <p class="text-sm text-slate-700">
-            "Reviews are perfectly timed. My vocabulary grows without stress."
+            {testimonials.items[1]?.quote}
           </p>
-          <div class="text-sm font-semibold text-slate-900">Jonas, product manager</div>
+          <div class="text-sm font-semibold text-slate-900">{testimonials.items[1]?.author}</div>
         </article>
         <article class="card flex flex-col gap-4 p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-soft">
           <p class="text-sm text-slate-700">
-            "Minimal yet powerful. Exactly the mix of design and pace I wanted."
+            {testimonials.items[2]?.quote}
           </p>
-          <div class="text-sm font-semibold text-slate-900">Mara, language coach</div>
+          <div class="text-sm font-semibold text-slate-900">{testimonials.items[2]?.author}</div>
         </article>
       </div>
     </section>
 
     <section id="faq" class="space-y-6">
       <div class="flex flex-col gap-3">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">FAQ</p>
-        <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">Answers to your questions.</h2>
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">{faq.kicker}</p>
+        <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">{faq.heading}</h2>
         <p class="max-w-3xl text-base text-slate-600">
-          If anything's missing, reach out anytime—we reply quickly and personally.
+          {faq.subheading}
         </p>
       </div>
       <div class="space-y-3">
-        <details class="card group space-y-2 p-4">
-          <summary class="flex cursor-pointer items-center justify-between gap-4 text-base font-semibold text-slate-900">
-            How does the review system work?
-            <span class="text-slate-400 transition group-open:rotate-45">+</span>
-          </summary>
-          <p class="pl-1 text-sm text-slate-600">
-            Vokabulo calculates intervals based on your answers. Confident words appear less often; tricky ones show up more until they stick.
-          </p>
-        </details>
-        <details class="card group space-y-2 p-4">
-          <summary class="flex cursor-pointer items-center justify-between gap-4 text-base font-semibold text-slate-900">
-            Does it work offline?
-            <span class="text-slate-400 transition group-open:rotate-45">+</span>
-          </summary>
-          <p class="pl-1 text-sm text-slate-600">
-            Yes. Your progress is cached and syncs automatically once you're back online.
-          </p>
-        </details>
-        <details class="card group space-y-2 p-4">
-          <summary class="flex cursor-pointer items-center justify-between gap-4 text-base font-semibold text-slate-900">
-            Can I import my own lists?
-            <span class="text-slate-400 transition group-open:rotate-45">+</span>
-          </summary>
-          <p class="pl-1 text-sm text-slate-600">
-            Import CSV files or share existing lists with your team. Vokabulo handles duplicates and structure.
-          </p>
-        </details>
+        {faq.items.map(item => (
+          <details class="card group space-y-2 p-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-base font-semibold text-slate-900">
+              {item.question}
+              <span class="text-slate-400 transition group-open:rotate-45">+</span>
+            </summary>
+            <p class="pl-1 text-sm text-slate-600">
+              {item.answer}
+            </p>
+          </details>
+        ))}
       </div>
     </section>
 
     <section class="card flex flex-col items-center gap-4 p-8 text-center shadow-soft">
       <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
-        Ready?
+        {cta.kicker}
       </div>
       <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">
-        Start today and stay on track every day.
+        {cta.heading}
       </h2>
       <p class="max-w-2xl text-base text-slate-600">
-        Secure your learning edge with clear sessions, smart reviews, and an interface that supports you rather than distracts you.
+        {cta.subheading}
       </p>
       <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <a class="btn-primary px-5 py-3 text-sm font-semibold shadow-soft" href="#hero">Start free</a>
-        <a class="btn-ghost border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-800" href="#faq">
-          Get answers
+        <a class="btn-primary px-5 py-3 text-sm font-semibold shadow-soft" href={cta.primaryCtaHref}>{cta.primaryCtaText}</a>
+        <a class="btn-ghost border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-800" href={cta.secondaryCtaHref}>
+          {cta.secondaryCtaText}
         </a>
       </div>
     </section>
