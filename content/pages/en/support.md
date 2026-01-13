@@ -84,10 +84,10 @@ A word without context often doesn't mean much—or it means the wrong thing. Th
 
 To add a word, tap the plus button in the top right (available in almost every view, except during flashcards in Study). You can type into any of the fields, and you can even paste a full sentence. 
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Magic Wand](/images/support/words-magic-wand.jpg)
 When you hit Translate, Vokabulo fills the other fields for you—best results come from only filling one field and letting the Magic Wand complete the rest.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Magic Wand Translation](/images/support/words-magic-wand-translation.jpg)
 
 ### Edit words
 
@@ -101,20 +101,20 @@ Use the pronunciation feature to hear how a word is spoken. Pronunciation can be
 
 Words can be searched quickly, and Vokabulo performs automatic duplicate detection to prevent your collection from filling up with the same word multiple times in slightly different forms.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Duplicate Detection](/images/support/words-duplicates.jpg)
 
 ### Bulk actions (select, tag, clear)
 
 When you want to manage many words at once, you can bulk select items, select all, or clear your current selection. Bulk editing lets you change tags efficiently—including removing tags, not just adding them.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words B ulk Select](/images/support/words-bulk-select.jpg)
 
 ### Suggest to Set
 
 If a word belongs in a Community Set, you can suggest it to the set. This helps improve shared sets while keeping your personal collection separate and flexible.
 The curator of this set will automatically be notified so that he can review your suggestion.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Suggest To Set](/images/support/words-suggest-words-to-set.jpg)
 
 ### Why tagging is key
 
@@ -135,13 +135,13 @@ You can set a default tag so every new word automatically lands in the right buc
 
 You can filter your Words list by one or multiple tags. This makes it easy to review just the vocabulary you care about right now. You can clear all filters anytime.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Filter By Tags](/images/support/words-filter-by-tags.jpg)
 
 ### Tag management (long press)
 
 Long‑press a selected tag to manage it: you can rename it, create a set from it, or delete all words with this tag (useful for cleanup when a tag was temporary or imported by mistake).
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Filter By Tags Longpress](/images/support/words_filter-by-tags-select.jpg)
 
 ### Sorting and review tabs
 
@@ -185,17 +185,17 @@ You can study in two ways:
 - **By number of cards** when you want a clear target ("I'll do 30 cards").
 - **By minutes** when you want a time-box ("I'll study for 10 minutes").
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Study Main Screen](/images/support/study-main-screen.jpg)
 
 ### Filters: tags and levels
 
 You can narrow your session by tags (topic-based learning) or by levels (e.g., focus on newer or weaker words). This is useful when you want to prepare for a specific situation or clean up a backlog.
 
+![Study Filter By Tags](/images/support/study-filter-by-tags.jpg)
+
 ### Recent Filters
 
 Vokabulo remembers your last three filter selections so you can jump back into your usual study setup quickly. Clear all resets both your recent filters and any active tag filters. You can also deactivate a recent filter if you want to return to an unfiltered session.
-
-![Words Main Screen](/images/support/words-main-screen.jpg)
 
 ### The Auto button (Study by Number)
 
@@ -205,20 +205,21 @@ The Auto button in Study by Number of Card: When you select one or several tag, 
 
 You start a session by tapping on the number of cards or study minutes. This will launch the flashcard view.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Flashcards Hidden](/images/support/wstudy-flashcard-hidden.jpg)
 
 Tap anywhere on the card to reveal the translation.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Flashcards Revealed](/images/support/study-flashcard-revealed.jpg)
 
-During Study you can swipe:
+During Study you can swipe right
 
 - **Got it** when you knew it well enough.
+![Study Correct Answer](/images/support/study-correct-answer.jpg)
+
+or left
 - **Not yet** when you didn't.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
-
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Study Incorrect Answer](/images/support/study-incorrect-answer.jpg)
 
 Your choice updates the word's level and schedules the next review accordingly.
 
@@ -245,7 +246,7 @@ You can adjust how cards are shown, for example:
 - Show native side first if you want recognition practice from your everyday language.
 - Show word instead of context if you want a more direct, vocabulary-first style of review.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Main Screen](/images/support/xxx.jpg)
 
 You can do this in the user settings or directly during the study session by tapping the top-left inverse arrow button.
 
@@ -267,7 +268,7 @@ Vokabulo's streak system helps you build consistent study habits by tracking you
 
 The streak feature is designed to reward long-term commitment while protecting your progress with milestone checkpoints.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Main Screen](/images/support/xxx.jpg)
 
 ### Daily Check-In Requirements
 
@@ -316,7 +317,7 @@ Only language pairs marked as "Streak Languages" count toward:
 - Your displayed Streak Level
 - Your position on the leaderboard
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Main Screen](/images/support/xxx.jpg)
 
 This allows you to focus your streak commitment on the languages you're actively learning, without pressure from language pairs you're studying casually or have paused.
 
@@ -340,7 +341,7 @@ Life happens, and sometimes you need a break.
 
 The pause feature lets you temporarily freeze your streak evaluation without losing progress.
 
-![Words Main Screen](/images/support/words-main-screen.jpg)
+![Words Main Screen](/images/support/xxx.jpg)
 
 While paused:
 
@@ -409,8 +410,6 @@ If you want a fresh start, you can reset your learning progress for words so the
 
 ## Situations
 
-### About Situations
-
 Situations help you learn the right words for the moments that matter. You might speak confidently about your job, but feel like a beginner when you need vocabulary for the doctor, a date, small talk, or travel—Situations are built exactly for that gap.
 
 ### What is a Situation?
@@ -420,6 +419,8 @@ A Situation is a short description of a real-life context where you want to expr
 ### How to enter a Situation
 
 Write or dictate your Situation in natural language—just describe what's going on and what you want to be able to say. Vokabulo will automatically clean up your text if needed.
+
+![Situations-Prompt](/images/support/situations-prompt.jpg)
 
 **Tip:** Include a few details (who, where, topic, tone). There's a minimum length for the briefing, and generally: the better you describe the Situation, the better the vocabulary output.
 
@@ -431,21 +432,23 @@ Choose your proficiency level so the generated words match where you are right n
 
 When you generate, Vokabulo creates a set of around 25 words (the exact number depends on your briefing and how many relevant words the AI finds). You can then save the result to your collection and practice it like any other vocabulary set.
 
+![Situations-Output](/images/support/situations-output.jpg)
+
 ### Tips
 
 - You can run the same Situation multiple times with slightly different wording to discover new vocabulary or different angles.
 - Generation typically takes about 30 seconds.
 - If you like the result, you can turn your personal set into a community set so others can learn from it too.
 
+![Situations-Add-Vocabulary](/images/support/situations-add-to-word.jpg)
+
 ---
 
 ## Community
 
-How Community Sets work and how you can contribute.
-
-### About Community Sets
-
 Community Sets are shared vocabulary lists built by people who learn and use the language in real life. If you've ever seen word lists or "vocabulary packs" in Facebook language groups, it's that idea—just structured, searchable, and designed to be practiced directly in Vokabulo. This makes getting started much easier, especially when you don't yet know what to learn next.
+
+![Community-Main-Screen](/images/support/community-main-screen.jpg)
 
 ### Why Community Sets are different
 
@@ -466,6 +469,8 @@ When you use Community Sets, you're benefiting from other learners' work—so it
 ### Follow and auto-download
 
 When you follow a Community Set, Vokabulo keeps it handy and can auto-download updates, so you always have the newest version without needing to search again.
+
+![Community-Add-To-Vocabulary](/images/support/community-add-to-vocabulary.jpg)
 
 ### Suggest new words or edits
 
