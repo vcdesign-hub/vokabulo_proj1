@@ -44,7 +44,7 @@ I made this for myself.
 
 It would make me very happy if you enjoy it as much as I do.
 
-If you have feedback or suggestions, feel free to reach out at wolf@vokabulo.com.
+If you have feedback or suggestions, feel free to reach out at wolf@tathros.com.
 
 ### Use cases
 
@@ -92,7 +92,7 @@ It's a simple way to understand your streak and your progress over time, and to 
 
 The Start page shows your language pair containers. 
 
-These act as shortcuts to teh Study area so you can switch contexts quickly, especially if you learn more than one language or use different language directions.
+These act as shortcuts to the Study area so you can switch contexts quickly, especially if you learn more than one language or use different language directions.
 
 ---
 
