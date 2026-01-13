@@ -1044,6 +1044,43 @@ renderer.heading = (...args: any[]) => {
       });
     })();
 
+    // Theme-aware screenshots inside Support markdown:
+    // Use <img class="support-theme-image" data-light="/...-light.png" data-dark="/...-dark.png" ... />
+    (() => {
+      const root = document.documentElement;
+
+      const applyThemeImages = () => {
+        const isDark = root.classList.contains('theme-dark');
+        document.querySelectorAll('img.support-theme-image').forEach((img) => {
+          // Attach a one-time error handler to fall back to light if dark is missing.
+          if (!img.dataset.themeFallbackInit) {
+            img.dataset.themeFallbackInit = '1';
+            img.addEventListener('error', () => {
+              const desired = img.dataset.desiredTheme || '';
+              if (desired !== 'dark') return;
+              if (!img.dataset.light) return;
+              // Mark dark as missing for this session to avoid retry loops.
+              img.dataset.darkMissing = '1';
+              if (img.getAttribute('src') !== img.dataset.light) {
+                img.setAttribute('src', img.dataset.light);
+              }
+            });
+          }
+
+          // If dark is missing, keep using light even in dark mode.
+          const next = (isDark && img.dataset.darkMissing !== '1') ? img.dataset.dark : img.dataset.light;
+          if (!next) return;
+          img.dataset.desiredTheme = isDark ? 'dark' : 'light';
+          if (img.getAttribute('src') !== next) img.setAttribute('src', next);
+        });
+      };
+
+      applyThemeImages();
+
+      const obs = new MutationObserver(() => applyThemeImages());
+      obs.observe(root, { attributes: true, attributeFilter: ['class'] });
+    })();
+
     // Highlight active section (based on scroll position)
     (() => {
       const anchorKey = `help-scroll-anchor:${location.pathname}`;

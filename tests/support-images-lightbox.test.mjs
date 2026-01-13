@@ -26,5 +26,28 @@ describe('Support page images (spacing + lightbox)', () => {
     );
     assert.ok(content.includes('dialog.showModal'), 'Expected showModal usage');
   });
+
+  test('supports theme-aware screenshots via data-light / data-dark', () => {
+    assert.ok(
+      content.includes("img.support-theme-image"),
+      'Expected support theme screenshot selector'
+    );
+    assert.ok(
+      content.includes('img.dataset.dark') || content.includes('img.dataset.light'),
+      'Expected use of data-dark/data-light attributes'
+    );
+    assert.ok(
+      content.includes("root.classList.contains('theme-dark')"),
+      'Expected to read theme from .theme-dark class'
+    );
+    assert.ok(
+      content.includes('new MutationObserver'),
+      'Expected MutationObserver to react to theme changes'
+    );
+    assert.ok(
+      content.includes('darkMissing'),
+      'Expected fallback marker for missing dark screenshots'
+    );
+  });
 });
 

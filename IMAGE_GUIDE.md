@@ -77,6 +77,30 @@ The × button appears when you start typing.
 
 ---
 
+## Theme-aware screenshots (light/dark)
+
+If you have two screenshots like:
+
+- `foo-light.png`
+- `foo-dark.png`
+
+Put both in `/public/images/support/` and use this **HTML** in your markdown (recommended for Support):
+
+```html
+<img
+  class="support-theme-image"
+  src="/images/support/foo-light.png"
+  data-light="/images/support/foo-light.png"
+  data-dark="/images/support/foo-dark.png"
+  alt="Feature screenshot"
+  loading="lazy"
+/>
+```
+
+This will automatically swap the screenshot when the site theme toggles (it watches the `.theme-dark` class on `<html>`).
+
+---
+
 ## Recommended Sizes:
 
 ### Desktop Screenshots
