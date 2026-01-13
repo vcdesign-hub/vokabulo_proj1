@@ -437,16 +437,10 @@ renderer.heading = (...args: any[]) => {
       margin: 0 16px;
     }
 
-    /* Show sticky nav on phones between 391px and 767px */
+    /* Hide sticky nav on mobile - we use the FAB instead */
     @media (min-width: 391px) and (max-width: 767px) {
       .help-nav-mobile {
-        display: block;
-        position: sticky;
-        top: 120px;
-        left: 0;
-        right: 0;
-        z-index: 40;
-        margin: 16px 16px 0;
+        display: none;
       }
     }
 
@@ -477,14 +471,15 @@ renderer.heading = (...args: any[]) => {
     }
 
     /* Show floating button only on very small screens */
-    @media (max-width: 390px) {
+    /* Show floating button on mobile screens (up to 767px) */
+    @media (max-width: 767px) {
       .help-nav-fab {
         display: block;
       }
     }
 
     /* Ensure floating button is hidden on larger screens */
-    @media (min-width: 391px) {
+    @media (min-width: 768px) {
       .help-nav-fab {
         display: none;
       }
