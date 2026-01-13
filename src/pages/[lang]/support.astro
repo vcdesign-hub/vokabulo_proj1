@@ -170,8 +170,15 @@ renderer.heading = (...args: any[]) => {
     }
 
     main {
-      padding: 48px 40px;
+      padding: 16px;
       padding-top: 140px;
+    }
+    
+    @media (min-width: 768px) {
+      main {
+        padding: 24px;
+        padding-top: 140px;
+      }
     }
 
     h1 {
