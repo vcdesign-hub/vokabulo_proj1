@@ -212,5 +212,60 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
         btnMobile?.addEventListener('click', toggleTheme);
       })();
     </script>
+
+    <script is:inline>
+      (() => {
+        // Smooth navbar reveal on scroll (desktop only)
+        const navShell = document.querySelector('.nav-shell');
+        if (!navShell) return;
+
+        const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+
+        let ticking = false;
+        
+        const updateNavbarOpacity = () => {
+          if (!isDesktop()) {
+            // On mobile, always full opacity and full width
+            navShell.style.setProperty('--nav-bg-opacity', '1');
+            navShell.style.setProperty('--nav-width-scale', '1');
+            return;
+          }
+
+          // Desktop: smooth ramp from 0 to 1 over 0-100px scroll
+          const scrollY = window.scrollY;
+          const maxScroll = 100;
+          const opacity = Math.min(scrollY / maxScroll, 1);
+          
+          // Opacity: 0 → 1
+          navShell.style.setProperty('--nav-bg-opacity', String(opacity));
+          
+          // Width scale: 1280px → 850px (33.6% narrower when scrolled)
+          const widthScale = 1 - (0.3359375 * opacity);
+          navShell.style.setProperty('--nav-width-scale', String(widthScale));
+          
+          ticking = false;
+        };
+
+        const onScroll = () => {
+          if (!ticking) {
+            requestAnimationFrame(updateNavbarOpacity);
+            ticking = true;
+          }
+        };
+
+        // Initial update
+        updateNavbarOpacity();
+
+        // Update on scroll with requestAnimationFrame for smooth 60fps
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Update on resize (in case user switches between mobile/desktop)
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(updateNavbarOpacity, 100);
+        });
+      })();
+    </script>
   </body>
 </html>

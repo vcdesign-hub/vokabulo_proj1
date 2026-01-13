@@ -7,6 +7,8 @@
   --ink: #0f172a;
   --muted: #6b7280;
   --accent: #0ea5e9;
+  --nav-bg-opacity: 0;
+  --nav-width-scale: 1;
 }
 
 /* Tailwind is bundled via @astrojs/tailwind.
@@ -32,10 +34,21 @@ a {
 /* Navigation */
 .nav-shell {
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.12);
-  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, calc(0.35 * var(--nav-bg-opacity)));
+  background: rgba(255, 255, 255, calc(0.78 * var(--nav-bg-opacity)));
+  box-shadow: 0 22px 55px rgba(15, 23, 42, calc(0.12 * var(--nav-bg-opacity)));
+  backdrop-filter: blur(calc(12px * var(--nav-bg-opacity)));
+  transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(calc(0.98 + 0.02 * var(--nav-bg-opacity)));
+  max-width: calc(1280px * var(--nav-width-scale));
+  will-change: transform, background, border, box-shadow, max-width;
+}
+
+/* Mobile: always has full frame */
+@media (max-width: 767px) {
+  .nav-shell {
+    --nav-bg-opacity: 1;
+  }
 }
 
 
@@ -157,10 +170,22 @@ footer {
     background: var(--bg);
   }
 
-  header {
-    background: rgba(15, 23, 42, 0.8);
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+  /* Desktop: smooth fade-in on scroll */
+  @media (min-width: 768px) {
+    header.nav-shell {
+      background: rgba(15, 23, 42, calc(0.8 * var(--nav-bg-opacity)));
+      border-color: rgba(255, 255, 255, calc(0.08 * var(--nav-bg-opacity)));
+      box-shadow: 0 22px 55px rgba(0, 0, 0, calc(0.32 * var(--nav-bg-opacity)));
+    }
+  }
+
+  /* Mobile: always has frame */
+  @media (max-width: 767px) {
+    header.nav-shell {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+    }
   }
 
   nav a {
@@ -200,10 +225,22 @@ footer {
   background: var(--bg);
 }
 
-.theme-dark .nav-shell {
-  background: rgba(15, 23, 42, 0.8);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+/* Desktop: smooth fade-in on scroll */
+@media (min-width: 768px) {
+  .theme-dark .nav-shell {
+    background: rgba(15, 23, 42, calc(0.8 * var(--nav-bg-opacity)));
+    border-color: rgba(255, 255, 255, calc(0.08 * var(--nav-bg-opacity)));
+    box-shadow: 0 22px 55px rgba(0, 0, 0, calc(0.32 * var(--nav-bg-opacity)));
+  }
+}
+
+/* Mobile: always has frame */
+@media (max-width: 767px) {
+  .theme-dark .nav-shell {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+  }
 }
 
 .theme-dark .btn-ghost {
