@@ -713,12 +713,34 @@ renderer.heading = (...args: any[]) => {
       height: auto;
       margin: 18px auto;
       cursor: zoom-in;
+      /* Subtle 3D “card” effect (no border/padding) */
+      transform: perspective(1200px) rotateX(1.2deg) rotateY(-1.2deg) translateZ(0);
+      box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.16),
+        0 6px 14px rgba(15, 23, 42, 0.08);
+      border-radius: 14px;
+      transition: transform 180ms ease, box-shadow 180ms ease;
     }
 
     @media (min-width: 768px) {
       .help-article img {
         margin: 24px auto;
       }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .help-article img:hover {
+        transform: perspective(1200px) rotateX(0.6deg) rotateY(-0.6deg) translateY(-2px);
+        box-shadow:
+          0 26px 60px rgba(15, 23, 42, 0.18),
+          0 10px 22px rgba(15, 23, 42, 0.10);
+      }
+    }
+
+    .theme-dark .help-article img {
+      box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.42),
+        0 8px 18px rgba(0, 0, 0, 0.28);
     }
 
     /* Image lightbox (Support-only) */

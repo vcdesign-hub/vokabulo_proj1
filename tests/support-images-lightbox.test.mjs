@@ -11,6 +11,8 @@ describe('Support page images (spacing + lightbox)', () => {
     assert.ok(content.includes('.help-article img {'), 'Expected .help-article img CSS block');
     assert.ok(content.includes('margin: 18px auto;'), 'Expected default image margin');
     assert.ok(content.includes('margin: 24px auto;'), 'Expected desktop image margin');
+    assert.ok(content.includes('perspective('), 'Expected 3D perspective transform for images');
+    assert.ok(content.includes('box-shadow'), 'Expected shadow for 3D effect');
   });
 
   test('includes lightbox dialog markup', () => {
