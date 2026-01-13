@@ -4,45 +4,75 @@ title: "Support · Vokabulo"
 
 ## About Vokabulo
 
-Why Vokabulo exists, who it helps, and how AI fits into the workflow.
+### My story
 
-### Why another language app?
+A language is about the *words, grammar, pronunciation and culture.*
 
-Most language apps try to teach everyone the same curriculum. That works for general progress, but it often fails the moment real life gets specific: your job, your hobbies, your destination, the book you're reading, or the conversation you actually want to have. Vokabulo exists to close that gap—so you can learn vocabulary that matches your life, not a textbook's.
+The culture is the soul of the language, the pronunciation its style, grammar is all about logic (or lack or thereof), and words is the content.
+
+**Once you speak a language reasonably well, the only way to make real progress is to expand your vocabulary.**
+
+Most people, even after many years, will never fully lose their accent (hasta la vista, baby). And when it comes to grammar, either you learned it at school, or you didn’t.
+
+Culture comes naturally through interaction with native speakers.
+
+**But vocabulary, your words, is something you can actively work on and continue to grow for a lifetime.**
+
+Words depend on context. Without understanding the situation in which a word is used, its meaning is often unclear.
+
+**Most language apps teach words without context.** They focus on standardized situations that rarely cover the specific vocabulary you need in real life.
+
+I built this app for myself because I love expanding my vocabulary every day, and because it helps me both at work and in life. Even though I’m comfortably trilingual, I sometimes find myself missing the right words.
+
+**I wanted an way to quickly jot down a word while reading a book, listening to a podcast, watching a movie on Netflix, or preparing for the very situations where I didn’t have the right vocabulary.**
+
+Over the past twenty year, I tested over 50 language apps.
+
+But none came close to the ease of use, intelligence, and user experience I was looking for.
+
+So I started coding while recovering at home after surgery.
+
+That was the beginning of my Vokabulo journey, one I hope to share with people around the world who, like me, enjoy having the right words at the right time.
+
+**There is no greater power than communication.**
+
+One word can make the difference between life and death, success or failure, trust or doubt.
+
+**Vokabulo can help you feel more confident at work, more at home in daily life, and more immersed in the cultures that foreign languages open up.**
+
+I made this for myself.
+
+It would make me very happy if you enjoy it as much as I do.
+
+If you have feedback or suggestions, feel free to reach out at wolf@vokabulo.com.
 
 ### My favorite use cases
 
-Vokabulo shines whenever you meet vocabulary "in the wild" and want to turn it into something you'll truly remember.
+Vokabulo shines whenever you encounter vocabulary in the wild and want to turn it into something you’ll actually remember.
 
-- **Reading a book or magazine:** Save unfamiliar words with the sentence they appeared in, tag them by chapter or topic, and study them later with context.
-- **Watching a video:** Capture phrases you hear, keep the tone and meaning, and build a set around a series, a YouTube channel, or a topic.
-- **Walking a city:** Learn the words you need for signs, menus, transport, directions, and everyday interactions—exactly when they matter.
-- **Preparing for special situations:** Build targeted vocabulary for interviews, appointments, travel, meetings, or any moment where you want to feel confident.
-
-### Why I chose to develop Vokabulo
-
-Even advanced learners hit awkward "beginner moments." You may be an expert in one area, but feel stuck in another—because language is not one skill, it's many contexts. I built Vokabulo to make it easy to collect the right words, keep them organized, and actually retain them through consistent study.
+- **Reading a book or magazine:** Save unfamiliar words with the sentence they appeared in, tag them by chapter or topic, and revisit them later, always in context.
+- **Watching a video:** Capture words and phrases as you hear them, preserve tone and meaning, and build collections around a series, a YouTube channel, or a specific topic.
+- **Walking a city:** Learn the words you need for signs, menus, transportation, directions, and everyday interactions, exactly when they matter most.
+- **Preparing for special situations:** Build focused vocabulary for interviews, technologies, travel, sciences, or any moment where confidence matters.
 
 ### Who benefits from using Vokabulo?
 
 Vokabulo is especially helpful if you:
 
-- already have some foundation but want to become fluent in real situations,
-- learn best from content (books, videos, conversations) instead of courses,
-- need vocabulary for a specific domain (work, travel, hobbies), or
-- like structure and progress, but want it centered around your own interests.
-
-### Why AI is a game changer
-
-AI makes it fast to turn messy input—single words, phrases, or whole sentences—into clean, structured vocabulary with translations and context. Instead of spending time formatting your notes, you spend time learning. It also helps you generate focused vocabulary for situations and topics that would otherwise take hours to compile.
-
-### Platforms
-
-Vokabulo currently supports iOS on iPhone and iPadOS on iPad. macOS support is in preparation. There's currently no Android or Windows version, because those platforms aren't part of my development stack.
+- **already have some foundation** but want to become fluent in real situations,
+- **learn best from content** (books, videos, conversations) rather than structured courses,
+- **need vocabulary for a specific domain** such as work, travel, hobbies), or
+- value structure and progress, but want **learning to revolve around your own interests**.
 
 ### Limits of AI
 
-AI is powerful, but not perfect. Sometimes it gets things wrong—especially with ambiguity, slang, rare meanings, or context that isn't fully specified. Treat AI output as a strong assistant, not an unquestionable authority: if something looks off, edit it, adjust the context, or regenerate with a clearer prompt.
+Vokabulo makes full use of the latest advances in artificial intelligence to support language learning.
+
+AI is powerful, but not perfect. 
+
+It can occasionally make mistakes, especially when dealing with ambiguity, slang, rare meanings, or insufficient context.
+
+Treat AI as a capable assistant, not an unquestionable authority. If something feels off, refine the context, edit the result, or try again with a clearer prompt.
 
 ---
 
