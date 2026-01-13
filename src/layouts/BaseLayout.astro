@@ -195,11 +195,12 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
           <p class="footer-copyright">
             © 2026 Tathros GmbH. Created by <span class="font-semibold">Wolfgang Männel.</span>
           </p>
-          <div class="relative ml-auto">
+          <div class="relative ml-auto" style="position: relative; margin-bottom: 0;">
             <select
               id="footer-lang-select"
               class="footer-lang-select appearance-none bg-transparent border-none cursor-pointer pr-5 focus:outline-none"
               onchange="window.location.href = this.value"
+              style="position: static;"
             >
               {languages.map(lang => (
                 <option
@@ -210,7 +211,7 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
                 </option>
               ))}
             </select>
-            <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 top-1/2 h-4 w-4 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 top-1/2 h-4 w-4 -translate-y-1/2 rotate-180 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </div>
