@@ -69,6 +69,7 @@ Everything about adding, organizing, and managing your vocabulary.
 ### About Words
 
 The Words area is your personal vocabulary collection. It's where you add, edit, tag, search, and review everything you want to learn—so your learning stays organized instead of becoming a random list.
+![Words Main Screen](/images/support/words-main-screen.jpg)
 
 ### Language pairs (and why order matters)
 

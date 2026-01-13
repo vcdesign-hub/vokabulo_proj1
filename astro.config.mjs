@@ -12,4 +12,12 @@ export default defineConfig({
   adapter: (process.env.VERCEL === '1' || process.env.VERCEL_ENV) ? vercel() : undefined,
   trailingSlash: 'never',
   integrations: [tailwind(), sitemap()],
+  image: {
+    // Optimize images for responsive delivery
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    },
+    // Generate responsive image sizes
+    remotePatterns: [],
+  },
 });

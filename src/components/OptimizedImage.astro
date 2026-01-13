@@ -1,0 +1,76 @@
+---
+/**
+ * OptimizedImage Component
+ * 
+ * A reusable component for displaying optimized images in the Support documentation.
+ * Automatically generates responsive images with modern formats (WebP, AVIF).
+ * 
+ * Usage:
+ * <OptimizedImage 
+ *   src={import('path/to/image.png')}
+ *   alt="Description"
+ *   caption="Optional caption text"
+ * />
+ */
+
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+  maxWidth?: string;
+}
+
+const { src, alt, caption, maxWidth = '750px' } = Astro.props;
+---
+
+<figure class="optimized-image-wrapper" style={`max-width: ${maxWidth}`}>
+  <Image 
+    src={src}
+    alt={alt}
+    widths={[375, 750, 1500]}
+    sizes="(max-width: 767px) calc(100vw - 32px), 750px"
+    format="webp"
+    loading="lazy"
+    class="optimized-image"
+  />
+  {caption && (
+    <figcaption class="image-caption">
+      {caption}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .optimized-image-wrapper {
+    margin: 32px 0;
+    width: 100%;
+  }
+
+  .optimized-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  }
+
+  .image-caption {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Dark mode support */
+  :global(.theme-dark) .optimized-image {
+    border-color: #1f2937;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  :global(.theme-dark) .image-caption {
+    color: #94a3b8;
+  }
+</style>
