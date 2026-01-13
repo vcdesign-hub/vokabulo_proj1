@@ -64,17 +64,21 @@ The Start page also shows your language pair containers. These act as shortcuts 
 
 ## Words
 
-Everything about adding, organizing, and managing your vocabulary.
-
-### About Words
-
 The Words area is your personal vocabulary collection. It's where you add, edit, tag, search, and review everything you want to learn—so your learning stays organized instead of becoming a random list.
 
 ![Words Main Screen](/images/support/words-main-screen.jpg)
 
+Words has been designed to make the entry of new words as effortless as possible so that it is fun and doesn’t take long to add new words, wherever you are and what you do: When you read a book, watch a video, listen to a podcast, or are out exploring a local antiques market in a foreign country.
+
+This is also where the ingenious “Vokabulo Magic Wand” comes into play. A way to quickly enter and translate a new word, including context example sentences.
+
 ### Language pairs (and why order matters)
 
-A language pair defines the direction you're learning, for example **DE → FR** (German to French). The order matters because your cards, translations, and which side is treated as "native" vs "target" depend on it—DE–FR is not the same as FR–DE. For Community Sets, Vokabulo can display sets in both directions so you can use them regardless of which side you're starting from.
+Every language pair is like a personal book that belongs to you, on you only. Your words are not shared with others (unless you decide to publish some of them as a Community Set, but more on that later).
+
+A language pair defines the direction you're learning, for example **DE → FR** (German to French). 
+
+The order matters because your cards, translations, and which side is treated as "native" vs "target" depend on it—DE–FR is not the same as FR–DE. For Community Sets, Vokabulo can display sets in both directions so you can use them regardless of which side you're starting from.
 
 ### Why context matters
 
@@ -95,9 +99,15 @@ You can edit words anytime to improve translations, adjust context, fix spelling
 
 ### Pronunciation
 
-Use the pronunciation feature to hear how a word is spoken. Pronunciation can be fine‑tuned in settings, and Vokabulo uses high-quality ElevenLabs voices to make listening and repeating feel natural.
+Use the pronunciation feature to hear how a word is spoken. 
+
+Pronunciation can be fine‑tuned in settings, and Vokabulo uses high-quality ElevenLabs voices to make listening and repeating feel natural.
+
+When you hit “Listen” for the first time, it can take a few seconds to send the words to a server for proper pronunciation. After that, it will be immediate.
 
 ### Searching and duplicate detection
+
+The search bar looks in the words and context fields and even tags for any matches. Search is tolerant to umlauts and accents, so it will, e.g., find “Mädchen” if you only enter “Madchen”.
 
 Words can be searched quickly, and Vokabulo performs automatic duplicate detection to prevent your collection from filling up with the same word multiple times in slightly different forms.
 
@@ -133,9 +143,11 @@ You can set a default tag so every new word automatically lands in the right buc
 
 ### Filter by tags (single or multiple)
 
-You can filter your Words list by one or multiple tags. This makes it easy to review just the vocabulary you care about right now. You can clear all filters anytime.
+You can filter your Words list by one or multiple tags. This makes it easy to review just the vocabulary you care about right now. You can clear all filters anytime by tapping "Clear".
 
 ![Words Filter By Tags](/images/support/words-filter-by-tags.jpg)
+
+When a filter tag is applied, the filter button turns red to remind you that an active filter is selected.
 
 ### Tag management (long press)
 
@@ -205,19 +217,16 @@ The Auto button in Study by Number of Card: When you select one or several tag, 
 
 You start a session by tapping on the number of cards or study minutes. This will launch the flashcard view.
 
-![Flashcards Hidden](/images/support/wstudy-flashcard-hidden.jpg)
+![Flashcards Hidden](/images/support/study-flashcard-hidden.jpg)
 
 Tap anywhere on the card to reveal the translation.
 
 ![Flashcards Revealed](/images/support/study-flashcard-revealed.jpg)
 
-During Study you can swipe right
-
-- **Got it** when you knew it well enough.
+During Study you can swipe right "**Got it**"" when you knew it well enough.
 ![Study Correct Answer](/images/support/study-correct-answer.jpg)
 
-or left
-- **Not yet** when you didn't.
+or left "**Not yet**" when you didn't.
 
 ![Study Incorrect Answer](/images/support/study-incorrect-answer.jpg)
 
@@ -258,7 +267,7 @@ Points are awarded for doing the work, not for being perfect. For every 10 cards
 
 If you enable study reminders, Vokabulo nudges you to keep your routine. You can turn reminders off anytime in the app's settings/notifications preferences if you don't want prompts.
 
-### Streaks: what they are and why they matter
+## Streak Management
 
 Streaks are a powerful motivational tool rooted in well-established psychological principles that help users build lasting language learning habits. 
 
@@ -296,14 +305,15 @@ The milestone thresholds are:
 
 Example: If you reach a 65-day streak:
 
-Your Current Run is 65 days
-Your Milestone Floor is 50 (the highest milestone you've passed)
-Your Streak Level is 115 (65 + 50)
+- Your Current Run is 65 days
+- Your Milestone Floor is 50 (the highest milestone you've passed)
+- Your Streak Level is 115 (65 + 50)
 
 If you then miss a day:
-Your Current Run resets to 0
-Your Milestone Floor stays at 50
-Your Streak Level becomes 50 (0 + 50)
+
+- Your Current Run resets to 0
+- Your Milestone Floor stays at 50
+- Your Streak Level becomes 50 (0 + 50)
 
 When you resume studying and reach 15 consecutive days again, your Streak Level will be back to 65 (15 + 50).
 
@@ -475,3 +485,85 @@ When you follow a Community Set, Vokabulo keeps it handy and can auto-download u
 ### Suggest new words or edits
 
 You can contribute by suggesting new words, improved translations, or edits to existing entries. Your suggestions go to the Curator for review, helping the set steadily become more accurate, complete, and useful.
+
+## User Account Settings and Preferences
+
+### Language Pairs
+- Current language pair: Switch the active pair.
+- Proficiency Level: Set your level for the selected pair.
+- Language Flag: Choose a flag icon (or globe).
+- Export words / Import words
+- Reset Learning Progress (destructive)
+- Create New Language Pair
+- Delete this language pair (destructive)
+
+### Word Entry
+- Default Tag: Automatically applied to newly created words.
+- Automatically insert clipboard: Prefills the term field with clipboard text when creating a word (device-level).
+
+### Study Options
+- Show native side first: Show the native language as the prompt.
+- Show word instead of context: Prefer single words over context sentences in prompts.
+- Show recent filters: Show the last filters you actually studied with.
+
+### Streak Management
+- Pause: Pause streak tracking (useful for vacations/illness).
+- Study Days: Unselected days won’t affect your streak.
+- Streak Languages: Toggle which language pairs participate in streak reminders/tracking.
+
+### Voices
+- Voice per learning language: Choose Auto (Default) or a specific voice, and preview voices before selecting.
+- Speech Speed: Adjust pronunciation speed for all playback.
+
+### Notifications
+- Opens your notifications screen.
+
+### Points & Badges
+- Shows your points, level, badges/achievements.
+
+### Leaderboard
+- View global rankings (requires an internet connection).
+
+### My Profile
+- Username: View/change your username.
+- Email: View/change your email address (may require verification).
+- Learner since / Account type: Informational.
+- Account type: Informational
+- Log out: Signs you out (the app may remove local account data on logout).
+
+### Privacy Settings
+- Do not show me in Leaderboard: When enabled, you won’t appear in the public leaderboard.
+
+### Appearance
+- Night Mode: Force dark mode.
+- Auto‑Night Mode (System): Follow your device system setting. This needs to be disabled first if you want to force dark mode.
+
+### App Language (Interface)
+- Choose from: English, German, French, Spanish, Portuguese (Brazil), Italian. This setting is saved to your account and should follow you across devices.
+
+### Support
+- Opens the in-app support/help entry point.
+
+## Pro Tipps
+
+### Home Screen
+- When tapping the title, date slide will set to todays’s date
+- Tapping on the flag or the V icon will take you into quiz mode
+
+### Words
+- If you have selected a tag filter in Words, and then go to quiz, the same tag will be pre-applied
+
+### User Settings
+- You can change your profile image by tapping on the profile photo.
+
+
+
+
+
+
+
+
+
+
+
+
