@@ -197,18 +197,10 @@ a {
   font-size: 14px;
   font-weight: 500;
   color: #64748b;
-  /* Force dropdown to open upwards by setting appearance */
-  appearance: auto;
-  direction: ltr;
 }
 
 .footer-lang-select:hover {
   color: #0f172a;
-}
-
-/* Force the select dropdown to position above by constraining space below */
-.footer-lang-select:focus {
-  position: relative;
 }
 
 /* Dark Mode */
