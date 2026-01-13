@@ -68,11 +68,11 @@ Vokabulo is especially helpful if you:
 
 Vokabulo makes full use of the latest advances in artificial intelligence to support language learning.
 
-AI is powerful, but not perfect. 
+**AI is powerful, but not perfect.**
 
 It can occasionally make mistakes, especially when dealing with ambiguity, slang, rare meanings, or insufficient context.
 
-Treat AI as a capable assistant, not an unquestionable authority. If something feels off, refine the context, edit the result, or try again with a clearer prompt.
+**Treat AI as a capable assistant, not an unquestionable authority.** If something feels off, refine the context, edit the result, or try again with a clearer prompt.
 
 ---
 
@@ -80,52 +80,70 @@ Treat AI as a capable assistant, not an unquestionable authority. If something f
 
 ### Basic navigation
 
-The Start page is your home base. From here you can quickly jump into the core areas of Vokabulo—adding words, studying, and managing your vocabulary—without having to dig through menus.
+The Start page is your home base. From here you can quickly jump into the core areas of Vokabulo, adding words, studying, and managing your vocabulary, without having to dig through menus.
 
 ### Date slider (streak and progress)
 
-At the top you'll find a date slider that lets you look back and forth across days. It's a simple way to understand your streak and your progress over time, and to get a quick feel for how consistent your learning has been.
+At the top you'll find a date slider that lets you look back and forth across days. 
+
+It's a simple way to understand your streak and your progress over time, and to get a quick feel for how consistent your learning progress has been.
 
 ### Language Pair containers
 
-The Start page also shows your language pair containers. These act as shortcuts so you can switch contexts quickly—especially if you learn more than one language or use different language directions. It's essentially another fast way to select a language pair and immediately see and study the vocabulary that belongs to it.
+The Start page shows your language pair containers. 
+
+These act as shortcuts to teh Study area so you can switch contexts quickly, especially if you learn more than one language or use different language directions.
 
 ---
 
 ## Words
 
-The Words area is your personal vocabulary collection. It's where you add, edit, tag, search, and review everything you want to learn—so your learning stays organized instead of becoming a random list.
+The Words area is your personal vocabulary collection. 
+
+It's where you add, edit, tag, search, and review everything you want to learn, so your learning stays organized instead of becoming a random list.
 
 ![Words Main Screen](/images/support/words-main-screen.jpg)
 
-Words has been designed to make the entry of new words as effortless as possible so that it is fun and doesn’t take long to add new words, wherever you are and what you do: When you read a book, watch a video, listen to a podcast, or are out exploring a local antiques market in a foreign country.
+Words has been designed to make the entry of new vocabulary as effortless as possible so that it is fun and doesn’t take long to add new words, wherever you are and what you do: When you read a book, watch a video, listen to a podcast, or are out exploring a local antiques market in a foreign country.
 
-This is also where the ingenious “Vokabulo Magic Wand” comes into play. A way to quickly enter and translate a new word, including context example sentences.
+**This is also where the ingenious “Vokabulo Magic Wand” comes into play.**
+
+A way to quickly enter and translate a new word, including context example sentences.
 
 ### Language pairs (and why order matters)
 
-Every language pair is like a personal book that belongs to you, on you only. Your words are not shared with others (unless you decide to publish some of them as a Community Set, but more on that later).
+**Every language pair is like a personal book that belongs to you**, and to you only. *Your words are not shared with others* (unless you decide to publish some of them as a Community Set, but more on that later).
 
-A language pair defines the direction you're learning, for example **DE → FR** (German to French). 
+A language pair defines the direction you're learning, for example **German → French**. 
 
-The order matters because your cards, translations, and which side is treated as "native" vs "target" depend on it—DE–FR is not the same as FR–DE. For Community Sets, Vokabulo can display sets in both directions so you can use them regardless of which side you're starting from.
+The order matters because your cards, translations, and which side is treated as "native" vs "learning" depend on it. German-French is not the same as French-German. 
+
+For Community Sets, Vokabulo can display sets in both directions so you can use them regardless of which side you're starting from.
 
 ### Why context matters
 
-A word without context often doesn't mean much—or it means the wrong thing. That's why Vokabulo encourages learning vocabulary with a suitable context (a phrase or sentence). Context makes meaning clearer, improves recall, and helps you use the word correctly when you actually speak or write.
+**A word without context often doesn't mean much—or it means the wrong thing.**
+
+That's why Vokabulo encourages learning vocabulary with a suitable context (a phrase or sentence). 
+
+Context makes meaning clearer, improves recall, and helps you use the word correctly when you actually speak or write.
 
 ### Enter a new word (Magic Wand)
 
-To add a word, tap the plus button in the top right (available in almost every view, except during flashcards in Study). You can type into any of the fields, and you can even paste a full sentence. 
+To add a word, tap the plus button in the top right (**available in almost every view**, except during flashcards in Study). 
+
+You can type into any of the fields, and you can even paste a full sentence. 
 
 ![Words Magic Wand](/images/support/words-magic-wand.jpg)
-When you hit Translate, Vokabulo fills the other fields for you—best results come from only filling one field and letting the Magic Wand complete the rest.
+When you hit Translate, Vokabulo fills the other fields for you. *Only fill one field* and let the Magic Wand complete the rest.
 
 ![Words Magic Wand Translation](/images/support/words-magic-wand-translation.jpg)
 
 ### Edit words
 
-You can edit words anytime to improve translations, adjust context, fix spelling, or refine the meaning. Keeping entries clean pays off later during Study, because you'll review higher-quality cards.
+You can edit words anytime to improve translations, adjust context, fix spelling, or refine the meaning. 
+
+Keeping entries clean pays off later during Study, because you'll review higher-quality cards.
 
 ### Pronunciation
 
@@ -137,7 +155,9 @@ When you hit “Listen” for the first time, it can take a few seconds to send 
 
 ### Searching and duplicate detection
 
-The search bar looks in the words and context fields and even tags for any matches. Search is tolerant to umlauts and accents, so it will, e.g., find “Mädchen” if you only enter “Madchen”.
+The search bar looks in the words and context fields and even tags for any matches. 
+
+Search is tolerant to umlauts and accents, so it will, e.g., find “Mädchen” if you only enter “Madchen”.
 
 Words can be searched quickly, and Vokabulo performs automatic duplicate detection to prevent your collection from filling up with the same word multiple times in slightly different forms.
 
@@ -145,20 +165,27 @@ Words can be searched quickly, and Vokabulo performs automatic duplicate detecti
 
 ### Bulk actions (select, tag, clear)
 
-When you want to manage many words at once, you can bulk select items, select all, or clear your current selection. Bulk editing lets you change tags efficiently—including removing tags, not just adding them.
+When you want to manage many words at once, you can bulk select items, select all, or clear your current selection. 
+
+Bulk editing lets you change tags efficiently, including removing tags, not just adding them.
 
 ![Words B ulk Select](/images/support/words-bulk-select.jpg)
 
 ### Suggest to Set
 
-If a word belongs in a Community Set, you can suggest it to the set. This helps improve shared sets while keeping your personal collection separate and flexible.
+**If a word belongs in a Community Set, you can suggest it to the set.**
+
+This helps improve shared sets while keeping your personal collection separate and flexible.
+
 The curator of this set will automatically be notified so that he can review your suggestion.
 
 ![Words Suggest To Set](/images/support/words-suggest-words-to-set.jpg)
 
 ### Why tagging is key
 
-Tags are the fastest way to turn a big vocabulary list into a system. Tagging helps you:
+Tags are the fastest way to turn a big vocabulary list into a system. 
+
+Tagging helps you:
 
 - find words later,
 - study by topic,
@@ -173,7 +200,9 @@ You can set a default tag so every new word automatically lands in the right buc
 
 ### Filter by tags (single or multiple)
 
-You can filter your Words list by one or multiple tags. This makes it easy to review just the vocabulary you care about right now. You can clear all filters anytime by tapping "Clear".
+You can filter your Words list by one or multiple tags. 
+
+This makes it easy to review just the vocabulary you care about right now. You can clear all filters anytime by tapping "Clear".
 
 ![Words Filter By Tags](/images/support/words-filter-by-tags.jpg)
 
