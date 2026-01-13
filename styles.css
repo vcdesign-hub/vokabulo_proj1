@@ -41,7 +41,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   background: var(--bg);
   color: var(--ink);
   min-height: 100vh;

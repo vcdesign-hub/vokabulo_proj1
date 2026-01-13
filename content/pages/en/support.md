@@ -4,7 +4,7 @@ title: "Support · Vokabulo"
 
 ## About Vokabulo
 
-### My story
+### How Vokabulo began
 
 A language is about the *words, grammar, pronunciation and culture.*
 
@@ -46,7 +46,7 @@ It would make me very happy if you enjoy it as much as I do.
 
 If you have feedback or suggestions, feel free to reach out at wolf@vokabulo.com.
 
-### My favorite use cases
+### Use cases
 
 Vokabulo shines whenever you encounter vocabulary in the wild and want to turn it into something you’ll actually remember.
 

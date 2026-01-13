@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         soft: '0 16px 40px rgba(15, 23, 42, 0.06)',
