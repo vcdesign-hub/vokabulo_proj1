@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 describe('Support page mobile navigation', () => {
-  test('has sticky mobile nav for phones 391px-767px', () => {
+  test('mobile dropdown nav markup exists (currently hidden in favor of FAB)', () => {
     const supportPath = new URL('../src/pages/[lang]/support.astro', import.meta.url);
     const content = readFileSync(supportPath, 'utf8');
 
@@ -12,27 +12,9 @@ describe('Support page mobile navigation', () => {
       content.includes('class="help-nav-mobile'),
       'Expected .help-nav-mobile markup to exist'
     );
-
-    // Check for sticky positioning
-    assert.ok(
-      content.includes('position: sticky'),
-      'Expected position: sticky styling for mobile nav'
-    );
-
-    // Check for top offset (should be around 120px to clear the header)
-    assert.ok(
-      content.match(/top:\s*120px/),
-      'Expected top: 120px offset for sticky mobile nav'
-    );
-
-    // Check for responsive breakpoint showing sticky nav on medium phones
-    assert.ok(
-      content.includes('@media (min-width: 391px) and (max-width: 767px)'),
-      'Expected media query for sticky nav on phones 391px-767px'
-    );
   });
 
-  test('has floating button nav for very small screens (<= 390px)', () => {
+  test('has floating button nav for mobile screens (<= 767px)', () => {
     const supportPath = new URL('../src/pages/[lang]/support.astro', import.meta.url);
     const content = readFileSync(supportPath, 'utf8');
 
@@ -48,10 +30,16 @@ describe('Support page mobile navigation', () => {
       'Expected position: fixed styling for floating button'
     );
 
-    // Check for small-screen media query
+    // Check for mobile-screen media query
     assert.ok(
-      content.includes('@media (max-width: 390px)'),
-      'Expected media query for floating button on screens <= 390px'
+      content.includes('@media (max-width: 767px)'),
+      'Expected media query for floating button on screens <= 767px'
+    );
+
+    // Check that FAB is hidden on >= 768px
+    assert.ok(
+      content.includes('@media (min-width: 768px)'),
+      'Expected media query for hiding floating button on screens >= 768px'
     );
 
     // Check that floating button contains "On this page" text
