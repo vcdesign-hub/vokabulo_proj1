@@ -74,6 +74,113 @@ describe('BaseLayout', () => {
       'Expected BaseLayout footer to include .footer-shell wrapper'
     );
   });
+
+  test('footer includes tagline and social icons', () => {
+    const layoutPath = new URL('../src/layouts/BaseLayout.astro', import.meta.url);
+    const content = readFileSync(layoutPath, 'utf8');
+
+    // Check for tagline
+    assert.ok(
+      content.includes('Your favourite business management software'),
+      'Expected footer to include tagline'
+    );
+
+    // Check for Twitter link
+    assert.ok(
+      content.includes('https://x.com/yourhandle'),
+      'Expected footer to include Twitter/X link'
+    );
+
+    // Check for YouTube link
+    assert.ok(
+      content.includes('https://youtube.com/@yourchannel'),
+      'Expected footer to include YouTube link'
+    );
+
+    // Check for social button class
+    assert.ok(
+      content.includes('footer-social-btn'),
+      'Expected footer to include .footer-social-btn class'
+    );
+  });
+
+  test('footer includes Pages and Information navigation columns', () => {
+    const layoutPath = new URL('../src/layouts/BaseLayout.astro', import.meta.url);
+    const content = readFileSync(layoutPath, 'utf8');
+
+    // Check for column headings
+    assert.ok(
+      content.includes('Pages'),
+      'Expected footer to include "Pages" column heading'
+    );
+    assert.ok(
+      content.includes('Information'),
+      'Expected footer to include "Information" column heading'
+    );
+
+    // Check for Pages links
+    assert.ok(
+      content.includes('Home') && content.includes('href={`/${currentLang}`}'),
+      'Expected footer to include Home link'
+    );
+    assert.ok(
+      content.includes('Features') && content.includes('#feature-blocks'),
+      'Expected footer to include Features link'
+    );
+    assert.ok(
+      content.includes('FAQ') && content.includes('#faq'),
+      'Expected footer to include FAQ link'
+    );
+    assert.ok(
+      content.includes('How it works') && content.includes('/support'),
+      'Expected footer to include How it works link'
+    );
+    assert.ok(
+      content.includes('Blog') && content.includes('/blog'),
+      'Expected footer to include Blog link'
+    );
+
+    // Check for Information links
+    assert.ok(
+      content.includes('Legal Notice') && content.includes('/legal-notice'),
+      'Expected footer to include Legal Notice link'
+    );
+    assert.ok(
+      content.includes('Privacy Policy') && content.includes('/privacy'),
+      'Expected footer to include Privacy Policy link'
+    );
+    assert.ok(
+      content.includes('Contact') && content.includes('mailto:hello@vokabulo.com'),
+      'Expected footer to include Contact mailto link'
+    );
+  });
+
+  test('footer includes copyright and language selector', () => {
+    const layoutPath = new URL('../src/layouts/BaseLayout.astro', import.meta.url);
+    const content = readFileSync(layoutPath, 'utf8');
+
+    // Check for copyright text
+    assert.ok(
+      content.includes('© 2026 Tathros GmbH'),
+      'Expected footer to include copyright text'
+    );
+    assert.ok(
+      content.includes('Wolfgang Männel'),
+      'Expected footer to include creator name'
+    );
+
+    // Check for language selector
+    assert.ok(
+      content.includes('footer-lang-select'),
+      'Expected footer to include language selector'
+    );
+
+    // Check for footer divider
+    assert.ok(
+      content.includes('footer-divider'),
+      'Expected footer to include divider class'
+    );
+  });
 });
 
 describe('Navbar smooth transition styles', () => {
