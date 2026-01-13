@@ -82,7 +82,12 @@ A word without context often doesn't mean much—or it means the wrong thing. Th
 
 ### Enter a new word (Magic Wand)
 
-To add a word, tap the plus button in the top right (available in almost every view, except during flashcards in Study). You can type into any of the fields, and you can even paste a full sentence. When you hit Translate, Vokabulo fills the other fields for you—best results come from only filling one field and letting the Magic Wand complete the rest.
+To add a word, tap the plus button in the top right (available in almost every view, except during flashcards in Study). You can type into any of the fields, and you can even paste a full sentence. 
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
+When you hit Translate, Vokabulo fills the other fields for you—best results come from only filling one field and letting the Magic Wand complete the rest.
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
 
 ### Edit words
 
@@ -96,13 +101,20 @@ Use the pronunciation feature to hear how a word is spoken. Pronunciation can be
 
 Words can be searched quickly, and Vokabulo performs automatic duplicate detection to prevent your collection from filling up with the same word multiple times in slightly different forms.
 
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
 ### Bulk actions (select, tag, clear)
 
 When you want to manage many words at once, you can bulk select items, select all, or clear your current selection. Bulk editing lets you change tags efficiently—including removing tags, not just adding them.
 
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
 ### Suggest to Set
 
 If a word belongs in a Community Set, you can suggest it to the set. This helps improve shared sets while keeping your personal collection separate and flexible.
+The curator of this set will automatically be notified so that he can review your suggestion.
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
 
 ### Why tagging is key
 
@@ -113,6 +125,8 @@ Tags are the fastest way to turn a big vocabulary list into a system. Tagging he
 - build sets, and
 - stay consistent when you're learning from real life.
 
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
 ### Default tags (especially for books and videos)
 
 You can set a default tag so every new word automatically lands in the right bucket—useful when you're reading a book, watching a series, or working through a theme and want to capture words quickly without extra steps.
@@ -121,9 +135,13 @@ You can set a default tag so every new word automatically lands in the right buc
 
 You can filter your Words list by one or multiple tags. This makes it easy to review just the vocabulary you care about right now. You can clear all filters anytime.
 
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
 ### Tag management (long press)
 
 Long‑press a selected tag to manage it: you can rename it, create a set from it, or delete all words with this tag (useful for cleanup when a tag was temporary or imported by mistake).
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
 
 ### Sorting and review tabs
 
@@ -167,6 +185,8 @@ You can study in two ways:
 - **By number of cards** when you want a clear target ("I'll do 30 cards").
 - **By minutes** when you want a time-box ("I'll study for 10 minutes").
 
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
 ### Filters: tags and levels
 
 You can narrow your session by tags (topic-based learning) or by levels (e.g., focus on newer or weaker words). This is useful when you want to prepare for a specific situation or clean up a backlog.
@@ -175,22 +195,44 @@ You can narrow your session by tags (topic-based learning) or by levels (e.g., f
 
 Vokabulo remembers your last three filter selections so you can jump back into your usual study setup quickly. Clear all resets both your recent filters and any active tag filters. You can also deactivate a recent filter if you want to return to an unfiltered session.
 
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
 ### The Auto button (Study by Number)
 
-If you're not sure what to pick, Auto chooses a sensible card count for you—making it easy to start without overthinking.
+The Auto button in Study by Number of Card: When you select one or several tag, the auto button will show the number of available cards with the selected tag(s) and start a study session with exactly this number.
 
-### Reviewing cards: "Got it" and "Not yet"
+### Reviewing cards: “Got it” and “Not yet”
+
+You start a session by tapping on the number of cards or study minutes. This will launch the flashcard view.
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
+Tap anywhere on the card to reveal the translation.
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
 
 During Study you can swipe:
 
 - **Got it** when you knew it well enough.
 - **Not yet** when you didn't.
 
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
 Your choice updates the word's level and schedules the next review accordingly.
+
+This is not about being right or wrong. It’s about tracking your personal learning journey. Swipe left if you don’t know a word. It will come back more frequently and help you memorize it.
+
+### Pause a study session
+
+If you are training by Study Minutes and need to interrupt the session, you can tap on the countdown in the top middle.
 
 ### Editing and deleting (during study/quiz)
 
-If a word is wrong, confusing, or no longer useful, you can edit it (to improve the translation/context) or delete it (to remove it from your learning queue). Keeping your collection clean improves your future sessions.
+If a word is incorrect, confusing, or no longer useful, you can edit it (to improve the translation/context) or delete it (to remove it from your learning queue). Keeping your collection clean improves your future sessions.
+
+To do this, long-tap on the sentence (or word) that is shown first. The edit word dialog will then appear and you can make edits directly in the study session.
 
 ### Pronunciation
 
@@ -203,6 +245,10 @@ You can adjust how cards are shown, for example:
 - Show native side first if you want recognition practice from your everyday language.
 - Show word instead of context if you want a more direct, vocabulary-first style of review.
 
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
+You can do this in the user settings or directly during the study session by tapping the top-left inverse arrow button.
+
 ### Points for Study
 
 Points are awarded for doing the work, not for being perfect. For every 10 cards reviewed, you get 1 point—regardless of whether you marked "Got it" or "Not yet."
@@ -213,17 +259,147 @@ If you enable study reminders, Vokabulo nudges you to keep your routine. You can
 
 ### Streaks: what they are and why they matter
 
-A streak counts how many days in a row you've studied. It's important because streaks protect the habit—when motivation dips, the streak keeps you showing up for just a few minutes.
+Streaks are a powerful motivational tool rooted in well-established psychological principles that help users build lasting language learning habits. 
+
+By tracking consecutive days of practice, streaks create a sense of momentum and visible progress, which can reinforce intrinsic motivation and encourage daily engagement.
+
+Vokabulo's streak system helps you build consistent study habits by tracking your daily progress. 
+
+The streak feature is designed to reward long-term commitment while protecting your progress with milestone checkpoints.
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
+### Daily Check-In Requirements
+
+To count a day toward your streak, you must complete at least 10 cards for each streak language before midnight in your local timezone. 
+
+Vokabulo uses calendar-day streaks (midnight to midnight) with no grace period—activity after midnight always credits the new day.
+
+The app shows your progress toward the daily check-in goal during study sessions, so you always know how many cards you need to maintain your streak.
 
 ### Streak milestones
 
-Milestones celebrate consistency and give you a long-term rhythm to aim for. Even small sessions count—what matters is keeping the chain unbroken.
+Milestones are permanent checkpoints that protect your Streak Level from dropping below certain thresholds. 
 
-### Tips
+When you reach a milestone, it becomes your new Milestone Floor. 
 
-- If you feel overwhelmed, switch to minutes-based study and keep it small.
-- Use filters when you're preparing for something specific (travel, work, exam topics).
-- Keep your sets clean by editing/deleting entries that slow you down.
+Even if you break your streak later, your Streak Level will never fall below this floor. 
+
+The milestone thresholds are:
+
+- 10 days – Your first major checkpoint
+- 50 days – Nearly two months of consistency
+- 100 days – Over three months of dedication
+- 200 days – More than half a year
+- 365 days – A full year of learning
+
+Example: If you reach a 65-day streak:
+
+Your Current Run is 65 days
+Your Milestone Floor is 50 (the highest milestone you've passed)
+Your Streak Level is 115 (65 + 50)
+
+If you then miss a day:
+Your Current Run resets to 0
+Your Milestone Floor stays at 50
+Your Streak Level becomes 50 (0 + 50)
+
+When you resume studying and reach 15 consecutive days again, your Streak Level will be back to 65 (15 + 50).
+
+### Streak Languages
+
+You can choose which language pairs contribute to your streak by enabling the "V logo" (streak badge) for specific pairs in the Streak Management settings. 
+
+Only language pairs marked as "Streak Languages" count toward:
+
+- Your daily check-in requirement
+- Your displayed Streak Level
+- Your position on the leaderboard
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
+This allows you to focus your streak commitment on the languages you're actively learning, without pressure from language pairs you're studying casually or have paused.
+
+### Study Days Configuration
+
+You can customize which days of the week count toward your streak. 
+
+For example, if you only want to study Monday through Friday, you can disable weekends. On disabled days:
+
+- You don't need to complete any cards
+- Your streak is not affected
+- The app skips over these days when calculating your next due date
+
+This feature is perfect for creating a sustainable study schedule that fits your lifestyle. 
+
+Access this setting in Streak Management → Study Days.
+
+### Pausing Your Streak
+
+Life happens, and sometimes you need a break. 
+
+The pause feature lets you temporarily freeze your streak evaluation without losing progress.
+
+![Words Main Screen](/images/support/words-main-screen.jpg)
+
+While paused:
+
+- you don't need to complete daily check-ins
+- our Current Run and Milestone Floor are preserved
+- Your streak won't break due to inactivity
+
+You can pause your streak in two ways:
+
+- Indefinite Pause: Remains paused until you manually resume
+- Scheduled Pause: Set an end date, and your streak automatically resumes afterward
+
+This is ideal for vacations, illness, or any period when you can't maintain your regular study routine. 
+
+Access pause controls in Streak Management → Pause.
+
+### Historical Streak View
+
+On the home screen, you can use the date slider to view your streak level for any past date. 
+
+This shows you how your streak has grown over time and helps you track your consistency. 
+
+The historical view calculates your streak based on your actual study sessions for that date, combined with your current Milestone Floor.
+
+### Leaderboard Streaks
+
+The leaderboard displays each user's highest Streak Level across all their streak languages. 
+
+This means:
+Only language pairs with the "V logo" enabled are considered.
+
+The calculation uses the same formula: Current Run + Milestone Floor
+
+It reflects your best achievement across all languages you're actively tracking
+
+### Visual Cues
+
+Throughout the app, you'll see streak-related indicators:
+Flame icon (🔥): Appears on language pair cards that are streak languages
+
+Streak number: Your current Streak Level for each language pair
+
+Milestone badges: Celebrate when you reach new milestone thresholds
+
+### Tips for Maintaining Your Streak
+
+- Start small: The first milestone is just 10 days—very achievable!
+
+- Use Study Days: Configure your schedule to match your lifestyle
+
+- Enable reminders: Set daily notifications to help you remember to study
+
+- Pause when needed: Don't let guilt break your streak—use the pause feature
+
+- Focus on consistency: Even 10 cards per day builds long-term success
+
+Your streak is a reflection of your commitment to learning. 
+
+With milestone protection and flexible configuration options, Vokabulo's streak system is designed to motivate you without creating unnecessary stress.
 
 ### Resetting learning progress
 
@@ -232,8 +408,6 @@ If you want a fresh start, you can reset your learning progress for words so the
 ---
 
 ## Situations
-
-Generate focused vocabulary for real-life moments and learn what you need right now.
 
 ### About Situations
 
