@@ -18,6 +18,8 @@ title: "Test Post"
 date: "2026-01-12"
 excerpt: "This is a test excerpt"
 tag: "Featured"
+image: "/images/blog/eye.jpg"
+imageAlt: "Eye close-up"
 ---
 
 This is the markdown content.`;
@@ -43,6 +45,8 @@ This is the markdown content.`;
     assert.equal(frontmatter.date, '2026-01-12');
     assert.equal(frontmatter.excerpt, 'This is a test excerpt');
     assert.equal(frontmatter.tag, 'Featured');
+    assert.equal(frontmatter.image, '/images/blog/eye.jpg');
+    assert.equal(frontmatter.imageAlt, 'Eye close-up');
     assert.ok(markdown.includes('This is the markdown content'));
   });
 

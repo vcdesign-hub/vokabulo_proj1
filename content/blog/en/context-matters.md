@@ -3,6 +3,8 @@ title: "Why Context Matters More Than Translation"
 date: "2026-01-08"
 excerpt: "How a word is used matters more than its translation."
 tag: "Learning"
+image: "/images/blog/eye.jpg"
+imageAlt: "Eye close-up"
 ---
 
 When learning new vocabulary, most people memorize word-for-word translations. 

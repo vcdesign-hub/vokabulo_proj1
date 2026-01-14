@@ -175,6 +175,12 @@ describe('BaseLayout', () => {
       'Expected footer to include language selector'
     );
 
+    // Non-English languages should be visible but disabled for now
+    assert.ok(
+      content.includes("disabled={lang.code !== 'en'}"),
+      'Expected footer language selector to disable non-English language options'
+    );
+
     // Check for footer divider
     assert.ok(
       content.includes('footer-divider'),

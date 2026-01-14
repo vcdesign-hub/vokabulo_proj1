@@ -23,23 +23,19 @@ There are **many hidden gems for power users in Vokabulo**, so it's definitely w
 
 ---
 
-## Home
+## Today
 
 ### Basic navigation
 
-The Start page is your home base. From here you can quickly jump into the core areas of Vokabulo, adding words, studying, and managing your vocabulary, without having to dig through menus.
+The Today page is your home base. 
 
-### Date slider (streak and progress)
+It shows the the languages that you are learning and the activity that you unfolded.
+
+### Date slider
 
 At the top you'll find a date slider that lets you look back and forth across days. 
 
 It's a simple way to understand your streak and your progress over time, and to get a quick feel for how consistent your learning progress has been.
-
-### Language Pair containers
-
-The Start page shows your language pair containers. 
-
-These act as shortcuts to the Study area so you can switch contexts quickly, especially if you learn more than one language or use different language directions.
 
 ---
 
@@ -47,25 +43,25 @@ These act as shortcuts to the Study area so you can switch contexts quickly, esp
 
 The Words area is your personal vocabulary collection. 
 
-It's where you add, edit, tag, search, and review everything you want to learn, so your learning stays organized instead of becoming a random list.
+It's where you add, edit, tag, search, and review everything you want to learn.
 
 ![Words Main Screen](/images/support/words-main-screen.jpg)
 
-Words has been designed to make the entry of new vocabulary as effortless as possible so that it is fun and doesn’t take long to add new words, wherever you are and what you do: When you read a book, watch a video, listen to a podcast, or are out exploring a local antiques market in a foreign country.
+Words has been designed to make the entry of new vocabulary as effortless as possible.
+
+It makes adding words fun, wherever you are and what you do: When you read a book, watch a video, listen to a podcast, or are out exploring a local antiques market in a foreign country.
 
 **This is also where the ingenious “Vokabulo Magic Wand” comes into play.**
 
 A way to quickly enter and translate a new word, including context example sentences.
 
-### Language pairs (and why order matters)
+### Language pairs
 
-**Every language pair is like a personal book that belongs to you**, and to you only. *Your words are not shared with others* (unless you decide to publish some of them as a Community Set, but more on that later).
+**Every language pair is like a personal book that belongs to you**, and to you only. 
+
+*Your words are not shared with others* (unless you decide to publish some of them as a Community Set, but more on that later).
 
 A language pair defines the direction you're learning, for example **German → French**. 
-
-The order matters because your cards, translations, and which side is treated as "native" vs "learning" depend on it. German-French is not the same as French-German. 
-
-For Community Sets, Vokabulo can display sets in both directions so you can use them regardless of which side you're starting from.
 
 ### Why context matters
 
@@ -75,7 +71,9 @@ That's why Vokabulo encourages learning vocabulary with a suitable context (a ph
 
 Context makes meaning clearer, improves recall, and helps you use the word correctly when you actually speak or write.
 
-### Enter a new word (Magic Wand)
+### Enter a new word
+
+I call this function "Magic Wand" because it's a kind of magic.
 
 To add a word, tap the plus button in the top right (**available in almost every view**, except during flashcards in Study). 
 
@@ -106,7 +104,7 @@ Keeping entries clean pays off later during Study, because you'll review higher-
 
 Use the pronunciation feature to hear how a word is spoken. 
 
-Pronunciation can be fine‑tuned in settings, and Vokabulo uses high-quality ElevenLabs voices to make listening and repeating feel natural.
+Pronunciation can be fine‑tuned in settings, and Vokabulo uses high-quality voices to make listening and repeating feel natural.
 
 When you hit “Listen” for the first time, it can take a few seconds to send the words to a server for proper pronunciation. After that, it will be immediate.
 
@@ -120,17 +118,17 @@ Words can be searched quickly, and Vokabulo performs automatic duplicate detecti
 
 ![Words Duplicate Detection](/images/support/words-duplicates.jpg)
 
-### Bulk actions (select, tag, clear)
+### Bulk actions
 
 When you want to manage many words at once, you can bulk select items, select all, or clear your current selection. 
 
 Bulk editing lets you change tags efficiently, including removing tags, not just adding them.
 
-![Words B ulk Select](/images/support/words-bulk-select.jpg)
+![Words Bulk Select](/images/support/words-bulk-select.jpg)
 
 ### Suggest to Set
 
-**If a word belongs in a Community Set, you can suggest it to the set.**
+**If you think that a word should belong in a Community Set, you can suggest it to the set.**
 
 This helps improve shared sets while keeping your personal collection separate and flexible.
 
@@ -151,11 +149,11 @@ Tagging helps you:
 
 ![Words Main Screen](/images/support/words-main-screen.jpg)
 
-### Default tags (especially for books and videos)
+### Default tags
 
 You can set a default tag so every new word automatically lands in the right bucket—useful when you're reading a book, watching a series, or working through a theme and want to capture words quickly without extra steps.
 
-### Filter by tags (single or multiple)
+### Filter by tags
 
 You can filter your Words list by one or multiple tags. 
 
@@ -165,7 +163,7 @@ This makes it easy to review just the vocabulary you care about right now. You c
 
 When a filter tag is applied, the filter button turns red to remind you that an active filter is selected.
 
-### Tag management (long press)
+### Tag management
 
 Long‑press a selected tag to manage it: you can rename it, create a set from it, or delete all words with this tag (useful for cleanup when a tag was temporary or imported by mistake).
 
@@ -183,6 +181,7 @@ To review your collection from different angles, you can switch sorting modes su
 
 - You can change the language pair directly in the add/edit dialog if you notice you're adding a word in the wrong direction.
 - Tagging improves everything: finding, filtering, studying, and building sets—start early, even with simple tags.
+- Think of Tagging like folders but much more versatile.
 
 ---
 
@@ -194,17 +193,25 @@ How spaced repetition works in Vokabulo and how to make steady progress.
 
 Study is where your saved words turn into long-term memory. Vokabulo uses a spaced repetition system (SRS) to decide what you should review next and when—so you spend time on the words that need it most.
 
-### The SRS system (and why it's not a quiz)
+### The SRS system
 
-Study is not a test, and it's not about "winning." That's why you shouldn't cheat by looking up the answer first. Vokabulo doesn't award points for being right in the moment—what matters is showing up consistently and keeping your reviews moving forward.
+Study is not a test, and it's not about "winning." That's why you shouldn't cheat by looking up the answer first. 
+
+Vokabulo doesn't award points for being right in the moment—what matters is showing up consistently and keeping your reviews moving forward.
 
 ### The 5 levels
 
-Each word moves through five levels as you review it over time. Getting a word right pushes it forward to longer intervals; struggling with it brings it back sooner. This is how Vokabulo keeps easy words from wasting your time while still rescuing the ones you're about to forget.
+Each word moves through five levels as you review it over time. G
+
+etting a word right pushes it forward to longer intervals; struggling with it brings it back sooner. 
+
+This is how Vokabulo keeps easy words from wasting your time while still rescuing the ones you're about to forget.
 
 ### Philosophy
 
-The key is consistency, not volume. A small daily session beats an occasional marathon. The goal is to keep your reviews sustainable so your vocabulary keeps growing without piling up.
+The key is consistency, not volume. A small daily session beats an occasional marathon. 
+
+The goal is to keep your reviews sustainable so your vocabulary keeps growing without piling up.
 
 ### Study by number of cards or by minutes
 
@@ -215,7 +222,7 @@ You can study in two ways:
 
 ![Study Main Screen](/images/support/study-main-screen.jpg)
 
-### Filters: tags and levels
+### Filters
 
 You can narrow your session by tags (topic-based learning) or by levels (e.g., focus on newer or weaker words). This is useful when you want to prepare for a specific situation or clean up a backlog.
 
@@ -225,13 +232,13 @@ You can narrow your session by tags (topic-based learning) or by levels (e.g., f
 
 Vokabulo remembers your last three filter selections so you can jump back into your usual study setup quickly. Clear all resets both your recent filters and any active tag filters. You can also deactivate a recent filter if you want to return to an unfiltered session.
 
-### The Auto button (Study by Number)
+### The Auto button
 
 The Auto button in Study by Number of Card: When you select one or several tag, the auto button will show the number of available cards with the selected tag(s) and start a study session with exactly this number.
 
-### Reviewing cards: “Got it” and “Not yet”
+### Reviewing cards
 
-You start a session by tapping on the number of cards or study minutes. This will launch the flashcard view.
+You start a session by tapping on the number of cards or study minutes. This will launch the flashcard view where you can swipe cards left or right.
 
 ![Flashcards Hidden](/images/support/study-flashcard-hidden.jpg)
 
@@ -248,15 +255,17 @@ or left "**Not yet**" when you didn't.
 
 Your choice updates the word's level and schedules the next review accordingly.
 
-This is not about being right or wrong. It’s about tracking your personal learning journey. Swipe left if you don’t know a word. It will come back more frequently and help you memorize it.
+This is not about being right or wrong. It’s about tracking your personal learning journey. 
+
+Swipe left if you don’t know a word. It will come back more frequently and help you memorize it.
 
 ### Pause a study session
 
 If you are training by Study Minutes and need to interrupt the session, you can tap on the countdown in the top middle.
 
-### Editing and deleting (during study/quiz)
+### Editing and deleting
 
-If a word is incorrect, confusing, or no longer useful, you can edit it (to improve the translation/context) or delete it (to remove it from your learning queue). Keeping your collection clean improves your future sessions.
+If a word is incorrect, confusing, or no longer useful, you can edit it (to improve the translation/context) or delete it (to remove it from your learning queue). 
 
 To do this, long-tap on the sentence (or word) that is shown first. The edit word dialog will then appear and you can make edits directly in the study session.
 
@@ -279,7 +288,7 @@ You can do this in the user settings or directly during the study session by tap
 
 Points are awarded for doing the work, not for being perfect. For every 10 cards reviewed, you get 1 point—regardless of whether you marked "Got it" or "Not yet."
 
-### Study reminders (and how to deactivate them)
+### Study reminders
 
 If you enable study reminders, Vokabulo nudges you to keep your routine. You can turn reminders off anytime in the app's settings/notifications preferences if you don't want prompts.
 
@@ -386,7 +395,7 @@ Access pause controls in Streak Management → Pause.
 
 ### Historical Streak View
 
-On the home screen, you can use the date slider to view your streak level for any past date. 
+On the Today screen, you can use the date slider to view your streak level for any past date. 
 
 This shows you how your streak has grown over time and helps you track your consistency. 
 
@@ -394,61 +403,73 @@ The historical view calculates your streak based on your actual study sessions f
 
 ### Leaderboard Streaks
 
-The leaderboard displays each user's highest Streak Level across all their streak languages. 
+The Leaderboard displays each user's highest Streak Level across all their streak languages. 
 
 This means:
 Only language pairs with the "V logo" enabled are considered.
 
-The calculation uses the same formula: Current Run + Milestone Floor
+The calculation uses the same formula: Current Run + Milestone Floor.
 
-It reflects your best achievement across all languages you're actively tracking
+It reflects your best achievement across all languages you're actively tracking.
+
+We'll refine the Leaderboard in future versions.
 
 ### Visual Cues
 
 Throughout the app, you'll see streak-related indicators:
-Flame icon (🔥): Appears on language pair cards that are streak languages
+Flame icon (🔥) that Appears on language pair cards that are streak languages.
 
-Streak number: Your current Streak Level for each language pair
+Streak number: Your current Streak Level for each language pair.
 
-Milestone badges: Celebrate when you reach new milestone thresholds
+Milestone badges: Celebrate when you reach new milestone thresholds.
 
 ### Tips for Maintaining Your Streak
 
 - Start small: The first milestone is just 10 days—very achievable!
 
-- Use Study Days: Configure your schedule to match your lifestyle
+- Use Study Days: Configure your schedule to match your lifestyle.
 
-- Enable reminders: Set daily notifications to help you remember to study
+- Enable reminders: Set daily notifications to help you remember to study.
 
-- Pause when needed: Don't let guilt break your streak—use the pause feature
+- Pause when needed: Don't let guilt break your streak—use the pause feature.
 
-- Focus on consistency: Even 10 cards per day builds long-term success
+- Focus on consistency: Even 10 cards per day builds long-term success.
 
 Your streak is a reflection of your commitment to learning. 
 
-With milestone protection and flexible configuration options, Vokabulo's streak system is designed to motivate you without creating unnecessary stress.
+Vokabulo's streak system is designed to motivate you without creating unnecessary stress.
 
 ### Resetting learning progress
 
-If you want a fresh start, you can reset your learning progress for words so they return to earlier levels and are scheduled more frequently again. This is useful when you took a long break, changed your learning approach, or want to rebuild a foundation.
+If you want a fresh start, you can reset your learning progress for words so they return to earlier levels and are scheduled more frequently again. 
+
+This is useful when you took a long break, changed your learning approach, somebody else used your app, or want to rebuild a foundation.
 
 ---
 
 ## Situations
 
-Situations help you learn the right words for the moments that matter. You might speak confidently about your job, but feel like a beginner when you need vocabulary for the doctor, a date, small talk, or travel—Situations are built exactly for that gap.
+Situations help you learn the right words for the moments that matter. 
+
+You might speak confidently about your job, but feel like a beginner when you need vocabulary for the doctor, a date, small talk, or travel—Situations are built exactly for that gap.
 
 ### What is a Situation?
 
-A Situation is a short description of a real-life context where you want to express yourself better. Based on your briefing, Vokabulo generates a focused vocabulary list that matches what you're trying to say—so you don't just learn random words, but words you'll actually use.
+A Situation is a short description of a real-life context where you want to express yourself better. 
+
+Based on your briefing, Vokabulo generates a focused vocabulary list that matches what you're trying to say—so you don't just learn random words, but words you'll actually use.
 
 ### How to enter a Situation
 
-Write or dictate your Situation in natural language—just describe what's going on and what you want to be able to say. Vokabulo will automatically clean up your text if needed.
+Write or dictate your Situation in natural language—just describe what's going on and what you want to be able to say. 
+
+Vokabulo will automatically clean up your text if needed.
 
 ![Situations-Prompt](/images/support/situations-prompt.jpg)
 
-**Tip:** Include a few details (who, where, topic, tone). There's a minimum length for the briefing, and generally: the better you describe the Situation, the better the vocabulary output.
+**Tip:** Include a few details (who, where, topic, tone). 
+
+There's a minimum length for the briefing, and generally: the better you describe the Situation, the better the vocabulary output.
 
 ### Proficiency level
 
@@ -456,7 +477,9 @@ Choose your proficiency level so the generated words match where you are right n
 
 ### Generate vocabulary and saving
 
-When you generate, Vokabulo creates a set of around 25 words (the exact number depends on your briefing and how many relevant words the AI finds). You can then save the result to your collection and practice it like any other vocabulary set.
+When you generate, Vokabulo creates a set of around 25 words (the exact number depends on your briefing and how many relevant words the AI finds). 
+
+You can then save the result to your collection and practice it like any other vocabulary set.
 
 ![Situations-Output](/images/support/situations-output.jpg)
 
@@ -472,25 +495,37 @@ When you generate, Vokabulo creates a set of around 25 words (the exact number d
 
 ## Community
 
-Community Sets are shared vocabulary lists built by people who learn and use the language in real life. If you've ever seen word lists or "vocabulary packs" in Facebook language groups, it's that idea—just structured, searchable, and designed to be practiced directly in Vokabulo. This makes getting started much easier, especially when you don't yet know what to learn next.
+Community Sets are shared vocabulary lists built by people who learn and use the language in real life. 
+
+If you've ever seen word lists or "vocabulary packs" in Facebook language groups, it's that idea—just structured, searchable, and designed to be practiced directly in Vokabulo. 
+
+This makes getting started much easier, especially when you don't yet know what to learn next.
 
 ![Community-Main-Screen](/images/support/community-main-screen.jpg)
 
 ### Why Community Sets are different
 
-Community Sets are often more useful than textbooks because they can be tailored to everyday needs: your job, your hobbies, your city, your travel plans, or the situations you actually face. The goal is to create the best set of words for a specific topic in a specific language pair—focused, practical, and worth learning.
+Community Sets are often more useful than textbooks because they can be tailored to everyday needs: your job, your hobbies, your city, your travel plans, or the situations you actually face. 
 
-### A community effort (like Wikipedia)
+The goal is to create the best set of words for a specific topic in a specific language pair—focused, practical, and worth learning.
 
-Each Community Set improves over time. People follow it, use it, and suggest better words, missing essentials, or clearer translations. Like Wikipedia, no single person has to get everything perfect—quality comes from many small improvements.
+### A community effort
+
+Each Community Set improves over time. 
+
+People follow it, use it, and suggest better words, missing essentials, or clearer translations. Like Wikipedia, no single person has to get everything perfect—quality comes from many small improvements.
 
 ### The role of the Curator
 
-Every Community Set has a Curator who keeps it consistent and high-quality. Curators review suggestions, decide what fits the purpose of the set, and keep the vocabulary clean and coherent—so the set stays focused instead of becoming a random list.
+Every Community Set has a Curator (the original creator) who keeps it consistent and high-quality. 
+
+Curators review suggestions, decide what fits the purpose of the set, and keep the vocabulary clean and coherent—so the set stays focused instead of becoming a random list.
 
 ### Your responsibility
 
-When you use Community Sets, you're benefiting from other learners' work—so it helps to give something back. If you notice missing words, wrong translations, or better alternatives, you can suggest improvements and help make the set better for everyone.
+When you use Community Sets, you're benefiting from other learners' work—so it helps to give something back. 
+
+If you notice missing words, wrong translations, or better alternatives, you can suggest improvements and help make the set better for everyone.
 
 ### Follow and auto-download
 
@@ -500,7 +535,9 @@ When you follow a Community Set, Vokabulo keeps it handy and can auto-download u
 
 ### Suggest new words or edits
 
-You can contribute by suggesting new words, improved translations, or edits to existing entries. Your suggestions go to the Curator for review, helping the set steadily become more accurate, complete, and useful.
+You can contribute by suggesting new words, improved translations, or edits to existing entries. 
+
+Your suggestions go to the Curator for review, helping the set steadily become more accurate, complete, and useful.
 
 ## User Account Settings and Preferences
 
@@ -554,7 +591,7 @@ You can contribute by suggesting new words, improved translations, or edits to e
 - Night Mode: Force dark mode.
 - Auto‑Night Mode (System): Follow your device system setting. This needs to be disabled first if you want to force dark mode.
 
-### App Language (Interface)
+### App Language
 - Choose from: English, German, French, Spanish, Portuguese (Brazil), Italian. This setting is saved to your account and should follow you across devices.
 
 ### Support

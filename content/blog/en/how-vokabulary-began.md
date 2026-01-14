@@ -3,6 +3,8 @@ title: "How Vokabulary began"
 date: "2026-01-14"
 excerpt: "Inspired by a lifelong passion for words and better language learning."
 tag: "Vokabulo"
+image: "/images/blog/Hand%20reaching.jpg"
+imageAlt: "Hand reaching"
 ---
 
 A language is about the *words, grammar, pronunciation and culture.*

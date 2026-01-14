@@ -139,7 +139,7 @@ const showFallbackNote = isUsingFallback(lang);
 
     .post-image {
       width: 100%;
-      height: 200px;
+      height: 150px;
       object-fit: cover;
       border-radius: 16px;
       margin-bottom: 16px;
@@ -216,7 +216,17 @@ const showFallbackNote = isUsingFallback(lang);
       <div class="posts-grid">
         {posts.map(post => (
           <a href={`/${lang}/blog/${post.slug}`} class="post-card">
-            <div class="post-image"></div>
+            {post.image ? (
+              <img
+                class="post-image"
+                src={post.image}
+                alt={post.imageAlt || post.title}
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="post-image"></div>
+            )}
             {post.tag && <div class="post-tag">{post.tag}</div>}
             <h2 class="post-title">{post.title}</h2>
             <p class="post-excerpt">{post.excerpt}</p>

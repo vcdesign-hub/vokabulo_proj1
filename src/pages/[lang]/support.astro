@@ -327,6 +327,20 @@ renderer.heading = (...args: any[]) => {
       transition: border-color 150ms ease, box-shadow 150ms ease;
     }
 
+    /* Hide browser-provided clear (x) on <input type="search"> to avoid double clear controls */
+    .help-nav-search input[type='search']::-webkit-search-cancel-button,
+    .help-nav-search input[type='search']::-webkit-search-decoration {
+      -webkit-appearance: none;
+      appearance: none;
+      display: none;
+    }
+
+    .help-nav-search input[type='search']::-ms-clear {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
     .help-nav-search input:focus {
       outline: none;
       border-color: var(--accent);
@@ -920,6 +934,48 @@ renderer.heading = (...args: any[]) => {
 
     // Search functionality
     (() => {
+      const normalize = (s) =>
+        (s || '')
+          .toString()
+          .toLowerCase()
+          .replace(/\s+/g, ' ')
+          .trim();
+
+      // For a heading anchor (h2/h3), return the full text "block" until the next heading.
+      // This makes search match real content, not just nav titles.
+      const blockTextCache = new Map();
+      const getBlockTextForAnchor = (anchorId) => {
+        if (!anchorId) return '';
+        if (blockTextCache.has(anchorId)) return blockTextCache.get(anchorId);
+
+        const el = document.getElementById(anchorId);
+        if (!el) {
+          blockTextCache.set(anchorId, '');
+          return '';
+        }
+
+        // H2 sections are wrapped in <section id="...">. If the anchor resolves to that wrapper,
+        // we must NOT traverse siblings, otherwise we'd accidentally include following sections.
+        if (el.tagName === 'SECTION') {
+          const out = normalize(el.textContent || '');
+          blockTextCache.set(anchorId, out);
+          return out;
+        }
+
+        const stopAt = el.tagName === 'H2' ? new Set(['H2']) : new Set(['H2', 'H3']);
+        let text = el.textContent || '';
+        let node = el.nextElementSibling;
+        while (node) {
+          if (stopAt.has(node.tagName)) break;
+          text += ` ${node.textContent || ''}`;
+          node = node.nextElementSibling;
+        }
+
+        const out = normalize(text);
+        blockTextCache.set(anchorId, out);
+        return out;
+      };
+
       const searchInput = document.getElementById('help-search');
       const searchClear = document.getElementById('help-search-clear');
       const allNavItems = document.querySelectorAll('.help-nav-items li');
@@ -934,7 +990,7 @@ renderer.heading = (...args: any[]) => {
 
       searchInput.addEventListener('input', (e) => {
         updateClearButton();
-        const query = (e.target.value || '').toLowerCase().trim();
+        const query = normalize(e.target.value || '');
         if (query === '') {
           allNavItems.forEach(item => item.classList.remove('hidden-by-search', 'highlight-match'));
           allNavSections.forEach(section => section.classList.remove('hidden-by-search'));
@@ -944,10 +1000,12 @@ renderer.heading = (...args: any[]) => {
         let hasMatches = false;
         allNavItems.forEach(item => {
           const link = item.querySelector('a');
-          const text = link ? link.textContent.toLowerCase() : '';
-          const href = link ? link.getAttribute('href') : '';
+          const text = normalize(link ? link.textContent : '');
+          const href = link ? (link.getAttribute('href') || '') : '';
+          const anchorId = href.startsWith('#') ? href.slice(1) : '';
+          const blockText = getBlockTextForAnchor(anchorId);
 
-          if (text.includes(query) || (href && href.toLowerCase().includes(query))) {
+          if (text.includes(query) || normalize(href).includes(query) || blockText.includes(query)) {
             item.classList.remove('hidden-by-search');
             item.classList.add('highlight-match');
             hasMatches = true;
@@ -969,8 +1027,13 @@ renderer.heading = (...args: any[]) => {
           const items = section.querySelectorAll('.help-nav-items li');
           const visibleItems = Array.from(items).filter(item => !item.classList.contains('hidden-by-search'));
           const sectionHeader = section.querySelector('.help-nav-section-header a');
-          const sectionText = sectionHeader ? sectionHeader.textContent.toLowerCase() : '';
-          if (visibleItems.length > 0 || sectionText.includes(query)) section.classList.remove('hidden-by-search');
+          const sectionText = normalize(sectionHeader ? sectionHeader.textContent : '');
+          const sectionHref = sectionHeader ? (sectionHeader.getAttribute('href') || '') : '';
+          const sectionAnchorId = sectionHref.startsWith('#') ? sectionHref.slice(1) : '';
+          const sectionBlockText = getBlockTextForAnchor(sectionAnchorId);
+          if (visibleItems.length > 0 || sectionText.includes(query) || sectionBlockText.includes(query)) {
+            section.classList.remove('hidden-by-search');
+          }
           else section.classList.add('hidden-by-search');
         });
 
@@ -997,6 +1060,46 @@ renderer.heading = (...args: any[]) => {
       const searchClear = document.getElementById('help-search-fab-clear');
       if (!searchInput) return;
 
+      const normalize = (s) =>
+        (s || '')
+          .toString()
+          .toLowerCase()
+          .replace(/\s+/g, ' ')
+          .trim();
+
+      // Same "block text" logic as desktop search: from heading to next heading.
+      const blockTextCache = new Map();
+      const getBlockTextForAnchor = (anchorId) => {
+        if (!anchorId) return '';
+        if (blockTextCache.has(anchorId)) return blockTextCache.get(anchorId);
+
+        const el = document.getElementById(anchorId);
+        if (!el) {
+          blockTextCache.set(anchorId, '');
+          return '';
+        }
+
+        // H2 sections are wrapped in <section id="...">. Treat wrapper as boundary.
+        if (el.tagName === 'SECTION') {
+          const out = normalize(el.textContent || '');
+          blockTextCache.set(anchorId, out);
+          return out;
+        }
+
+        const stopAt = el.tagName === 'H2' ? new Set(['H2']) : new Set(['H2', 'H3']);
+        let text = el.textContent || '';
+        let node = el.nextElementSibling;
+        while (node) {
+          if (stopAt.has(node.tagName)) break;
+          text += ` ${node.textContent || ''}`;
+          node = node.nextElementSibling;
+        }
+
+        const out = normalize(text);
+        blockTextCache.set(anchorId, out);
+        return out;
+      };
+
       const updateClearButton = () => {
         if (searchClear) {
           searchClear.classList.toggle('visible', searchInput.value.length > 0);
@@ -1005,12 +1108,14 @@ renderer.heading = (...args: any[]) => {
 
       searchInput.addEventListener('input', (e) => {
         updateClearButton();
-        const query = (e.target.value || '').toLowerCase().trim();
+        const query = normalize(e.target.value || '');
         const fabPanel = document.querySelector('.help-nav-fab-panel');
         const allNavItems = fabPanel ? fabPanel.querySelectorAll('.help-nav-items li') : [];
+        const allNavSections = fabPanel ? fabPanel.querySelectorAll('.help-nav-section') : [];
         
         if (query === '') {
           allNavItems.forEach(item => item.style.display = '');
+          allNavSections.forEach(section => section.style.display = '');
           return;
         }
 
@@ -1021,27 +1126,32 @@ renderer.heading = (...args: any[]) => {
             return;
           }
           
-          // Get the section ID from the link's href
-          const sectionId = link.getAttribute('href')?.replace('#', '');
-          if (!sectionId) {
-            item.style.display = 'none';
-            return;
-          }
+          // Get the anchor ID from the link's href
+          const anchorId = link.getAttribute('href')?.replace('#', '') || '';
+          const linkText = normalize(link.textContent || '');
+          const blockText = getBlockTextForAnchor(anchorId);
           
-          // Find the corresponding section in the page
-          const section = document.getElementById(sectionId);
-          if (!section) {
-            item.style.display = 'none';
-            return;
-          }
-          
-          // Search through all text content in the section
-          const sectionText = section.textContent.toLowerCase();
-          
-          if (sectionText.includes(query)) {
+          if (linkText.includes(query) || blockText.includes(query)) {
             item.style.display = '';
           } else {
             item.style.display = 'none';
+          }
+        });
+
+        // Hide empty sections (but keep sections whose own body matches query)
+        allNavSections.forEach(section => {
+          const sectionHeader = section.querySelector('.help-nav-section-header a');
+          const sectionHref = sectionHeader ? (sectionHeader.getAttribute('href') || '') : '';
+          const sectionAnchorId = sectionHref.startsWith('#') ? sectionHref.slice(1) : '';
+          const sectionBlockText = getBlockTextForAnchor(sectionAnchorId);
+
+          const items = section.querySelectorAll('.help-nav-items li');
+          const visibleItems = Array.from(items).filter((li) => li.style.display !== 'none');
+
+          if (visibleItems.length > 0 || sectionBlockText.includes(query)) {
+            section.style.display = '';
+          } else {
+            section.style.display = 'none';
           }
         });
       });

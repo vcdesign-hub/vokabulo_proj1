@@ -205,6 +205,8 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
                 <option
                   value={`/${lang.code}${currentPath}`}
                   selected={lang.code === currentLang}
+                  disabled={lang.code !== 'en'}
+                  title={lang.code === 'en' ? undefined : 'Coming soon'}
                 >
                   {lang.name}
                 </option>
