@@ -138,10 +138,11 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
               <img src="/images/logo on white.svg" alt="Vokabulo logo" class="logo-light h-6" />
               <img src="/images/logo on dark.svg" alt="Vokabulo logo" class="logo-dark h-6" />
             </a>
-            <p class="footer-tagline max-w-xs text-sm">
-              Your favourite business management software. Built for early startup founders.
+            <p class="footer-tagline max-w-xs">
+              Everything great starts with the right words.
             </p>
-            <div class="flex gap-3">
+            <!-- Social icons hidden for now (keep markup for later use) -->
+            <div class="hidden gap-3">
               <a 
                 href="https://x.com/yourhandle" 
                 target="_blank" 
@@ -169,53 +170,42 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
 
           <!-- Right: Navigation columns -->
           <div class="flex gap-12 md:gap-16">
-            <!-- Pages column -->
-            <div class="flex flex-col gap-3">
-              <h3 class="footer-heading mb-1 text-xs font-semibold uppercase tracking-wider">Pages</h3>
-              <a class="footer-link text-sm" href={`/${currentLang}`}>Home</a>
-              <a class="footer-link text-sm" href={`/${currentLang}#feature-blocks`}>Features</a>
-              <a class="footer-link text-sm" href={`/${currentLang}#faq`}>FAQ</a>
-              <a class="footer-link text-sm" href={`/${currentLang}/support`}>How it works</a>
-              <a class="footer-link text-sm" href={`/${currentLang}/blog`}>Blog</a>
-            </div>
-
             <!-- Information column -->
             <div class="flex flex-col gap-3">
-              <h3 class="footer-heading mb-1 text-xs font-semibold uppercase tracking-wider">Information</h3>
-              <a class="footer-link text-sm" href={`/${currentLang}/legal-notice`}>Legal Notice</a>
-              <a class="footer-link text-sm" href={`/${currentLang}/privacy`}>Privacy Policy</a>
-              <a class="footer-link text-sm" href="mailto:hello@vokabulo.com">Contact</a>
+              <a class="footer-link" href={`/${currentLang}/legal-notice`}>Legal Notice</a>
+              <a class="footer-link" href={`/${currentLang}/privacy`}>Privacy Policy</a>
+              <a class="footer-link" href="mailto:hello@vokabulo.com">Contact</a>
+              <div class="relative">
+                <select
+                  id="footer-lang-select"
+                  class="footer-lang-select appearance-none bg-transparent border-none cursor-pointer pr-5 focus:outline-none"
+                  onchange="window.location.href = this.value"
+                >
+                  {languages.map(lang => (
+                    <option
+                      value={`/${lang.code}${currentPath}`}
+                      selected={lang.code === currentLang}
+                      disabled={lang.code !== 'en'}
+                      title={lang.code === 'en' ? undefined : 'Coming soon'}
+                    >
+                      {lang.name}
+                    </option>
+                  ))}
+                </select>
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 top-1/2 h-4 w-4 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Bottom section: Divider + Copyright + Language selector -->
         <div class="footer-divider mb-6 border-t"></div>
-        <div class="flex flex-col items-start justify-between gap-4 text-sm md:flex-row md:items-center">
+        <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <p class="footer-copyright">
             © 2026 Tathros GmbH. Created by <span class="font-semibold">Wolfgang Männel.</span>
           </p>
-          <div class="relative ml-auto">
-            <select
-              id="footer-lang-select"
-              class="footer-lang-select appearance-none bg-transparent border-none cursor-pointer pr-5 focus:outline-none"
-              onchange="window.location.href = this.value"
-            >
-              {languages.map(lang => (
-                <option
-                  value={`/${lang.code}${currentPath}`}
-                  selected={lang.code === currentLang}
-                  disabled={lang.code !== 'en'}
-                  title={lang.code === 'en' ? undefined : 'Coming soon'}
-                >
-                  {lang.name}
-                </option>
-              ))}
-            </select>
-            <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 top-1/2 h-4 w-4 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
         </div>
       </div>
     </footer>

@@ -81,7 +81,7 @@ describe('BaseLayout', () => {
 
     // Check for tagline
     assert.ok(
-      content.includes('Your favourite business management software'),
+      content.includes('Everything great starts with the right words.'),
       'Expected footer to include tagline'
     );
 
@@ -104,41 +104,13 @@ describe('BaseLayout', () => {
     );
   });
 
-  test('footer includes Pages and Information navigation columns', () => {
+  test('footer includes Information links (without headings) and places language selector below Privacy Policy', () => {
     const layoutPath = new URL('../src/layouts/BaseLayout.astro', import.meta.url);
     const content = readFileSync(layoutPath, 'utf8');
 
-    // Check for column headings
-    assert.ok(
-      content.includes('Pages'),
-      'Expected footer to include "Pages" column heading'
-    );
-    assert.ok(
-      content.includes('Information'),
-      'Expected footer to include "Information" column heading'
-    );
-
-    // Check for Pages links
-    assert.ok(
-      content.includes('Home') && content.includes('href={`/${currentLang}`}'),
-      'Expected footer to include Home link'
-    );
-    assert.ok(
-      content.includes('Features') && content.includes('#feature-blocks'),
-      'Expected footer to include Features link'
-    );
-    assert.ok(
-      content.includes('FAQ') && content.includes('#faq'),
-      'Expected footer to include FAQ link'
-    );
-    assert.ok(
-      content.includes('How it works') && content.includes('/support'),
-      'Expected footer to include How it works link'
-    );
-    assert.ok(
-      content.includes('Blog') && content.includes('/blog'),
-      'Expected footer to include Blog link'
-    );
+    // Ensure removed headings/section
+    assert.ok(!content.includes('>Pages<'), 'Expected footer to not include "Pages" section heading');
+    assert.ok(!content.includes('>Information<'), 'Expected footer to not include "Information" heading');
 
     // Check for Information links
     assert.ok(
@@ -152,6 +124,19 @@ describe('BaseLayout', () => {
     assert.ok(
       content.includes('Contact') && content.includes('mailto:hello@vokabulo.com'),
       'Expected footer to include Contact mailto link'
+    );
+
+    // Language selector should appear after Privacy Policy in the markup
+    const privacyIdx = content.indexOf('Privacy Policy');
+    const contactIdx = content.indexOf('mailto:hello@vokabulo.com');
+    const langSelectIdx = content.indexOf('footer-lang-select');
+    assert.ok(
+      privacyIdx !== -1 && langSelectIdx !== -1 && privacyIdx < langSelectIdx,
+      'Expected language selector to be placed below Privacy Policy'
+    );
+    assert.ok(
+      contactIdx !== -1 && contactIdx < langSelectIdx,
+      'Expected Contact to appear above the language selector'
     );
   });
 

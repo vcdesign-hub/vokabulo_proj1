@@ -142,6 +142,7 @@ a {
 /* Footer (boxed style) */
 .site-footer {
   background: transparent;
+  font-size: 16px;
 }
 
 .footer-shell {
@@ -190,11 +191,11 @@ a {
 
 .footer-copyright {
   color: #64748b;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .footer-lang-select {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: #64748b;
 }
