@@ -539,7 +539,7 @@ You can contribute by suggesting new words, improved translations, or edits to e
 
 Your suggestions go to the Curator for review, helping the set steadily become more accurate, complete, and useful.
 
-## User Account Settings and Preferences
+## User Settings
 
 ### Language Pairs
 - Current language pair: Switch the active pair.
