@@ -100,14 +100,22 @@ if (existsSync(contentPath)) {
       margin-bottom: 0;
     }
 
-    ul {
+    /* Ensure markdown list markers show (Tailwind preflight removes markers by default) */
+    .page main ul {
       margin: 0 0 24px;
       padding-left: 24px;
-      list-style-type: disc;
+      list-style: disc;
       list-style-position: outside;
     }
 
-    li {
+    .page main ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+      list-style: decimal;
+      list-style-position: outside;
+    }
+
+    .page main li {
       margin: 0 0 8px;
       padding-left: 0;
       color: var(--muted);
@@ -115,7 +123,20 @@ if (existsSync(contentPath)) {
       font-size: 16px;
       font-weight: 400;
       display: list-item;
-      list-style-type: disc;
+    }
+
+    /* Some markdown renderers wrap list-item text in <p>, which adds extra gaps */
+    .page main li > p {
+      margin: 0;
+    }
+
+    /* Nested lists */
+    .page main ul ul,
+    .page main ol ol,
+    .page main ul ol,
+    .page main ol ul {
+      margin-top: 8px;
+      margin-bottom: 0;
     }
 
     li:last-child {

@@ -2,81 +2,28 @@
 title: "Support · Vokabulo"
 ---
 
-## About Vokabulo
+## Getting Started
 
-### How Vokabulo began
+The first step is to **set up the language you want to learn.**
 
-A language is about the *words, grammar, pronunciation and culture.*
+You do this by creating a **language pair**, where you specify your native language and the language you’re learning.
 
-The culture is the soul of the language, the pronunciation its style, grammar is all about logic (or lack or thereof), and words is the content.
+If you didn’t complete this during onboarding, you can set it up now in Words.
 
-**Once you speak a language reasonably well, the only way to make real progress is to expand your vocabulary.**
+In addition to the language pair, you can define your current proficiency level and choose a personal flag icon for the language.
 
-Most people, even after many years, will never fully lose their accent (hasta la vista, baby). And when it comes to grammar, either you learned it at school, or you didn’t.
+Once your language pair is set up, you can add your first words in several ways:
 
-Culture comes naturally through interaction with native speakers.
+- Browse **Community Sets** and adopt one that fits your goals
+- Enter words manually using the **Magic Wand**
+- **Import words** from another app or your personal collection
+- Create vocabulary for specific contexts using **Situations**
 
-**But vocabulary, your words, is something you can actively work on and continue to grow for a lifetime.**
-
-Words depend on context. Without understanding the situation in which a word is used, its meaning is often unclear.
-
-**Most language apps teach words without context.** They focus on standardized situations that rarely cover the specific vocabulary you need in real life.
-
-I built this app for myself because I love expanding my vocabulary every day, and because it helps me both at work and in life. Even though I’m comfortably trilingual, I sometimes find myself missing the right words.
-
-**I wanted an way to quickly jot down a word while reading a book, listening to a podcast, watching a movie on Netflix, or preparing for the very situations where I didn’t have the right vocabulary.**
-
-Over the past twenty year, I tested over 50 language apps.
-
-But none came close to the ease of use, intelligence, and user experience I was looking for.
-
-So I started coding while recovering at home after surgery.
-
-That was the beginning of my Vokabulo journey, one I hope to share with people around the world who, like me, enjoy having the right words at the right time.
-
-**There is no greater power than communication.**
-
-One word can make the difference between life and death, success or failure, trust or doubt.
-
-**Vokabulo can help you feel more confident at work, more at home in daily life, and more immersed in the cultures that foreign languages open up.**
-
-I made this for myself.
-
-It would make me very happy if you enjoy it as much as I do.
-
-If you have feedback or suggestions, feel free to reach out at wolf@tathros.com.
-
-### Use cases
-
-Vokabulo shines whenever you encounter vocabulary in the wild and want to turn it into something you’ll actually remember.
-
-- **Reading a book or magazine:** Save unfamiliar words with the sentence they appeared in, tag them by chapter or topic, and revisit them later, always in context.
-- **Watching a video:** Capture words and phrases as you hear them, preserve tone and meaning, and build collections around a series, a YouTube channel, or a specific topic.
-- **Walking a city:** Learn the words you need for signs, menus, transportation, directions, and everyday interactions, exactly when they matter most.
-- **Preparing for special situations:** Build focused vocabulary for interviews, technologies, travel, sciences, or any moment where confidence matters.
-
-### Who benefits from using Vokabulo?
-
-Vokabulo is especially helpful if you:
-
-- **already have some foundation** but want to become fluent in real situations,
-- **learn best from content** (books, videos, conversations) rather than structured courses,
-- **need vocabulary for a specific domain** such as work, travel, hobbies), or
-- value structure and progress, but want **learning to revolve around your own interests**.
-
-### Limits of AI
-
-Vokabulo makes full use of the latest advances in artificial intelligence to support language learning.
-
-**AI is powerful, but not perfect.**
-
-It can occasionally make mistakes, especially when dealing with ambiguity, slang, rare meanings, or insufficient context.
-
-**Treat AI as a capable assistant, not an unquestionable authority.** If something feels off, refine the context, edit the result, or try again with a clearer prompt.
+There are **many hidden gems for power users in Vokabulo**, so it's definitely worth browsing through this section a bit.
 
 ---
 
-## Start
+## Home
 
 ### Basic navigation
 
@@ -138,6 +85,16 @@ You can type into any of the fields, and you can even paste a full sentence.
 When you hit Translate, Vokabulo fills the other fields for you. *Only fill one field* and let the Magic Wand complete the rest.
 
 ![Words Magic Wand Translation](/images/support/words-magic-wand-translation.jpg)
+
+### Limits of AI
+
+Vokabulo makes full use of the latest advances in artificial intelligence to support language learning.
+
+**AI is powerful, but not perfect.**
+
+It can occasionally make mistakes, especially when dealing with ambiguity, slang, rare meanings, or insufficient context.
+
+**Treat AI as a capable assistant, not an unquestionable authority.** If something feels off, refine the context, edit the result, or try again with a clearer prompt.
 
 ### Edit words
 

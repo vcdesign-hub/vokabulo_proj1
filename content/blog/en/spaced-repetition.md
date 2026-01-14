@@ -1,7 +1,7 @@
 ---
 title: "The Science Behind Spaced Repetition"
 date: "2026-01-10"
-excerpt: "Discover how spaced repetition leverages cognitive science to help you remember vocabulary longer and learn more efficiently."
+excerpt: "Remember vocabulary efficiently and for the long term."
 tag: "Learning"
 ---
 

@@ -1,11 +1,13 @@
 ---
 title: "Why Context Matters More Than Translation"
 date: "2026-01-08"
-excerpt: "Learn why understanding words in context is far more powerful than memorizing isolated translations."
-tag: "Tips"
+excerpt: "How a word is used matters more than its translation."
+tag: "Learning"
 ---
 
-When learning new vocabulary, most people reach for a dictionary and memorize word-for-word translations. But this approach misses something crucial: context.
+When learning new vocabulary, most people memorize word-for-word translations. 
+
+But this approach misses something crucial: context.
 
 ## The Problem with Pure Translation
 
@@ -16,7 +18,9 @@ Imagine learning that "run" in English means "courir" in French. Simple enough, 
 - "The paint will run" (drip)
 - "Run for office" (campaign)
 
-A single translation can't capture all these meanings. Words live in context, and that's where their true meaning emerges.
+A single translation can't capture all these meanings. 
+
+Words live in context, and that's where their true meaning emerges.
 
 ## Learning with Situations
 
@@ -24,12 +28,12 @@ Instead of memorizing isolated words, Vokabulo encourages you to learn vocabular
 
 **Traditional approach:**
 - Word: "Rechnung"
-- Translation: "bill"
+- Translation: "bill" (or cheque, invoice, receipt...it just depends!)"
 
 **Context-based approach:**
 - Situation: At a restaurant
-- Phrase: "Kann ich bitte die Rechnung haben?"
-- Natural understanding: Asking for the bill after dinner
+- Phrase: "Kann ich zahlen, bitte?"
+- Natural understanding: Asking for the bill/cheque after dinner
 
 The second approach gives you not just a word, but a usable piece of language you can deploy in real life.
 
@@ -49,4 +53,8 @@ When you learn words in context:
 3. **Use Vokabulo's Situations feature** - Generate word lists for specific scenarios you'll encounter
 4. **Think in phrases, not words** - Learn "make a decision" rather than just "decision"
 
-Context isn't just helpful—it's essential. The more you connect words to real situations, the more natural and confident your language use becomes.
+Context isn't just helpful—it's essential. 
+
+The more you connect words to real situations, the more natural and confident your language use becomes.
+
+Try **Situations** in Vokabulo to find the right words for a specific context now.
