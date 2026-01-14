@@ -19,6 +19,12 @@ const languages = SUPPORTED_LANGS.map(code => ({
   name: LANGUAGES[code]
 }));
 
+// Analytics (Umami Cloud)
+// Only enable in production to avoid polluting analytics with local/dev traffic.
+const ENABLE_UMAMI = import.meta.env.PROD;
+const UMAMI_SRC = 'https://cloud.umami.is/script.js';
+const UMAMI_WEBSITE_ID = '9f7a934c-e422-4026-82fb-9ee8d01a5911';
+
 // Build SEO URLs
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://vokabulo.com';
 const canonicalUrl = buildCanonicalUrl(siteUrl, Astro.url.pathname);
@@ -32,6 +38,10 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+
+    {ENABLE_UMAMI && (
+      <script defer src={UMAMI_SRC} data-website-id={UMAMI_WEBSITE_ID}></script>
+    )}
     
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />

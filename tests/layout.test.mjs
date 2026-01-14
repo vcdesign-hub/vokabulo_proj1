@@ -17,6 +17,25 @@ describe('BaseLayout', () => {
     );
   });
 
+  test('includes Umami analytics snippet (prod-only gate)', () => {
+    const layoutPath = new URL('../src/layouts/BaseLayout.astro', import.meta.url);
+    const content = readFileSync(layoutPath, 'utf8');
+
+    // We gate at runtime via import.meta.env.PROD, but the configured values should exist in source.
+    assert.ok(
+      content.includes('import.meta.env.PROD'),
+      'Expected Umami snippet to be gated behind import.meta.env.PROD'
+    );
+    assert.ok(
+      content.includes('https://cloud.umami.is/script.js'),
+      'Expected Umami script src to be present'
+    );
+    assert.ok(
+      content.includes('9f7a934c-e422-4026-82fb-9ee8d01a5911'),
+      'Expected Umami website id to be present'
+    );
+  });
+
   test('does not use trailing slashes for locale root or locale anchors (trailingSlash: never)', () => {
     const layoutPath = new URL('../src/layouts/BaseLayout.astro', import.meta.url);
     const content = readFileSync(layoutPath, 'utf8');
