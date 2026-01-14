@@ -852,7 +852,7 @@ renderer.heading = (...args: any[]) => {
           </nav>
         </aside>
 
-        <article class="help-article">
+        <article class="help-article md-content">
           {sections.map((s) => (
             <section id={s.id}>
               <Fragment set:html={marked.parse(s.markdown, { renderer })} />

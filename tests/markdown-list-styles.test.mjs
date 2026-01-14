@@ -10,32 +10,34 @@ function read(relPath) {
 test('Markdown list markers are explicitly enabled (Tailwind preflight compatibility)', () => {
   const blogPostPage = read('src/pages/[lang]/blog/[slug].astro');
   assert.ok(
-    blogPostPage.includes('.post-content ul {\n      list-style: disc;'),
-    'Expected blog post page to explicitly enable unordered list markers'
+    blogPostPage.includes('class="post-content md-content'),
+    'Expected blog post content to opt into shared markdown styling via .md-content'
   );
   assert.ok(
-    blogPostPage.includes('.post-content ol {\n      list-style: decimal;'),
-    'Expected blog post page to explicitly enable ordered list markers'
+    blogPostPage.includes('md-content--lg'),
+    'Expected blog post content to use the large markdown typography variant'
+  );
+
+  const markdownStyles = read('src/styles/markdown.css');
+  assert.ok(
+    markdownStyles.includes('.md-content ul {\n  list-style: disc;'),
+    'Expected shared markdown styles to explicitly enable unordered list markers'
+  );
+  assert.ok(
+    markdownStyles.includes('.md-content ol {\n  list-style: decimal;'),
+    'Expected shared markdown styles to explicitly enable ordered list markers'
   );
 
   const legalNoticePage = read('src/pages/[lang]/legal-notice.astro');
   assert.ok(
-    legalNoticePage.includes('.page main ul {\n      list-style: disc;'),
-    'Expected legal notice page to explicitly enable unordered list markers (scoped to main)'
-  );
-  assert.ok(
-    legalNoticePage.includes('.page main ol {\n      list-style: decimal;'),
-    'Expected legal notice page to explicitly enable ordered list markers (scoped to main)'
+    legalNoticePage.includes('<main class="md-content">'),
+    'Expected legal notice page to opt into shared markdown styling via .md-content'
   );
 
   const privacyPage = read('src/pages/[lang]/privacy.astro');
   assert.ok(
-    privacyPage.includes('.page main ul {\n      margin: 0 0 24px;'),
-    'Expected privacy page to scope list styling to main content'
-  );
-  assert.ok(
-    privacyPage.includes('.page main ol {\n      margin: 0 0 24px;'),
-    'Expected privacy page to explicitly enable ordered list markers (scoped to main)'
+    privacyPage.includes('<main class="md-content">'),
+    'Expected privacy page to opt into shared markdown styling via .md-content'
   );
 });
 

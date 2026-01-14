@@ -1,5 +1,5 @@
 ---
-title: "Privacy Policy · Vokabulo"
+title: "Privacy Policy"
 ---
 
 # Privacy Policy

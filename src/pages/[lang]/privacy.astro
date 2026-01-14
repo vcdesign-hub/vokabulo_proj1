@@ -49,19 +49,14 @@ if (existsSync(contentPath)) {
 
 <BaseLayout title={title} description={description} currentLang={lang} currentPath="/privacy">
   <style is:global>
-    /* Privacy Policy page-specific styles */
-    :root {
-      --ink: #111827;
-      --muted: #374151;
-    }
-
+    /* Privacy Policy page-specific layout (markdown styling via shared .md-content) */
     .page {
       max-width: 750px;
       margin: 0 auto;
       padding: 140px 24px 48px;
     }
 
-    main {
+    .page main {
       margin-top: 0;
       background: transparent;
       border: none;
@@ -70,95 +65,7 @@ if (existsSync(contentPath)) {
       box-shadow: none;
     }
 
-    h1 {
-      margin: 0 0 32px;
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      margin: 48px 0 16px;
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.3;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-
-    p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 16px;
-      font-weight: 400;
-    }
-
-    p:last-of-type {
-      margin-bottom: 0;
-    }
-
-    /* Ensure markdown list markers show (Tailwind preflight removes markers by default) */
-    .page main ul {
-      margin: 0 0 24px;
-      padding-left: 24px;
-      list-style: disc;
-      list-style-position: outside;
-    }
-
-    .page main ol {
-      margin: 0 0 24px;
-      padding-left: 24px;
-      list-style: decimal;
-      list-style-position: outside;
-    }
-
-    .page main li {
-      margin: 0 0 8px;
-      padding-left: 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 16px;
-      font-weight: 400;
-      display: list-item;
-    }
-
-    /* Some markdown renderers wrap list-item text in <p>, which adds extra gaps */
-    .page main li > p {
-      margin: 0;
-    }
-
-    /* Nested lists */
-    .page main ul ul,
-    .page main ol ol,
-    .page main ul ol,
-    .page main ol ul {
-      margin-top: 8px;
-      margin-bottom: 0;
-    }
-
-    li:last-child {
-      margin-bottom: 0;
-    }
-
-    a {
-      color: #2563eb;
-      text-decoration: underline;
-    }
-
-    a:hover {
-      color: #1d4ed8;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: #f6f7fb;
-      }
-    }
-
-    .theme-dark main {
+    .theme-dark .page main {
       background: transparent;
       border: none;
       box-shadow: none;
@@ -166,7 +73,7 @@ if (existsSync(contentPath)) {
   </style>
 
   <div class="page">
-    <main>
+    <main class="md-content">
       <Fragment set:html={content} />
     </main>
   </div>

@@ -131,130 +131,12 @@ const showFallbackNote = isUsingFallback(lang);
       box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
     }
 
-    .post-content {
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--muted);
-    }
+    /* Markdown typography comes from shared .md-content (.md-content--lg for blog posts) */
 
-    .post-content h2 {
-      font-size: 32px;
-      font-weight: 600;
-      color: var(--ink);
-      margin: 48px 0 24px;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-    }
-
-    .post-content h3 {
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--ink);
-      margin: 40px 0 16px;
-      line-height: 1.4;
-    }
-
-    .post-content h4 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--ink);
-      margin: 32px 0 12px;
-      line-height: 1.4;
-    }
-
-    .post-content p {
-      margin: 0 0 24px;
-    }
-
-    /* Match Support markdown list styling (Tailwind preflight removes markers by default) */
-    .post-content ul {
-      list-style: disc;
-      padding-left: 24px;
-      margin: 0 0 20px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 18px;
-    }
-
-    .post-content ol {
-      list-style: decimal;
-      padding-left: 24px;
-      margin: 0 0 20px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 18px;
-    }
-
-    .post-content li {
-      margin: 6px 0;
-    }
-
-    /* Some markdown renderers wrap list-item text in <p>, which adds extra gaps */
-    .post-content li > p {
-      margin: 0;
-    }
-
-    /* Nested lists */
-    .post-content ul ul,
-    .post-content ol ol,
-    .post-content ul ol,
-    .post-content ol ul {
-      margin-top: 8px;
-      margin-bottom: 0;
-    }
-
-    .post-content strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .post-content a {
-      color: var(--accent);
-      text-decoration: underline;
-      transition: color 150ms ease;
-    }
-
-    .post-content a:hover {
-      color: #0284c7;
-    }
-
+    /* Keep only blog-specific markdown embellishments */
     .post-content img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 16px;
       margin: 32px 0;
       box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
-    }
-
-    .post-content blockquote {
-      border-left: 4px solid var(--border);
-      padding-left: 24px;
-      margin: 32px 0;
-      font-style: italic;
-      color: var(--muted);
-    }
-
-    .post-content code {
-      background: rgba(15, 23, 42, 0.05);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 0.9em;
-      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
-      color: var(--ink);
-    }
-
-    .post-content pre {
-      background: rgba(15, 23, 42, 0.05);
-      padding: 20px;
-      border-radius: 12px;
-      overflow-x: auto;
-      margin: 24px 0;
-      border: 1px solid var(--border);
-    }
-
-    .post-content pre code {
-      background: none;
-      padding: 0;
     }
 
     .post-content hr {
@@ -299,23 +181,6 @@ const showFallbackNote = isUsingFallback(lang);
     .theme-dark .post-tag {
       background: rgba(56, 189, 248, 0.15);
       color: #38bdf8;
-    }
-
-    .theme-dark .post-content code {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .theme-dark .post-content pre {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: #1f2937;
-    }
-
-    .theme-dark .post-content a {
-      color: #38bdf8;
-    }
-
-    .theme-dark .post-content a:hover {
-      color: #7dd3fc;
     }
 
     .theme-dark .post-content img {
@@ -363,7 +228,7 @@ const showFallbackNote = isUsingFallback(lang);
       <div class="post-hero-image"></div>
     )}
 
-    <article class="post-content">
+    <article class="post-content md-content md-content--lg">
       <Fragment set:html={post.content} />
     </article>
   </div>

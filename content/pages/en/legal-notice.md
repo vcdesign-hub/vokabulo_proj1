@@ -1,5 +1,5 @@
 ---
-title: "Legal Notice · Vokabulo"
+title: "Legal Notice"
 ---
 
 # Legal Notice

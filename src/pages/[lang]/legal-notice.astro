@@ -49,14 +49,14 @@ if (existsSync(contentPath)) {
 
 <BaseLayout title={title} description={description} currentLang={lang} currentPath="/legal-notice">
   <style is:global>
-    /* Legal Notice page-specific styles */
+    /* Legal Notice page-specific layout (markdown styling via shared .md-content) */
     .page {
       max-width: 750px;
       margin: 0 auto;
       padding: 140px 24px 48px;
     }
 
-    main {
+    .page main {
       margin-top: 0;
       background: transparent;
       border: none;
@@ -65,61 +65,7 @@ if (existsSync(contentPath)) {
       box-shadow: none;
     }
 
-    h1 {
-      margin: 0 0 12px;
-      font-size: 32px;
-      line-height: 1.2;
-    }
-
-    h2 {
-      margin: 32px 0 12px;
-      font-size: 20px;
-    }
-
-    p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* Match Support markdown list styling (Tailwind preflight removes markers by default) */
-    .page main ul {
-      list-style: disc;
-      padding-left: 24px;
-      margin: 0 0 20px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .page main ol {
-      list-style: decimal;
-      padding-left: 24px;
-      margin: 0 0 20px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .page main li {
-      margin: 6px 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* Some markdown renderers wrap list-item text in <p>, which adds extra gaps */
-    .page main li > p {
-      margin: 0;
-    }
-
-    /* Nested lists */
-    .page main ul ul,
-    .page main ol ol,
-    .page main ul ol,
-    .page main ol ul {
-      margin-top: 8px;
-      margin-bottom: 0;
-    }
-
-    .theme-dark main {
+    .theme-dark .page main {
       background: transparent;
       border: none;
       box-shadow: none;
@@ -127,7 +73,7 @@ if (existsSync(contentPath)) {
   </style>
 
   <div class="page">
-    <main>
+    <main class="md-content">
       <Fragment set:html={content} />
     </main>
   </div>
