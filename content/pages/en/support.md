@@ -601,10 +601,10 @@ Your suggestions go to the Curator for review, helping the set steadily become m
 
 ### Home Screen
 - When tapping the title, date slide will set to todays’s date
-- Tapping on the flag or the V icon will take you into quiz mode
+- Tapping on the flag or the V icon will take you into Study mode
 
 ### Words
-- If you have selected a tag filter in Words, and then go to quiz, the same tag will be pre-applied
+- If you have selected a tag filter in Words, and then go to Study, the same tag will be pre-applied
 
 ### User Settings
 - You can change your profile image by tapping on the profile photo.
