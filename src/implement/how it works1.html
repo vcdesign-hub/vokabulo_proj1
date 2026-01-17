@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Support · Vokabulo</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-100 font-sans antialiased transition-colors duration-200 pt-24">
+    
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out" id="navbar">
+        <div id="navbar-bg" class="transition-all duration-300 relative w-full md:w-[95%] lg:w-full max-w-7xl mx-auto md:rounded-2xl md:mt-4">
+            <div class="flex items-center justify-between w-full gap-4 md:gap-8 px-6 py-4 md:px-8 md:py-4">
+                <div class="flex items-center gap-3">
+                    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg relative z-50">
+                        <i class="fas fa-bars text-white text-sm"></i>
+                    </button>
+                    <a href="index.html" class="block">
+                        <div class="flex items-center gap-2 font-bold text-xl tracking-tight text-gray-900 dark:text-white">
+                             <img src="assets/logo on white.svg" class="h-6 w-auto hidden sm:block dark:invert dark:brightness-0 dark:sepia-0" alt="Vokabulo">
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center gap-1">
+                    <!-- to highlight nav <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 transition-all duration-200">Home</a> -->
+                    <a href="#" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200">WHAT MAKES IT GREAT</a>
+                    <a href="how it works.html" class="px-4 py-2 rounded-xl text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 transition-all duration-200">HOW IT WORKS</a>
+                    <a href="#" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200">BLOG</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" class="w-10 h-10 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button class="open-modal-btn bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg group whitespace-nowrap">
+                        <i class="fab fa-apple text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                        <span class="hidden sm:inline">Download app</span>
+                        <span class="sm:hidden">Download</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu absolute top-full left-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 shadow-xl p-4 opacity-0 invisible -translate-y-2 transition-all duration-300 ease-in-out z-40">
+            <div class="flex flex-col gap-2 max-w-7xl mx-auto px-6">
+                <a href="index.html" class="p-3 rounded-xl font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition-colors">HOME</a>
+                <a href="#" class="p-3 rounded-xl font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition-colors">WHAT MAKES IT GREAT</a>
+                <a href="how it works.html" class="p-3 rounded-xl font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20">HOW IT WORKS</a>
+                <a href="#" class="p-3 rounded-xl font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition-colors">BLOG</a>
+                <!-- to highlight nav <a href="#" class="p-3 rounded-xl font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20">Support</a> -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-32 pb-32 px-6 text-center max-w-7xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white leading-tight">Help Center</h1>
+        <p class="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Everything you need to know about Vokabulo features, methodology, and getting the most out of your vocabulary learning.
+        </p>
+    </div>
+
+    <div class="page px-6 max-w-7xl mx-auto pb-24">
+        <main class="flex flex-col lg:flex-row gap-12 relative">
+            
+            <aside class="w-full lg:w-72 flex-shrink-0">
+                <div class="lg:sticky lg:top-32 lg:max-h-[calc(100vh-10rem)] flex flex-col space-y-6">
+                    
+                    <div class="relative group flex-shrink-0">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
+                        </div>
+                        <input type="search" id="help-search" class="block w-full pl-10 pr-3 py-3 border-transparent bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white dark:focus:bg-gray-900 transition-all placeholder-gray-500" placeholder="Search articles..." aria-label="Search help articles" />
+                    </div>
+
+                    <details class="lg:hidden bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 flex-shrink-0">
+                        <summary class="p-4 font-bold text-gray-900 dark:text-white cursor-pointer flex justify-between items-center select-none">
+                            <span>On this page</span>
+                            <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                        </summary>
+                        <nav aria-label="Support navigation (mobile)" class="p-4 pt-0 border-t border-gray-200 dark:border-gray-700">
+                            <ul class="help-nav-items space-y-2 mt-2">
+                                <li><a href="#about-vokabulo" class="block py-1 text-sm text-gray-600 dark:text-gray-300">About Vokabulo</a></li>
+                                <li><a href="#start" class="block py-1 text-sm text-gray-600 dark:text-gray-300">Start</a></li>
+                                <li><a href="#words" class="block py-1 text-sm text-gray-600 dark:text-gray-300">Words</a></li>
+                                <li><a href="#study" class="block py-1 text-sm text-gray-600 dark:text-gray-300">Study</a></li>
+                                <li><a href="#situations" class="block py-1 text-sm text-gray-600 dark:text-gray-300">Situations</a></li>
+                                <li><a href="#community" class="block py-1 text-sm text-gray-600 dark:text-gray-300">Community</a></li>
+                            </ul>
+                        </nav>
+                    </details>
+
+                    <nav class="hidden lg:block help-nav overflow-y-auto pr-4 pb-10 custom-scrollbar" aria-label="Support navigation">
+                        <div class="help-nav-content space-y-6">
+                            
+                            <div class="help-nav-section" data-section="about">
+                                <div class="help-nav-section-header flex items-center justify-between mb-2 cursor-pointer group select-none">
+                                    <a href="#about-vokabulo" class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors">About Vokabulo</a>
+                                    <div class="w-6 h-6 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                                        <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300" style="transform: rotate(-90deg);"></i>
+                                    </div>
+                                </div>
+                                <ul class="help-nav-items space-y-1 border-l-2 border-gray-100 dark:border-gray-800 transition-all duration-300 origin-top hidden">
+                                    <li><a href="#why-another-language-app" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Why another app?</a></li>
+                                    <li><a href="#favorite-use-cases" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">My favorite use cases</a></li>
+                                    <li><a href="#why-i-developed" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Why I chose to develop</a></li>
+                                    <li><a href="#who-benefits" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Who benefits?</a></li>
+                                    <li><a href="#why-ai" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Why AI?</a></li>
+                                    <li><a href="#platforms" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Platforms</a></li>
+                                    <li><a href="#limits-of-ai" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Limits of AI</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="help-nav-section" data-section="start">
+                                <div class="help-nav-section-header flex items-center justify-between mb-2 cursor-pointer group select-none">
+                                    <a href="#start" class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors">Start</a>
+                                    <div class="w-6 h-6 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                                        <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300" style="transform: rotate(-90deg);"></i>
+                                    </div>
+                                </div>
+                                <ul class="help-nav-items space-y-1 border-l-2 border-gray-100 dark:border-gray-800 transition-all duration-300 origin-top hidden">
+                                    <li><a href="#basic-navigation" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Basic navigation</a></li>
+                                    <li><a href="#date-slider" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Date slider</a></li>
+                                    <li><a href="#language-pair-containers" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Language Pair containers</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="help-nav-section" data-section="words">
+                                <div class="help-nav-section-header flex items-center justify-between mb-2 cursor-pointer group select-none">
+                                    <a href="#words" class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors">Words</a>
+                                    <div class="w-6 h-6 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                                        <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300" style="transform: rotate(-90deg);"></i>
+                                    </div>
+                                </div>
+                                <ul class="help-nav-items space-y-1 border-l-2 border-gray-100 dark:border-gray-800 transition-all duration-300 origin-top hidden">
+                                    <li><a href="#about-words" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">About Words</a></li>
+                                    <li><a href="#language-pairs" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Language pairs</a></li>
+                                    <li><a href="#why-context-matters" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Why context matters</a></li>
+                                    <li><a href="#enter-new-word" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Enter a new word</a></li>
+                                    <li><a href="#edit-words" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Edit words</a></li>
+                                    <li><a href="#pronunciation" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Pronunciation</a></li>
+                                    <li><a href="#searching-duplicates" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Searching and duplicates</a></li>
+                                    <li><a href="#bulk-actions" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Bulk actions</a></li>
+                                    <li><a href="#suggest-to-set" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Suggest to Set</a></li>
+                                    <li><a href="#why-tagging" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Why tagging is key</a></li>
+                                    <li><a href="#default-tags" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Default tags</a></li>
+                                    <li><a href="#filter-by-tags" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Filter by tags</a></li>
+                                    <li><a href="#tag-management" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Tag management</a></li>
+                                    <li><a href="#sorting-review-tabs" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Sorting and review tabs</a></li>
+                                    <li><a href="#words-tips" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Tips</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="help-nav-section" data-section="study">
+                                <div class="help-nav-section-header flex items-center justify-between mb-2 cursor-pointer group select-none">
+                                    <a href="#study" class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors">Study</a>
+                                    <div class="w-6 h-6 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                                        <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300" style="transform: rotate(-90deg);"></i>
+                                    </div>
+                                </div>
+                                <ul class="help-nav-items space-y-1 border-l-2 border-gray-100 dark:border-gray-800 transition-all duration-300 origin-top hidden">
+                                    <li><a href="#about-study" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">About Study</a></li>
+                                    <li><a href="#srs-system" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">The SRS system</a></li>
+                                    <li><a href="#five-levels" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">The 5 levels</a></li>
+                                    <li><a href="#philosophy" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Philosophy</a></li>
+                                    <li><a href="#study-by-cards-or-minutes" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Study by cards or minutes</a></li>
+                                    <li><a href="#filters-tags-levels" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Filters: tags and levels</a></li>
+                                    <li><a href="#recent-filters" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Recent Filters</a></li>
+                                    <li><a href="#auto-button" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">The Auto button</a></li>
+                                    <li><a href="#reviewing-cards" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Reviewing cards</a></li>
+                                    <li><a href="#editing-deleting" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Editing and deleting</a></li>
+                                    <li><a href="#study-pronunciation" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Pronunciation</a></li>
+                                    <li><a href="#display-options" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Display options</a></li>
+                                    <li><a href="#points-for-study" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Points for Study</a></li>
+                                    <li><a href="#study-reminders" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Study reminders</a></li>
+                                    <li><a href="#streaks" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Streaks</a></li>
+                                    <li><a href="#streak-milestones" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Streak milestones</a></li>
+                                    <li><a href="#study-tips" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Tips</a></li>
+                                    <li><a href="#resetting-learning-progress" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Resetting progress</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="help-nav-section" data-section="situations">
+                                <div class="help-nav-section-header flex items-center justify-between mb-2 cursor-pointer group select-none">
+                                    <a href="#situations" class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors">Situations</a>
+                                    <div class="w-6 h-6 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                                        <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300" style="transform: rotate(-90deg);"></i>
+                                    </div>
+                                </div>
+                                <ul class="help-nav-items space-y-1 border-l-2 border-gray-100 dark:border-gray-800 transition-all duration-300 origin-top hidden">
+                                    <li><a href="#about-situations" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">About Situations</a></li>
+                                    <li><a href="#what-is-a-situation" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">What is a Situation?</a></li>
+                                    <li><a href="#how-to-enter-a-situation" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">How to enter a Situation</a></li>
+                                    <li><a href="#proficiency-level" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Proficiency level</a></li>
+                                    <li><a href="#generate-vocabulary-saving" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Generate vocabulary</a></li>
+                                    <li><a href="#situations-tips" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Tips</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="help-nav-section" data-section="community">
+                                <div class="help-nav-section-header flex items-center justify-between mb-2 cursor-pointer group select-none">
+                                    <a href="#community" class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors">Community</a>
+                                    <div class="w-6 h-6 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                                        <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300" style="transform: rotate(-90deg);"></i>
+                                    </div>
+                                </div>
+                                <ul class="help-nav-items space-y-1 border-l-2 border-gray-100 dark:border-gray-800 transition-all duration-300 origin-top hidden">
+                                    <li><a href="#about-community-sets" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">About Community Sets</a></li>
+                                    <li><a href="#why-community-sets-are-different" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Why Community Sets are different</a></li>
+                                    <li><a href="#a-community-effort" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">A community effort</a></li>
+                                    <li><a href="#role-of-curator" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">The role of the Curator</a></li>
+                                    <li><a href="#your-responsibility" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Your responsibility</a></li>
+                                    <li><a href="#follow-and-auto-download" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Follow and auto-download</a></li>
+                                    <li><a href="#suggest-new-words-or-edits" class="block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Suggest new words or edits</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </nav>
+                </div>
+            </aside>
+
+            <article class="flex-1 min-w-0 help-article pb-12">
+                
+                <section id="about-vokabulo" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">About Vokabulo</h2>
+                    <p class="text-xl text-gray-500 dark:text-gray-400 mb-10 leading-relaxed">Why Vokabulo exists, who it helps, and how AI fits into the workflow.</p>
+
+                    <h3 id="why-another-language-app" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Why another language app?</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Most language apps try to teach everyone the same curriculum. That works for general progress, but it often fails the moment
+                        real life gets specific: your job, your hobbies, your destination, the book you're reading, or the conversation you actually
+                        want to have. Vokabulo exists to close that gap—so you can learn vocabulary that matches your life, not a textbook's.
+                    </p>
+
+                    <h3 id="favorite-use-cases" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">My favorite use cases</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Vokabulo shines whenever you meet vocabulary "in the wild" and want to turn it into something you'll truly remember.</p>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li><strong>Reading a book or magazine:</strong> Save unfamiliar words with the sentence they appeared in, tag them by chapter or topic, and study them later with context.</li>
+                        <li><strong>Watching a video:</strong> Capture phrases you hear, keep the tone and meaning, and build a set around a series, a YouTube channel, or a topic.</li>
+                        <li><strong>Walking a city:</strong> Learn the words you need for signs, menus, transport, directions, and everyday interactions—exactly when they matter.</li>
+                        <li><strong>Preparing for special situations:</strong> Build targeted vocabulary for interviews, appointments, travel, meetings, or any moment where you want to feel confident.</li>
+                    </ul>
+
+                    <h3 id="why-i-developed" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Why I chose to develop Vokabulo</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Even advanced learners hit awkward "beginner moments." You may be an expert in one area, but feel stuck in another—because
+                        language is not one skill, it's many contexts. I built Vokabulo to make it easy to collect the right words, keep them organized,
+                        and actually retain them through consistent study.
+                    </p>
+
+                    <h3 id="who-benefits" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Who benefits from using Vokabulo?</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Vokabulo is especially helpful if you:</p>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li>already have some foundation but want to become fluent in real situations,</li>
+                        <li>learn best from content (books, videos, conversations) instead of courses,</li>
+                        <li>need vocabulary for a specific domain (work, travel, hobbies), or</li>
+                        <li>like structure and progress, but want it centered around your own interests.</li>
+                    </ul>
+
+                    <h3 id="why-ai" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Why AI is a game changer</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        AI makes it fast to turn messy input—single words, phrases, or whole sentences—into clean, structured vocabulary with translations
+                        and context. Instead of spending time formatting your notes, you spend time learning. It also helps you generate focused vocabulary
+                        for situations and topics that would otherwise take hours to compile.
+                    </p>
+
+                    <h3 id="platforms" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Platforms</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Vokabulo currently supports iOS on iPhone and iPadOS on iPad. macOS support is in preparation. There's currently no Android or
+                        Windows version, because those platforms aren't part of my development stack.
+                    </p>
+
+                    <h3 id="limits-of-ai" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Limits of AI</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        AI is powerful, but not perfect. Sometimes it gets things wrong—especially with ambiguity, slang, rare meanings, or context that
+                        isn't fully specified. Treat AI output as a strong assistant, not an unquestionable authority: if something looks off, edit it,
+                        adjust the context, or regenerate with a clearer prompt.
+                    </p>
+                </section>
+                
+                <hr class="border-gray-200 dark:border-gray-800 my-16">
+
+                <section id="start" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">Start</h2>
+
+                    <h3 id="basic-navigation" class="scroll-mt-32 text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">Basic navigation</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        The Start page is your home base. From here you can quickly jump into the core areas of Vokabulo—adding words,
+                        studying, and managing your vocabulary—without having to dig through menus.
+                    </p>
+                    
+                    <h3 id="date-slider" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Date slider (streak and progress)</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        At the top you'll find a date slider that lets you look back and forth across days. It's a simple way to understand
+                        your streak and your progress over time, and to get a quick feel for how consistent your learning has been.
+                    </p>
+
+                    <h3 id="language-pair-containers" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Language Pair containers</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        The Start page also shows your language pair containers. These act as shortcuts so you can switch contexts quickly—especially
+                        if you learn more than one language or use different language directions. It's essentially another fast way to select a
+                        language pair and immediately see and study the vocabulary that belongs to it.
+                    </p>
+                </section>
+
+                <hr class="border-gray-200 dark:border-gray-800 my-16">
+
+                <section id="words" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">Words</h2>
+                    <p class="text-xl text-gray-500 dark:text-gray-400 mb-10 leading-relaxed">Everything about adding, organizing, and managing your vocabulary.</p>
+
+                    <h3 id="about-words" class="scroll-mt-32 text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">About Words</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        The Words area is your personal vocabulary collection. It's where you add, edit, tag, search, and review everything you want to learn—so
+                        your learning stays organized instead of becoming a random list.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Words Chapter/Compressed/IMG_2781.webp" alt="Words interface" class="w-full h-auto object-cover"/>
+                    </div>
+
+                    <h3 id="language-pairs" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Language pairs (and why order matters)</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        A language pair defines the direction you're learning, for example <strong>DE → FR</strong> (German to French). The order matters because your cards,
+                        translations, and which side is treated as "native" vs "target" depend on it.
+                    </p>
+
+                    <h3 id="why-context-matters" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Why context matters</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        A word without context often doesn't mean much. That's why Vokabulo encourages learning vocabulary with a suitable
+                        context (a phrase or sentence). Context makes meaning clearer, improves recall, and helps you use the word correctly.
+                    </p>
+
+                    <h3 id="enter-new-word" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Enter a new word (Magic Wand)</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        To add a word, tap the plus button in the top right. You can type into any of the fields, and you can even paste a full sentence.
+                        When you hit Translate, Vokabulo fills the other fields for you—best results come from only filling one field and letting the Magic Wand complete the rest.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 my-8">
+                        <div class="rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                             <img src="assets/Words Chapter/Compressed/IMG_2790.webp" alt="Add word" class="w-full h-auto"/>
+                        </div>
+                        <div class="rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                             <img src="assets/Words Chapter/Compressed/IMG_2794.webp" alt="Magic wand" class="w-full h-auto"/>
+                        </div>
+                    </div>
+
+                    <h3 id="edit-words" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Edit words</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        You can edit words anytime to improve translations, adjust context, fix spelling, or refine the meaning. Keeping entries clean pays off later during Study.
+                    </p>
+
+                    <h3 id="pronunciation" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Pronunciation</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Use the pronunciation feature to hear how a word is spoken. Pronunciation can be fine‑tuned in settings, and Vokabulo uses high-quality ElevenLabs voices.
+                    </p>
+
+                    <h3 id="searching-duplicates" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Searching and duplicate detection</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Words can be searched quickly, and Vokabulo performs automatic duplicate detection to prevent your collection from filling up with the same word multiple times.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Words Chapter/Compressed/IMG_2795.webp" alt="Search interface" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="bulk-actions" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Bulk actions</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        You can bulk select items to delete or tag. Bulk editing lets you change tags efficiently—including removing tags, not just adding them.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Words Chapter/Compressed/IMG_2783.webp" alt="Bulk actions" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="suggest-to-set" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Suggest to Set</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        If a word belongs in a Community Set, you can suggest it to the set. This helps improve shared sets while keeping your personal collection separate.
+                    </p>
+
+                    <h3 id="why-tagging" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Why tagging is key</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Tags are the fastest way to turn a big vocabulary list into a system. Tagging helps you:</p>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li>find words later,</li>
+                        <li>study by topic,</li>
+                        <li>build sets, and</li>
+                        <li>stay consistent when you're learning from real life.</li>
+                    </ul>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Words Chapter/Compressed/IMG_2786.webp" alt="Tagging interface" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="default-tags" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Default tags</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        You can set a default tag so every new word automatically lands in the right bucket—useful when you're reading a book or watching a series.
+                    </p>
+
+                    <h3 id="filter-by-tags" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Filter by tags</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        You can filter your Words list by one or multiple tags. This makes it easy to review just the vocabulary you care about right now.
+                    </p>
+
+                    <h3 id="tag-management" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Tag management</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Long‑press a selected tag to manage it: you can rename it, create a set from it, or delete all words with this tag.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Words Chapter/Compressed/IMG_2787.webp" alt="Tag management" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="sorting-review-tabs" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Sorting and review tabs</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">To review your collection from different angles, you can switch sorting modes such as frequency or alphabetical, and use list modes like:</p>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li>Newest/Latest</li>
+                        <li>Random</li>
+                        <li>Know least / know best</li>
+                    </ul>
+
+                    <h3 id="words-tips" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Tips</h3>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li>You can change the language pair directly in the add/edit dialog if you notice you're adding a word in the wrong direction.</li>
+                        <li>Tagging improves everything: finding, filtering, studying, and building sets—start early, even with simple tags.</li>
+                    </ul>
+                </section>
+
+                <hr class="border-gray-200 dark:border-gray-800 my-16">
+
+                <section id="study" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">Study</h2>
+                    <p class="text-xl text-gray-500 dark:text-gray-400 mb-10 leading-relaxed">How spaced repetition works in Vokabulo and how to make steady progress.</p>
+
+                    <h3 id="about-study" class="scroll-mt-32 text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">About Study</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Study is where your saved words turn into long-term memory. Vokabulo uses a spaced repetition system (SRS) to decide what you should review next and when.
+                    </p>
+
+                    <h3 id="srs-system" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">The SRS system</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Study is not a test. That's why you shouldn't cheat by looking up the answer first. What matters is showing up consistently.
+                    </p>
+
+                    <h3 id="five-levels" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">The 5 levels</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Each word moves through five levels as you review it over time. Getting a word right pushes it forward to longer intervals; struggling with it brings it back sooner.
+                    </p>
+
+                    <h3 id="philosophy" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Philosophy</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        The key is consistency, not volume. A small daily session beats an occasional marathon.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Study/Compressed/IMG_2798.webp" alt="Study interface" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="study-by-cards-or-minutes" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Study by cards or by minutes</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">You can study in two ways:</p>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li><strong>By number of cards</strong> when you want a clear target ("I'll do 30 cards").</li>
+                        <li><strong>By minutes</strong> when you want a time-box ("I'll study for 10 minutes").</li>
+                    </ul>
+
+                    <h3 id="filters-tags-levels" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Filters: tags and levels</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        You can narrow your session by tags (topic-based learning) or by levels (e.g., focus on newer or weaker words).
+                    </p>
+
+                    <h3 id="recent-filters" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Recent Filters</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Vokabulo remembers your last three filter selections so you can jump back into your usual study setup quickly.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Study/Compressed/IMG_2802.webp" alt="Filters interface" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="auto-button" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">The Auto button</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        If you're not sure what to pick, Auto chooses a sensible card count for you—making it easy to start without overthinking.
+                    </p>
+
+                    <h3 id="reviewing-cards" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Reviewing cards</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Tap anywhere on the card to reveal the translation.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 my-8">
+                        <div class="rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                             <img src="assets/Study/Compressed/IMG_2803.webp" alt="Card front" class="w-full h-auto"/>
+                        </div>
+                        <div class="rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                             <img src="assets/Study/Compressed/IMG_2804.webp" alt="Card back" class="w-full h-auto"/>
+                        </div>
+                    </div>
+
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">During Study you can swipe:</h4>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li><strong>Got it</strong> when you knew it well enough.</li>
+                        <li><strong>Not yet</strong> when you didn’t.</li>
+                    </ul>
+
+                    <div class="grid md:grid-cols-2 gap-6 my-8">
+                        <div class="rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                             <img src="assets/Study/Compressed/IMG_2806.webp" alt="Swipe action" class="w-full h-auto"/>
+                        </div>
+                        <div class="rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                             <img src="assets/Study/Compressed/IMG_2807.webp" alt="Swipe action" class="w-full h-auto"/>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        This is not about being right or wrong. It’s about tracking your personal learning journey. Swipe left if you don’t know a word. It will come back more frequently and help you memorize it.
+                    </p>
+
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">Pause a study session</h4>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        If you are training by Study Minutes and need to interrupt the session, you can tap on the countdown in the top middle.
+                    </p>
+
+                    <h3 id="editing-deleting" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Editing and deleting (during study)</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        If a word is wrong, confusing, or no longer useful, you can edit or delete it. To do this, long-tap on the sentence (or word) that is shown first.
+                    </p>
+
+                    <h3 id="study-pronunciation" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Pronunciation</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Use the pronunciation feature to hear the word spoken. When you hit the voice icon for the first time, it can take a few seconds to send the words to a server for proper pronunciation. After that, it will be immediate.
+                    </p>
+
+                    <h3 id="display-options" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Display options</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">You can adjust how cards are shown, for example:</p>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li>Show native side first if you want recognition practice from your everyday language.</li>
+                        <li>Show word instead of context if you want a more direct, vocabulary-first style of review.</li>
+                    </ul>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Study/Compressed/IMG_2809.webp" alt="Display options" class="w-full h-auto"/>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        You can do this in the user settings or directly during the study session by tapping the top-left inverse arrow button.
+                    </p>
+
+                    <h3 id="points-for-study" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Points for Study</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Points are awarded for doing the work, not for being perfect. For every 10 cards reviewed, you get 1 point—regardless of whether you marked "Got it" or "Not yet."
+                    </p>
+
+                    <h3 id="study-reminders" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Study reminders</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        If you enable study reminders, Vokabulo nudges you to keep your routine. You can turn reminders off anytime in the app's settings.
+                    </p>
+
+                    <h3 id="streaks" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Streaks</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Streaks are a powerful motivational tool. By tracking consecutive days of practice, streaks create a sense of momentum and visible progress.
+                        Vokabulo's streak feature is designed to reward long-term commitment while protecting your progress with milestone checkpoints.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Streak images/Compressed/IMG_2829.webp" alt="Streak interface" class="w-full h-auto"/>
+                    </div>
+
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">Daily Check-In Requirements</h4>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        To count a day toward your streak, you must complete at least 10 cards for each streak language before midnight in your local timezone.
+                    </p>
+
+                    <h3 id="streak-milestones" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Streak milestones</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Milestones celebrate consistency. Even small sessions count—what matters is keeping the chain unbroken.</p>
+                    <ul class="space-y-3 mb-6 list-none pl-0">
+                        <li class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
+                            <span class="font-bold text-blue-500 w-24">10 days</span>
+                            <span class="text-gray-600 dark:text-gray-300">Your first major checkpoint</span>
+                        </li>
+                        <li class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
+                            <span class="font-bold text-blue-500 w-24">50 days</span>
+                            <span class="text-gray-600 dark:text-gray-300">Nearly two months of consistency</span>
+                        </li>
+                        <li class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
+                            <span class="font-bold text-blue-500 w-24">100 days</span>
+                            <span class="text-gray-600 dark:text-gray-300">Over three months of dedication</span>
+                        </li>
+                    </ul>
+
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-2"><strong>Example:</strong> If you reach a 65-day streak:</p>
+                    <ul class="space-y-1 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300 text-sm">
+                        <li>Your Milestone Floor is 50.</li>
+                        <li>Your Streak Level is 115 (65 + 50).</li>
+                        <li>If you miss a day, you reset to 50, not 0.</li>
+                    </ul>
+
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        You can choose which language pairs contribute to your streak by enabling the "V logo" (streak badge) for specific pairs in the Streak Management settings.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Streak images/Compressed/IMG_2828.webp" alt="Streak languages" class="w-full h-auto"/>
+                    </div>
+
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">Study Days Configuration</h4>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        You can customize which days of the week count toward your streak (e.g. disable weekends). Access this in Streak Management → Study Days.
+                    </p>
+
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">Pausing Your Streak</h4>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        The pause feature lets you temporarily freeze your streak evaluation without losing progress (for vacations or illness).
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Streak images/Compressed/IMG_2831.webp" alt="Pause streak" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="study-tips" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Tips for Maintaining Your Streak</h3>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li>Start small: The first milestone is just 10 days.</li>
+                        <li>Use Study Days: Configure your schedule to match your lifestyle.</li>
+                        <li>Enable reminders: Set daily notifications.</li>
+                        <li>Pause when needed: Don't let guilt break your streak—use the pause feature.</li>
+                    </ul>
+                </section>
+
+                <hr class="border-gray-200 dark:border-gray-800 my-16">
+
+                <section id="situations" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">Situations</h2>
+                    <p class="text-xl text-gray-500 dark:text-gray-400 mb-10 leading-relaxed">Generate focused vocabulary for real-life moments and learn what you need right now.</p>
+
+                    <h3 id="about-situations" class="scroll-mt-32 text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">About Situations</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Situations help you learn the right words for the moments that matter. You might speak confidently about your job, but feel like a beginner when you need vocabulary
+                        for the doctor or a date—Situations are built exactly for that gap.
+                    </p>
+
+                    <h3 id="what-is-a-situation" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">What is a Situation?</h3>
+                    <div class="bg-blue-50 dark:bg-blue-900/10 p-6 rounded-2xl border-l-4 border-blue-500 mb-8">
+                        <p class="text-blue-900 dark:text-blue-100 font-medium">
+                            A short description of a real-life context where you want to express yourself better. Vokabulo generates a focused vocabulary list that matches what you're trying to say.
+                        </p>
+                    </div>
+
+                    <h3 id="how-to-enter-a-situation" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">How to enter a Situation</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Write or dictate your Situation in natural language. Vokabulo will automatically clean up your text if needed.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Situations/Compressed/IMG_2813.webp" alt="Enter situation" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="proficiency-level" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Proficiency level</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Choose your proficiency level so the generated words match where you are right now—whether you want safe, essential basics or more precise and advanced expressions.
+                    </p>
+
+                    <h3 id="generate-vocabulary-saving" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Generate vocabulary and saving</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        When you generate, Vokabulo creates a set of around 25 words. You can then save the result to your collection.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Situations/Compressed/IMG_2815.webp" alt="Generated words" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="situations-tips" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Tips</h3>
+                    <ul class="space-y-3 mb-6 list-disc list-inside text-gray-600 dark:text-gray-300">
+                        <li>You can run the same Situation multiple times with slightly different wording to discover new vocabulary.</li>
+                        <li>Generation typically takes about 30 seconds.</li>
+                    </ul>
+                </section>
+
+                <hr class="border-gray-200 dark:border-gray-800 my-16">
+
+                <section id="community" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">Community</h2>
+                    <p class="text-xl text-gray-500 dark:text-gray-400 mb-10 leading-relaxed">How Community Sets work and how you can contribute.</p>
+
+                    <h3 id="about-community-sets" class="scroll-mt-32 text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">About Community Sets</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Community Sets are shared vocabulary lists built by people who learn and use the language in real life. They are structured, searchable, and designed to be practiced directly in Vokabulo.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Community/Compressed/IMG_2832.webp" alt="Community sets" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="why-community-sets-are-different" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Why Community Sets are different</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Community Sets are tailored to everyday needs: your job, your hobbies, your city, or your travel plans.
+                    </p>
+
+                    <h3 id="a-community-effort" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">A community effort</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Each Community Set improves over time. People follow it, use it, and suggest better words. Like Wikipedia, quality comes from many small improvements.
+                    </p>
+
+                    <h3 id="role-of-curator" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">The role of the Curator</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        Every Community Set has a Curator who keeps it consistent and high-quality. Curators review suggestions to keep the set focused.
+                    </p>
+
+                    <h3 id="follow-and-auto-download" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Follow and auto-download</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        When you follow a Community Set, Vokabulo keeps it handy and can auto-download updates, so you always have the newest version.
+                    </p>
+                    <div class="my-8 rounded-[1.5rem] overflow-hidden shadow-card border border-gray-100 dark:border-gray-700">
+                        <img src="assets/Community/Compressed/IMG_2834.webp" alt="Follow set" class="w-full h-auto"/>
+                    </div>
+
+                    <h3 id="suggest-new-words-or-edits" class="scroll-mt-32 text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-white">Suggest new words or edits</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                        You can contribute by suggesting new words, improved translations, or edits. Your suggestions go to the Curator for review.
+                    </p>
+                </section>
+
+                <hr class="border-gray-200 dark:border-gray-800 my-16">
+
+                <section id="settings" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">App Reference</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                             <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Language Pairs</h4>
+                             <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside">
+                                 <li>Switch active pair</li>
+                                 <li>Set proficiency level</li>
+                                 <li>Export/Import words</li>
+                                 <li>Reset Learning Progress (Destructive)</li>
+                             </ul>
+                         </div>
+                         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                             <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Streak Management</h4>
+                             <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside">
+                                 <li>Pause streak (vacations)</li>
+                                 <li>Configure Study Days</li>
+                                 <li>Toggle Streak Languages</li>
+                             </ul>
+                         </div>
+                         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                             <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Voices</h4>
+                             <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside">
+                                 <li>Voice per learning language</li>
+                                 <li>Adjust speech speed</li>
+                             </ul>
+                         </div>
+                         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                             <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Account & Privacy</h4>
+                             <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside">
+                                 <li>Change Username/Email</li>
+                                 <li>Leaderboard privacy settings</li>
+                                 <li>Log out</li>
+                             </ul>
+                         </div>
+                         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                             <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Appearance & Language</h4>
+                             <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside">
+                                 <li>Night Mode / Auto-Night Mode</li>
+                                 <li>App Interface Language (English, German, French, etc.)</li>
+                             </ul>
+                         </div>
+                    </div>
+                </section>
+
+                <hr class="border-gray-200 dark:border-gray-800 my-16">
+
+                <section id="pro-tips" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Pro Tips</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 text-gray-900 dark:text-white">On Home Screen</h3>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                                <li>Tap the title to reset the date slider to today.</li>
+                                <li>Tap the flag or the V icon to jump straight into quiz mode.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 text-gray-900 dark:text-white">In Words</h3>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                                <li>If you have a tag filter active in Words, starting a quiz will automatically apply that tag.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 text-gray-900 dark:text-white">User Settings</h3>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                                <li>Tap the profile photo space to change your avatar.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+            </article>
+        </main>
+    </div>
+
+    <footer class="relative bg-black text-white py-24 px-6 md:px-14 lg:px-16 overflow-hidden mt-12 ">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 relative z-10">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">Build vocabulary<br/>for the situations<br/>you live every day</h2>
+                <p class="text-gray-400 mb-10 max-w-md">
+                    See what everyone is talking about! Download Vokabulo and discover the smartest way to build vocabulary from your real life.
+                </p>
+                <button class="open-modal-btn bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg group whitespace-nowrap">
+                    <i class="fab fa-apple text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="hidden sm:inline">Download app</span>
+                    <span class="sm:hidden">Download</span>
+                </button>
+            </div>
+            <div class="relative hidden md:block h-[400px] overflow-hidden marquee-mask select-none pointer-events-none md:pointer-events-auto">
+                <div class="absolute inset-0 flex flex-col justify-center gap-6 opacity-60 dark:opacity-40 grayscale hover:grayscale-0 transition-all duration-500 hover:opacity-100">
+                    
+                    <div class="flex gap-4 animate-marquee w-max hover:pause">
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Job Interview
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-purple-500"></span> Presentation
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Email Etiquette
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-orange-500"></span> Negotiation
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-cyan-500"></span> Networking
+                        </span>
+                        
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Job Interview
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-purple-500"></span> Presentation
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Email Etiquette
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-orange-500"></span> Negotiation
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-cyan-500"></span> Networking
+                        </span>
+                    </div>
+
+                    <div class="flex gap-4 animate-marquee-reverse w-max hover:pause">
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span> First Date
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Ordering Coffee
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Grocery Shopping
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-500"></span> Flirting
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-teal-500"></span> Gym Workout
+                        </span>
+
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span> First Date
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Ordering Coffee
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Grocery Shopping
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-500"></span> Flirting
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-teal-500"></span> Gym Workout
+                        </span>
+                    </div>
+
+                    <div class="flex gap-4 animate-marquee w-max hover:pause">
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-sky-500"></span> At the Airport
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-red-500"></span> Emergency
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-yellow-500"></span> Taxi Directions
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-violet-500"></span> Hotel Check-in
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-lime-500"></span> Asking Locals
+                        </span>
+
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-sky-500"></span> At the Airport
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-red-500"></span> Emergency
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-yellow-500"></span> Taxi Directions
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-violet-500"></span> Hotel Check-in
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-lime-500"></span> Asking Locals
+                        </span>
+                    </div>
+
+                    <div class="flex gap-4 animate-marquee-reverse w-max hover:pause">
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span> First Date
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Ordering Coffee
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Grocery Shopping
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-500"></span> Flirting
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-teal-500"></span> Gym Workout
+                        </span>
+
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span> First Date
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Ordering Coffee
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Grocery Shopping
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-500"></span> Flirting
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-teal-500"></span> Gym Workout
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-gray-800 mt-24 pt-8 flex flex-col md:flex-row justify-between items-center gap-8">
+    
+            <a href="#" class="block opacity-90 hover:opacity-100 transition-opacity">
+                <img src="assets/logo on white.svg" class="h-8 w-auto invert brightness-0" alt="Vokabulo">
+            </a>
+        
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-400 text-center">
+                <a class="hover:text-white transition-colors" href="#">Benefits</a>
+                <a class="hover:text-white transition-colors" href="#">Features</a>
+                <a class="hover:text-white transition-colors" href="#">Contact us</a>
+                <a class="hover:text-white transition-colors" href="#">Privacy policy</a>
+                <a class="hover:text-white transition-colors" href="#">Terms</a>
+            </div>
+        
+            <div class="flex gap-4 text-gray-400">
+                <a class="hover:text-white transition-colors" href="#"><i class="fab fa-twitter text-lg"></i></a>
+                <a class="hover:text-white transition-colors" href="#"><i class="fab fa-linkedin text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+/* Modern Navbar Glass Effect */
+.navbar-glass {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .navbar-glass {
+    background: rgba(17, 24, 39, 0.85);
+    border: 1px solid rgba(55, 65, 81, 0.3);
+}
+
+/* Navbar Scroll Effects */
+.navbar-glass.scrolled {
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dark .navbar-glass.scrolled {
+    background: rgba(17, 24, 39, 0.95);
+    border: 1px solid rgba(55, 65, 81, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* How It Works Section - Image Transition */
+#how-it-works-image {
+    transition: opacity 0.5s ease-in-out;
+    will-change: opacity;
+}
+
+/* How It Works Item Active State */
+.how-it-works-item.active {
+    background-color: rgba(74, 71, 253, 0.089); /* More saturated background for active state */
+}
+
+.dark .how-it-works-item.active {
+    background-color: rgba(71, 83, 253, 0.064); /* More saturated background for active state in dark mode */
+}
+
+/* How It Works Section - Icon Backgrounds */
+.how-it-works-icon-bg {
+    background-color: #FDE047; /* Default for the first icon (Capture words) */
+}
+
+.how-it-works-item:not(.active) .how-it-works-icon-bg {
+    background-color: #FAF5D7; /* Background for inactive icons (Capture words) */
+}
+
+.how-it-works-item:nth-child(2):not(.active) .how-it-works-icon-bg,
+.how-it-works-item:nth-child(3):not(.active) .how-it-works-icon-bg {
+    background-color: rgba(253, 224, 71, 0.2); /* Default for other icons (Organize, Reinforce) */
+}
+
+.dark .how-it-works-item:nth-child(2):not(.active) .how-it-works-icon-bg,
+.dark .how-it-works-item:nth-child(3):not(.active) .how-it-works-icon-bg {
+    background-color: rgba(234, 179, 8, 0.2); /* Dark mode default for other icons */
+}
+
+.how-it-works-item.active .how-it-works-icon-bg {
+    background-color: #FDE047 !important; /* Active icon background */
+}
+
+.dark .how-it-works-item.active .how-it-works-icon-bg {
+    background-color: #EAB308 !important; /* Dark mode active icon background */
+}
+
+.how-it-works-item.active .how-it-works-icon-bg i {
+    color: #FFFFFF !important; /* Active icon color - white */
+}
+
+.dark .how-it-works-item.active .how-it-works-icon-bg i {
+    color: #FFFFFF !important; /* Dark mode active icon color - white */
+}
+
+/* FAQ Accordion */
+.group p:not(.hidden) {
+    margin-top: 1rem; /* Add spacing above the text when visible */
+}
+
+
+ 
+
+
+
+
+
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+  
+  /* Dark mode scrollbar */
+  .dark ::-webkit-scrollbar-thumb {
+    background: #374151;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+  }
+  
+  /* Sidebar Active State */
+  .help-nav-items a.active {
+      color: #111827; /* gray-900 */
+      border-left-color: #3b82f6; /* blue-500 */
+      font-weight: 600;
+  }
+  
+  .dark .help-nav-items a.active {
+      color: #ffffff;
+      border-left-color: #60a5fa; /* blue-400 */
+  }
+  
+  /* Smooth Scrolling */
+  html {
+      scroll-behavior: smooth;
+  }
+  
+  /* Hide scrollbar for clean UI but allow scroll */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+  .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+  }
+  
+  /* Search Highlight */
+  .highlight-match {
+      background-color: rgba(59, 130, 246, 0.1);
+      border-radius: 4px;
+  }
+  
+  .hidden-by-search {
+      display: none !important;
+  }
+
+/* =========================================
+   DOWNLOAD MODAL STYLES
+   ========================================= */
+
+#download-modal {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#download-modal > div {
+    animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Modal close button hover effect */
+#modal-close:hover {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+/* QR Code container styling */
+#download-modal .bg-gradient-to-br {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+}
+
+.dark #download-modal .bg-gradient-to-br {
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+}
+
+/* Button hover effects for modal */
+#download-modal button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* =========================================
+   FOOTER MARQUEE ANIMATION
+   ========================================= */
+   @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+    animation: marquee 40s linear infinite reverse;
+}
+
+/* Pause animation on hover for better UX */
+.hover\:pause:hover .animate-marquee,
+.hover\:pause:hover .animate-marquee-reverse {
+    animation-play-state: paused;
+}
+
+/* Mask to fade the edges (optional but looks pro) */
+.marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+
+
+
+
+
+/* =========================================
+   SCROLL ANIMATIONS
+   ========================================= */
+
+/* 1. Capture Card Slide Up */
+.anim-capture-card {
+    opacity: 0;
+    transform: translateY(40px) rotate(-5deg); /* Start lower and rotated */
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy spring effect */
+}
+.anim-group.active .anim-capture-card {
+    opacity: 1;
+    transform: translateY(0) rotate(-5deg); /* End at original rotation */
+}
+
+/* 2. AI Sequence (Sequential Fade) */
+.anim-ai-step {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.5s ease-out;
+}
+.anim-group.active .anim-ai-step {
+    opacity: 1;
+    transform: translateX(0);
+}
+/* Delays for 1, 2, 3 sequence */
+.anim-group.active .anim-ai-step-1 { transition-delay: 0.1s; }
+.anim-group.active .anim-ai-step-2 { transition-delay: 0.3s; }
+.anim-group.active .anim-ai-step-3 { transition-delay: 0.5s; }
+
+/* 3. Chat Bubbles (Pop in) */
+.anim-chat-bubble {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.anim-group.active .anim-chat-bubble {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.anim-group.active .anim-chat-bubble-1 { transition-delay: 0.2s; }
+.anim-group.active .anim-chat-bubble-2 { transition-delay: 0.5s; }
+
+/* 4. Circular Progress (SVG Stroke Animation) */
+.progress-ring__circle {
+    transition: stroke-dashoffset 1.5s ease-out;
+    transform: rotate(-90deg); /* Start at top */
+    transform-origin: 50% 50%;
+}
+
+/* 5. Table Rows (Cascade Fade) */
+.anim-table-row {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease-out;
+}
+.anim-group.active .anim-table-row {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Staggered delays */
+.anim-group.active .anim-table-row:nth-child(1) { transition-delay: 0.1s; }
+.anim-group.active .anim-table-row:nth-child(2) { transition-delay: 0.2s; }
+.anim-group.active .anim-table-row:nth-child(3) { transition-delay: 0.3s; }
+.anim-group.active .anim-table-row:nth-child(4) { transition-delay: 0.4s; }

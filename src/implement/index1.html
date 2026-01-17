@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-x-hidden">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Vokabulo - Build vocabulary for real life</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-100 font-sans antialiased transition-colors duration-200 pt-16 overflow-x-hidden">
+    
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out" id="navbar">
+        <div id="navbar-bg" class="transition-all duration-300 relative w-full md:w-[95%] lg:w-full max-w-7xl mx-auto md:rounded-2xl md:mt-4">
+            <div class="flex items-center justify-between w-full gap-4 md:gap-8 px-6 py-4 md:px-8 md:py-4">
+                <div class="flex items-center gap-3">
+                    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg relative z-50">
+                        <i class="fas fa-bars text-white text-sm"></i>
+                    </button>
+                    <a href="index.html" class="block">
+                        <div class="flex items-center gap-2 font-bold text-xl tracking-tight text-gray-900 dark:text-white">
+                             <img src="assets/logo on white.svg" class="h-6 w-auto hidden sm:block dark:invert dark:brightness-0 dark:sepia-0" alt="Vokabulo">
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center gap-1">
+                    <!-- to highlight nav <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 transition-all duration-200">Home</a> -->
+                    <a href="#" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200">WHAT MAKES IT GREAT</a>
+                    <a href="how it works.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200">HOW IT WORKS</a>
+                    <a href="#" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200">BLOG</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" class="w-10 h-10 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button class="open-modal-btn bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg group whitespace-nowrap">
+                        <i class="fab fa-apple text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                        <span class="hidden sm:inline">Download app</span>
+                        <span class="sm:hidden">Download</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu absolute top-full left-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 shadow-xl p-4 opacity-0 invisible -translate-y-2 transition-all duration-300 ease-in-out z-40">
+            <div class="flex flex-col gap-2 max-w-7xl mx-auto px-6">
+                <a href="index.html" class="p-3 rounded-xl font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20">HOME</a>
+                <a href="#" class="p-3 rounded-xl font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition-colors">WHAT MAKES IT GREAT</a>
+                <a href="how it works.html" class="p-3 rounded-xl font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition-colors">HOW IT WORKS</a>
+                <a href="#" class="p-3 rounded-xl font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition-colors">BLOG</a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-24 pb-32 px-6 md:px-16 lg:px-6 md:flex md:items-center md:justify-between md:text-left max-w-7xl mx-auto">
+        <div class="max-w-xl z-10 relative md:w-1/2">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white leading-tight md:max-w-none">
+                Build vocabulary<br/>for real life
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mb-10 leading-relaxed md:max-w-md md:mx-0">
+                Capture words and phrases as you encounter them in books, videos, conversations, travel, or work. Powered by AI, Vokabulo turns messy notes into structured, meaningful vocabulary you actually remember.
+            </p>
+            <button class="open-modal-btn bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg group whitespace-nowrap">
+                <i class="fab fa-apple text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                <span class="hidden sm:inline">Download app</span>
+                <span class="sm:hidden">Download</span>
+            </button>
+        </div>
+        
+        <div class="mt-16 relative flex justify-center md:w-1/2 md:mt-0">
+            <div class="relative w-[250px] md:w-[300px] z-20 transform rotate-[-5deg] hover:rotate-0 transition-transform duration-500">
+                <div class="bg-black rounded-[2.5rem] p-2 shadow-xl">
+                    <div class="bg-surface-light dark:bg-surface-dark rounded-[2rem] overflow-hidden aspect-[9/19] relative">
+                        <div class="p-6 h-full flex flex-col">
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="text-xs font-bold">9:41</span>
+                                <div class="flex gap-1">
+                                    <div class="w-4 h-4 bg-black dark:bg-white rounded-full opacity-20"></div>
+                                    <div class="w-4 h-4 bg-black dark:bg-white rounded-full opacity-20"></div>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <p class="text-sm text-gray-500">Words Learned</p>
+                                <h3 class="text-3xl font-bold">1,247</h3>
+                            </div>
+                            <div class="bg-primary/20 p-4 rounded-2xl mb-4 flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg"><i class="fas fa-book"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm">This Week</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-300">+23 words</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3 flex-1 overflow-hidden">
+                                <p class="font-bold text-sm mb-2">Recent Words</p>
+                                <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center text-xs"><i class="fas fa-book-open"></i></div>
+                                        <div>
+                                            <p class="text-xs font-bold">serendipity</p>
+                                            <p class="text-[10px] text-gray-400">#reading</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-bold text-green-500">✓</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 bg-purple-100 text-purple-500 rounded-full flex items-center justify-center text-xs"><i class="fas fa-video"></i></div>
+                                        <div>
+                                            <p class="text-xs font-bold">ubiquitous</p>
+                                            <p class="text-[10px] text-gray-400">#video</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-bold text-green-500">✓</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-xs"><i class="fas fa-comments"></i></div>
+                                        <div>
+                                            <p class="text-xs font-bold">eloquent</p>
+                                            <p class="text-[10px] text-gray-400">#conversation</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-bold text-green-500">✓</span>
+                                </div>
+                            </div>
+                            <div class="mt-auto bg-black text-white p-3 rounded-xl text-center text-xs">
+                                Review time! 12 words due today
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -z-10 bottom-[-100px] left-[-100px] w-[600px] h-[600px] bg-gradient-to-tr from-[#E6D5C5] to-[#C8A68B] dark:from-blue-900/40 dark:to-purple-900/40 rounded-full opacity-40 blur-3xl"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">Learn words that<br/>matter to you</h2>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+                    Vokabulo helps you capture vocabulary from your real life—books you read, videos you watch, conversations you have, places you travel, and work you do. No generic courses, just words you'll actually use.
+                </p>
+                <button class="open-modal-btn bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg group whitespace-nowrap">
+                    <i class="fab fa-apple text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="hidden sm:inline">Download app</span>
+                    <span class="sm:hidden">Download</span>
+                </button>
+            </div>
+            <div class="order-1 md:order-2 relative">
+                <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
+                    <img alt="Woman smiling looking at phone" class="w-full h-auto object-cover max-h-[500px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu5Jac-TfMZYzZJS-OqicNiuIGJLpIiXmT8_59H-v4XC8CfTUgVb_71rEOIToEoN63J9yTLl_naG7o6JogbyEma2l2jBFB9B3t55W0XI5ysw2Vu59ImF_xSH2sFuAlzS4yLovsg9GVHJkRKpBpGZ1Dv8uSPXpcpwNy2ixoPry6PpK4LwJFPYMP-VDzAF55ERiwjRKH1fBm1_iYx4GACTZfdhPS8_eIJu0yH3brNw_yeEjOeXGMETs91fDSC-4EK0G_lDCqoK1ycjku"/>
+                </div>
+                <div class="absolute -left-10 bottom-10 z-20 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl max-w-xs w-full hidden md:block">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm font-bold text-gray-900 dark:text-white">Products</span>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between border-b dark:border-gray-700 pb-2">
+                            <span class="text-gray-600 dark:text-gray-300">serendipity</span>
+                            <span class="font-medium">#reading</span>
+                        </div>
+                        <div class="flex justify-between border-b dark:border-gray-700 pb-2">
+                            <span class="text-gray-600 dark:text-gray-300">ubiquitous</span>
+                            <span class="font-medium">#video</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 dark:text-gray-300">eloquent</span>
+                            <span class="font-medium">#conversation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative bg-primary rounded-[3rem] p-10 md:p-16 flex justify-center items-center">
+                <div class="bg-black rounded-[2.5rem] p-2 shadow-xl w-64 md:w-72 transform rotate-[-3deg]">
+                    <div class="bg-surface-light dark:bg-surface-dark rounded-[2rem] overflow-hidden aspect-[9/18] p-4 text-xs">
+                        <div class="flex justify-between items-center mb-4">
+                            <i class="fas fa-chevron-left"></i>
+                            <span class="font-bold">Add Word</span>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-xl mb-4">
+                            <div class="flex justify-between mb-2 font-bold text-sm">
+                                <span>New Vocabulary</span>
+                            </div>
+                            <div class="space-y-2 mt-4 text-gray-500">
+                                <div class="flex justify-between"><span>Word</span><span>serendipity</span></div>
+                                <div class="flex justify-between"><span>Context</span><span>From book</span></div>
+                                <div class="border-t border-dashed border-gray-300 my-2"></div>
+                                <div class="flex justify-between font-bold text-black dark:text-white"><span>Tags</span><span>#reading</span></div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary py-2 rounded-lg font-bold text-white mt-4">Save</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-gray-900 dark:text-white leading-tight">Build fluency where<br/>it matters most</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+                    <div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4" style="background-color: #2684FC;">
+                            <i class="fas fa-book text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Capture from real life</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Save words and phrases as you encounter them in books, videos, conversations, travel, or work.</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4" style="background-color: #2684FC;">
+                            <i class="fas fa-tags text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Organize with context</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Tag and categorize your vocabulary so you can find and review words when you need them.</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4" style="background-color: #2684FC;">
+                            <i class="fas fa-brain text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Remember with spaced repetition</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">AI-powered reviews help you retain vocabulary through scientifically-proven spaced repetition.</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4" style="background-color: #2684FC;">
+                            <i class="fas fa-magic text-white text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Turn messy notes into structure</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Our AI organizes your scattered vocabulary into meaningful, reviewable collections.</p>
+                    </div>
+                </div>
+                <div class="mt-10">
+                <button class="open-modal-btn bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg group whitespace-nowrap">
+                    <i class="fab fa-apple text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="hidden sm:inline">Download app</span>
+                    <span class="sm:hidden">Download</span>
+                </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="text-center py-16 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Vocabulary that fits your life</h2>
+    </div>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-white dark:bg-surface-dark rounded-[2rem] p-8 shadow-card flex flex-col justify-between h-full anim-group">
+                <div>
+                    <h3 class="text-xl font-bold mb-3">Capture Anywhere</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+                        Quickly add words and phrases from books, videos, conversations, travel, or work. Take a photo, type it in, or paste from anywhere.
+                    </p>
+                </div>
+                <div class="mt-4 rounded-xl overflow-hidden bg-blue-100 dark:bg-blue-900/30 h-48 relative flex items-center justify-center">
+                    <i class="fas fa-camera text-6xl text-blue-500 opacity-50"></i>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="anim-capture-card w-32 h-40 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded shadow-sm flex flex-col items-center justify-center p-2">
+                            <div class="w-20 h-2 bg-gray-200 dark:bg-gray-600 mb-2 rounded"></div>
+                            <div class="w-16 h-1 bg-gray-200 dark:bg-gray-600 mb-1 rounded"></div>
+                            <div class="w-16 h-1 bg-gray-200 dark:bg-gray-600 mb-1 rounded"></div>
+                            <div class="w-16 h-1 bg-gray-200 dark:bg-gray-600 mb-4 rounded"></div>
+                            <div class="w-24 h-8 bg-blue-500 rounded opacity-20"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-background-light dark:bg-surface-dark rounded-[2rem] p-8 shadow-card flex flex-col justify-between h-full anim-group">
+                <div>
+                    <h3 class="text-xl font-bold mb-3">AI Organization</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 max-w-lg leading-relaxed">
+                        Our AI engine instantly organizes your vocabulary, extracting context, suggesting tags, and structuring your messy notes.
+                    </p>
+                </div>
+                <div class="mt-4 flex flex-col md:flex-row items-center gap-6 overflow-hidden">
+                    <div class="anim-ai-step anim-ai-step-1 relative w-32 h-32 flex-shrink-0 bg-white dark:bg-gray-800 rounded-xl shadow p-2 flex items-center justify-center">
+                        <i class="fas fa-receipt text-4xl text-gray-300"></i>
+                    </div>
+                    <div class="anim-ai-step anim-ai-step-2 flex-shrink-0 text-primary text-2xl"><i class="fas fa-arrow-right"></i></div>
+                    <div class="anim-ai-step anim-ai-step-3 flex flex-wrap gap-3">
+                        <span class="bg-white dark:bg-gray-800 px-4 py-2 rounded-full text-xs font-bold shadow-sm">Context</span>
+                        <span class="bg-white dark:bg-gray-800 px-4 py-2 rounded-full text-xs font-bold shadow-sm">Definition</span>
+                        <span class="bg-white dark:bg-gray-800 px-4 py-2 rounded-full text-xs font-bold shadow-sm">Tags</span>
+                        <span class="bg-white dark:bg-gray-800 px-4 py-2 rounded-full text-xs font-bold shadow-sm">Source</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-background-light dark:bg-surface-dark rounded-[2rem] p-8 shadow-card flex flex-col justify-between h-full anim-group">
+                <div>
+                    <h3 class="text-xl font-bold mb-3">Review with spaced repetition</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+                        Reinforce your vocabulary with AI-powered spaced repetition. Review words at optimal intervals to maximize retention.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="anim-chat-bubble anim-chat-bubble-1 bg-black text-white p-4 rounded-xl text-sm mb-4 w-3/4 ml-auto">
+                        Review words from #reading tag
+                    </div>
+                    <div class="anim-chat-bubble anim-chat-bubble-2 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm flex gap-3 items-center">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold">12 words ready for review...</div>
+                            <div class="h-20 w-full bg-gray-100 dark:bg-gray-700 mt-2 rounded flex items-center justify-center text-xs text-gray-400">
+                                [Review Cards]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-background-light dark:bg-surface-dark rounded-[2rem] p-8 shadow-card flex flex-col justify-between h-full anim-group" id="progress-card">
+                <div>
+                    <h3 class="text-xl font-bold mb-3">Track your progress</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+                        See your vocabulary growth, review statistics, and progress across different tags and sources.
+                    </p>
+                </div>
+                <div class="flex justify-center items-center h-48 bg-white dark:bg-gray-800 rounded-2xl shadow-sm relative">
+                    <div class="relative w-32 h-32 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="64" cy="64" r="56" stroke="currentColor" stroke-width="12" fill="transparent" class="text-black dark:text-gray-700" />
+                            <circle id="progress-circle" cx="64" cy="64" r="56" stroke="currentColor" stroke-width="12" fill="transparent" 
+                                    stroke-dasharray="351" 
+                                    stroke-dashoffset="351" 
+                                    stroke-linecap="round"
+                                    class="text-primary progress-ring__circle" />
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                            <span class="block text-xl font-bold">1,247</span>
+                            <span class="block text-xs text-gray-500">words</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-background-light dark:bg-surface-dark rounded-[2rem] p-8 shadow-card flex flex-col md:flex-row items-center gap-8 lg:col-span-2 anim-group">
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold mb-3">Smart Tagging & Context</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
+                        Vokabulo automatically suggests tags and preserves context for each word, making it easier to organize and find vocabulary when you need it.
+                    </p>
+                    <button class="open-modal-btn bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg group whitespace-nowrap">
+                        <i class="fab fa-apple text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                        <span class="hidden sm:inline">Download app</span>
+                        <span class="sm:hidden">Download</span>
+                    </button>
+                </div>
+                <div class="flex-1 w-full bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm text-sm">
+                    <div class="grid grid-cols-[1fr_80px_80px] border-b dark:border-gray-700 pb-2 mb-2 font-bold text-xs text-gray-400 uppercase">
+                        <span class="text-left">Tag</span>
+                        <span class="text-center">Words</span>
+                        <span class="text-center">Mastered</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="anim-table-row grid grid-cols-[1fr_80px_80px] items-center">
+                            <span class="font-medium text-left">#reading</span>
+                            <span class="text-gray-500 text-center">342</span>
+                            <span class="font-bold text-center">287</span>
+                        </div>
+                        <div class="anim-table-row grid grid-cols-[1fr_80px_80px] items-center">
+                            <span class="font-medium text-left">#video</span>
+                            <span class="text-gray-500 text-center">198</span>
+                            <span class="font-bold text-center">156</span>
+                        </div>
+                        <div class="anim-table-row grid grid-cols-[1fr_80px_80px] items-center">
+                            <span class="font-medium text-left">#conversation</span>
+                            <span class="text-gray-500 text-center">156</span>
+                            <span class="font-bold text-center">134</span>
+                        </div>
+                        <div class="anim-table-row grid grid-cols-[1fr_80px_80px] items-center">
+                            <span class="font-medium text-left">#travel</span>
+                            <span class="text-gray-500 text-center">89</span>
+                            <span class="font-bold text-center">72</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16">
+            <div class="bg-primary rounded-[3rem] min-h-[400px] md:min-h-[500px] overflow-hidden relative flex items-center justify-center">
+                <img id="how-it-works-image" src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop" alt="Capture words" class="w-full h-full object-cover transition-opacity duration-500 absolute inset-0">
+            </div>
+            <div class="flex flex-col justify-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">How it works?</h2>
+                <p class="text-gray-500 dark:text-gray-400 mb-12">Learn how Vokabulo helps you build vocabulary from your real life and remember it for good.</p>
+                <div class="space-y-10">
+                    <div class="how-it-works-item flex gap-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-xl transition-colors active" data-image="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop" data-step="1">
+                        <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 transition-colors" style="background-color: #2684FC;">
+                            <i class="fas fa-book text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Capture words as you encounter them</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Save words and phrases from books, videos, conversations, travel, or work as you come across them.</p>
+                        </div>
+                    </div>
+                    <div class="how-it-works-item flex gap-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-xl transition-colors" data-image="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=600&fit=crop" data-step="2">
+                        <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 transition-colors" style="background-color: #2684FC;">
+                            <i class="fas fa-tags text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Organize with context and tags</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">AI helps structure your vocabulary with context, tags, and meaningful organization.</p>
+                        </div>
+                    </div>
+                    <div class="how-it-works-item flex gap-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-xl transition-colors" data-image="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=600&fit=crop" data-step="3">
+                        <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 transition-colors" style="background-color: #2684FC;">
+                            <i class="fas fa-redo text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Reinforce with spaced repetition</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Review words at optimal intervals to build long-term retention and fluency.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12">
+                <button class="open-modal-btn bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg group whitespace-nowrap">
+                    <i class="fab fa-apple text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="hidden sm:inline">Download app</span>
+                    <span class="sm:hidden">Download</span>
+                </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">Why people love Vokabulo</h2>
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm break-inside-avoid">
+                <div class="flex items-center gap-3 mb-4">
+                    <img alt="User" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQivzhu4d25G0MnnLlAGoEvuFiPhS9ir7WqLHy7dtOKq3q54WMdzUH30Qq0LkIPf05vKE8xVwciWFrjZYzsTViHUjWKgVPYHUCMamjfJMR-yZg5EF5U3Msg5zIbWJ2SvwmNG6g0J0C5QsgJbiGyaD7cGVinDHzSnFRi_E_HbBdUxAfZpYtcUpJRlSzu3GlAzQ-AmtBHly3m4aDQR8FTR0TgUkK-uttRdwW3VJ8s2MFf8irgX4iIZ5E7ZkNgPRMWSVrbQeZjn0QefjP"/>
+                    <div>
+                        <div class="font-bold text-sm">JamesCodes</div>
+                        <div class="text-xs text-gray-400">Technical Lead</div>
+                    </div>
+                </div>
+                <div class="flex text-yellow-400 text-xs mb-3">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    I'm impressed with Vokabulo. I've tried many vocabulary apps, but this is the first one that lets me capture words from my actual life—books I'm reading, conversations I have. The spaced repetition actually works, and I'm remembering words I never could before.
+                </p>
+                <div class="mt-4 text-xs text-gray-400">Mar 8, 2025</div>
+            </div>
+            <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm break-inside-avoid">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold">B</div>
+                    <div>
+                        <div class="font-bold text-sm">busayo</div>
+                        <div class="text-xs text-gray-400">@AmoweO</div>
+                    </div>
+                    <i class="fab fa-twitter ml-auto text-gray-400"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Just hit 500 words in Vokabulo! The way it organizes my vocabulary from different sources is amazing.</p>
+                <div class="bg-black rounded-xl p-4 text-white text-xs mb-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <i class="fas fa-bars"></i>
+                        <span class="font-bold">Vokabulo</span>
+                        <div class="w-6 h-6 bg-gray-600 rounded-full"></div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="text-gray-400 text-[10px]">Hello, Amowe Olubusayo 👋</div>
+                        <div class="flex justify-between items-end mt-2">
+                            <div>
+                                <div class="text-[10px] text-gray-400">Words</div>
+                                <div class="text-xl font-bold">500</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-gray-400">Tags</div>
+                                <div class="text-lg font-bold">12</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-gray-400">
+                    <span><i class="far fa-heart mr-1"></i> 14</span>
+                    <span>Mar 28, 2024</span>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm break-inside-avoid">
+                <div class="flex items-center gap-3 mb-4">
+                    <img alt="User" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACXXOhV9bNhFC3jXQpoiQkbxCAkX8ltG4vbaaWMSrywOuy6caYgm8_dPc8CIZRkF1Ph48WnP3kibPM7059LTmc2FmADRm6k6WqxOfYrmJAtUIqN96kvGRctiAGS5jpxy5_9CxF5DIDRq7CRN_m0YnYchWvbbNhez94R3bF9LRHoN9BzMOAI6xvPE9b5TGJQL4cldPrHlHRRBLKxSIP2T_xVVLyH9SVAbhcf0n7eW4WqRZ0tBvUH1olRcnOOtO_jwiTT_AaCCVIFLiH"/>
+                    <div>
+                        <div class="font-bold text-sm">Vee</div>
+                    </div>
+                </div>
+                <div class="flex text-yellow-400 text-xs mb-3">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    I'm really impressed with Vokabulo's approach to vocabulary learning. After using it to capture words from my daily reading and conversations, I can actually see my fluency improving. The spaced repetition feature is a game-changer.
+                </p>
+                <div class="mt-4 text-xs text-gray-400">Jul 29, 2024</div>
+            </div>
+            <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm break-inside-avoid">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">V</div>
+                    <div>
+                        <div class="font-bold text-sm">Vishwas</div>
+                        <div class="text-xs text-gray-400">Director, Educational Institute</div>
+                    </div>
+                </div>
+                <div class="flex text-yellow-400 text-xs mb-3">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                    After trying many vocabulary apps, I found that Vokabulo's AI organization is truly a marvel! As someone learning a new language, I appreciate how it turns my messy notes into structured vocabulary I can actually review and remember.
+                </p>
+                <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    The tagging system helps me organize words by context, and the spaced repetition ensures I'm building real fluency, not just memorizing lists.
+                </p>
+                <div class="mt-4 text-xs text-gray-400">Jul 25, 2024</div>
+            </div>
+            <div class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm break-inside-avoid">
+                <div class="flex items-center gap-3 mb-4">
+                    <img alt="User" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOOiYfingpXMnLT2MXcST3tWBhQ0Gw9fkD1fPWhFzNGn22lQNIWMhZAc1D4zRPbMaD567oDAdUThsJRnVHC6cqHY84sMMGmLvPB6-hR8rfuDHoxGN-nuuBGbC7ygAOr5nFZPJMeGXFNJkUgE_cdaM-C5PQNE8eVTD_Iaj0_jrtdZ7YPdYFmmwt9Jio8ZxyO5F55QRUG6FmZ6YrWT5vCoHQSwYK_N0oW6jZEPPqqpokFjPtSaq7Pcmw7JBT83hebODzoxYSx64Gjy0a"/>
+                    <div>
+                        <div class="font-bold text-sm">Oluwaferanmi</div>
+                        <div class="text-xs text-gray-400">@BabalolaLove</div>
+                    </div>
+                    <i class="fab fa-twitter ml-auto text-gray-400"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                    I've been using Vokabulo for a while. It's the best vocabulary app I've found—capturing words from real life, organizing them with context, and helping me remember them through spaced repetition.
+                </p>
+                <div class="bg-black rounded-xl overflow-hidden aspect-[9/16] relative mb-4">
+                    <div class="absolute inset-0 flex items-center justify-center text-white text-xs opacity-50">App Screenshot Preview</div>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-gray-400">
+                    <span><i class="far fa-heart mr-1"></i> 1</span>
+                    <span>Mar 2, 2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 md:px-14 lg:px-20 max-w-4xl mx-auto" id="faq-section">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">Frequently asked questions</h2>
+        <div class="space-y-4">
+            
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-800 dark:shadow-none cursor-pointer group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-gray-900 dark:text-white pr-8 text-lg">What is Vokabulo and how does it work?</h3>
+                    <div class="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-plus text-blue-500 text-sm transition-transform duration-300 group-hover:rotate-90"></i>
+                    </div>
+                </div>
+                <p class="text-gray-500 dark:text-gray-400 mt-4 leading-relaxed hidden">
+                    Vokabulo is a context-first vocabulary app. Instead of learning random words, you capture words from your real life—books, movies, conversations—and our AI organizes them with definitions, tags, and examples. You then review them using a smart spaced-repetition system.
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-800 dark:shadow-none cursor-pointer group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-gray-900 dark:text-white pr-8 text-lg">Why should I care about Vokabulo?</h3>
+                    <div class="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-plus text-blue-500 text-sm transition-transform duration-300 group-hover:rotate-90"></i>
+                    </div>
+                </div>
+                <p class="text-gray-500 dark:text-gray-400 mt-4 leading-relaxed hidden">
+                    Because standard language apps often teach you words you don't need (like "the apple is red"). Vokabulo helps you master the specific vocabulary relevant to your job, hobbies, and lifestyle, making fluency feel much closer and more personal.
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-800 dark:shadow-none cursor-pointer group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-gray-900 dark:text-white pr-8 text-lg">How do I add words to Vokabulo?</h3>
+                    <div class="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-plus text-blue-500 text-sm transition-transform duration-300 group-hover:rotate-90"></i>
+                    </div>
+                </div>
+                <p class="text-gray-500 dark:text-gray-400 mt-4 leading-relaxed hidden">
+                    It's easy! You can type a word, paste a phrase, or even take a photo of text. You can also use the "Share" extension on your phone to send text directly from other apps (like a browser or ebook reader) into Vokabulo.
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-800 dark:shadow-none cursor-pointer group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-gray-900 dark:text-white pr-8 text-lg">Can I try out Vokabulo on a Free Trial?</h3>
+                    <div class="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-plus text-blue-500 text-sm transition-transform duration-300 group-hover:rotate-90"></i>
+                    </div>
+                </div>
+                <p class="text-gray-500 dark:text-gray-400 mt-4 leading-relaxed hidden">
+                    Yes! Vokabulo offers a generous free tier that lets you add and review a limited number of words daily. You can also start a 7-day free trial of Vokabulo Pro to unlock unlimited words, AI generation, and cloud sync.
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-800 dark:shadow-none cursor-pointer group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-gray-900 dark:text-white pr-8 text-lg">How does Vokabulo's spaced repetition work?</h3>
+                    <div class="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-plus text-blue-500 text-sm transition-transform duration-300 group-hover:rotate-90"></i>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-4 leading-relaxed hidden">
+                    Vokabulo uses AI-powered spaced repetition to help you review words at optimal intervals. Based on scientific research on memory retention, the app schedules reviews when you're most likely to forget, maximizing long-term retention. Words you know well appear less frequently, while words you're struggling with appear more often until you master them.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="relative bg-black text-white py-24 px-6 md:px-14 lg:px-16 overflow-hidden mt-12 ">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 relative z-10">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">Build vocabulary<br/>for the situations<br/>you live every day</h2>
+                <p class="text-gray-400 mb-10 max-w-md">
+                    See what everyone is talking about! Download Vokabulo and discover the smartest way to build vocabulary from your real life.
+                </p>
+                <button class="open-modal-btn bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg group whitespace-nowrap">
+                    <i class="fab fa-apple text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="hidden sm:inline">Download app</span>
+                    <span class="sm:hidden">Download</span>
+                </button>
+            </div>
+            <div class="relative hidden md:block h-[400px] overflow-hidden marquee-mask select-none pointer-events-none md:pointer-events-auto">
+                <div class="absolute inset-0 flex flex-col justify-center gap-6 opacity-60 dark:opacity-40 grayscale hover:grayscale-0 transition-all duration-500 hover:opacity-100">
+                    
+                    <div class="flex gap-4 animate-marquee w-max hover:pause">
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Job Interview
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-purple-500"></span> Presentation
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Email Etiquette
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-orange-500"></span> Negotiation
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-cyan-500"></span> Networking
+                        </span>
+                        
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Job Interview
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-purple-500"></span> Presentation
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Email Etiquette
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-orange-500"></span> Negotiation
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-cyan-500"></span> Networking
+                        </span>
+                    </div>
+
+                    <div class="flex gap-4 animate-marquee-reverse w-max hover:pause">
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span> First Date
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Ordering Coffee
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Grocery Shopping
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-500"></span> Flirting
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-teal-500"></span> Gym Workout
+                        </span>
+
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span> First Date
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Ordering Coffee
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Grocery Shopping
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-500"></span> Flirting
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-teal-500"></span> Gym Workout
+                        </span>
+                    </div>
+
+                    <div class="flex gap-4 animate-marquee w-max hover:pause">
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-sky-500"></span> At the Airport
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-red-500"></span> Emergency
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-yellow-500"></span> Taxi Directions
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-violet-500"></span> Hotel Check-in
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-lime-500"></span> Asking Locals
+                        </span>
+
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-sky-500"></span> At the Airport
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-red-500"></span> Emergency
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-yellow-500"></span> Taxi Directions
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-violet-500"></span> Hotel Check-in
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-lime-500"></span> Asking Locals
+                        </span>
+                    </div>
+
+                    <div class="flex gap-4 animate-marquee-reverse w-max hover:pause">
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span> First Date
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Ordering Coffee
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Grocery Shopping
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-500"></span> Flirting
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-teal-500"></span> Gym Workout
+                        </span>
+
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span> First Date
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Ordering Coffee
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Grocery Shopping
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-500"></span> Flirting
+                        </span>
+                        <span class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-sm font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-teal-500"></span> Gym Workout
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-gray-800 mt-24 pt-8 flex flex-col md:flex-row justify-between items-center gap-8">
+    
+            <a href="#" class="block opacity-90 hover:opacity-100 transition-opacity">
+                <img src="assets/logo on white.svg" class="h-8 w-auto invert brightness-0" alt="Vokabulo">
+            </a>
+        
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-400 text-center">
+                <a class="hover:text-white transition-colors" href="#">Benefits</a>
+                <a class="hover:text-white transition-colors" href="#">Features</a>
+                <a class="hover:text-white transition-colors" href="#">Contact us</a>
+                <a class="hover:text-white transition-colors" href="#">Privacy policy</a>
+                <a class="hover:text-white transition-colors" href="#">Terms</a>
+            </div>
+        
+            <div class="flex gap-4 text-gray-400">
+                <a class="hover:text-white transition-colors" href="#"><i class="fab fa-twitter text-lg"></i></a>
+                <a class="hover:text-white transition-colors" href="#"><i class="fab fa-linkedin text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

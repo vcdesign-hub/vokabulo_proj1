@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { loadHomeCopy } from '../utils/home';
+import '../styles/global.css'; /* <--- ADD THIS LINE HERE */
 
 // Redirect root to /en/ by rendering the same content
 const lang = 'en';
@@ -9,346 +10,125 @@ const { hero, philosophy, featureBlocks, features, testimonials, faq, cta } = ho
 ---
 
 <BaseLayout title={hero.title} description={hero.description} currentLang={lang} currentPath="">
-  <style is:global>
-    /* Index page-specific styles */
-    :root {
-      --radius: 1rem;
-      --accent: #0ea5e9;
-    }
+  
 
-    body {
-      background: radial-gradient(circle at 10% 20%, #f0f4ff 0, rgba(240, 244, 255, 0) 26%),
-        radial-gradient(circle at 80% 0%, #eef6ff 0, rgba(238, 246, 255, 0) 20%),
-        var(--bg);
-      color: var(--ink);
-    }
+<section
+id="hero"
+class="hero-animate relative w-full px-4 pt-32 pb-16 md:px-6 md:pt-40 md:pb-20 min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20"
+>
+<div class="relative z-10 flex max-w-6xl flex-col md:flex-row items-center justify-center gap-12 md:gap-24 w-full mx-auto">
+  
+  <div class="w-full md:w-auto text-left space-y-6 max-w-2xl pb-20 md:pb-32">
+        
+    <h1
+      class="animate-fade-up text-5xl font-bold leading-[1.3] tracking-tight text-slate-900 sm:text-6xl sm:leading-[1.3]"
+      style="animation-delay: 0.2s;"
+      set:html={hero.heroHeadingHtml}
+    />
 
-    .card {
-      border: 1px solid var(--border);
-      background: #ffffff;
-      border-radius: calc(var(--radius) * 1.1);
-      box-shadow: var(--shadow, 0 18px 48px rgba(15, 23, 42, 0.05));
-    }
+    <p 
+      class="animate-fade-up text-lg text-slate-700 sm:text-xl max-w-lg leading-relaxed"
+      style="animation-delay: 0.4s;"
+    >
+      {hero.heroSubheading}
+    </p>
 
-    .btn-primary {
-      background: linear-gradient(135deg, #0f172a, #111827 60%, #0b1224);
-      color: #ffffff;
-      border-radius: 9999px;
-      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, filter 150ms ease;
-    }
+    <div 
+      class="animate-fade-up flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-start pt-2"
+      style="animation-delay: 0.6s;"
+    >
+      <a class="btn-accent px-8 py-4 text-base font-semibold shadow-lg hover:shadow-xl transition-all" href={hero.ctaHref}>
+        {hero.ctaText}
+      </a>
+    </div>
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
-      filter: brightness(1.02);
-    }
+  </div>
 
-    .btn-ghost {
-      border-radius: 9999px;
-      transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease, color 150ms ease;
-    }
-
-    .btn-ghost:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 22px rgba(15, 23, 42, 0.09);
-      border-color: #cbd5e1;
-      color: #0f172a;
-    }
-
-    .hero-panel {
-      position: relative;
-      border-radius: 28px;
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, #ffffff 0%, #f8fbff 60%, #f6f9ff 100%);
-      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.07);
-      overflow: hidden;
-    }
-
-    .hero-panel::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08), transparent 45%),
-        radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.06), transparent 35%);
-      pointer-events: none;
-    }
-
-    .nav-gradient {
-      background: linear-gradient(135deg, #f56b43 0%, #f6976f 35%, #9bb7c8 100%);
-    }
-
-    .hero-spot {
-      position: relative;
-      overflow: hidden;
-      border-radius: 28px;
-      background: radial-gradient(110% 120% at 75% 25%, rgba(247, 94, 43, 0.35), rgba(247, 94, 43, 0) 60%),
-        radial-gradient(120% 120% at 20% 30%, rgba(144, 167, 192, 0.5), rgba(144, 167, 192, 0) 65%),
-        #f7f8fb;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.14);
-    }
-
-    .hero-spot::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
-      pointer-events: none;
-    }
-
-    .hero-card {
-      border-radius: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      background: #ffffff;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-    }
-
-    .feature-visual {
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      background: radial-gradient(120% 140% at 75% 25%, rgba(247, 94, 43, 0.35), rgba(247, 94, 43, 0) 55%),
-        radial-gradient(120% 140% at 20% 30%, rgba(144, 167, 192, 0.45), rgba(144, 167, 192, 0) 65%),
-        #f8fafc;
-      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.12);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not(.theme-dark) {
-        color-scheme: dark;
-        --bg: #0b1220;
-        --border: #1f2937;
-        --ink: #e5e7eb;
-        --muted: #94a3b8;
-        --accent: #38bdf8;
-      }
-    }
-
-    .theme-dark {
-      color-scheme: dark;
-      --bg: #0b1220;
-      --border: #1f2937;
-      --ink: #e5e7eb;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
-    }
-
-    .theme-dark body {
-      background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.08) 0, rgba(34, 211, 238, 0) 26%),
-        radial-gradient(circle at 80% 0%, rgba(248, 113, 113, 0.12) 0, rgba(248, 113, 113, 0) 22%),
-        #0b1220;
-      color: var(--ink);
-    }
-
-    .theme-dark .card,
-    .theme-dark .hero-card,
-    .theme-dark .feature-visual {
-      background: #0f1628;
-      border-color: #1f2937;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-    }
-
-    .theme-dark .hero-spot {
-      background: radial-gradient(110% 120% at 75% 25%, rgba(247, 94, 43, 0.25), rgba(247, 94, 43, 0) 60%),
-        radial-gradient(120% 120% at 20% 30%, rgba(56, 189, 248, 0.28), rgba(56, 189, 248, 0) 65%),
-        #0c1628;
-      border-color: #1f2937;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
-    }
-
-    .theme-dark .btn-primary {
-      background: linear-gradient(135deg, #1f2937, #0f172a 60%, #0b1224);
-    }
-
-    .theme-dark .btn-ghost {
-      color: #e2e8f0;
-      border-color: #243042;
-    }
-
-    .theme-dark .btn-ghost.bg-white {
-      background: #0f172a;
-    }
-
-    .theme-dark .btn-ghost:hover {
-      border-color: #334155;
-    }
-
-    .theme-dark .text-slate-900,
-    .theme-dark .text-slate-800,
-    .theme-dark .text-slate-700 {
-      color: #e5e7eb !important;
-    }
-
-    .theme-dark .text-slate-600,
-    .theme-dark .text-slate-500 {
-      color: #cbd5e1 !important;
-    }
-
-    .theme-dark .bg-white {
-      background-color: #0f1628 !important;
-    }
-
-    .theme-dark .bg-slate-50 {
-      background-color: #111827 !important;
-    }
-
-    .theme-dark .border-slate-200,
-    .theme-dark .border-slate-100 {
-      border-color: #1f2937 !important;
-    }
-
-    .theme-dark .shadow-soft {
-      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
-    }
-
-    /* Nav ambient animation */
-    .nav-animate {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .nav-animate::before,
-    .nav-animate::after {
-      content: '';
-      position: absolute;
-      inset: -120%;
-      background: radial-gradient(circle at 30% 30%, rgba(247, 126, 90, 0.28), transparent 45%),
-        radial-gradient(circle at 70% 20%, rgba(147, 180, 210, 0.28), transparent 40%),
-        radial-gradient(circle at 50% 70%, rgba(255, 205, 178, 0.2), transparent 50%);
-      filter: blur(10px);
-      animation: heroFloat 24s ease-in-out infinite;
-      z-index: -1;
-    }
-
-    .nav-animate::after {
-      animation-direction: reverse;
-      animation-duration: 30s;
-      opacity: 0.7;
-    }
-
-    .theme-dark .nav-animate::before,
-    .theme-dark .nav-animate::after {
-      background: radial-gradient(circle at 30% 30%, rgba(248, 113, 113, 0.22), transparent 45%),
-        radial-gradient(circle at 70% 20%, rgba(56, 189, 248, 0.2), transparent 40%),
-        radial-gradient(circle at 50% 70%, rgba(147, 197, 253, 0.14), transparent 50%);
-    }
-
-    /* Hero ambient animation */
-    .hero-animate {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .hero-animate::before,
-    .hero-animate::after {
-      content: '';
-      position: absolute;
-      inset: -30%;
-      background: radial-gradient(circle at 30% 30%, rgba(247, 126, 90, 0.35), transparent 45%),
-        radial-gradient(circle at 70% 20%, rgba(147, 180, 210, 0.35), transparent 40%),
-        radial-gradient(circle at 40% 70%, rgba(255, 205, 178, 0.28), transparent 50%);
-      filter: blur(8px);
-      animation: heroFloat 18s ease-in-out infinite;
-      z-index: -1;
-    }
-
-    .hero-animate::after {
-      animation-direction: reverse;
-      animation-duration: 24s;
-      opacity: 0.7;
-    }
-
-    @keyframes heroFloat {
-      0% {
-        transform: translate3d(-6%, -4%, 0) scale(1);
-      }
-      50% {
-        transform: translate3d(6%, 6%, 0) scale(1.05);
-      }
-      100% {
-        transform: translate3d(-6%, -4%, 0) scale(1);
-      }
-    }
-
-    .theme-dark .hero-animate::before,
-    .theme-dark .hero-animate::after {
-      background: radial-gradient(circle at 30% 30%, rgba(248, 113, 113, 0.28), transparent 45%),
-        radial-gradient(circle at 70% 20%, rgba(56, 189, 248, 0.25), transparent 40%),
-        radial-gradient(circle at 40% 70%, rgba(147, 197, 253, 0.18), transparent 50%);
-    }
-  </style>
-
-  <section
-    id="hero"
-    class="hero-animate relative w-full px-4 pt-32 pb-16 md:px-6 md:pt-40 md:pb-20 min-h-screen flex flex-col items-center justify-center"
-  >
-    <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
-      <div class="space-y-4">
-        <h1
-          class="text-5xl font-bold leading-[1.4] tracking-tight text-slate-900 sm:text-6xl sm:leading-[1.4]"
-          set:html={hero.heroHeadingHtml}
-        />
-        <p class="text-lg text-slate-700 sm:text-xl">
-          {hero.heroSubheading}
-        </p>
+  <div class="relative z-10 flex-shrink-0 perspective-container">
+  
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px] -z-10 animate-pulse-slow"></div>
+  
+    <div class="relative mx-auto translate-y-12 animate-phone-entry">
+      
+      <div 
+        class="floating-badge" 
+        style="top: 280px; left: -60px; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 2.0s;"
+      >
+        <div class="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full text-blue-600">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div>
+          <div class="badge-title">+5 New</div>
+          <div class="badge-sub">Words learned</div>
+        </div>
       </div>
-      <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <a class="btn-accent px-6 py-3 text-sm font-semibold shadow-soft" href={hero.ctaHref}>
-          {hero.ctaText}
-        </a>
+  
+      <div 
+        class="floating-badge" 
+        style="top: 140px; right: -50px; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 2.4s;"
+      >
+        <div class="flex items-center justify-center w-8 h-8 bg-orange-100 rounded-full text-orange-500">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.061 1.061l1.59-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.061-1.06l-1.59-1.591a.75.75 0 10-1.061 1.061l1.59 1.59zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.591 1.59z" /></svg>
+        </div>
+        <div>
+          <div class="badge-title">14 Days</div>
+          <div class="badge-sub">On fire! 🔥</div>
+        </div>
       </div>
-      <div class="relative z-10 mx-auto mt-10 max-w-lg">
-        <div class="hero-card p-5 sm:p-6">
-          <div class="flex items-center justify-between text-sm text-slate-500">
-            <span>Your week</span>
-            <span class="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">Focus mode</span>
-          </div>
-          <div class="mt-4 space-y-2">
-            <p class="text-3xl font-semibold text-slate-900">+184 new words</p>
-            <p class="text-sm text-slate-600">Targets met across all lists.</p>
-          </div>
-          <div class="mt-6 space-y-3">
-            <div class="flex items-center justify-between rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
-              <div>
-                <p class="text-sm font-semibold text-slate-900">Spanish A2</p>
-                <p class="text-xs text-slate-500">12/20 today ✓</p>
-              </div>
-              <div class="text-sm font-semibold text-emerald-600">+8</div>
+  
+      <div 
+        class="floating-badge" 
+        style="bottom: 80px; right: -70px; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 2.8s;"
+      >
+        <div class="flex items-center justify-center w-8 h-8 bg-green-100 rounded-full text-green-600">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div>
+          <div class="badge-title">Review</div>
+          <div class="badge-sub">Complete</div>
+        </div>
+      </div>
+  
+      <div class="iphone-13">
+        <div class="outside-border">
+          <div class="silencer"></div>
+          <div class="volume-up"></div>
+          <div class="volume-down"></div>
+          <div class="button-on"></div>
+          <div class="inside-border">
+            <div class="screen-content">
+              <video 
+                id="hero-video"
+                src="/images/home/hero-video.mp4" 
+                loop 
+                muted 
+                playsinline 
+                poster="/images/home/hero phone.jpg"
+                class="w-full h-full object-cover rounded-[32px]"
+              ></video>
             </div>
-            <div class="flex items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3 shadow-sm">
-              <div>
-                <p class="text-sm font-semibold text-slate-900">French B1</p>
-                <p class="text-xs text-slate-500">Review in 3 hrs</p>
-              </div>
-              <div class="text-sm font-semibold text-sky-600">Scheduled</div>
-            </div>
-            <div class="flex items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3 shadow-sm">
-              <div>
-                <p class="text-sm font-semibold text-slate-900">Italian basics</p>
-                <p class="text-xs text-slate-500">Next session tomorrow</p>
-              </div>
-              <div class="text-sm font-semibold text-slate-500">Queued</div>
-            </div>
-          </div>
-          <div class="mt-6 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
-            <div class="flex items-center justify-between text-sm text-slate-600">
-              <span>Streak</span>
-              <span>14 days</span>
-            </div>
-            <div class="mt-2 h-2 rounded-full bg-white shadow-inner">
-              <div class="h-2 w-3/4 rounded-full bg-slate-900"></div>
-            </div>
+            <div class="bottom-line"></div>
           </div>
         </div>
       </div>
+  
     </div>
-  </section>
+  </div>
+  
+ 
+
+
+  </div>
+
+</div>
+</section>
 
   <main class="mx-auto max-w-5xl space-y-16 px-4 pb-16 pt-12 md:space-y-24 md:px-6 md:pt-16">
+    
+    <!---our philosophy--><!---our philosophy--><!---our philosophy--><!---our philosophy-->
     <section id="philosophy" class="space-y-10 px-4 pt-8 md:pt-12">
       <div class="mx-auto max-w-4xl space-y-3 text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">{philosophy.kicker}</p>
+        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-slate-600">{philosophy.kicker}</p>
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
           {philosophy.heading}
         </h2>
@@ -356,150 +136,255 @@ const { hero, philosophy, featureBlocks, features, testimonials, faq, cta } = ho
           {philosophy.subheading}
         </p>
       </div>
+
       <div class="mx-auto grid max-w-5xl gap-4 md:grid-cols-3">
-        <article class="card flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft">
-          <div class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-soft">⌁</div>
-          <h3 class="text-xl font-semibold text-slate-900">{philosophy.cards[0]?.title}</h3>
-          <p class="text-lg leading-relaxed text-slate-700">
+        
+        <article class="card js-visual-trigger flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft group">
+          <div class="bg-accent inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-soft">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+          </div>
+
+          <h3 class="text-lg font-semibold text-slate-900">{philosophy.cards[0]?.title}</h3>
+          <p class="text-sm text-slate-600">
             {philosophy.cards[0]?.body}
           </p>
+
+          
+          <div class="card-visual">
+            <div class="visual-note anim-hidden" style="animation-delay: 0.1s;">
+              <div class="note-line medium"></div>
+              <div class="note-line"></div>
+              <div class="note-line short"></div>
+              <div class="note-badge anim-hidden absolute bottom-3 right-3 h-6 w-6 rounded flex items-center justify-center shadow-sm" style="animation-delay: 0.6s;">
+                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            </div>
+          </div>
         </article>
-        <article class="card flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft">
-          <div class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-soft">✓</div>
-          <h3 class="text-xl font-semibold text-slate-900">{philosophy.cards[1]?.title}</h3>
-          <p class="text-lg leading-relaxed text-slate-700">
+
+        <article class="card js-visual-trigger flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft group">
+          <div class="bg-accent inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-soft">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 6"/><path d="M5 15.1A2 2 0 0 0 6.5 16c1.1 0 2-.9 2-2 0-.6.9-1 1.5-1 1.1 0 2 1.3 2 4v2"/><path d="M12 22v-7a2.9 2.9 0 0 0-2.9-2.9c-.9 0-1.6.4-2.1 1.1"/><path d="M22 13a10.9 10.9 0 0 0-2.1-5.7"/><path d="M16 22v-5.5a2.5 2.5 0 0 0-5 0v3.5"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">{philosophy.cards[1]?.title}</h3>
+          <p class="text-sm text-slate-600">
             {philosophy.cards[1]?.body}
           </p>
+
+          <div class="card-visual">
+             <div class="visual-flow">
+               <div class="flow-icon anim-hidden" style="animation-delay: 0.1s;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+               </div>
+               <div class="flow-arrow anim-hidden" style="animation-delay: 0.4s;">
+                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+               </div>
+               <div class="flow-list">
+                 <div class="flow-tag anim-hidden" style="animation-delay: 0.7s;">Context</div>
+                 <div class="flow-tag anim-hidden" style="animation-delay: 0.9s;">Definition</div>
+                 <div class="flow-tag anim-hidden" style="animation-delay: 1.1s;">Source</div>
+               </div>
+             </div>
+          </div>
         </article>
-        <article class="card flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft">
-          <div class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-soft">⚡</div>
-          <h3 class="text-xl font-semibold text-slate-900">{philosophy.cards[2]?.title}</h3>
-          <p class="text-lg leading-relaxed text-slate-700">
+
+        <article class="card js-visual-trigger flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft group">
+          <div class="bg-accent inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-soft">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">{philosophy.cards[2]?.title}</h3>
+          <p class="text-sm text-slate-600">
             {philosophy.cards[2]?.body}
           </p>
+
+          <div class="card-visual">
+            <div class="visual-community">
+              <div class="comm-bubble left anim-hidden" style="animation-delay: 0.2s;">
+                Has anyone seen "Travel 101"?
+              </div>
+              <div class="comm-bubble right anim-hidden" style="animation-delay: 1.2s;">
+                I just shared it! 🔥
+              </div>
+            </div>
+          </div>
         </article>
+
       </div>
     </section>
 
+
+
+
+
+    <!---the magic of vokabulo--><!---the magic of vokabulo--><!---the magic of vokabulo--><!---the magic of vokabulo-->
     <section id="feature-blocks" class="space-y-12 pt-4 md:space-y-16">
       <div class="space-y-3 text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">{featureBlocks.kicker}</p>
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-600">{featureBlocks.kicker}</p>
         <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{featureBlocks.heading}</h2>
         <p class="text-lg leading-relaxed text-slate-700 sm:text-xl">
           {featureBlocks.subheading}
         </p>
       </div>
 
-      <div class="space-y-10 md:space-y-14">
-        <div class="grid items-center gap-8 md:grid-cols-2">
-          <div class="order-1 space-y-4 md:order-1 md:pr-6">
-            <div class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
-              {featureBlocks.blocks[0]?.label}
+      <div class="features-accordion mx-auto max-w-6xl">
+        
+        {featureBlocks.blocks.map((block, index) => (
+          <div 
+            class={`feature-card group ${index === 0 ? 'active' : ''}`} 
+            data-index={index}
+          >
+            
+            <div class="f-inactive-layer hidden md:flex">
+              <div class="f-icon-circle">
+                {index === 0 && (
+                  /* Capture/Feather */
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+                )}
+                {index === 1 && (
+                  /* Organize/Sparkles */
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                )}
+                {index === 2 && (
+                  /* Review/Clock */
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                )}
+                {index === 3 && (
+                  /* Community/Users */
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                )}
+              </div>
+              
+              <div class="f-inactive-title">
+                {block.title}
+              </div>
             </div>
-            <h3 class="text-2xl font-semibold text-slate-900">{featureBlocks.blocks[0]?.title}</h3>
-            <p class="text-base text-slate-600">
-              {featureBlocks.blocks[0]?.body}
-            </p>
-            <div class="flex flex-wrap gap-2 text-sm text-slate-700">
-              {featureBlocks.blocks[0]?.pills?.map((pill, idx) => (
-                <span
-                  class:list={[
-                    'rounded-full',
-                    'px-3',
-                    'py-1',
-                    idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white'
-                  ]}
-                >
-                  {pill}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div class="order-2 feature-visual h-64 w-full md:order-2"></div>
-        </div>
 
-        <div class="grid items-center gap-8 md:grid-cols-2">
-          <div class="order-2 feature-visual h-64 w-full md:order-1"></div>
-          <div class="order-1 space-y-4 md:order-2 md:pl-6">
-            <div class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
-              {featureBlocks.blocks[1]?.label}
-            </div>
-            <h3 class="text-2xl font-semibold text-slate-900">{featureBlocks.blocks[1]?.title}</h3>
-            <p class="text-base text-slate-600">
-              {featureBlocks.blocks[1]?.body}
-            </p>
-            <div class="flex flex-wrap gap-2 text-sm text-slate-700">
-              {featureBlocks.blocks[1]?.pills?.map((pill, idx) => (
-                <span
-                  class:list={[
-                    'rounded-full',
-                    'px-3',
-                    'py-1',
-                    idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white'
-                  ]}
-                >
-                  {pill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
+            <div class="f-active-layer">
+              
+              <div class="f-image-top">
+                {index === 0 && (
+                  <img src="/images/blog/eye.jpg" alt="Capture Context" class="w-full h-full object-cover" />
+                )}
+                {index === 1 && (
+                  <img src="/images/blog/Hand reaching.jpg" alt="Organize" class="w-full h-full object-cover" />
+                )}
+                {index === 2 && (
+                  <img src="/images/blog/Moon rising.jpg" alt="Review" class="w-full h-full object-cover" />
+                )}
+                {index === 3 && (
+                  <img src="/images/blog/Ocean.jpg" alt="Community" class="w-full h-full object-cover" />
+                )}
+              </div>
 
-        <div class="grid items-center gap-8 md:grid-cols-2">
-          <div class="order-1 space-y-4 md:order-1 md:pr-6">
-            <div class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
-              {featureBlocks.blocks[2]?.label}
-            </div>
-            <h3 class="text-2xl font-semibold text-slate-900">{featureBlocks.blocks[2]?.title}</h3>
-            <p class="text-base text-slate-600">
-              {featureBlocks.blocks[2]?.body}
-            </p>
-            <div class="flex flex-wrap gap-2 text-sm text-slate-700">
-              {featureBlocks.blocks[2]?.pills?.map((pill, idx) => (
-                <span
-                  class:list={[
-                    'rounded-full',
-                    'px-3',
-                    'py-1',
-                    idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white'
-                  ]}
-                >
-                  {pill}
-                </span>
-              ))}
+              <div class="f-content-bottom">
+                <div class="space-y-4">
+                  <div class="bg-accent inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-white shadow-sm w-fit">
+                    {block.label}
+                  </div>
+                  
+                  <h3 class="text-2xl font-semibold text-slate-900">{block.title}</h3>
+                  <p class="text-base text-slate-600">
+                    {block.body}
+                  </p>
+                  
+                  <div class="flex flex-wrap gap-2 text-sm">
+                    {block.pills?.map((pill, idx) => (
+                      <span
+                        class:list={[
+                          'rounded-full', 'px-3', 'py-1', 
+                          idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white text-slate-600'
+                        ]}
+                      >
+                        {pill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
             </div>
           </div>
-          <div class="order-2 feature-visual h-64 w-full md:order-2"></div>
-        </div>
+        ))}
 
-        <div class="grid items-center gap-8 md:grid-cols-2">
-          <div class="order-2 feature-visual h-64 w-full md:order-1"></div>
-          <div class="order-1 space-y-4 md:order-2 md:pl-6">
-            <div class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
-              {featureBlocks.blocks[3]?.label}
-            </div>
-            <h3 class="text-2xl font-semibold text-slate-900">{featureBlocks.blocks[3]?.title}</h3>
-            <p class="text-base text-slate-600">
-              {featureBlocks.blocks[3]?.body}
-            </p>
-            <div class="flex flex-wrap gap-2 text-sm text-slate-700">
-              {featureBlocks.blocks[3]?.pills?.map((pill, idx) => (
-                <span
-                  class:list={[
-                    'rounded-full',
-                    'px-3',
-                    'py-1',
-                    idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white'
-                  ]}
-                >
-                  {pill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
+
+
+
+    <!---words marqueee-->
+    <section id="vocab-marquee" class="py-20 overflow-hidden space-y-8">
+      
+      <div class="text-center space-y-3 px-4">
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-600">Endless Possibilities</p>
+        <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">From casual slang to boardroom fluency.</h2>
+      </div>
+
+      <div class="marquee-container">
+        <div class="marquee-track marquee-left">
+          {[...Array(2)].map(() => (
+            <div class="flex gap-6">
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                <span>Order a flat white with oat milk</span>
+              </div>
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                <span>Negotiate a salary increase</span>
+              </div>
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                <span>Ask for a refund kindly</span>
+              </div>
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                <span>Explain a gap in your resume</span>
+              </div>
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                <span>Describe medical symptoms</span>
+              </div>
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                <span>Discuss climate change nuances</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="marquee-container">
+        <div class="marquee-track marquee-right">
+          {[...Array(2)].map(() => (
+            <div class="flex gap-6">
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                <span>Understand local slang</span>
+              </div>
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                <span>Flirt respectfully</span>
+              </div>
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                <span>Debate art history</span>
+              </div>
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                <span>Write a formal email</span>
+              </div>
+              <div class="vocab-pill">
+                <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                <span>Give directions to a taxi</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+    </section>
+
+
+
 
     <section id="features" class="space-y-8">
       <div class="flex flex-col gap-3">
@@ -605,5 +490,8 @@ const { hero, philosophy, featureBlocks, features, testimonials, faq, cta } = ho
         </a>
       </div>
     </section>
+    <script>
+      import "../scripts/global.js";
+    </script>
   </main>
 </BaseLayout>
