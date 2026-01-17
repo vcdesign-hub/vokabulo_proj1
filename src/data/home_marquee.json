@@ -1,0 +1,36 @@
+{
+    "philosophyVisuals": {
+      "flowTags": ["Context", "Definition", "Source"],
+      "chat": {
+        "question": "Has anyone seen \"Travel 101\"?",
+        "reply": "I just shared it! 🔥"
+      }
+    },
+    "vocabMarquee": {
+      "kicker": "Endless Possibilities",
+      "heading": "From casual slang to boardroom fluency.",
+      "row1": [
+        { "text": "Order a flat white with oat milk", "icon": "coffee" },
+        { "text": "Negotiate a salary increase", "icon": "briefcase" },
+        { "text": "Ask for a refund kindly", "icon": "receipt" },
+        { "text": "Explain a gap in your resume", "icon": "clock" },
+        { "text": "Describe medical symptoms", "icon": "heart" },
+        { "text": "Discuss climate change nuances", "icon": "globe" }
+      ],
+      "row2": [
+        { "text": "Understand local slang", "icon": "message" },
+        { "text": "Flirt respectfully", "icon": "heart" },
+        { "text": "Debate art history", "icon": "palette" },
+        { "text": "Write a formal email", "icon": "mail" },
+        { "text": "Give directions to a taxi", "icon": "map" },
+        { "text": "Talk about your childhood", "icon": "user" }
+      ]
+    },
+    "heroBadges": {
+      "card1": { "title": "+5 New", "sub": "Words learned" },
+      "card2": { "title": "14 Days", "sub": "On fire! 🔥" },
+      "card3": { "title": "Review", "sub": "Complete" }
+    }
+  }
+
+
