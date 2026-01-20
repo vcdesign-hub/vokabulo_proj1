@@ -1,4 +1,9 @@
 /* Index page-specific styles */
+/**
+#0f1628 card background
+
+#1f2937 border color
+**/
 :root {
   --radius: 1rem;
   /* UPDATED: The "Vokabulo Orange" from your Hero Button */
@@ -841,6 +846,149 @@ body {
 
 
 
+
+
+/* --- FEATURE TABS (Left Image / Right Text) --- */
+
+.feature-tabs-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .feature-tabs-container {
+    grid-template-columns: 1fr 1fr; /* 50/50 Split */
+    gap: 4rem;
+    min-height: 500px; /* Ensure height for images */
+  }
+}
+
+/* LEFT SIDE: Image Container */
+.f-tab-image-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  /* border: 1px solid rgba(255,255,255,0.5); */
+}
+
+@media (min-width: 768px) {
+  .f-tab-image-container {
+    height: 100%;
+    min-height: 500px;
+    order: 1; /* Left side */
+  }
+}
+
+/* The Images (Stacked on top of each other) */
+.f-tab-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.7s ease;
+  transform: scale(1.05);
+}
+
+/* Active Image is visible */
+.f-tab-img.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 10;
+}
+
+/* RIGHT SIDE: List Items */
+.f-tab-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .f-tab-list {
+    order: 2; /* Right side */
+    padding-left: 1rem;
+  }
+}
+
+/* The Clickable Text Block */
+.f-tab-btn {
+  text-align: left;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid transparent; /* Invisible border by default */
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.6; /* Dimmed by default */
+}
+
+.theme-dark .f-tab-btn {
+  color: #94a3b8;
+}
+
+/* Hover State */
+.f-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0.8;
+}
+.theme-dark .f-tab-btn:hover {
+  background: rgba(30, 41, 59, 0.5);
+}
+
+/* Active State (Selected) */
+.f-tab-btn.active {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  opacity: 1; /* Fully visible */
+  transform: translateX(10px); /* Slight slide right */
+  /* border-left: 4px solid var(--accent);  */
+}
+
+.theme-dark .f-tab-btn.active {
+  background: #0f1628;
+  border-color: #1f2937;
+  /* border-left-color: var(--accent); */
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+  color: #f8fafc;
+}
+
+/* Title & Body Styling */
+.f-tab-btn h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+.f-tab-btn p {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.theme-dark .f-tab-btn h3 { color: #f1f5f9; }
+.theme-dark .f-tab-btn p { color: #94a3b8; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --- VOCABULARY MARQUEE SECTION --- */
 
 .marquee-container {
@@ -925,4 +1073,442 @@ body {
 /* Pause on hover so users can read */
 .marquee-container:hover .marquee-track {
   animation-play-state: paused;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- PERSPECTIVE SCROLL STYLES --- */
+
+.perspective-viewport {
+  perspective: 2000px; 
+  overflow: visible !important; 
+  width: 100%;
+}
+
+.scroll-stage {
+  transform-style: preserve-3d;
+  width: 100%;
+  padding: 0 20px;
+  pointer-events: none;
+}
+.scroll-stage * {
+  pointer-events: auto;
+}
+
+/* The Group moves together */
+.ipad-group {
+  transform-style: preserve-3d;
+  transform: rotateX(25deg) scale(0.9);
+  transition: transform 0.1s linear; 
+}
+
+/* The Frame */
+.ipad-pro-frame {
+  width: 100%; 
+  max-width: 700px;
+  aspect-ratio: 14/8;
+  background: #121212;
+  border-radius: 28px;
+  padding: 10px;
+  /* box-shadow: 
+    0 50px 100px -20px rgba(0,0,0,0.6),
+    0 30px 60px -30px rgba(0,0,0,0.4),
+    inset 0 0 0 2px rgba(255,255,255,0.1); */
+  /* Ensure it sits behind the floating cards if needed */
+  z-index: 10; 
+}
+
+.ipad-bezel {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+/* Floating Cards */
+.floating-card {
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+
+
+/* --- SEQUENCE STYLE SLIDER --- */
+
+.app-showcase-section {
+  position: relative;
+  width: 100%;
+  /* background: #0b1220; */
+  padding: 6rem 0;
+  
+  /* RESET TO VISIBLE: We handle the scrollbar in the body tag now */
+  overflow: visible; 
+}
+
+.showcase-slider-wrapper {
+  width: 100vw; 
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  
+  /* Allow cards to bleed out freely */
+  overflow: visible; 
+}
+
+.showcase-track {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding-left: 50vw; 
+  will-change: transform;
+}
+
+.showcase-slide {
+  /* WIDTH: Wide enough for Split Layout */
+  width: 85vw; /* Mobile */
+  max-width: 1000px; /* Desktop */
+  
+  /* ASPECT RATIO: Rectangular */
+  aspect-ratio: 16/10; 
+  
+  flex-shrink: 0;
+  transform: scale(0.92);
+  opacity: 0.5; /* Slightly more visible side cards */
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: center center;
+}
+
+@media (min-width: 768px) {
+  .showcase-slide {
+    width: 70vw; /* Desktop: Allows peek on both sides */
+    aspect-ratio: 21/9; /* Cinematic split */
+  }
+}
+
+/* Active State */
+.showcase-slide.active {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 10;
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+}
+
+.slide-card {
+  width: 100%;
+  height: 100%;
+  background: #32371f;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #1f2937;
+}
+
+/* Navigation Buttons */
+.slider-nav-btn {
+  width: 56px;
+  height: 56px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.slider-nav-btn:hover {
+  background: white;
+  color: #0f1115;
+  border-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- HYPERLINE STYLE CARDS --- */
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .case-study-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.case-card {
+  position: relative;
+  /* Portrait aspect ratio like the reference */
+  aspect-ratio: 4/5; 
+  border-radius: 12px;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  background: #0f172a; /* Fallback color */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Background Image */
+.case-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: -2;
+}
+
+.case-card:hover .case-card-img {
+  transform: scale(1.05);
+}
+
+/* The Dark Gradient Overlay */
+.case-overlay {
+  position: absolute;
+  inset: 0;
+  /* Strong black gradient from bottom */
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.5) 50%, transparent 100%);
+  z-index: -1;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.case-card:hover .case-overlay {
+  opacity: 1;
+}
+
+/* Content Positioning */
+.case-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Arrow Animation */
+.case-link-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  transition: color 0.2s;
+}
+
+.case-card:hover .case-link-group {
+  color: #ffffff;
+}
+
+.case-arrow {
+  transition: transform 0.3s ease;
+}
+
+.case-card:hover .case-arrow {
+  transform: translateX(4px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Animation Keyframes */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); } /* Slightly stronger float */
+}
+
+@keyframes slide-right {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
+/* Utility Classes */
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite; /* Slower, smoother float */
+}
+
+.animate-bounce-subtle {
+  animation: float-slow 3s ease-in-out infinite;
+}
+
+.animate-slide-right {
+  animation: slide-right 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- RESPONSIVE OPTIMIZATIONS --- */
+
+/* 1. HERO BADGES RESPONSIVE POSITIONS */
+/* Default (Mobile First - Hidden or Tucked in) */
+.badge-pos-1 { top: 240px; left: -20px; z-index: 50; }
+.badge-pos-2 { top: 100px; right: -20px; z-index: 50; }
+.badge-pos-3 { bottom: 60px; right: -20px; z-index: 50; }
+
+/* Tablet & Up: Expand outwards */
+@media (min-width: 768px) {
+  .badge-pos-1 { top: 280px; left: -60px; }
+  .badge-pos-2 { top: 140px; right: -50px; }
+  .badge-pos-3 { bottom: 80px; right: -70px; }
+}
+
+/* 2. PHONE SCALING ON MOBILE */
+/* Prevents horizontal scroll on 320px devices */
+.hero-phone-container {
+  transform: scale(0.85); 
+  transform-origin: center top;
+}
+@media (min-width: 450px) {
+  .hero-phone-container { transform: scale(1); }
+}
+
+/* 3. IPAD SHOWCASE ADJUSTMENTS */
+
+
+
+@media (max-width: 1024px){
+  .ipad-pro-frame {
+    max-width: 100%;
+    aspect-ratio: 13/7; /* Better for mobile video */
+    
+  }
+}
+
+@media (min-width: 1025px){
+  .ipad-pro-frame {
+    max-width: 100%;
+    aspect-ratio: 14/8; /* Better for mobile video */
+  }
+}
+
+
+/* 4. FOOTER TYPOGRAPHY CLAMP */
+/* Ensures "EVERYTHING GREAT" doesn't break on tiny screens */
+.footer-mega-text {
+  font-size: clamp(2.5rem, 8vw, 6rem); /* Min 2.5rem, Pref 8vw, Max 6rem */
+  line-height: 1;
+}
+
+
+
+
+@media (min-width: 491px) and (max-width: 1024px) {
+  .floating-badge {
+    display: none !important;
+  }
+}
+
+
+
+/* 5. FAQ STICKY FIX FOR TABLETS */
+@media (min-width: 1024px) {
+  .faq-sticky-col {
+    position: sticky;
+    top: 6rem;
+    height: fit-content;
+  }
 }

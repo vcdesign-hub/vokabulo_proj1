@@ -21,10 +21,22 @@
   },
   "homepage": "https://github.com/sapnho/vokabulo_landingpage#readme",
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@astrojs/vercel": "^9.0.3",
+    "@react-three/fiber": "^9.5.0",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
     "astro": "^5.16.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.562.0",
     "marked": "^17.0.1",
-    "sharp": "^0.34.5"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "sharp": "^0.34.5",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.6.1",

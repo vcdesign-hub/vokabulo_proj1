@@ -11,19 +11,22 @@ const lang = 'en';
 const home = loadHomeCopy('en');
 
 // 2. DESTRUCTURE THE ORIGINAL CONTENT (Required for HTML)
-const { hero, philosophy, featureBlocks, features, testimonials, faq, cta } = home;
+const { hero, philosophy, featureBlocks, features, cta } = home;
 
 // 3. DESTRUCTURE THE NEW JSON DATA (Only do this once)
-const { philosophyVisuals, vocabMarquee, heroBadges } = homeData;
+const { philosophyVisuals, vocabMarquee, heroBadges, featureShowcase, bentoGrid,caseStudies,testimonials,faq } = homeData;
+
+// Import the newly installed component using the alias or relative path
+import Antigravity from '../components/Antigravity.jsx';
 ---
 
 <BaseLayout title={hero.title} description={hero.description} currentLang={lang} currentPath="">
   
   <section
     id="hero"
-    class="hero-animate relative w-full px-4 pt-32 pb-16 md:px-6 md:pt-40 md:pb-20 min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20"
+    class="hero-animate relative w-full px-6 pt-32 pb-20 md:px-16 md:pt-40 md:pb-32 lg:px-24 min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20"
   >
-    <div class="relative z-10 flex max-w-6xl flex-col md:flex-row items-center justify-center gap-12 md:gap-24 w-full mx-auto">
+    <div class="relative z-10 flex max-w-7xl flex-col md:flex-row items-center justify-center gap-12 md:gap-24 w-full mx-auto">
       
       <div class="w-full md:w-auto text-left space-y-6 max-w-2xl pb-20 md:pb-32">
         <h1
@@ -43,8 +46,7 @@ const { philosophyVisuals, vocabMarquee, heroBadges } = homeData;
           class="animate-fade-up flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-start pt-2"
           style="animation-delay: 0.6s;"
         >
-          <a class="btn-accent px-8 py-4 text-base font-semibold shadow-lg hover:shadow-xl transition-all" href={hero.ctaHref}>
-            {hero.ctaText}
+          <a class="bg-accent text-white px-8 py-3 rounded-full font-bold text-sm shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2" href={hero.ctaHref}>Discover more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
@@ -120,11 +122,13 @@ const { philosophyVisuals, vocabMarquee, heroBadges } = homeData;
     </div>
   </section>
 
-  <main class="mx-auto max-w-5xl space-y-16 px-4 pb-16 pt-12 md:space-y-24 md:px-6 md:pt-16">
+  <main class="mx-auto max-w-7xl space-y-20 px-6 pt-12 pb-20 md:space-y-32 md:px-16 md:pt-16 lg:px-24">
     
-    <section id="philosophy" class="space-y-10 px-4 pt-8 md:pt-12">
+    <section id="philosophy" class="space-y-10">
       <div class="mx-auto max-w-4xl space-y-3 text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-slate-600">{philosophy.kicker}</p>
+        <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/50 backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+          {philosophy.kicker}
+        </div>
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
           {philosophy.heading}
         </h2>
@@ -134,15 +138,12 @@ const { philosophyVisuals, vocabMarquee, heroBadges } = homeData;
       </div>
 
       <div class="mx-auto grid max-w-5xl gap-4 md:grid-cols-3">
-        
         <article class="card js-visual-trigger flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft group">
           <div class="bg-accent inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-soft">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
           </div>
           <h3 class="text-lg font-semibold text-slate-900">{philosophy.cards[0]?.title}</h3>
-          <p class="text-sm text-slate-600">
-            {philosophy.cards[0]?.body}
-          </p>
+          <p class="text-sm text-slate-600">{philosophy.cards[0]?.body}</p>
           <div class="card-visual">
             <div class="visual-note anim-hidden" style="animation-delay: 0.1s;">
               <div class="note-line medium"></div>
@@ -160,9 +161,7 @@ const { philosophyVisuals, vocabMarquee, heroBadges } = homeData;
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 6"/><path d="M5 15.1A2 2 0 0 0 6.5 16c1.1 0 2-.9 2-2 0-.6.9-1 1.5-1 1.1 0 2 1.3 2 4v2"/><path d="M12 22v-7a2.9 2.9 0 0 0-2.9-2.9c-.9 0-1.6.4-2.1 1.1"/><path d="M22 13a10.9 10.9 0 0 0-2.1-5.7"/><path d="M16 22v-5.5a2.5 2.5 0 0 0-5 0v3.5"/></svg>
           </div>
           <h3 class="text-lg font-semibold text-slate-900">{philosophy.cards[1]?.title}</h3>
-          <p class="text-sm text-slate-600">
-            {philosophy.cards[1]?.body}
-          </p>
+          <p class="text-sm text-slate-600">{philosophy.cards[1]?.body}</p>
           <div class="card-visual">
              <div class="visual-flow">
                <div class="flow-icon anim-hidden" style="animation-delay: 0.1s;">
@@ -177,7 +176,7 @@ const { philosophyVisuals, vocabMarquee, heroBadges } = homeData;
                  ))}
                </div>
              </div>
-          </div>
+           </div>
         </article>
 
         <article class="card js-visual-trigger flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft group">
@@ -185,9 +184,7 @@ const { philosophyVisuals, vocabMarquee, heroBadges } = homeData;
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <h3 class="text-lg font-semibold text-slate-900">{philosophy.cards[2]?.title}</h3>
-          <p class="text-sm text-slate-600">
-            {philosophy.cards[2]?.body}
-          </p>
+          <p class="text-sm text-slate-600">{philosophy.cards[2]?.body}</p>
           <div class="card-visual">
             <div class="visual-community">
               <div class="comm-bubble left anim-hidden" style="animation-delay: 0.2s;">
@@ -197,192 +194,366 @@ const { philosophyVisuals, vocabMarquee, heroBadges } = homeData;
                 {philosophyVisuals.chat.reply}
               </div>
             </div>
-          </div>
+           </div>
         </article>
-
       </div>
     </section>
 
     <section id="feature-blocks" class="space-y-12 pt-4 md:space-y-16">
       <div class="space-y-3 text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-600">{featureBlocks.kicker}</p>
+        <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/50 backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+          {featureBlocks.kicker}
+        </div>
         <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{featureBlocks.heading}</h2>
         <p class="text-lg leading-relaxed text-slate-700 sm:text-xl">
           {featureBlocks.subheading}
         </p>
       </div>
 
-      <div class="features-accordion mx-auto max-w-6xl">
-        {featureBlocks.blocks.map((block, index) => (
-          <div class={`feature-card group ${index === 0 ? 'active' : ''}`} data-index={index}>
-            <div class="f-inactive-layer hidden md:flex">
-              <div class="f-icon-circle">
-                {index === 0 && <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>}
-                {index === 1 && <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>}
-                {index === 2 && <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>}
-                {index === 3 && <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+      <div class="mx-auto max-w-6xl feature-tabs-container">
+        <div class="f-tab-image-container">
+          <img src="/images/blog/eye.jpg" alt={featureBlocks.blocks[0].title} class="f-tab-img active" data-index="0" />
+          <img src="/images/blog/Hand reaching.jpg" alt={featureBlocks.blocks[1].title} class="f-tab-img" data-index="1" />
+          <img src="/images/blog/Moon rising.jpg" alt={featureBlocks.blocks[2].title} class="f-tab-img" data-index="2" />
+          <img src="/images/blog/Ocean.jpg" alt={featureBlocks.blocks[3].title} class="f-tab-img" data-index="3" />
+        </div>
+
+        <div class="f-tab-list">
+          {featureBlocks.blocks.map((block, index) => (
+            <button 
+              class={`f-tab-btn group ${index === 0 ? 'active' : ''}`} 
+              data-index={index}
+              aria-label={`View details for ${block.title}`}
+            >
+              <div class="flex items-center gap-4 mb-2">
+                 <div class="bg-accent inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-soft flex-shrink-0">
+                    {index === 0 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>}
+                    {index === 1 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20"/><path d="M2 12h20"/></svg>}
+                    {index === 2 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>}
+                    {index === 3 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+                 </div>
+                  <h3 class="text-lg font-bold m-0 text-slate-900 group-hover:text-slate-700 transition-colors">{block.title}</h3>
               </div>
-              <div class="f-inactive-title">{block.title}</div>
-            </div>
-            <div class="f-active-layer">
-              <div class="f-image-top">
-                {index === 0 && (
-                  <img 
-                    src="/images/blog/eye.jpg" 
-                    alt={block.title}  
-                    class="w-full h-full object-cover" 
-                  />
-                )}
-                {index === 1 && (
-                  <img 
-                    src="/images/blog/Hand reaching.jpg" 
-                    alt={block.title} 
-                    class="w-full h-full object-cover" 
-                  />
-                )}
-                {index === 2 && (
-                  <img 
-                    src="/images/blog/Moon rising.jpg" 
-                    alt={block.title} 
-                    class="w-full h-full object-cover" 
-                  />
-                )}
-                {index === 3 && (
-                  <img 
-                    src="/images/blog/Ocean.jpg" 
-                    alt={block.title} 
-                    class="w-full h-full object-cover" 
-                  />
-                )}
-              </div>
-              <div class="f-content-bottom">
-                <div class="space-y-4">
-                  <div class="bg-accent inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-white shadow-sm w-fit">
-                    {block.label}
+              <p class="text-sm md:text-base text-slate-600 pl-[3.5rem] leading-relaxed">{block.body}</p>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="perspective-showcase" class="relative w-full"> 
+      <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center pt-10 perspective-viewport overflow-visible">
+        
+        <div class="absolute top-12 md:top-16 left-0 right-0 z-20 text-center space-y-6 px-4 max-w-4xl mx-auto transition-opacity duration-300" id="showcase-header">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/50 backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+            {featureShowcase.badge}
+          </div>
+          
+          <div class="relative h-24 md:h-32 flex items-center justify-center">
+            {featureShowcase.slides.map((slide, index) => (
+              <h2 
+                class={`cycle-title absolute inset-0 w-full text-3xl font-semibold text-slate-900 sm:text-4xl transition-all duration-500 transform whitespace-pre-line ${index === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              >
+                {slide}
+              </h2>
+            ))}
+          </div>
+        </div>
+        
+        <div class="relative w-full max-w-3xl flex items-center justify-center scroll-stage mt-24 md:mt-56">
+          
+          <div class="ipad-group relative will-change-transform" id="ipad-group">
+            
+            <div class="hidden xl:block absolute -left-4 md:-left-32 top-[65%] -translate-y-1/2 z-50 floating-card opacity-0" id="float-left">
+              <div 
+                class="p-5 rounded-2xl shadow-2xl border w-64"
+                style="background-color: #ffffff !important; border-color: #f1f5f9 !important;"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                   </div>
-                  <h3 class="text-2xl font-semibold text-slate-900">{block.title}</h3>
-                  <p class="text-base text-slate-600">{block.body}</p>
-                  <div class="flex flex-wrap gap-2 text-sm">
-                    {block.pills?.map((pill, idx) => (
-                      <span class={`rounded-full px-3 py-1 ${idx === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 bg-white text-slate-600'}`}>
-                        {pill}
-                      </span>
-                    ))}
+                  <div>
+                    <div class="text-sm font-bold" style="color: #0f172a !important;">{featureShowcase.cards.left.title}</div>
+                    <div class="text-xs" style="color: #64748b !important;">{featureShowcase.cards.left.sub}</div>
                   </div>
                 </div>
+                <div class="text-sm italic" style="color: #475569 !important;">{featureShowcase.cards.left.msg}</div>
+              </div>
+            </div>
+    
+            <div class="ipad-pro-frame relative z-10 mx-auto">
+              <div class="ipad-bezel">
+                <div class="ipad-camera-island"></div>
+                <div class="ipad-screen overflow-hidden bg-black">
+                   <video 
+                     src="/images/home/hero-video.mp4" 
+                     class="w-full h-full object-cover"
+                     autoplay
+                     loop 
+                     muted 
+                     playsinline
+                  ></video>
+                </div>
+              </div>
+            </div>
+    
+            <div class="hidden md:block absolute -right-4 md:-right-32 top-[20%] z-20 floating-card opacity-0" id="float-right">
+              <div 
+                class="p-5 rounded-2xl shadow-2xl border w-64" 
+                style="background-color: #ffffff !important; border-color: #f1f5f9 !important;"
+              >
+                 <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold" style="color: #0f172a !important;">{featureShowcase.cards.right.title}</div>
+                    <div class="text-xs" style="color: #64748b !important;">{featureShowcase.cards.right.sub}</div>
+                  </div>
+                </div>
+                <div class="text-sm" style="color: #475569 !important;">
+                  {featureShowcase.cards.right.prefix} <span class="font-semibold" style="color: #ea580c !important;">"{featureShowcase.cards.right.word}"</span>.
+                </div>
+              </div>
+            </div>
+    
+          </div> 
+        </div>
+      </div>
+    </section>
+
+  </main> 
+  
+  <section id="bento-features" class="app-showcase-section relative w-full bg-[#0b1220] py-20 md:py-32">
+      
+    <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-16 lg:px-24 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="max-w-4xl space-y-3 text-left">
+        <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/50 backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+          SMART FEATURES
+        </div>
+        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          {bentoGrid.heading}
+        </h2>
+      </div>
+
+      <div class="flex gap-3 flex-shrink-0">
+        <button id="prev-slide" class="slider-nav-btn group" aria-label="Previous Slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button id="next-slide" class="slider-nav-btn group" aria-label="Next Slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="showcase-slider-wrapper">
+      <div class="showcase-track" id="showcase-track">
+        {bentoGrid.cards.map((card, index) => (
+          <div class={`showcase-slide ${index === 0 ? 'active' : ''}`} data-index={index}>
+            <div class="slide-card flex flex-col md:flex-row h-full">
+              <div class="w-full md:w-[45%] p-8 md:p-10 flex flex-col justify-center gap-4 bg-[#0B1220] relative z-10">
+                <h3 class="text-2xl md:text-3xl font-bold text-white">
+                   {card.title}
+                </h3>
+                <p class="text-slate-400 text-base leading-relaxed">
+                  {card.body}
+                </p>
+                <div class="mt-8">
+                  <button class="bg-accent text-white px-8 py-3 rounded-full font-bold text-sm shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                    <span>Learn more</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="w-full md:w-[55%] relative overflow-hidden bg-slate-800">
+                <img 
+                  src={card.img} 
+                  alt={card.title} 
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy" 
+                />
+                <div class="absolute inset-0 shadow-[inset_10px_0_20px_rgba(0,0,0,0.2)] pointer-events-none"></div>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </section>
+    </div>
 
-    <section id="vocab-marquee" class="py-20 overflow-hidden space-y-8">
-      <div class="text-center space-y-3 px-4">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-600">{vocabMarquee.kicker}</p>
-        <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{vocabMarquee.heading}</h2>
-      </div>
+  </section>
 
-      <div class="marquee-container">
-        <div class="marquee-track marquee-left">
-          {[...Array(2)].map(() => (
-            <div class="flex gap-6">
-              {vocabMarquee.row1.map((item) => (
-                <div class="vocab-pill">
-                  <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                  <span>{item.text}</span>
+  <main class="mx-auto max-w-7xl space-y-20 px-6 pt-12 pb-20 md:space-y-32 md:px-16 md:pt-16 lg:px-24">
+    <section id="testimonials" class="w-full">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.cards.map((card) => (
+            <a href="#" class="group relative block h-[480px] w-full overflow-hidden rounded-[2rem] bg-slate-900 shadow-xl transition-all hover:shadow-2xl">
+              <img 
+                src={card.img} 
+                alt={card.title} 
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-90"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-90"></div>
+              <div class="relative z-10 flex h-full flex-col justify-end p-8">
+                <div class="space-y-3 translate-y-0 transition-transform duration-500 group-hover:-translate-y-2">
+                  <h3 class="text-lg font-semibold text-white">{card.title}</h3>
+                  <p class="text-sm text-slate-200 leading-relaxed max-w-[90%]">{card.body}</p>
                 </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div class="marquee-container">
-        <div class="marquee-track marquee-right">
-          {[...Array(2)].map(() => (
-            <div class="flex gap-6">
-              {vocabMarquee.row2.map((item) => (
-                <div class="vocab-pill">
-                  <svg class="vocab-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
-                  <span>{item.text}</span>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section id="features" class="space-y-8">
-      <div class="flex flex-col gap-3">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">{features.kicker}</p>
-        <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">{features.heading}</h2>
-        <p class="max-w-3xl text-base text-slate-600">{features.subheading}</p>
-      </div>
-      <div class="grid gap-6 md:grid-cols-3">
-        {features.cards.map((card, i) => (
-           <article class="card flex flex-col gap-4 p-6 transition hover:-translate-y-1 hover:shadow-soft">
-              <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white">
-                {i === 0 ? '↻' : i === 1 ? '✔' : '⚡'}
               </div>
-              <h3 class="text-lg font-semibold text-slate-900">{card.title}</h3>
-              <p class="text-sm text-slate-600">{card.body}</p>
-           </article>
-        ))}
-      </div>
+            </a>
+          ))}
+        </div>
     </section>
-
-    <section id="testimonials" class="space-y-8">
-      <div class="flex flex-col gap-3">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">{testimonials.kicker}</p>
-        <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">{testimonials.heading}</h2>
-        <p class="max-w-3xl text-base text-slate-600">{testimonials.subheading}</p>
-      </div>
-      <div class="grid gap-6 md:grid-cols-3">
-        {testimonials.items.map(item => (
-          <article class="card flex flex-col gap-4 p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-soft">
-            <p class="text-sm text-slate-700">{item.quote}</p>
-            <div class="text-sm font-semibold text-slate-900">{item.author}</div>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section id="faq" class="space-y-6">
-      <div class="flex flex-col gap-3">
-        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">{faq.kicker}</p>
-        <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">{faq.heading}</h2>
-        <p class="max-w-3xl text-base text-slate-600">{faq.subheading}</p>
-      </div>
-      <div class="space-y-3">
-        {faq.items.map(item => (
-          <details class="card group space-y-2 p-4">
-            <summary class="flex cursor-pointer items-center justify-between gap-4 text-base font-semibold text-slate-900">
-              {item.question}
-              <span class="text-slate-400 transition group-open:rotate-45">+</span>
-            </summary>
-            <p class="pl-1 text-sm text-slate-600">{item.answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-
-    <section class="card flex flex-col items-center gap-4 p-8 text-center shadow-soft">
-      <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
-        {cta.kicker}
-      </div>
-      <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">{cta.heading}</h2>
-      <p class="max-w-2xl text-base text-slate-600">{cta.subheading}</p>
-      <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <a class="btn-ghost border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-800" href={cta.secondaryCtaHref}>
-          {cta.secondaryCtaText}
-        </a>
-      </div>
-    </section>
-    
-    <script>
-      import "../scripts/global.js";
-    </script>
   </main>
+
+  <section id="faq" class="w-full bg-[#0b1220] py-20 md:py-32">
+    <div class="w-full px-6 md:px-16 lg:px-24">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <div class="lg:col-span-5 flex flex-col justify-between h-full sticky top-24 self-start">
+          <div class="space-y-4 mb-8">
+            <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/50 backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+              FAQ
+            </div>
+            <p class="text-lg text-slate-400 leading-relaxed">
+              {faq.subheading}
+            </p>
+          </div>
+
+          <div class="hidden lg:flex w-full aspect-square max-w-md rounded-3xl bg-[#0F172A] border border-slate-800 overflow-hidden flex items-center justify-center p-8 mb-8 relative shadow-2xl">
+      
+            <div id="visual-0" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-100">
+              <div class="relative w-64 h-40">
+                  <div class="absolute inset-0 rounded-2xl transform scale-90 translate-y-6 opacity-10" style="background-color: #ffffff !important;"></div>
+                  <div class="absolute inset-0 rounded-2xl transform scale-95 translate-y-3 opacity-20" style="background-color: #ffffff !important;"></div>
+                  
+                  <div class="absolute inset-0 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-3 p-6 animate-float-slow z-10" style="background-color: #ffffff !important;">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-1" style="background-color: #eff6ff !important; color: #2563eb !important;">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div class="w-24 h-2.5 rounded-full" style="background-color: #e2e8f0 !important;"></div>
+                    <div class="w-32 h-2.5 rounded-full" style="background-color: #e2e8f0 !important;"></div>
+                    <div class="absolute -top-3 -right-3 bg-[#FF6B35] text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg animate-bounce-subtle">
+                        Review
+                    </div>
+                  </div>
+              </div>
+            </div>
+        
+            <div id="visual-1" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0">
+                <div class="relative flex flex-col items-center gap-8 transform scale-110">
+                  <div class="w-32 h-32 rounded-3xl shadow-xl flex items-center justify-center relative" style="background-color: #ffffff !important;">
+                      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="overflow-visible" style="color: #94a3b8 !important;">
+                        <path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.132 20.177 10.244 17.819 10.032C17.484 6.224 14.282 3.25 10.5 3.25C6.181 3.25 2.588 6.415 2 10.635C2.022 10.635 2 10.635 2 10.75C2 15.306 5.694 19 10.25 19H17.5Z" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <div class="absolute -bottom-3 -right-3 w-10 h-10 bg-[#FF6B35] rounded-full flex items-center justify-center text-white border-4 border-[#0F172A] shadow-sm animate-pulse-slow">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </div>
+                  </div>
+                  <div class="text-sm font-bold text-[#FF6B35] bg-[#FF6B35]/10 px-5 py-2 rounded-full border border-[#FF6B35]/20 flex items-center gap-1">
+                      <span>Syncing</span>
+                      <span class="flex gap-1 items-end h-4 pb-1">
+                        <span class="w-1 h-1 bg-[#FF6B35] rounded-full animate-bounce" style="animation-delay: 0s"></span>
+                        <span class="w-1 h-1 bg-[#FF6B35] rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+                        <span class="w-1 h-1 bg-[#FF6B35] rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                      </span>
+                  </div>
+                </div>
+            </div>
+        
+            <div id="visual-2" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0">
+                <div class="relative w-full max-w-[280px] flex items-center justify-between transform scale-110">
+                  <div class="w-20 h-24 rounded-xl shadow-xl flex flex-col items-center justify-center gap-2 z-10 animate-slide-right border border-slate-100" style="background-color: #ffffff !important;">
+                      <div class="text-[10px] font-bold" style="color: #94a3b8 !important;">CSV</div>
+                      <div class="w-10 h-1.5 rounded-full" style="background-color: #e2e8f0 !important;"></div>
+                      <div class="w-8 h-1.5 rounded-full" style="background-color: #e2e8f0 !important;"></div>
+                  </div>
+                  <div class="mx-4" style="color: #64748b !important;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </div>
+                  <div class="w-24 h-24 bg-[#FF6B35] rounded-2xl flex items-center justify-center shadow-lg border border-[#FF6B35]">
+                      <div class="text-white">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                      </div>
+                  </div>
+                </div>
+            </div>
+
+            <div id="visual-3" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0">
+              <div class="relative flex flex-col items-center gap-6 transform scale-110">
+                <div class="w-40 h-28 rounded-3xl shadow-xl flex items-center justify-center gap-1.5 relative overflow-hidden" style="background-color: #ffffff !important;">
+                    <div class="w-1.5 bg-slate-200 rounded-full h-4 animate-pulse" style="animation-duration: 1s;"></div>
+                    <div class="w-1.5 bg-slate-300 rounded-full h-8 animate-pulse" style="animation-duration: 0.8s;"></div>
+                    <div class="w-1.5 bg-slate-400 rounded-full h-12 animate-pulse" style="animation-duration: 1.2s;"></div>
+                    <div class="w-1.5 bg-[#FF6B35] rounded-full h-16 animate-pulse" style="animation-duration: 0.9s;"></div> 
+                    <div class="w-1.5 bg-slate-400 rounded-full h-10 animate-pulse" style="animation-duration: 1.1s;"></div>
+                    <div class="w-1.5 bg-slate-300 rounded-full h-6 animate-pulse" style="animation-duration: 1.3s;"></div>
+                    <div class="w-1.5 bg-slate-200 rounded-full h-4 animate-pulse" style="animation-duration: 1s;"></div>
+      
+                    <div class="absolute bottom-2 right-2 flex items-center gap-1 bg-green-100 px-2 py-0.5 rounded-md">
+                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                       <span class="text-[10px] font-bold text-green-700">98%</span>
+                    </div>
+                </div>
+                <div class="w-12 h-12 bg-[#FF6B35] rounded-full flex items-center justify-center text-white shadow-lg border-4 border-[#0F172A]">
+                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 w-full flex flex-col justify-center">
+          {faq.items.map((item, index) => (
+            <div class="group border-b border-slate-800 last:border-0 w-full">
+              <button 
+                class="faq-btn flex w-full items-start justify-between gap-6 py-8 text-left focus:outline-none"
+                data-index={index}
+                aria-expanded={index === 0 ? "true" : "false"}
+              >
+                <div class="flex gap-5">
+                  <div class="mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#FF6B35] text-white shadow-lg shadow-orange-900/20 transition-transform duration-300 ">
+                     {index === 0 && (
+                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                     )}
+                     {index === 1 && (
+                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c0-1.7-1.3-3-3-3h-11a4 4 0 1 1 0-8h1a5.5 5.5 0 0 1 10.5-.5"></path><polyline points="9 17 12 20 15 17"></polyline></svg>
+                     )}
+                     {index === 2 && (
+                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path><line x1="12" y1="10" x2="12" y2="16"></line><line x1="9" y1="13" x2="15" y2="13"></line></svg>
+                     )}
+                     {index === 3 && (
+                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                     )}
+                  </div>
+                  <span class="text-xl font-bold text-white pt-1">{item.question}</span>
+                </div>
+                
+                <span class="mt-2 flex-shrink-0 transition-transform duration-300 transform group-aria-expanded:rotate-180">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-slate-500 group-hover:text-white transition-colors"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </button>
+
+              <div 
+                class="faq-content overflow-hidden transition-all duration-300 ease-in-out"
+                style={index === 0 ? "max-height: 200px; opacity: 1;" : "max-height: 0px; opacity: 0;"}
+              >
+                <div class="pb-8 pl-[4.25rem] pr-6 text-lg text-slate-400 leading-relaxed max-w-2xl">
+                  {item.answer}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+      import "../scripts/global.js";
+  </script>
+  
 </BaseLayout>
