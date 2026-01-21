@@ -1177,7 +1177,6 @@ html, body {
   display: flex;
   align-items: center;
   padding: 2rem 0;
-  
   /* Allow cards to bleed out freely */
   overflow: visible; 
 }
@@ -1189,19 +1188,20 @@ html, body {
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
   padding-left: 50vw; 
   will-change: transform;
+
 }
 
 .showcase-slide {
   /* WIDTH: Wide enough for Split Layout */
   width: 85vw; /* Mobile */
   max-width: 1000px; /* Desktop */
-  
+  border-radius: 50%;
   /* ASPECT RATIO: Rectangular */
   aspect-ratio: 16/10; 
   
   flex-shrink: 0;
   transform: scale(0.92);
-  opacity: 0.5; /* Slightly more visible side cards */
+  /* opacity: 0.5; */
   transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
   transform-origin: center center;
 }
@@ -1215,7 +1215,7 @@ html, body {
 
 /* Active State */
 .showcase-slide.active {
-  transform: scale(1);
+  /* transform: scale(1); */
   opacity: 1;
   z-index: 10;
   box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
@@ -1516,4 +1516,40 @@ html, body {
     top: 6rem;
     height: fit-content;
   }
+}
+
+
+
+
+/* --- FAQ STAGE ANIMATIONS --- */
+
+.faq-ring {
+  opacity: 0.5;
+  transition: all 0.5s ease;
+}
+
+/* Make the rings pulse slightly */
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.03); opacity: 0.6; }
+}
+
+.faq-ring:nth-child(1) { animation: ringPulse 8s ease-in-out infinite; }
+.faq-ring:nth-child(2) { animation: ringPulse 8s ease-in-out infinite 1s; }
+.faq-ring:nth-child(3) { animation: ringPulse 8s ease-in-out infinite 2s; }
+
+/* Refined Float for small ambient particles */
+@keyframes float-ambient {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(10px, -15px); }
+  66% { transform: translate(-5px, 10px); }
+}
+
+.animate-float-ambient {
+  animation: float-ambient 10s ease-in-out infinite;
+}
+
+/* Ensure the central visuals pop */
+.faq-visual {
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
 }
