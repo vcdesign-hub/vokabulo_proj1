@@ -209,7 +209,7 @@ import Antigravity from '../components/Antigravity.jsx';
           {featureBlocks.subheading}
         </p>
       </div>
-
+    
       <div class="mx-auto max-w-6xl feature-tabs-container">
         <div class="f-tab-image-container">
           <img src="/images/blog/eye.jpg" alt={featureBlocks.blocks[0].title} class="f-tab-img active" data-index="0" />
@@ -217,24 +217,25 @@ import Antigravity from '../components/Antigravity.jsx';
           <img src="/images/blog/Moon rising.jpg" alt={featureBlocks.blocks[2].title} class="f-tab-img" data-index="2" />
           <img src="/images/blog/Ocean.jpg" alt={featureBlocks.blocks[3].title} class="f-tab-img" data-index="3" />
         </div>
-
-        <div class="f-tab-list">
+    
+        <div class="f-tab-list grid grid-cols-1 sm:grid-cols-2 gap-4">
           {featureBlocks.blocks.map((block, index) => (
             <button 
-              class={`f-tab-btn group ${index === 0 ? 'active' : ''}`} 
+              class={`f-tab-btn group flex flex-col items-start text-left p-6 transition-all ${index === 0 ? 'active' : ''}`} 
               data-index={index}
               aria-label={`View details for ${block.title}`}
             >
-              <div class="flex items-center gap-4 mb-2">
+              <div class="flex items-center gap-4 mb-3">
                  <div class="bg-accent inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-soft flex-shrink-0">
                     {index === 0 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>}
                     {index === 1 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20"/><path d="M2 12h20"/></svg>}
                     {index === 2 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>}
                     {index === 3 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
                  </div>
-                  <h3 class="text-lg font-bold m-0 text-slate-900 group-hover:text-slate-700 transition-colors">{block.title}</h3>
+                 <h3 class="text-lg font-semibold text-slate-900 leading-tight">{block.title}</h3>
+                 
               </div>
-              <p class="text-sm md:text-base text-slate-600 pl-[3.5rem] leading-relaxed">{block.body}</p>
+              <p class="text-sm text-slate-600 leading-relaxed">{block.body}</p>
             </button>
           ))}
         </div>
@@ -325,7 +326,7 @@ import Antigravity from '../components/Antigravity.jsx';
 
   </main> 
   
-  <section id="bento-features" class="app-showcase-section relative w-full bg-[#0b1220] py-20 md:py-32">
+  <section id="bento-features" class="app-showcase-section relative w-full py-20 md:py-32">
       
     <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-16 lg:px-24 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div class="max-w-4xl space-y-3 text-left">
@@ -352,7 +353,7 @@ import Antigravity from '../components/Antigravity.jsx';
         {bentoGrid.cards.map((card, index) => (
           <div class={`showcase-slide ${index === 0 ? 'active' : ''}`} data-index={index}>
             <div class="slide-card flex flex-col md:flex-row h-full">
-              <div class="w-full md:w-[45%] p-8 md:p-10 flex flex-col justify-center gap-4 bg-[#0B1220] relative z-10">
+              <div class="w-full md:w-[45%] p-8 md:p-10 flex flex-col justify-center gap-4  relative z-10">
                 <h3 class="text-2xl md:text-3xl font-bold text-white">
                    {card.title}
                 </h3>
@@ -408,22 +409,70 @@ import Antigravity from '../components/Antigravity.jsx';
     </section>
   </main>
 
-  <section id="faq" class="w-full bg-[#0b1220] py-20 md:py-32">
+  <section id="faq" class="w-full py-20 md:py-32">
     <div class="w-full px-6 md:px-16 lg:px-24">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+
+        <div class="lg:col-span-7 w-full flex flex-col justify-center">
+          {faq.items.map((item, index) => (
+            <div class="group border-b border-slate-800 last:border-0 w-full">
+              <button 
+  class="faq-btn flex w-full items-center justify-between gap-6 py-8 text-left focus:outline-none"
+  data-index={index}
+  aria-expanded={index === 0 ? "true" : "false"}
+>
+  <div class="flex items-center gap-5">
+    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#FF6B35] text-white transition-transform duration-300">
+       {index === 0 && (
+         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+       )}
+       {index === 1 && (
+         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c0-1.7-1.3-3-3-3h-11a4 4 0 1 1 0-8h1a5.5 5.5 0 0 1 10.5-.5"></path><polyline points="9 17 12 20 15 17"></polyline></svg>
+       )}
+       {index === 2 && (
+         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path><line x1="12" y1="10" x2="12" y2="16"></line><line x1="9" y1="13" x2="15" y2="13"></line></svg>
+       )}
+       {index === 3 && (
+         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+       )}
+    </div>
+    <h3 class="text-lg font-semibold text-slate-900">{item.question}</h3>
+  </div>
+  
+  <span class="flex-shrink-0 transition-transform duration-300 transform group-aria-expanded:rotate-180">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-slate-500 group-hover:text-white transition-colors">
+        <path d="M6 9l6 6 6-6"/>
+    </svg>
+  </span>
+</button>
+
+              <div 
+                class="faq-content overflow-hidden transition-all duration-300 ease-in-out"
+                style={index === 0 ? "max-height: 200px; opacity: 1;" : "max-height: 0px; opacity: 0;"}
+              >
+                <div class="pb-8 pr-6 text-lg text-slate-400 leading-relaxed max-w-2xl">
+          <p class="text-sm text-slate-600">{item.answer}</p>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
         
         <div class="lg:col-span-5 flex flex-col justify-between h-full sticky top-24 self-start">
-          <div class="space-y-4 mb-8">
+          <!-- <div class="space-y-4 mb-8">
             <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/50 backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
               FAQ
             </div>
-            <p class="text-lg text-slate-400 leading-relaxed">
-              {faq.subheading}
-            </p>
-          </div>
 
-          <div class="hidden lg:flex w-full aspect-square max-w-md rounded-3xl bg-[#0F172A] border border-slate-800 overflow-hidden flex items-center justify-center p-8 mb-8 relative shadow-2xl">
+            <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              {faq.subheading}
+            </h2>
+          </div> -->
+
+          <div class="hidden lg:flex w-full aspect-square max-w-md rounded-3xl  border border-slate-800 overflow-hidden flex items-center justify-center p-8 mb-8 relative shadow-2xl">
       
             <div id="visual-0" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-100">
               <div class="relative w-64 h-40">
@@ -506,48 +555,7 @@ import Antigravity from '../components/Antigravity.jsx';
           </div>
         </div>
 
-        <div class="lg:col-span-7 w-full flex flex-col justify-center">
-          {faq.items.map((item, index) => (
-            <div class="group border-b border-slate-800 last:border-0 w-full">
-              <button 
-                class="faq-btn flex w-full items-start justify-between gap-6 py-8 text-left focus:outline-none"
-                data-index={index}
-                aria-expanded={index === 0 ? "true" : "false"}
-              >
-                <div class="flex gap-5">
-                  <div class="mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#FF6B35] text-white shadow-lg shadow-orange-900/20 transition-transform duration-300 ">
-                     {index === 0 && (
-                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                     )}
-                     {index === 1 && (
-                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c0-1.7-1.3-3-3-3h-11a4 4 0 1 1 0-8h1a5.5 5.5 0 0 1 10.5-.5"></path><polyline points="9 17 12 20 15 17"></polyline></svg>
-                     )}
-                     {index === 2 && (
-                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path><line x1="12" y1="10" x2="12" y2="16"></line><line x1="9" y1="13" x2="15" y2="13"></line></svg>
-                     )}
-                     {index === 3 && (
-                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-                     )}
-                  </div>
-                  <span class="text-xl font-bold text-white pt-1">{item.question}</span>
-                </div>
-                
-                <span class="mt-2 flex-shrink-0 transition-transform duration-300 transform group-aria-expanded:rotate-180">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-slate-500 group-hover:text-white transition-colors"><path d="M6 9l6 6 6-6"/></svg>
-                </span>
-              </button>
-
-              <div 
-                class="faq-content overflow-hidden transition-all duration-300 ease-in-out"
-                style={index === 0 ? "max-height: 200px; opacity: 1;" : "max-height: 0px; opacity: 0;"}
-              >
-                <div class="pb-8 pl-[4.25rem] pr-6 text-lg text-slate-400 leading-relaxed max-w-2xl">
-                  {item.answer}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        
       </div>
     </div>
   </section>
