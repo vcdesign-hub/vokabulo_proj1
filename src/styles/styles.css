@@ -10,6 +10,8 @@
   --accent: #FF6B35; 
   --nav-bg-opacity: 0;
   --nav-width-scale: 1;
+  --radius: 1rem;
+  --accent-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8F5A 100%);
 }
 
 * {
@@ -18,7 +20,7 @@
 
 body {
   /* Removed radial-gradient overlays for a cleaner look */
-  background-color: #f8fafc; /* A very slight off-white 'Slate-50' */
+  background-color: #f1f5f9; /* A very slight off-white 'Slate-50' */
   color: var(--ink); 
   margin: 0; 
 }
@@ -39,6 +41,7 @@ a {
   max-width: calc(1280px * var(--nav-width-scale));
   z-index: 100;
   will-change: transform, background, border, box-shadow, max-width;
+  
 }
 
 /* --- LOGO LOGIC (White to Blue) --- */
@@ -46,15 +49,13 @@ a {
   display: block; 
   height: 22px; 
   transition: filter 400ms ease;
-  /* At scroll 0: brightness(0) invert(1) = Pure White 
-     At scroll 1: brightness(1) invert(0) = Original Blue
-  */
-  filter: brightness(var(--nav-bg-opacity)) invert(calc(1 - var(--nav-bg-opacity)));
+  /* CHANGE: Start at 1 (original color/dark) and stay there for light mode */
+  filter: brightness(1) invert(0) !important;
 }
 
 .nav-shell[style*="--nav-bg-opacity: 0"] .logo-light,
 .nav-shell:not([style*="--nav-bg-opacity"]) .logo-light {
-  filter: brightness(0) invert(1) !important;
+  filter: brightness(1) invert(0) !important;
 }
 
 .logo-dark { display: none; height: 22px; }
@@ -62,11 +63,16 @@ a {
 /* --- NAV LINKS --- */
 nav a {
   transition: color 200ms ease;
-  color: rgba(255, 255, 255, 1);
+  /* CHANGE: Set a dark slate color by default for light mode */
+  color: #475569; /* Slate-600 */
 }
 
 .nav-shell[style*="--nav-bg-opacity: 1"] nav a {
-  color: #64748b;
+  color: #1e293b; /* Slate-800 */
+}
+
+.theme-dark .nav-shell[style*="--nav-bg-opacity: 1"] nav a {
+  color: #cbd5e1; /* Slate-300 */
 }
 
 nav a:hover {
@@ -89,6 +95,10 @@ nav a:hover {
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: white;
   backdrop-filter: blur(8px);
+  /* CHANGE: Default colors for light mode hero overlay */
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  color: #1e293b;
 }
 
 /* Light Mode Scrolled: Darken toggle for white background */
@@ -124,7 +134,6 @@ nav a:hover {
   --ink: #e5e7eb;
 }
 
-.theme-dark body { background: var(--bg); }
 
 .theme-dark .nav-shell {
   background: rgba(15, 22, 40, calc(0.85 * var(--nav-bg-opacity)));
@@ -132,10 +141,16 @@ nav a:hover {
   box-shadow: 0 22px 55px rgba(0, 0, 0, calc(0.4 * var(--nav-bg-opacity)));
 }
 
-.theme-dark nav a { color: #cbd5e1; }
+.theme-dark nav a { 
+  color: rgba(255, 255, 255, 0.8); 
+}
 .theme-dark nav a:hover { color: var(--accent) !important; }
 
-.theme-dark .logo-light { display: none; }
+.theme-dark .logo-light {
+  display: none;
+  filter: brightness(0) invert(1) !important;
+}
+
 .theme-dark .logo-dark { 
   display: block; 
   filter: none; 
@@ -163,3 +178,1611 @@ nav a:hover {
     border-color: #e2e8f0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Index page-specific styles */
+/**
+#0f1628 card background
+
+#1f2937 border color
+**/
+
+.bg-accent {
+  background: var(--accent-gradient);
+}
+
+.card {
+  /* Replace solid white with semi-transparent glass */
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(12px);
+  
+  /* Use a softer, more elegant border */
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  
+  border-radius: calc(var(--radius) * 1.1);
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.05);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Ensure Dark Mode uses the dark border */
+.theme-dark .card {
+  background: rgba(15, 22, 40, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0f172a, #111827 60%, #0b1224);
+  color: #ffffff;
+  border-radius: 9999px;
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, filter 150ms ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
+  filter: brightness(1.02);
+}
+
+.btn-ghost {
+  border-radius: 9999px;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.btn-ghost:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(15, 23, 42, 0.09);
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.hero-panel {
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 60%, #f6f9ff 100%);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.07);
+  overflow: hidden;
+}
+
+.hero-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.06), transparent 35%);
+  pointer-events: none;
+}
+
+.nav-gradient {
+  background: linear-gradient(135deg, #f56b43 0%, #f6976f 35%, #9bb7c8 100%);
+}
+
+.hero-spot {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background: radial-gradient(110% 120% at 75% 25%, rgba(247, 94, 43, 0.35), rgba(247, 94, 43, 0) 60%),
+    radial-gradient(120% 120% at 20% 30%, rgba(144, 167, 192, 0.5), rgba(144, 167, 192, 0) 65%),
+    #f7f8fb;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.14);
+}
+
+.hero-spot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  pointer-events: none;
+}
+
+.hero-card {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+.feature-visual {
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: radial-gradient(120% 140% at 75% 25%, rgba(247, 94, 43, 0.35), rgba(247, 94, 43, 0) 55%),
+    radial-gradient(120% 140% at 20% 30%, rgba(144, 167, 192, 0.45), rgba(144, 167, 192, 0) 65%),
+    #f8fafc;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.theme-dark) {
+    color-scheme: dark;
+    --bg: #0b1220;
+    --border: #1f2937;
+    --ink: #e5e7eb;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+  }
+}
+
+.theme-dark {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --border: #1f2937;
+  --ink: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+}
+
+.theme-dark body {
+  background: #070b14;
+  color: var(--ink);
+}
+
+.theme-dark .card,
+.theme-dark .hero-card,
+.theme-dark .feature-visual {
+  background: #0f1628;
+  border-color: #1f2937;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.theme-dark .hero-spot {
+  background: radial-gradient(110% 120% at 75% 25%, rgba(247, 94, 43, 0.25), rgba(247, 94, 43, 0) 60%),
+    radial-gradient(120% 120% at 20% 30%, rgba(56, 189, 248, 0.28), rgba(56, 189, 248, 0) 65%),
+    #0c1628;
+  border-color: #1f2937;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
+}
+
+.theme-dark .btn-primary {
+  background: linear-gradient(135deg, #1f2937, #0f172a 60%, #0b1224);
+}
+
+.theme-dark .btn-ghost {
+  color: #e2e8f0;
+  border-color: #243042;
+}
+
+.theme-dark .btn-ghost.bg-white {
+  background: #0f172a;
+}
+
+.theme-dark .btn-ghost:hover {
+  border-color: #334155;
+}
+
+.theme-dark .text-slate-900,
+.theme-dark .text-slate-800,
+.theme-dark .text-slate-700 {
+  color: #e5e7eb !important;
+}
+
+.theme-dark .text-slate-600,
+.theme-dark .text-slate-500 {
+  color: #cbd5e1 !important;
+}
+
+.theme-dark .bg-white {
+  background-color: #0f1628 !important;
+}
+
+.theme-dark .bg-slate-50 {
+  background-color: #111827 !important;
+}
+
+.theme-dark .border-slate-200,
+.theme-dark .border-slate-100 {
+  border-color: #1f2937 !important;
+}
+
+.theme-dark .shadow-soft {
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+}
+
+/* Nav ambient animation */
+.nav-animate {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.nav-animate::before,
+.nav-animate::after {
+  content: '';
+  position: absolute;
+  inset: -120%;
+  background: radial-gradient(circle at 30% 30%, rgba(247, 126, 90, 0.28), transparent 45%),
+    radial-gradient(circle at 70% 20%, rgba(147, 180, 210, 0.28), transparent 40%),
+    radial-gradient(circle at 50% 70%, rgba(255, 205, 178, 0.2), transparent 50%);
+  filter: blur(10px);
+  animation: heroFloat 24s ease-in-out infinite;
+  z-index: -1;
+}
+
+.nav-animate::after {
+  animation-direction: reverse;
+  animation-duration: 30s;
+  opacity: 0.7;
+}
+
+.theme-dark .nav-animate::before,
+.theme-dark .nav-animate::after {
+  background: radial-gradient(circle at 30% 30%, rgba(248, 113, 113, 0.22), transparent 45%),
+    radial-gradient(circle at 70% 20%, rgba(56, 189, 248, 0.2), transparent 40%),
+    radial-gradient(circle at 50% 70%, rgba(147, 197, 253, 0.14), transparent 50%);
+}
+
+/* Hero ambient animation */
+.hero-animate {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-animate::before,
+.hero-animate::after {
+  content: '';
+  position: absolute;
+  /* Increase the blur and lower the opacity */
+  inset: -10%;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.05), transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.05), transparent 50%);
+  filter: blur(120px); /* Massive blur for a "glow" rather than a "shape" */
+  animation: heroFloat 18s ease-in-out infinite;
+  z-index: -1;
+}
+
+.hero-animate::after {
+  animation-direction: reverse;
+  animation-duration: 24s;
+  opacity: 0.7;
+}
+
+@keyframes heroFloat {
+  0% { transform: translate3d(-6%, -4%, 0) scale(1); }
+  50% { transform: translate3d(6%, 6%, 0) scale(1.05); }
+  100% { transform: translate3d(-6%, -4%, 0) scale(1); }
+}
+
+.theme-dark .hero-animate::before,
+.theme-dark .hero-animate::after {
+  /* Change the radial gradients to be more subtle and match the body background */
+  background: radial-gradient(circle at 30% 30%, rgba(255, 107, 53, 0.08), transparent 45%),
+              radial-gradient(circle at 70% 20%, rgba(56, 189, 248, 0.08), transparent 40%);
+}
+
+/* --- iPhone 13 / Floating Phone Styles --- */
+.iphone-13 .outside-border {
+  position: relative;
+  width: 250px;
+  height: 520px;
+  background-color: #0b2035; /* Dark Blue Frame */
+  border: 1px solid #1c3a55;
+  border-radius: 40px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Deep Shadow */
+}
+
+.iphone-13 .inside-border {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 8px solid #000; /* Black Bezel */
+  border-radius: 39px;
+  background-color: #000;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* --- BUTTONS (Graphite/Grey) --- */
+.iphone-13 .silencer {
+  position: absolute;
+  background-color: #555555;
+  border-radius: 2px;
+  width: 3px;
+  height: 20px;
+  left: -3px;
+  top: 80px;
+}
+.iphone-13 .volume-up {
+  position: absolute;
+  background-color: #555555;
+  border-radius: 2px;
+  width: 3px;
+  height: 40px;
+  left: -3px;
+  top: 120px;
+}
+.iphone-13 .volume-down {
+  position: absolute;
+  background-color: #555555;
+  border-radius: 2px;
+  width: 3px;
+  height: 40px;
+  left: -3px;
+  top: 170px;
+}
+.iphone-13 .button-on {
+  position: absolute;
+  background-color: #555555;
+  border-radius: 2px;
+  width: 3px;
+  height: 60px;
+  right: -3px;
+  top: 130px;
+}
+
+/* --- SCREEN --- */
+.iphone-13 .screen-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #000;
+  z-index: 1;
+}
+
+/* --- HOME BAR INDICATOR --- */
+.iphone-13 .bottom-line {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 4px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 2px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* --- 3D CONTAINER --- */
+.perspective-container {
+  perspective: 1500px; /* Stronger perspective for more 3D depth */
+}
+
+/* --- THE DRAMATIC KEYFRAMES --- */
+@keyframes phoneEnter {
+  0% {
+    opacity: 0;
+    /* Start: Way down, small, and turned almost sideways */
+    transform: translateY(400px) rotateY(-100deg) rotateX(10deg) scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    /* End: Locked in place */
+    transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(1);
+  }
+}
+
+/* --- THE CLASS --- */
+.animate-phone-entry {
+  /* 2.5s duration = Slow and cinematic */
+  /* cubic-bezier(0.2, 0.8, 0.2, 1) = Starts fast, then BRAKES hard for a smooth finish */
+  animation: phoneEnter 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  transform-style: preserve-3d;
+  opacity: 0;
+}
+
+/* --- FLOATING BADGE ANIMATIONS --- */
+
+/* 1. Entrance Animation (Pop in from bottom) */
+@keyframes popIn {
+  0% { opacity: 0; transform: translateY(40px) scale(0.8); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 2. Floating Loop (Hover up and down) */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Base Badge Style */
+.floating-badge {
+  position: absolute;
+  z-index: 40; /* On top of phone */
+  background: rgba(255, 255, 255, 0.85); /* Glassy White */
+  backdrop-filter: blur(12px); /* Blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: sans-serif;
+  opacity: 0; /* Start hidden */
+  white-space: nowrap;
+}
+
+/* Text Styling inside badges */
+.badge-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1;
+}
+.badge-sub {
+  font-size: 10px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+/* --- TEXT ANIMATIONS --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- PHILOSOPHY CARD VISUALS --- */
+
+/* Common container */
+.card-visual {
+  margin-top: auto;
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* --- VISUAL 1: Note Card --- */
+.visual-note {
+  position: relative;
+  width: 140px;
+  height: 100px;
+  /* Light Mode: Slate-50 background */
+  background: #f8fafc; 
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+}
+
+/* Dark Mode Override */
+.theme-dark .visual-note {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover .visual-note { transform: rotate(0deg) scale(1.05); }
+
+.note-line { height: 4px; background: #cbd5e1; border-radius: 2px; margin-bottom: 6px; }
+.theme-dark .note-line { background: #d5eaff; }
+
+.note-line.short { width: 60%; }
+.note-line.medium { width: 80%; }
+
+/* The Success Badge (Orange Checkmark) */
+.note-badge {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 2px 5px rgba(255, 107, 53, 0.3);
+}
+
+
+/* --- VISUAL 2: The Flow --- */
+.visual-flow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flow-icon {
+  width: 48px;
+  height: 56px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.theme-dark .flow-icon {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+
+/* The Arrow (Lights up Orange on Hover) */
+.flow-arrow { 
+  color: #94a3b8; 
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.theme-dark .flow-arrow { color: #cbd5e1; }
+
+.card:hover .flow-arrow {
+  color: var(--accent); /* Turn Orange */
+  transform: translateX(3px);
+}
+
+.flow-list { display: flex; flex-direction: column; gap: 6px; }
+
+.flow-tag {
+  font-size: 10px;
+  font-weight: 600;
+  color: #475569;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+}
+
+.theme-dark .flow-tag {
+  color: #1e293b;
+  background: #f1f5f9; 
+  border-color: transparent;
+}
+
+
+/* --- VISUAL 3: Community Bubbles --- */
+.visual-community {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.comm-bubble {
+  padding: 8px 12px;
+  font-size: 11px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Incoming Message (Left) */
+.comm-bubble.left {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  border-bottom-left-radius: 2px;
+  align-self: flex-start;
+}
+
+.theme-dark .comm-bubble.left {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+/* Outgoing Message (Right) */
+.comm-bubble.right {
+  /* Light Mode: Dark Grey */
+  background: #1e293b;
+  color: #ffffff;
+  border-bottom-right-radius: 2px;
+  align-self: flex-end;
+  text-align: right;
+  transition: background 0.3s ease;
+}
+
+/* Dark Mode: Orange Gradient */
+.theme-dark .comm-bubble.right {
+  background: var(--accent-gradient); 
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- PHILOSOPHY ANIMATIONS --- */
+
+/* 1. Define the Animations */
+@keyframes visualSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes visualPop {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { transform: scale(1.1); } /* Overshoot for bounce */
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes visualSlideRight {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* 2. Initial State (Hidden) */
+/* We apply this class to every element we want to animate */
+.anim-hidden {
+  opacity: 0;
+}
+
+/* 3. Active State (Triggered by JS) */
+/* When the parent has '.active', these elements wake up */
+.active .visual-note { animation: visualSlideUp 1.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+.active .note-badge { animation: visualPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+.active .flow-icon { animation: visualSlideRight 0.8s ease-out forwards; }
+.active .flow-arrow { animation: visualSlideRight 0.8s ease-out forwards; }
+.active .flow-tag { animation: visualSlideRight 0.6s ease-out forwards; }
+
+.active .comm-bubble { animation: visualSlideUp 0.8s ease-out forwards; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- FEATURE ACCORDION (Card Deck Style) --- */
+
+.features-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .features-accordion {
+    flex-direction: row;
+    height: 500px;
+  }
+}
+
+.feature-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  
+  /* Base Style */
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  
+  /* Mobile Dimensions */
+  width: 100%;
+  height: 320px; 
+  flex-shrink: 0;
+}
+
+/* Dark Mode */
+.theme-dark .feature-card {
+  background: #0f1628; 
+  border-color: #1f2937;
+}
+
+@media (min-width: 768px) {
+  .feature-card {
+    height: 100%;
+    flex: 1; /* Narrow */
+  }
+  
+  .feature-card.active {
+    flex: 3; /* Wide */
+    /* border-color: var(--accent); */
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  }
+  
+  .theme-dark .feature-card.active {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* --- 1. INACTIVE VIEW (Icon + Title) --- */
+.f-inactive-layer {
+  position: absolute;
+  inset: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Space between Icon (top) and Title (bottom) */
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  z-index: 20;
+}
+
+.feature-card.active .f-inactive-layer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The Icon Circle */
+.f-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2); */
+  margin-top: 2rem; /* Push down slightly */
+}
+
+/* The Bottom Title (No Tilt) */
+.f-inactive-title {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #64748b;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.theme-dark .f-inactive-title { color: #94a3b8; }
+
+
+/* --- 2. ACTIVE VIEW (Image Top + Content Bottom) --- */
+.f-active-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.1s; /* Slight delay to wait for expansion */
+  z-index: 10;
+}
+
+.feature-card.active .f-active-layer {
+  opacity: 1;
+}
+
+/* Image Area (Top Half) */
+.f-image-top {
+  width: 100%;
+  height: 55%; /* Takes up top 55% */
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* The visual gradient/image itself */
+.f-visual-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Content Area (Bottom Half) */
+.f-content-bottom {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Align content to bottom */
+  background: linear-gradient(to top, rgba(255,255,255,1) 80%, rgba(255,255,255,0));
+}
+
+.theme-dark .f-content-bottom {
+  background: linear-gradient(to top, #0f1628 80%, rgba(15, 22, 40, 0));
+}
+
+/* Hide inactive layer on mobile if active (handled by logic, but CSS helps) */
+@media (max-width: 767px) {
+  .f-inactive-layer { display: none; }
+  .f-active-layer { opacity: 1; position: relative; height: 100%; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- FEATURE TABS (Left Image / Right Text) --- */
+
+.feature-tabs-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .feature-tabs-container {
+    grid-template-columns: 1fr 1fr; /* 50/50 Split */
+    gap: 2rem;
+    min-height: 500px; /* Ensure height for images */
+  }
+}
+
+/* LEFT SIDE: Image Container */
+.f-tab-image-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  /* border: 1px solid rgba(255,255,255,0.5); */
+}
+
+@media (min-width: 768px) {
+  .f-tab-image-container {
+    height: 100%;
+    min-height: 500px;
+    order: 1; /* Left side */
+  }
+}
+
+/* The Images (Stacked on top of each other) */
+.f-tab-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.7s ease;
+  transform: scale(1.05);
+}
+
+/* Active Image is visible */
+.f-tab-img.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 10;
+}
+
+/* RIGHT SIDE: List Items */
+.f-tab-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .f-tab-list {
+    order: 2; /* Right side */
+    padding-left: 1rem;
+  }
+}
+
+/* The Clickable Text Block */
+.f-tab-btn {
+  text-align: left;
+  padding: 1.5rem;
+  /* Remove background: transparent; so it uses .card glass effect */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.theme-dark .f-tab-btn {
+  color: #94a3b8;
+}
+
+/* Hover State */
+.f-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0.8;
+}
+.theme-dark .f-tab-btn:hover {
+  background: rgba(30, 41, 59, 0.5);
+}
+
+/* Active State (Selected) */
+.f-tab-btn.active {
+  opacity: 1;
+}
+
+.theme-dark .f-tab-btn.active {
+  background: #0f1628;
+  border-color: #1f2937;
+  /* border-left-color: var(--accent); */
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+  color: #f8fafc;
+}
+
+
+
+.theme-dark .f-tab-btn h3 { color: #f1f5f9; }
+.theme-dark .f-tab-btn p { color: #94a3b8; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- VOCABULARY MARQUEE SECTION --- */
+
+.marquee-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* Fades edges so words disappear smoothly */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content; /* Ensure track is wide enough */
+}
+
+/* Row 1: Scroll Left */
+.marquee-left {
+  animation: scrollLeft 60s linear infinite;
+}
+
+/* Row 2: Scroll Right */
+.marquee-right {
+  animation: scrollRight 60s linear infinite;
+}
+
+/* The Word Pill */
+.vocab-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px; /* Full pill shape */
+  
+  /* Glassy Style */
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #475569;
+  white-space: nowrap;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark Mode Pill */
+.theme-dark .vocab-pill {
+  background: rgba(30, 41, 59, 0.6); /* Slate-800 with opacity */
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+/* Hover Effect */
+.vocab-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent); /* Orange border on hover */
+  color: #1e293b;
+}
+.theme-dark .vocab-pill:hover {
+  color: #ffffff;
+}
+
+/* The Orange Sparkle Icon */
+.vocab-icon {
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Move half-way (since we duplicate content) */
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Pause on hover so users can read */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- PERSPECTIVE SCROLL STYLES --- */
+
+
+.perspective-viewport {
+  perspective: 2000px; 
+  overflow: visible !important; 
+  width: 100%;
+}
+
+.scroll-stage {
+  transform-style: preserve-3d;
+  width: 100%;
+  padding: 0 20px;
+  pointer-events: none;
+}
+.scroll-stage * {
+  pointer-events: auto;
+}
+
+/* The Group moves together */
+.ipad-group {
+  transform-style: preserve-3d;
+  transform: rotateX(25deg) scale(0.9);
+  transition: transform 0.1s linear; 
+}
+
+/* The Frame */
+.ipad-pro-frame {
+  width: 100%; 
+  max-width: 700px;
+  aspect-ratio: 14/8;
+  background: #121212;
+  border-radius: 28px;
+  padding: 10px;
+  /* box-shadow: 
+    0 50px 100px -20px rgba(0,0,0,0.6),
+    0 30px 60px -30px rgba(0,0,0,0.4),
+    inset 0 0 0 2px rgba(255,255,255,0.1); */
+  /* Ensure it sits behind the floating cards if needed */
+  z-index: 10; 
+}
+
+.ipad-bezel {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+/* Floating Cards */
+.floating-card {
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+
+
+/* --- SEQUENCE STYLE SLIDER --- */
+
+.app-showcase-section {
+  position: relative;
+  width: 100%;
+  /* background: #0b1220; */
+  padding: 6rem 0;
+  
+  /* RESET TO VISIBLE: We handle the scrollbar in the body tag now */
+  overflow: visible; 
+}
+
+.showcase-slider-wrapper {
+  width: 100vw; 
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  /* Allow cards to bleed out freely */
+  overflow: visible; 
+}
+
+.showcase-track {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding-left: 50vw; 
+  will-change: transform;
+
+}
+
+.showcase-slide {
+  /* WIDTH: Wide enough for Split Layout */
+  width: 85vw; /* Mobile */
+  max-width: 1000px; /* Desktop */
+  border-radius:5%;
+  /* ASPECT RATIO: Rectangular */
+  aspect-ratio: 16/10; 
+  
+  flex-shrink: 0;
+  transform: scale(0.92);
+  /* opacity: 0.5; */
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: center center;
+}
+
+@media (min-width: 768px) {
+  .showcase-slide {
+    width: 70vw; /* Desktop: Allows peek on both sides */
+    aspect-ratio: 21/9; /* Cinematic split */
+  }
+}
+
+/* Active State */
+.showcase-slide.active {
+  /* transform: scale(1); */
+  opacity: 1;
+  z-index: 10;
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+}
+
+.slide-card {
+  width: 100%;
+  height: 100%;
+  /* Removed background: white and border: 1px solid #e2e8f0 */
+  overflow: hidden;
+  border-radius: 24px; /* Matches your philosophy radius */
+}
+
+/* Navigation Buttons */
+.slider-nav-btn {
+  width: 56px;
+  height: 56px;
+  background: transparent;
+  /* Darken border and icon for Light Mode visibility */
+  border: 1px solid #cbd5e1; 
+  color: #0f172a; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.slider-nav-btn:hover {
+  background: #0f172a;
+  color: white;
+  border-color: #0f172a;
+}
+
+
+/* --- DARK MODE OVERRIDES --- */
+.theme-dark .slider-nav-btn {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.theme-dark .slider-nav-btn:hover {
+  background: white;
+  color: #0b1220;
+}
+
+.theme-dark .slide-card {
+  background: #0b1220;
+  border-color: #1f2937;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- HYPERLINE STYLE CARDS --- */
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .case-study-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.case-card {
+  position: relative;
+  /* Portrait aspect ratio like the reference */
+  aspect-ratio: 4/5; 
+  border-radius: 12px;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  background: #0f172a; /* Fallback color */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Background Image */
+.case-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: -2;
+}
+
+.case-card:hover .case-card-img {
+  transform: scale(1.05);
+}
+
+/* The Dark Gradient Overlay */
+.case-overlay {
+  position: absolute;
+  inset: 0;
+  /* Strong black gradient from bottom */
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.5) 50%, transparent 100%);
+  z-index: -1;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.case-card:hover .case-overlay {
+  opacity: 1;
+}
+
+/* Content Positioning */
+.case-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Arrow Animation */
+.case-link-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  transition: color 0.2s;
+}
+
+.case-card:hover .case-link-group {
+  color: #ffffff;
+}
+
+.case-arrow {
+  transition: transform 0.3s ease;
+}
+
+.case-card:hover .case-arrow {
+  transform: translateX(4px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Animation Keyframes */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); } /* Slightly stronger float */
+}
+
+@keyframes slide-right {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
+/* Utility Classes */
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite; /* Slower, smoother float */
+}
+
+.animate-bounce-subtle {
+  animation: float-slow 3s ease-in-out infinite;
+}
+
+.animate-slide-right {
+  animation: slide-right 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- RESPONSIVE OPTIMIZATIONS --- */
+
+/* 1. HERO BADGES RESPONSIVE POSITIONS */
+/* Default (Mobile First - Hidden or Tucked in) */
+.badge-pos-1 { top: 240px; left: -20px; z-index: 50; }
+.badge-pos-2 { top: 100px; right: -20px; z-index: 50; }
+.badge-pos-3 { bottom: 60px; right: -20px; z-index: 50; }
+
+/* Tablet & Up: Expand outwards */
+@media (min-width: 768px) {
+  .badge-pos-1 { top: 280px; left: -60px; }
+  .badge-pos-2 { top: 140px; right: -50px; }
+  .badge-pos-3 { bottom: 80px; right: -70px; }
+}
+
+/* 2. PHONE SCALING ON MOBILE */
+/* Prevents horizontal scroll on 320px devices */
+.hero-phone-container {
+  transform: scale(0.85); 
+  transform-origin: center top;
+}
+@media (min-width: 450px) {
+  .hero-phone-container { transform: scale(1); }
+}
+
+/* 3. IPAD SHOWCASE ADJUSTMENTS */
+
+
+
+@media (max-width: 1024px){
+  .ipad-pro-frame {
+    max-width: 100%;
+    aspect-ratio: 13/7; /* Better for mobile video */
+    
+  }
+}
+
+@media (min-width: 1025px){
+  .ipad-pro-frame {
+    max-width: 100%;
+    aspect-ratio: 14/8; /* Better for mobile video */
+  }
+}
+
+
+/* 4. FOOTER TYPOGRAPHY CLAMP */
+/* Ensures "EVERYTHING GREAT" doesn't break on tiny screens */
+.footer-mega-text {
+  font-size: clamp(2.5rem, 8vw, 6rem); /* Min 2.5rem, Pref 8vw, Max 6rem */
+  line-height: 1;
+}
+
+
+
+
+@media (min-width: 491px) and (max-width: 1024px) {
+  .floating-badge {
+    display: none !important;
+  }
+}
+
+
+
+/* 5. FAQ STICKY FIX FOR TABLETS */
+@media (min-width: 1024px) {
+  .faq-sticky-col {
+    position: sticky;
+    top: 6rem;
+    height: fit-content;
+  }
+}
+
+
+
+
+
+/* --- FAQ STAGE ANIMATIONS --- */
+
+.faq-ring {
+  opacity: 0.5;
+  transition: all 0.5s ease;
+}
+
+/* Make the rings pulse slightly */
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.03); opacity: 0.6; }
+}
+
+.faq-ring:nth-child(1) { animation: ringPulse 8s ease-in-out infinite; }
+.faq-ring:nth-child(2) { animation: ringPulse 8s ease-in-out infinite 1s; }
+.faq-ring:nth-child(3) { animation: ringPulse 8s ease-in-out infinite 2s; }
+
+/* Refined Float for small ambient particles */
+@keyframes float-ambient {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(10px, -15px); }
+  66% { transform: translate(-5px, 10px); }
+}
+
+.animate-float-ambient {
+  animation: float-ambient 10s ease-in-out infinite;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Add this to global.css */
+
+/* Create a container-wide ambient effect */
+main {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Optimized Blobs */
+main::before, 
+main::after {
+  content: "";
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%; /* Static shape is faster */
+  /* Remove filter: blur(140px) if possible, use gradient for blur */
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.2) 0%, transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+  /* Only animate transform */
+  animation: slowDrift 30s ease-in-out infinite;
+  will-change: transform; 
+}
+
+@keyframes slowDrift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(100px, 40px); }
+}
+/* REMOVE blobWarp animation entirely */

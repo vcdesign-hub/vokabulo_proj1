@@ -105,48 +105,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // --- 7. SLIDER LOGIC (Sequence Style) ---
-  const track = document.getElementById('showcase-track');
-  const slides = document.querySelectorAll('.showcase-slide');
-  const nextBtn = document.getElementById('next-slide');
-  const prevBtn = document.getElementById('prev-slide');
+ // --- 7. SEAMLESS INFINITE SLIDER ---
+const track = document.getElementById('showcase-track');
+const nextBtn = document.getElementById('next-slide');
+const prevBtn = document.getElementById('prev-slide');
+
+if (track) {
+  let slides = Array.from(document.querySelectorAll('.showcase-slide'));
+  const originalCount = slides.length;
+
+  // 1. Clone slides for the infinite loop
+  const firstClones = slides.map(s => s.cloneNode(true));
+  const lastClones = slides.map(s => s.cloneNode(true));
   
-  if (track && slides.length > 0) {
-    let slideIndex = 0;
+  firstClones.forEach(clone => track.appendChild(clone));
+  lastClones.reverse().forEach(clone => track.insertBefore(clone, track.firstChild));
 
-    const updateSlider = () => {
-      const slideWidth = slides[0].offsetWidth;
-      const gap = 32; // Matches CSS gap
-      const windowWidth = window.innerWidth;
-      
-      // Center Math: (Screen Center) - (Slide Center)
-      const centerOffset = (windowWidth / 2) - (slideWidth / 2);
-      const moveAmount = centerOffset - (slideIndex * (slideWidth + gap));
+  // 2. Setup state
+  const allSlides = Array.from(track.querySelectorAll('.showcase-slide'));
+  let slideIndex = originalCount; // Start at the first "real" slide
+  let isTransitioning = false;
 
-      track.style.paddingLeft = '0';
-      track.style.transform = `translateX(${moveAmount}px)`;
+  const getMoveAmount = (index) => {
+    const slideWidth = allSlides[0].offsetWidth;
+    const gap = 32; 
+    const centerOffset = (window.innerWidth / 2) - (slideWidth / 2);
+    return centerOffset - (index * (slideWidth + gap));
+  };
 
-      // Active Classes
-      slides.forEach((slide, idx) => {
-        slide.classList.toggle('active', idx === slideIndex);
-      });
-    };
+  const updateSlider = (smooth = true) => {
+    track.style.transition = smooth ? 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)' : 'none';
+    track.style.transform = `translateX(${getMoveAmount(slideIndex)}px)`;
 
-    if(nextBtn) nextBtn.addEventListener('click', () => {
-      slideIndex = (slideIndex + 1) % slides.length;
-      updateSlider();
+    // Update active classes for all visible slides
+    allSlides.forEach((slide, idx) => {
+      slide.classList.toggle('active', idx === slideIndex);
     });
+  };
 
-    if(prevBtn) prevBtn.addEventListener('click', () => {
-      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-      updateSlider();
-    });
-
-    window.addEventListener('resize', () => updateSlider());
+  // 3. The "Teleport" Logic - This fixes the glitch
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
     
-    // Initial Calc
-    setTimeout(updateSlider, 100);
-  }
+    // If we reach the end clones, jump back to the start of real slides
+    if (slideIndex >= originalCount * 2) {
+      slideIndex = originalCount;
+      updateSlider(false);
+    } 
+    // If we reach the start clones, jump back to the end of real slides
+    else if (slideIndex < originalCount) {
+      slideIndex = originalCount * 2 - 1;
+      updateSlider(false);
+    }
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    slideIndex++;
+    updateSlider();
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    slideIndex--;
+    updateSlider();
+  });
+
+  window.addEventListener('resize', () => updateSlider(false));
+  
+  // Initial position without animation
+  requestAnimationFrame(() => {
+    updateSlider(false);
+  });
+}
 
 
 
