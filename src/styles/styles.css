@@ -2,7 +2,7 @@
 
 :root {
   color-scheme: light;
-  --bg: #f6f7fb;
+  --bg: #f1f5f9;
   --border: #e2e6ef;
   --ink: #0f172a;
   --muted: #6b7280;
@@ -126,13 +126,7 @@ nav a:hover {
   height: 20px;
 }
 
-/* --- DARK MODE --- */
-.theme-dark {
-  color-scheme: dark;
-  --bg: #0b1220;
-  --border: #1f2937;
-  --ink: #e5e7eb;
-}
+
 
 
 .theme-dark .nav-shell {
@@ -318,7 +312,7 @@ nav a:hover {
 
 .theme-dark {
   color-scheme: dark;
-  --bg: #0b1220;
+  --bg: #070b14;
   --border: #1f2937;
   --ink: #e5e7eb;
   --muted: #94a3b8;
@@ -1786,3 +1780,92 @@ main::after {
   50% { transform: translate(100px, 40px); }
 }
 /* REMOVE blobWarp animation entirely */
+
+
+
+
+
+
+
+/* --- PROMPT MARQUEE STYLES --- */
+
+.marquee-wrapper {
+  /* Fades edges for the "disappearing" look */
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+}
+
+/* Animations - Adjusted to 40s for better vocabulary flow */
+.marquee-left {
+  animation: scrollLeft 40s linear infinite;
+}
+
+.marquee-right {
+  animation: scrollRight 40s linear infinite;
+}
+
+/* Pause on hover to allow users to read specific words */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.prompt-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.prompt-pill p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #475569; /* Slate-600 */
+}
+
+.prompt-pill .sparkle {
+  background: var(--accent-gradient); /* Uses your Vokabulo Orange  */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dark Mode Integration [cite: 117] */
+.theme-dark .prompt-pill {
+  background: rgba(15, 22, 40, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-dark .prompt-pill p {
+  color: #cbd5e1; /* Slate-300 */
+}
+
+/* Interaction */
+.prompt-pill:hover {
+  border-color: var(--accent);
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}

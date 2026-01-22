@@ -159,5 +159,15 @@
         "answer": "Our engine analyzes your speech in real-time, comparing your intonation and accent with native speakers to give you an instant accuracy score."
       }
     ]
+  },"promptMarquee": {
+    "row1": [
+      "Serendipity", "Eloquence", "Pragmatic", "Resilience", "Ambiguity", "Nuance"
+    ],
+    "row2": [
+      "Ephemeral", "Luminous", "Cognitive", "Synthesis", "Mellifluous", "Paradigm"
+    ],
+    "row3": [
+      "Authenticity", "Vibrant", "Insightful", "Equanimity", "Versatile", "Bolster"
+    ]
   }
 }

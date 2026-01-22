@@ -15,7 +15,7 @@ const home = loadHomeCopy('en');
 const { hero, philosophy, featureBlocks, features, cta } = home;
 
 // 3. DESTRUCTURE THE NEW JSON DATA (Only do this once)
-const { philosophyVisuals, vocabMarquee, heroBadges, featureShowcase, bentoGrid,caseStudies,testimonials,faq } = homeData;
+const { philosophyVisuals, vocabMarquee, heroBadges, featureShowcase, bentoGrid,caseStudies,testimonials,faq,promptMarquee } = homeData;
 
 // Import the newly installed component using the alias or relative path
 import Antigravity from '../components/Antigravity.jsx';
@@ -565,6 +565,46 @@ import Antigravity from '../components/Antigravity.jsx';
 
         
       </div>
+    </div>
+  </section>
+
+
+  <section id="prompt-marquee" class="w-full py-20 overflow-hidden">
+    <div class="marquee-wrapper space-y-6">
+      
+      <div class="marquee-container">
+        <div class="marquee-track marquee-left">
+          {[...promptMarquee.row1, ...promptMarquee.row1].map((word) => (
+            <div class="prompt-pill">
+              <span class="sparkle">✦</span>
+              <p>{word}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+  
+      <div class="marquee-container">
+        <div class="marquee-track marquee-right">
+          {[...promptMarquee.row2, ...promptMarquee.row2].map((word) => (
+            <div class="prompt-pill">
+              <span class="sparkle">✦</span>
+              <p>{word}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+  
+      <div class="marquee-container">
+        <div class="marquee-track marquee-left">
+          {[...promptMarquee.row3, ...promptMarquee.row3].map((word) => (
+            <div class="prompt-pill">
+              <span class="sparkle">✦</span>
+              <p>{word}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+  
     </div>
   </section>
   
