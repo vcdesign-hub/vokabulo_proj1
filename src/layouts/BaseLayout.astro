@@ -74,6 +74,9 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
   <body class="antialiased">
+    <script>
+      import "../scripts/global.js";
+    </script>
     <script is:inline>
       (() => {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
