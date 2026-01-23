@@ -3,6 +3,7 @@
 :root {
   color-scheme: light;
   --bg: #f1f5f9;
+  --dot-color: rgba(15, 23, 42, 0.15);
   --border: #e2e6ef;
   --ink: #0f172a;
   --muted: #6b7280;
@@ -20,9 +21,12 @@
 
 body {
   /* Removed radial-gradient overlays for a cleaner look */
-  background-color: #f1f5f9; /* A very slight off-white 'Slate-50' */
+  background-color: #e6e6e6; /* A very slight off-white 'Slate-50' */
   color: var(--ink); 
   margin: 0; 
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+  isolation: isolate;
 }
 
 a {
@@ -213,8 +217,12 @@ nav a:hover {
 /* Ensure Dark Mode uses the dark border */
 .theme-dark .card {
   background: rgba(15, 22, 40, 0.6) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  /* border-color: rgba(255, 255, 255, 0.1) !important; */
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(20px);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.05),
+    0 20px 40px rgba(0, 0, 0, 0.4) !important;
 }
 
 .btn-primary {
@@ -313,6 +321,7 @@ nav a:hover {
 .theme-dark {
   color-scheme: dark;
   --bg: #070b14;
+  --dot-color: rgba(255, 255, 255, 0.15); /* Subtle light dots for dark mode */
   --border: #1f2937;
   --ink: #e5e7eb;
   --muted: #94a3b8;
@@ -320,8 +329,12 @@ nav a:hover {
 }
 
 .theme-dark body {
-  background: #070b14;
+  background: var(--bg);
   color: var(--ink);
+  position: relative;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  isolation: isolate;
 }
 
 .theme-dark .card,
@@ -1342,6 +1355,10 @@ html, body {
 }
 
 
+.theme-dark .app-showcase-section {
+  background: transparent !important;
+}
+
 
 /* --- SEQUENCE STYLE SLIDER --- */
 
@@ -1750,36 +1767,7 @@ html, body {
 
 
 
-/* Add this to global.css */
 
-/* Create a container-wide ambient effect */
-main {
-  position: relative;
-  isolation: isolate;
-}
-
-/* Optimized Blobs */
-main::before, 
-main::after {
-  content: "";
-  position: absolute;
-  width: 800px;
-  height: 800px;
-  border-radius: 50%; /* Static shape is faster */
-  /* Remove filter: blur(140px) if possible, use gradient for blur */
-  background: radial-gradient(circle, rgba(255, 107, 53, 0.2) 0%, transparent 70%);
-  z-index: -1;
-  pointer-events: none;
-  /* Only animate transform */
-  animation: slowDrift 30s ease-in-out infinite;
-  will-change: transform; 
-}
-
-@keyframes slowDrift {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(100px, 40px); }
-}
-/* REMOVE blobWarp animation entirely */
 
 
 
@@ -1869,3 +1857,82 @@ main::after {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Add a singular, large 'Soft Glow' to the FAQ stage specifically */
+.theme-dark #faq {
+  position: relative;
+  background: radial-gradient(
+    60% 50% at 50% 50%, 
+    rgba(255, 107, 53, 0.03) 0%, 
+    transparent 100%
+  );
+}
+
+
+
+
+
+
+
+
+
+
+/* Brighter grid when a card is hovered */
+.theme-dark .card:hover {
+  /* This creates a glow that bleeds onto the grid dots be
+  hind the card */
+  box-shadow: 
+    0 0 80px rgba(255, 107, 53, 0.05), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    0 20px 40px rgba(0, 0, 0, 0.6) !important;
+  /* border-color: rgba(255, 107, 53, 0.3) !important; */
+}
+
+/* Optional: Make the dots slightly sharper on hover */
+.theme-dark main:has(.card:hover) {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+}
+
+
+
+
+.theme-dark .faq-ring {
+  /* Match the grid's subtle white/blue tint */
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.theme-dark .faq-visual .bg-white\/10 {
+  /* Enhance the glass effect on the FAQ visuals */
+  background: rgba(15, 22, 40, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
