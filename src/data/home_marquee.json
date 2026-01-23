@@ -31,6 +31,9 @@
     "card2": { "title": "14 Days", "sub": "On fire! 🔥" },
     "card3": { "title": "Review", "sub": "Complete" }
   },
+  "hero": {
+    "ctaText": "Discover more"
+  },
   "featureShowcase": {
     "badge": "Features",
     "slides": [
@@ -52,10 +55,12 @@
         "word": "Serendipity"
       }
     }
-  },"bentoGrid": {
-    "kicker": "Features",
+  },
+  "bentoGrid": {
+    "badge": "SMART FEATURES",
     "heading": "Designed for modern learners.",
     "subheading": "Experience the tools that make Vokabulo different.",
+    "ctaText": "Learn more",
     "cards": [
       {
         "title": "Smart Collections",
@@ -88,7 +93,8 @@
         "img": "/images/blog/Hand reaching.jpg"
       }
     ]
-  },"caseStudies": {
+  },
+  "caseStudies": {
     "kicker": "Success Stories",
     "heading": "See how others master fluency.",
     "cards": [
@@ -108,7 +114,8 @@
         "img": "/images/home/maria.jpg"
       }
     ]
-  },"testimonials": {
+  },
+  "testimonials": {
     "kicker": "Wall of Love",
     "heading": "Loved by learners.",
     "subheading": "Don't take our word for it.",
@@ -132,7 +139,9 @@
         "img": "/images/home/maria.jpg"
       }
     ]
-  },"faq": {
+  },
+  "faq": {
+    "badge": "FAQs",
     "heading": "Frequently Asked Questions",
     "subheading": "If anything's missing, reach out anytime, we reply quickly and personally.",
     "supportText": "Is your question not listed here? Please get in touch at",
@@ -159,7 +168,8 @@
         "answer": "Our engine analyzes your speech in real-time, comparing your intonation and accent with native speakers to give you an instant accuracy score."
       }
     ]
-  },"promptMarquee": {
+  },
+  "promptMarquee": {
     "row1": [
       "Serendipity", "Eloquence", "Pragmatic", "Resilience", "Ambiguity", "Nuance"
     ],
