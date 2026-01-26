@@ -2,30 +2,27 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { SUPPORTED_LANGS, DEFAULT_LANG, isValidLanguage } from '../../../utils/i18n';
 import { loadBlogPost, getAllBlogSlugs, isUsingFallback } from '../../../utils/blog';
+import '../../../styles/styles.css';
 
 export function getStaticPaths() {
   const paths: Array<{ params: { lang: string; slug: string } }> = [];
-  
   SUPPORTED_LANGS.forEach(lang => {
     const slugs = getAllBlogSlugs(lang);
     slugs.forEach(slug => {
       paths.push({ params: { lang, slug } });
     });
   });
-  
   return paths;
 }
 
 const { lang, slug } = Astro.params;
 
-// Validate language
 if (!isValidLanguage(lang)) {
   return Astro.redirect(`/${DEFAULT_LANG}/blog`);
 }
 
 const post = loadBlogPost(lang, slug);
 
-// If post not found, redirect to blog index
 if (!post) {
   return Astro.redirect(`/${lang}/blog`);
 }
@@ -34,202 +31,47 @@ const showFallbackNote = isUsingFallback(lang);
 ---
 
 <BaseLayout title={`${post.title} · Vokabulo Blog`} currentLang={lang} currentPath={`/blog/${slug}`}>
-  <style is:global>
-    /* Blog post styles - matching homepage aesthetic */
-    body {
-      background: radial-gradient(circle at 10% 20%, #f0f4ff 0, rgba(240, 244, 255, 0) 26%),
-        radial-gradient(circle at 80% 0%, #eef6ff 0, rgba(238, 246, 255, 0) 20%),
-        var(--bg);
-    }
+  <div class="post-page hero-animate">
+    <div class="post-container">
+      
+      <a href={`/${lang}/blog`} class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Blog
+      </a>
 
-    .post-page {
-      max-width: 750px;
-      margin: 0 auto;
-      padding: 140px 24px 80px;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 32px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 150ms ease, transform 150ms ease;
-    }
-
-    .back-link:hover {
-      color: var(--ink);
-      transform: translateX(-2px);
-    }
-
-    .back-link svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .translation-note {
-      background: rgba(14, 165, 233, 0.1);
-      border: 1px solid rgba(14, 165, 233, 0.2);
-      border-radius: 12px;
-      padding: 12px 16px;
-      margin-bottom: 32px;
-      text-align: center;
-      font-size: 14px;
-      color: var(--ink);
-    }
-
-    .post-header {
-      margin-bottom: 48px;
-    }
-
-    .post-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .post-date {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .post-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 2px;
-      border-radius: 9999px;
-      background: rgba(14, 165, 233, 0.1);
-      color: var(--accent);
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .post-header h1 {
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--ink);
-      margin: 0;
-      letter-spacing: -0.02em;
-    }
-
-    .post-hero-image {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 20px;
-      margin-bottom: 48px;
-      background: linear-gradient(135deg, #f0f4ff 0%, #eef6ff 100%);
-      box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
-    }
-
-    /* Markdown typography comes from shared .md-content (.md-content--lg for blog posts) */
-
-    /* Keep only blog-specific markdown embellishments */
-    .post-content img {
-      margin: 32px 0;
-      box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
-    }
-
-    .post-content hr {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 48px 0;
-    }
-
-    /* Dark mode */
-    @media (prefers-color-scheme: dark) {
-      :root:not(.theme-dark) {
-        color-scheme: dark;
-        --bg: #0b1220;
-        --border: #1f2937;
-        --ink: #e5e7eb;
-        --muted: #cbd5e1;
-        --accent: #38bdf8;
-      }
-
-      body {
-        background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.08) 0, rgba(34, 211, 238, 0) 26%),
-          radial-gradient(circle at 80% 0%, rgba(248, 113, 113, 0.12) 0, rgba(248, 113, 113, 0) 22%),
-          #0b1220;
-      }
-    }
-
-    .theme-dark {
-      color-scheme: dark;
-      --bg: #0b1220;
-      --border: #1f2937;
-      --ink: #e5e7eb;
-      --muted: #cbd5e1;
-      --accent: #38bdf8;
-    }
-
-    .theme-dark body {
-      background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.08) 0, rgba(34, 211, 238, 0) 26%),
-        radial-gradient(circle at 80% 0%, rgba(248, 113, 113, 0.12) 0, rgba(248, 113, 113, 0) 22%),
-        #0b1220;
-    }
-
-    .theme-dark .post-tag {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-    }
-
-    .theme-dark .post-content img {
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
-    }
-
-    .theme-dark .post-hero-image {
-      background: linear-gradient(135deg, #1f2937 0%, #0f1628 100%);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
-    }
-  </style>
-
-  <div class="post-page">
-    <a href={`/${lang}/blog`} class="back-link">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-      Back to Blog
-    </a>
-
-    {showFallbackNote && (
-      <div class="translation-note">
-        Translation coming soon. Showing English version.
-      </div>
-    )}
-    
-    <div class="post-header">
-      {post.tag && (
-        <div class="post-meta">
-          <div class="post-tag">{post.tag}</div>
+      {showFallbackNote && (
+        <div class="translation-note">
+          Translation coming soon. Showing English version. [cite: 57]
         </div>
       )}
-      <h1>{post.title}</h1>
+      
+      <header class="post-header">
+        {post.tag && (
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+            {post.tag}
+          </div>
+        )}
+        <br>
+        <br>
+
+        <h1>{post.title}</h1>
+        <p class="text-slate-500 font-medium">{post.date}</p>
+      </header>
+
+      {post.image && (
+        <img
+          class="post-hero-image"
+          src={post.image}
+          alt={post.imageAlt || post.title}
+          loading="eager"
+        />
+      )}
+
+      <article class="post-content md-content md-content--lg">
+        <Fragment set:html={post.content} />
+      </article>
     </div>
-
-    {post.image ? (
-      <img
-        class="post-hero-image"
-        src={post.image}
-        alt={post.imageAlt || post.title}
-        loading="eager"
-        decoding="async"
-      />
-    ) : (
-      <div class="post-hero-image"></div>
-    )}
-
-    <article class="post-content md-content md-content--lg">
-      <Fragment set:html={post.content} />
-    </article>
   </div>
 </BaseLayout>

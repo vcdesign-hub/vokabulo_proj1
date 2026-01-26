@@ -89,25 +89,7 @@ const remainingPosts = posts.slice(1);
             </a>
           )}
 
-          <!-- <div class="posts-grid">
-            {remainingPosts.map(post => (
-              <a href={`/${lang}/blog/${post.slug}`} class="card post-card group">
-                <div class="overflow-hidden rounded-xl mb-6 aspect-video">
-                   <img
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    src={post.image || "/images/blog/default.jpg"}
-                    alt={post.imageAlt || post.title}
-                    loading="lazy"
-                  />
-                </div>
-                <div class="space-y-3">
-                  <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">{post.tag || 'Article'}</p>
-                  <h3 class="text-lg font-semibold text-slate-900 leading-tight">{post.title}</h3>
-                  <p class="text-sm text-slate-600 leading-relaxed">{post.excerpt}</p>
-                </div>
-              </a>
-            ))}
-          </div> -->
+         
           <div class="posts-grid">
             {remainingPosts.map(post => (
               <a href={`/${lang}/blog/${post.slug}`} class="card post-card group">

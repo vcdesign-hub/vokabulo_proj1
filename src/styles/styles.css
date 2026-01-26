@@ -2223,3 +2223,86 @@ html, body {
   border-top: 1px solid rgba(203, 213, 225, 0.5); /* Request #1: Add horizontal line */
 }
 
+
+
+
+
+
+
+
+
+
+
+/**SLUG.ASTRO**/
+/* --- BLOG POST DETAIL PAGE ([slug].astro) --- */
+
+.post-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 140px 24px 80px;
+}
+
+.theme-dark .back-link {
+  color: #94a3b8; /* Slate 400 */
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  color: #64748b; /* Slate 500 */
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 150ms ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+  transform: translateX(-2px);
+}
+
+.back-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.post-header {
+  margin-bottom: 40px;
+}
+
+.post-header h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #0f172a; /* Explicit dark color for light mode */
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.theme-dark .post-header h1 {
+  color: #ffffff; 
+}
+
+.post-hero-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 24px;
+  margin-bottom: 48px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.theme-dark .post-hero-image {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+
+
+.post-content * {
+  color: #1e293b !important;
+}
+
+.theme-dark .post-content * {
+  color: #cbd5e1 !important;
+}
