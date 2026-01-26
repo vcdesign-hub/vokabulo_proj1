@@ -40,16 +40,16 @@ const {
   caseStudies,
   testimonials, 
   faq, 
-  promptMarquee 
+  promptMarquee,
+  zigzagFeatures
 } = visuals;
 ---
 
 <BaseLayout title={hero.title} description={hero.description} currentLang={lang}>
   
-  <section id="hero" class="hero-animate relative w-full px-6 pt-32 pb-20 md:px-16 md:pt-40 md:pb-32 lg:px-24 min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20">
-    <div class="relative z-10 flex max-w-7xl flex-col md:flex-row items-center justify-center gap-12 md:gap-24 w-full mx-auto">
-      
-      <div class="w-full md:w-auto text-left space-y-6 max-w-2xl pb-20 md:pb-32">
+  <section id="hero" class="hero-animate relative w-full pt-32 pb-20 md:pt-40 md:pb-32 min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20">      
+    <div class="relative z-10 flex w-full max-w-7xl px-6 md:px-16 lg:px-24 mx-auto flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
+    <div class="w-full md:w-auto text-left space-y-6 max-w-2xl pb-20 md:pb-32">
         <h1
           class="animate-fade-up text-5xl font-bold leading-[1.3] tracking-tight text-slate-900 sm:text-6xl sm:leading-[1.3]"
           style="animation-delay: 0.2s;"
@@ -71,7 +71,7 @@ const {
         </div>
       </div>
 
-      <div class="relative z-10 flex-shrink-0 perspective-container">
+      <div class="relative z-10 flex-shrink-0 perspective-container md:pr-10">
           <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px] -z-10 animate-pulse-slow"></div>
           
           <div class="relative mx-auto translate-y-12 animate-phone-entry">
@@ -130,11 +130,13 @@ const {
           </div>
       </div>
     </div>
+    </div>
   </section>
 
   <main class="mx-auto max-w-7xl space-y-20 px-6 pt-12 pb-20 md:space-y-32 md:px-16 md:pt-16 lg:px-24">
     
-    <section id="philosophy" class="space-y-10">
+    <section id="philosophy" class="space-y-12 pt-4 md:space-y-16">
+  
       <div class="mx-auto max-w-4xl space-y-3 text-center">
         <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
           {philosophy.kicker}
@@ -147,7 +149,7 @@ const {
         </p>
       </div>
 
-      <div class="mx-auto grid max-w-5xl gap-4 md:grid-cols-3">
+      <div class="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
         <article class="card js-visual-trigger flex h-full flex-col gap-3 rounded-2xl p-6 shadow-soft group">
           <div class="bg-accent inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-soft">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
@@ -252,7 +254,81 @@ const {
       </div>
     </section>
 
-    <section id="perspective-showcase" class="relative w-full"> 
+    <section id="detailed-features" class="space-y-12 pt-4 md:space-y-16 overflow-hidden">
+      <div class="mx-auto max-w-6xl space-y-24">
+        
+        <div class="mx-auto max-w-3xl text-center space-y-4 mb-16">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+            {zigzagFeatures.kicker}
+          </div>
+          <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{zigzagFeatures.heading}</h2>
+        </div>
+    
+        {zigzagFeatures.items.map((item, index) => (
+          <div class={`flex flex-col md:flex-row items-center gap-12 md:gap-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            
+            <div class="w-full md:w-1/2 space-y-6">
+              <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+                Feature {index + 1}
+              </div>
+              <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{item.title}</h2>
+              <p class="text-lg leading-relaxed text-slate-700 sm:text-xl">
+                {item.description}
+              </p>
+              <!-- <ul class="space-y-2 pt-2">
+                 {/* Small checklist using first 3 words as examples */}
+                 {item.words.slice(0, 3).map((word) => (
+                   <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
+                     <div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
+                     {word}
+                   </li>
+                 ))}
+              </ul> -->
+            </div>
+    
+            <div class="w-full md:w-1/2">
+              <div class="zigzag-visual-card group">
+                
+                <div class="zigzag-marquee-wrapper">
+                  
+                  <div class="z-marquee-track z-scroll-left">
+                    {[...item.words, ...item.words, ...item.words].map((word, i) => (
+                      <div class={`z-word-pill ${i % 5 === 0 ? 'highlight' : ''}`}>{word}</div>
+                    ))}
+                  </div>
+    
+                  <div class="z-marquee-track z-scroll-right">
+                    {[...item.words, ...item.words, ...item.words].reverse().map((word, i) => (
+                      <div class={`z-word-pill ${i % 3 === 0 ? 'highlight' : ''}`}>{word}</div>
+                    ))}
+                  </div>
+    
+                  <div class="z-marquee-track z-scroll-left">
+                    {[...item.words, ...item.words, ...item.words].map((word, i) => (
+                      <div class="z-word-pill">{word}</div>
+                    ))}
+                  </div>
+    
+                   <div class="z-marquee-track z-scroll-right">
+                    {[...item.words, ...item.words, ...item.words].reverse().map((word, i) => (
+                      <div class="z-word-pill">{word}</div>
+                    ))}
+                  </div>
+    
+                </div>
+                
+                <div class="zigzag-gradient-overlay"></div>
+              </div>
+            </div>
+    
+          </div>
+        ))}
+    
+      </div>
+    </section>
+   
+
+    <!-- <section id="perspective-showcase" class="relative w-full"> 
       <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center pt-10 perspective-viewport overflow-visible">
         
         <div class="absolute top-12 md:top-16 left-0 right-0 z-20 text-center space-y-6 px-4 max-w-4xl mx-auto transition-opacity duration-300" id="showcase-header">
@@ -332,11 +408,11 @@ const {
           </div> 
         </div>
       </div>
-    </section>
+    </section> -->
 
   </main> 
   
-  <section id="bento-features" class="app-showcase-section relative w-full py-20 md:py-32 overflow-visible">
+  <!-- <section id="bento-features" class="app-showcase-section relative w-full py-20 md:py-32 overflow-visible">
     <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-16 lg:px-24 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div class="max-w-4xl space-y-3 text-left">
         <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
@@ -380,10 +456,10 @@ const {
         ))}
       </div>
     </div>
-</section>
+</section> -->
 
   <main class="mx-auto max-w-7xl space-y-20 px-6 pt-12 pb-20 md:space-y-32 md:px-16 md:pt-16 lg:px-24">
-    <section id="testimonials" class="w-full">
+    <!-- <section id="testimonials" class="w-full">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         {testimonials.cards.map((card, index) => (
           <a 
@@ -421,177 +497,252 @@ const {
           </a>
         ))}
       </div>
-    </section>
-  </main>
+    </section> -->
 
-  <section id="faq" class="w-full py-20 md:py-32">
-    <div class="mx-auto max-w-4xl space-y-3 text-center">
-      <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
-        {faq.badge} </div>
-      <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-        {faq.heading} </h2>
-    </div>
-    <br>
-    <br>
-    
-    <div class="w-full px-6 md:px-16 lg:px-24">
+
+
+
+
+
+
+
+
+    <!-- <section id="faq" class="space-y-12 pt-4 md:space-y-16">
+      <div class="mx-auto max-w-4xl space-y-3 text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+          {faq.badge} </div>
+        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          {faq.heading} </h2>
+      </div>
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-
-        <div class="lg:col-span-7 w-full flex flex-col justify-center">
-          {faq.items.map((item, index) => (
-            <div class="group border-b border-slate-200/60 dark:border-white/5 last:border-0 w-full">
-              <button 
-                    class="faq-btn flex w-full items-center justify-between gap-6 py-8 text-left focus:outline-none"
-                    data-index={index}
-                    aria-expanded={index === 0 ? "true" : "false"}
-                  >
-                    <div class="flex items-center gap-5">
-                      <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#FF6B35] text-white transition-transform duration-300">
-                        {index === 0 && (
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                        )}
-                        {index === 1 && (
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c0-1.7-1.3-3-3-3h-11a4 4 0 1 1 0-8h1a5.5 5.5 0 0 1 10.5-.5"></path><polyline points="9 17 12 20 15 17"></polyline></svg>
-                        )}
-                        {index === 2 && (
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path><line x1="12" y1="10" x2="12" y2="16"></line><line x1="9" y1="13" x2="15" y2="13"></line></svg>
-                        )}
-                        {index === 3 && (
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-                        )}
+      <div class="w-full px-6 md:px-16 lg:px-24">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+  
+  
+          <div class="lg:col-span-7 w-full flex flex-col justify-center">
+            {faq.items.map((item, index) => (
+              <div class="group border-b border-slate-200/60 dark:border-white/5 last:border-0 w-full">
+                <button 
+                      class="faq-btn flex w-full items-center justify-between gap-6 py-8 text-left focus:outline-none"
+                      data-index={index}
+                      aria-expanded={index === 0 ? "true" : "false"}
+                    >
+                      <div class="flex items-center gap-5">
+                        <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#FF6B35] text-white transition-transform duration-300">
+                          {index === 0 && (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                          )}
+                          {index === 1 && (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c0-1.7-1.3-3-3-3h-11a4 4 0 1 1 0-8h1a5.5 5.5 0 0 1 10.5-.5"></path><polyline points="9 17 12 20 15 17"></polyline></svg>
+                          )}
+                          {index === 2 && (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path><line x1="12" y1="10" x2="12" y2="16"></line><line x1="9" y1="13" x2="15" y2="13"></line></svg>
+                          )}
+                          {index === 3 && (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                          )}
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-900">{item.question}</h3>
                       </div>
-                      <h3 class="text-lg font-semibold text-slate-900">{item.question}</h3>
-                    </div>
-                    
-                    <span class="flex-shrink-0 transition-transform duration-300 transform group-aria-expanded:rotate-180">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-slate-500 group-hover:text-white transition-colors">
-                          <path d="M6 9l6 6 6-6"/>
-                      </svg>
-                    </span>
-                  </button>
-
-              <div 
-                class="faq-content overflow-hidden transition-all duration-300 ease-in-out"
-                style={index === 0 ? "max-height: 200px; opacity: 1;" : "max-height: 0px; opacity: 0;"}
-              >
-                <div class="pb-8 pr-6 text-lg text-slate-400 leading-relaxed max-w-2xl">
-          <p class="text-sm text-slate-600">{item.answer}</p>
-                </div>
-
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        <div class="lg:col-span-5 flex flex-col justify-center h-full sticky top-24 self-start">
-          <div class="hidden lg:flex w-full aspect-square max-w-md relative items-center justify-center overflow-visible">
-            
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div class="faq-ring w-[110%] aspect-square border border-slate-800/30 rounded-full absolute"></div>
-              <div class="faq-ring w-[85%] aspect-square border border-slate-800/60 rounded-full absolute"></div>
-              <div class="faq-ring w-[60%] aspect-square border border-slate-700/80 rounded-full absolute"></div>
-            </div>
-        
-            <div class="absolute w-2 h-2 bg-blue-500/30 rounded-full blur-sm animate-float-slow top-[15%] left-[15%]"></div>
-            <div class="absolute w-1.5 h-1.5 bg-[#FF6B35]/40 rounded-full top-[30%] right-[10%] animate-pulse"></div>
-        
-            <div id="visual-0" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-100 z-10">
-              <div class="relative w-64 h-40">
-                <div class="absolute inset-0 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-3 p-6 animate-float-slow z-10 bg-white/10 backdrop-blur-md border border-white/20">
-                  <div class="w-14 h-14 rounded-full flex items-center justify-center mb-1 bg-blue-500/20 text-blue-600">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <div class="w-24 h-2.5 rounded-full bg-slate-400/20"></div>
-                  <div class="w-32 h-2.5 rounded-full bg-slate-400/20"></div>
-                  <div class="absolute -top-3 -right-3 bg-[#FF6B35] text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg animate-bounce-subtle">Review</div>
-                </div>
-              </div>
-            </div>
-        
-            <div id="visual-1" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0 z-10">
-              <div class="relative flex flex-col items-center gap-8 transform scale-110">
-                  <div class="w-32 h-32 rounded-3xl shadow-xl flex items-center justify-center relative bg-white/10 backdrop-blur-md border border-white/20">
-                      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-400">
-                          <path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.132 20.177 10.244 17.819 10.032C17.484 6.224 14.282 3.25 10.5 3.25C6.181 3.25 2.588 6.415 2 10.635C2.022 10.635 2 10.635 2 10.75C2 15.306 5.694 19 10.25 19H17.5Z" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <div class="absolute -bottom-3 -right-3 w-10 h-10 bg-[#FF6B35] rounded-full flex items-center justify-center text-white shadow-sm animate-pulse-slow">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4">
-                              <polyline points="20 6 9 17 4 12"></polyline>
-                          </svg>
-                      </div>
-                  </div>
-                  <div class="text-sm font-bold text-[#FF6B35] bg-[#FF6B35]/10 px-5 py-2 rounded-full border border-[#FF6B35]/20 flex items-center gap-2">
-                      <span>Syncing</span>
-                      <span class="flex gap-1 items-end h-4 pb-1">
-                          <span class="w-1 h-1 bg-[#FF6B35] rounded-full animate-bounce" style="animation-delay: 0s"></span>
-                          <span class="w-1 h-1 bg-[#FF6B35] rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
-                          <span class="w-1 h-1 bg-[#FF6B35] rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                      
+                      <span class="flex-shrink-0 transition-transform duration-300 transform group-aria-expanded:rotate-180">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-slate-500 group-hover:text-white transition-colors">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
                       </span>
+                    </button>
+  
+                <div 
+                  class="faq-content overflow-hidden transition-all duration-300 ease-in-out"
+                  style={index === 0 ? "max-height: 200px; opacity: 1;" : "max-height: 0px; opacity: 0;"}
+                >
+                  <div class="pb-8 pr-6 text-lg text-slate-400 leading-relaxed max-w-2xl">
+            <p class="text-sm text-slate-600">{item.answer}</p>
                   </div>
+  
+                </div>
               </div>
-            </div>
-        
-            <div id="visual-2" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0 z-10">
-              <div class="relative w-full max-w-[300px] flex items-center justify-between transform scale-110">
-                <div class="w-20 h-24 rounded-xl shadow-xl flex flex-col items-center justify-center gap-2 z-10 animate-slide-right bg-white/10 backdrop-blur-md border border-white/20">
-                  <div class="text-[10px] font-bold text-slate-400">CSV </div>
-                  <div class="w-10 h-1.5 rounded-full bg-slate-400/20"></div>
-                  <div class="w-8 h-1.5 rounded-full bg-slate-400/20"></div> 
+            ))}
+          </div>
+          
+          <div class="lg:col-span-5 flex flex-col justify-center h-full sticky top-24 self-start">
+            <div class="hidden lg:flex w-full aspect-square max-w-md relative items-center justify-center overflow-visible">
+              
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="faq-ring w-[110%] aspect-square border border-slate-800/30 rounded-full absolute"></div>
+                <div class="faq-ring w-[85%] aspect-square border border-slate-800/60 rounded-full absolute"></div>
+                <div class="faq-ring w-[60%] aspect-square border border-slate-700/80 rounded-full absolute"></div>
+              </div>
+          
+              <div class="absolute w-2 h-2 bg-blue-500/30 rounded-full blur-sm animate-float-slow top-[15%] left-[15%]"></div>
+              <div class="absolute w-1.5 h-1.5 bg-[#FF6B35]/40 rounded-full top-[30%] right-[10%] animate-pulse"></div>
+          
+              <div id="visual-0" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-100 z-10">
+                <div class="relative w-64 h-40">
+                  <div class="absolute inset-0 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-3 p-6 animate-float-slow z-10 bg-white/10 backdrop-blur-md border border-white/20">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-1 bg-blue-500/20 text-blue-600">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div class="w-24 h-2.5 rounded-full bg-slate-400/20"></div>
+                    <div class="w-32 h-2.5 rounded-full bg-slate-400/20"></div>
+                    <div class="absolute -top-3 -right-3 bg-[#FF6B35] text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg animate-bounce-subtle">Review</div>
+                  </div>
                 </div>
-                <div class="mx-4 text-slate-500">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg> 
+              </div>
+          
+              <div id="visual-1" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0 z-10">
+                <div class="relative flex flex-col items-center gap-8 transform scale-110">
+                    <div class="w-32 h-32 rounded-3xl shadow-xl flex items-center justify-center relative bg-white/10 backdrop-blur-md border border-white/20">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-400">
+                            <path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.132 20.177 10.244 17.819 10.032C17.484 6.224 14.282 3.25 10.5 3.25C6.181 3.25 2.588 6.415 2 10.635C2.022 10.635 2 10.635 2 10.75C2 15.306 5.694 19 10.25 19H17.5Z" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="absolute -bottom-3 -right-3 w-10 h-10 bg-[#FF6B35] rounded-full flex items-center justify-center text-white shadow-sm animate-pulse-slow">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="text-sm font-bold text-[#FF6B35] bg-[#FF6B35]/10 px-5 py-2 rounded-full border border-[#FF6B35]/20 flex items-center gap-2">
+                        <span>Syncing</span>
+                        <span class="flex gap-1 items-end h-4 pb-1">
+                            <span class="w-1 h-1 bg-[#FF6B35] rounded-full animate-bounce" style="animation-delay: 0s"></span>
+                            <span class="w-1 h-1 bg-[#FF6B35] rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+                            <span class="w-1 h-1 bg-[#FF6B35] rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                        </span>
+                    </div>
                 </div>
-                <div class="w-24 h-24 bg-[#FF6B35] rounded-2xl flex items-center justify-center shadow-lg border border-[#FF6B35]/50">
-                  <div class="text-white">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </div>
+          
+              <div id="visual-2" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0 z-10">
+                <div class="relative w-full max-w-[300px] flex items-center justify-between transform scale-110">
+                  <div class="w-20 h-24 rounded-xl shadow-xl flex flex-col items-center justify-center gap-2 z-10 animate-slide-right bg-white/10 backdrop-blur-md border border-white/20">
+                    <div class="text-[10px] font-bold text-slate-400">CSV </div>
+                    <div class="w-10 h-1.5 rounded-full bg-slate-400/20"></div>
+                    <div class="w-8 h-1.5 rounded-full bg-slate-400/20"></div> 
+                  </div>
+                  <div class="mx-4 text-slate-500">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
                     </svg> 
                   </div>
+                  <div class="w-24 h-24 bg-[#FF6B35] rounded-2xl flex items-center justify-center shadow-lg border border-[#FF6B35]/50">
+                    <div class="text-white">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                      </svg> 
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-        
-            <div id="visual-3" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0 z-10">
-              <div class="relative flex flex-col items-center gap-6 transform scale-110">
-                <div class="w-44 h-32 rounded-3xl shadow-xl flex items-center justify-center gap-1.5 relative overflow-hidden p-4 bg-white/10 backdrop-blur-md border border-white/20">
-                    <div class="flex items-end gap-1 h-16">
-                        <div class="w-1.5 bg-slate-400/20 rounded-full h-4 animate-pulse"></div>
-                        <div class="w-1.5 bg-slate-400/30 rounded-full h-8 animate-pulse"></div>
-                        <div class="w-1.5 bg-slate-400/40 rounded-full h-12 animate-pulse"></div>
-                        <div class="w-2 bg-[#FF6B35] rounded-full h-16 animate-pulse"></div> 
-                        <div class="w-1.5 bg-slate-400/40 rounded-full h-10 animate-pulse"></div>
-                        <div class="w-1.5 bg-slate-400/30 rounded-full h-6 animate-pulse"></div>
-                        <div class="w-1.5 bg-slate-400/20 rounded-full h-4 animate-pulse"></div>
-                    </div>
-                    <div class="absolute top-3 right-3 flex items-center gap-1 bg-green-500/10 px-2 py-1 rounded-lg border border-green-500/20 shadow-sm">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span class="text-[10px] font-black text-green-600">98%</span>
-                    </div>
-                </div>
-                <div class="w-14 h-14 bg-[#FF6B35] rounded-full flex items-center justify-center text-white shadow-lg relative">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                        <line x1="12" y1="19" x2="12" y2="23"></line>
-                        <line x1="8" y1="23" x2="16" y2="23"></line>
-                    </svg>
-                    <div class="absolute inset-0 rounded-full bg-[#FF6B35] animate-ping opacity-20"></div>
+          
+              <div id="visual-3" class="faq-visual absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0 z-10">
+                <div class="relative flex flex-col items-center gap-6 transform scale-110">
+                  <div class="w-44 h-32 rounded-3xl shadow-xl flex items-center justify-center gap-1.5 relative overflow-hidden p-4 bg-white/10 backdrop-blur-md border border-white/20">
+                      <div class="flex items-end gap-1 h-16">
+                          <div class="w-1.5 bg-slate-400/20 rounded-full h-4 animate-pulse"></div>
+                          <div class="w-1.5 bg-slate-400/30 rounded-full h-8 animate-pulse"></div>
+                          <div class="w-1.5 bg-slate-400/40 rounded-full h-12 animate-pulse"></div>
+                          <div class="w-2 bg-[#FF6B35] rounded-full h-16 animate-pulse"></div> 
+                          <div class="w-1.5 bg-slate-400/40 rounded-full h-10 animate-pulse"></div>
+                          <div class="w-1.5 bg-slate-400/30 rounded-full h-6 animate-pulse"></div>
+                          <div class="w-1.5 bg-slate-400/20 rounded-full h-4 animate-pulse"></div>
+                      </div>
+                      <div class="absolute top-3 right-3 flex items-center gap-1 bg-green-500/10 px-2 py-1 rounded-lg border border-green-500/20 shadow-sm">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                          <span class="text-[10px] font-black text-green-600">98%</span>
+                      </div>
+                  </div>
+                  <div class="w-14 h-14 bg-[#FF6B35] rounded-full flex items-center justify-center text-white shadow-lg relative">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                          <line x1="12" y1="19" x2="12" y2="23"></line>
+                          <line x1="8" y1="23" x2="16" y2="23"></line>
+                      </svg>
+                      <div class="absolute inset-0 rounded-full bg-[#FF6B35] animate-ping opacity-20"></div>
+                  </div>
                 </div>
               </div>
+          
             </div>
-        
           </div>
+  
+          
         </div>
+      </div>
+    </section> -->
 
+
+
+
+
+    <section id="faq" class="space-y-12 pt-4 md:space-y-16">
+      
+      <div class="mx-auto max-w-4xl space-y-3 text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+          {faq.badge} 
+        </div>
+        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          {faq.heading} 
+        </h2>
+      </div>
+      
+      <div class="mx-auto max-w-6xl">
+        
+        <div class="mx-auto max-w-3xl w-full flex flex-col justify-center">
+            {faq.items.map((item, index) => (
+              <div class="group border-b border-slate-200/60 dark:border-white/5 last:border-0 w-full">
+                <button 
+                      class="faq-btn flex w-full items-center justify-between gap-6 py-8 text-left focus:outline-none"
+                      data-index={index}
+                      aria-expanded={index === 0 ? "true" : "false"}
+                    >
+                      <div class="flex items-center gap-5">
+                        <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#FF6B35] text-white transition-transform duration-300">
+                          {index === 0 && (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                          )}
+                          {index === 1 && (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c0-1.7-1.3-3-3-3h-11a4 4 0 1 1 0-8h1a5.5 5.5 0 0 1 10.5-.5"></path><polyline points="9 17 12 20 15 17"></polyline></svg>
+                          )}
+                          {index === 2 && (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path><line x1="12" y1="10" x2="12" y2="16"></line><line x1="9" y1="13" x2="15" y2="13"></line></svg>
+                          )}
+                          {index === 3 && (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                          )}
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-900">{item.question}</h3>
+                      </div>
+                      
+                      <span class="flex-shrink-0 transition-transform duration-300 transform group-aria-expanded:rotate-180">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-slate-500 group-hover:text-white transition-colors">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                      </span>
+                    </button>
+  
+                <div 
+                  class="faq-content overflow-hidden transition-all duration-300 ease-in-out"
+                  style={index === 0 ? "max-height: 200px; opacity: 1;" : "max-height: 0px; opacity: 0;"}
+                >
+                  <div class="pb-8 pr-6 text-lg text-slate-400 leading-relaxed max-w-2xl pl-[60px]">
+                    <p class="text-sm text-slate-600">{item.answer}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
         
       </div>
-    </div>
-  </section>
+    </section>
+
+
+  </main>
+
+  
 
 
   <section id="prompt-marquee" class="w-full py-20 overflow-hidden">
