@@ -11,6 +11,7 @@ export interface BlogPost {
   tag?: string;
   image?: string;
   imageAlt?: string;
+  authorImage?: string;
 }
 
 export interface BlogPostContent extends BlogPost {
@@ -87,6 +88,8 @@ export function loadBlogPosts(lang: Language): BlogPost[] {
     let tag = frontmatter.tag;
     let image = frontmatter.image;
     let imageAlt = frontmatter.imageAlt;
+    let author = frontmatter.author;
+    let authorImage = frontmatter.authorImage;
     
     // If no excerpt, use first paragraph
     if (!excerpt && markdown) {
@@ -94,7 +97,7 @@ export function loadBlogPosts(lang: Language): BlogPost[] {
       excerpt = firstPara.substring(0, 200) + (firstPara.length > 200 ? '...' : '');
     }
     
-    return { slug, title, date, excerpt, tag, image, imageAlt };
+    return { slug, title, date, excerpt, tag, image, imageAlt, author, authorImage };
   });
 
   // Sort by date descending
@@ -124,6 +127,8 @@ export function loadBlogPost(lang: Language, slug: string): BlogPostContent | nu
   const tag = frontmatter.tag;
   const image = frontmatter.image;
   const imageAlt = frontmatter.imageAlt;
+  const author = frontmatter.author;
+  const authorImage = frontmatter.authorImage;
   const htmlContent = marked.parse(markdown);
   
   return {
@@ -134,7 +139,10 @@ export function loadBlogPost(lang: Language, slug: string): BlogPostContent | nu
     tag,
     image,
     imageAlt,
+    author,
+    authorImage,
     content: htmlContent as string,
+    
   };
 }
 

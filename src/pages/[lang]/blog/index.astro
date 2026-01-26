@@ -75,7 +75,11 @@ const remainingPosts = posts.slice(1);
                   <div class="featured-content-footer flex items-center justify-between">
                     <div class="flex items-center gap-3">
                       <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
-                         <img src="/images/team/marketing-head.jpg" alt="Author" class="object-cover w-full h-full" />
+                        <img 
+                        src={featuredPost.authorImage || "/images/blog/lukas.jpg"}
+                        alt={featuredPost.author} 
+                        class="object-cover w-full h-full" 
+                      />
                       </div>
                       <div>
                         <p class="text-sm font-bold text-slate-900">Vokabulo Team</p>
@@ -120,7 +124,11 @@ const remainingPosts = posts.slice(1);
                   <div class="mt-auto pt-4 border-t border-slate-200/50 flex items-center justify-between">
                      <div class="flex items-center gap-2">
                        <div class="w-6 h-6 rounded-full bg-slate-200 overflow-hidden border border-white">
-                          <img src="/images/team/marketing-head.jpg" alt="Author" class="w-full h-full object-cover" />
+                        <img 
+                        src={post.authorImage || "/images/blog/lukas.jpg"}
+                        alt={post.author} 
+                        class="w-full h-full object-cover" 
+                      />
                        </div>
                        <span class="text-[11px] font-bold text-slate-500 uppercase">Vokabulo</span>
                      </div>

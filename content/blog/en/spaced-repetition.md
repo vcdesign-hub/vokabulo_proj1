@@ -5,6 +5,7 @@ excerpt: "Remember vocabulary efficiently and for the long term."
 tag: "Learning"
 image: "/images/blog/Ocean.jpg"
 imageAlt: "Ocean"
+authorImage: "/images/blog/lyle.jpg"
 ---
 
 Spaced repetition is one of the most powerful techniques for long-term memory retention. But what makes it so effective, and how can you use it to accelerate your vocabulary learning?

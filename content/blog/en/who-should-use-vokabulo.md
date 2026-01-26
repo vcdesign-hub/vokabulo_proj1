@@ -5,6 +5,7 @@ excerpt: "For language learners who want to go beyond the basics."
 tag: "Vokabulo"
 image: "/images/blog/Moon%20rising.jpg"
 imageAlt: "Moon rising"
+authorImage: "/images/blog/sophie.jpg"
 ---
 
 Vokabulo is especially helpful if you:

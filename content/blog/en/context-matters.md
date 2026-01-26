@@ -5,6 +5,7 @@ excerpt: "How a word is used matters more than its translation."
 tag: "Learning"
 image: "/images/blog/eye.jpg"
 imageAlt: "Eye close-up"
+authorImage: "/images/blog/lukas.jpg"
 ---
 
 When learning new vocabulary, most people memorize word-for-word translations. 

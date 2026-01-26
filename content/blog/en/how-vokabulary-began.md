@@ -5,6 +5,7 @@ excerpt: "Inspired by a lifelong passion for words and better language learning.
 tag: "Vokabulo"
 image: "/images/blog/Hand%20reaching.jpg"
 imageAlt: "Hand reaching"
+authorImage: "/images/blog/maria.jpg"
 ---
 
 A language is about the *words, grammar, pronunciation and culture.*
