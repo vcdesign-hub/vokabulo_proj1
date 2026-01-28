@@ -41,14 +41,14 @@ body::before {
   
   /* 2. LIGHT MODE DOTS (Default) */
   /* Dark Grey dots at 40% opacity */
-  background-image: radial-gradient(rgba(15, 23, 42, 0.4) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(15, 23, 42, 0.2) 1px, transparent 1px);
 }
 
 /* 3. DARK MODE DOTS (Override) */
 /* When dark mode is active, switch to White dots */
 .theme-dark body::before {
   /* White dots at 20% opacity - Adjust 0.2 up to 0.4 if you need them brighter */
-  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 
