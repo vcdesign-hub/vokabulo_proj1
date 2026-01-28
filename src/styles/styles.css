@@ -3,7 +3,7 @@
 :root {
   color-scheme: light;
   --bg: #f1f5f9;
-  --dot-color: rgba(15, 23, 42, 0.15);
+  --dot-color: rgba(15, 23, 42, 0.6);
   --border: #e2e6ef;
   --ink: #0f172a;
   --muted: #6b7280;
@@ -21,13 +21,37 @@
 
 body {
   /* Removed radial-gradient overlays for a cleaner look */
+  position: relative;
   background-color: #e6e6e6; /* A very slight off-white 'Slate-50' */
   color: var(--ink); 
   margin: 0; 
-  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
-  background-size: 32px 32px;
   isolation: isolate;
 }
+
+/* 1. Base Setup (Positioning & Layout) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: -1;          /* Places it behind your content */
+  background-size: 32px 32px;
+  
+  /* 2. LIGHT MODE DOTS (Default) */
+  /* Dark Grey dots at 40% opacity */
+  background-image: radial-gradient(rgba(15, 23, 42, 0.4) 1px, transparent 1px);
+}
+
+/* 3. DARK MODE DOTS (Override) */
+/* When dark mode is active, switch to White dots */
+.theme-dark body::before {
+  /* White dots at 20% opacity - Adjust 0.2 up to 0.4 if you need them brighter */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+}
+
+
 
 a {
   text-decoration: none;
@@ -321,7 +345,7 @@ nav a:hover {
 .theme-dark {
   color-scheme: dark;
   --bg: #070b14;
-  --dot-color: rgba(255, 255, 255, 0.15); /* Subtle light dots for dark mode */
+  --dot-color: rgba(255, 255, 255, 0.6); /* Subtle light dots for dark mode */
   --border: #1f2937;
   --ink: #e5e7eb;
   --muted: #94a3b8;
@@ -332,8 +356,6 @@ nav a:hover {
   background: var(--bg);
   color: var(--ink);
   position: relative;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
   isolation: isolate;
 }
 
