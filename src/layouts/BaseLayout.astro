@@ -95,7 +95,8 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
             <img src="/images/logo on dark.svg" alt="Vokabulo logo" class="logo-dark" />
           </a>
           <nav class="hidden items-center gap-8 text-sm font-semibold text-slate-700 md:flex">
-            <a class="..." href={`/${currentLang}`}>{t('nav.great')}</a>
+            <!-- <a class="transition hover:text-[var(--accent)]" href={`/${currentLang}/what_makes_it_great`}>{t('nav.great')}</a> -->
+            <a class="transition hover:text-[var(--accent)]" href=#>{t('nav.great')}</a>
             <a class="..." href={`/${currentLang}/support`}>{t('nav.works')}</a>
             <a class="..." href={`/${currentLang}/blog`}>{t('nav.blog')}</a>
           </nav>
@@ -129,7 +130,8 @@ const hreflangAlternates = buildHreflangAlternates(siteUrl, Astro.url.pathname);
 
       <div id="mobile-menu" class="mx-auto hidden max-w-5xl px-4 pb-4 md:hidden">
         <div class="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-          <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}`}>{t('nav.great')}</a>
+          <!-- <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/what_makes_it_great`}>{t('nav.great')}</a> -->
+          <a class="py-1 text-sm font-medium text-slate-800" href=#>{t('nav.great')}</a>
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/support`}>{t('nav.works')}</a>
           <a class="py-1 text-sm font-medium text-slate-800" href={`/${currentLang}/blog`}>{t('nav.blog')}</a>
           <button

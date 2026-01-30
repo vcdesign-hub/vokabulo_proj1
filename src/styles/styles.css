@@ -2328,3 +2328,158 @@ html, body {
 .theme-dark .post-content * {
   color: #cbd5e1 !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****for what makes it great ***/
+
+
+/* Add to styles.css or a local <style> block */
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.animate-float-1 { animation: float-gentle 6s ease-in-out infinite; }
+.animate-float-2 { animation: float-delayed 7s ease-in-out infinite 1s; }
+.animate-float-3 { animation: float-gentle 8s ease-in-out infinite 2s; }
+.animate-glow-pulse { animation: pulse-glow 4s ease-in-out infinite; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- NEW: PRODUCT SHOWCASE SECTION (Apple Style) --- */
+
+/* Wrapper for the clean, split layouts */
+.product-showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem; /* Mobile gap */
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .product-showcase-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem; /* Desktop gap: Matches your md:gap-24 convention */
+  }
+  
+  /* Reverse modifier for alternating layouts */
+  .product-showcase-grid.reverse {
+    direction: rtl; /* Trick to swap columns without changing DOM order */
+  }
+  .product-showcase-grid.reverse > * {
+    direction: ltr; /* Reset content direction */
+  }
+}
+
+/* The Clean Product Card (for the top 2 items) */
+.product-clean-card {
+  position: relative;
+  background: #f8fafc; /* Slate-50 */
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1; /* Square */
+}
+
+.theme-dark .product-clean-card {
+  background: #0f1628;
+  border-color: #1f2937;
+}
+
+.product-clean-card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* Typography Overrides for this section */
+.display-heading-lg {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.display-heading-md {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+/* Specific styling for the 'Precision Finding' arrow if no image is used */
+.precision-arrow-container {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 32px; /* Phone screen radius */
+}
+
+.precision-arrow {
+  width: 0; 
+  height: 0; 
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 50px solid white;
+  margin-bottom: 20px;
+  transform: rotate(-45deg); /* Slight tilt like image */
+}
