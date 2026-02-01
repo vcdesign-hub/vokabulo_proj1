@@ -232,6 +232,80 @@ if (track) {
 
 
 
+// --- SEAMLESS INFINITE MARQUEE LOOP ---
+const initSeamlessMarquees = () => {
+  const tracks = document.querySelectorAll('.js-draggable-marquee');
+
+  tracks.forEach(track => {
+    const isRight = track.classList.contains('z-scroll-right') || track.classList.contains('marquee-right');
+    const speed = 0.5; // Pixels per frame
+    const halfWidth = track.scrollWidth / 2;
+    
+    // 1. Initial Position: Right-moving tracks must start offset so they have content to reveal
+    let x = isRight ? -halfWidth : 0;
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const animate = () => {
+      if (!isDragging) {
+        const currentHalfWidth = track.scrollWidth / 2;
+        
+        // Move the track
+        x = isRight ? x + speed : x - speed;
+
+        // 2. Seamless Reset Logic
+        if (isRight && x >= 0) {
+          // If moving right and we hit 0, jump back to -halfWidth
+          x = -currentHalfWidth;
+        } else if (!isRight && Math.abs(x) >= currentHalfWidth) {
+          // If moving left and we hit -halfWidth, jump back to 0
+          x = 0;
+        }
+        
+        track.style.transform = `translate3d(${x}px, 0, 0)`;
+      }
+      requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
+
+    // --- DRAG EVENTS ---
+    track.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      track.classList.add('is-active');
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = x; 
+      track.setPointerCapture(e.pointerId);
+    });
+
+    track.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const mouseX = e.pageX - track.offsetLeft;
+      const walk = (mouseX - startX);
+      x = scrollLeft + walk; 
+      
+      // Prevent dragging too far into empty space during manual drag
+      const currentHalfWidth = track.scrollWidth / 2;
+      if (x > 0) x = -currentHalfWidth;
+      if (x < -currentHalfWidth) x = 0;
+
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+    });
+
+    const stopDragging = () => {
+      isDragging = false;
+      track.classList.remove('is-active');
+    };
+
+    track.addEventListener('pointerup', stopDragging);
+    track.addEventListener('pointerleave', stopDragging);
+  });
+};
+
+initSeamlessMarquees();
+
+
 
 
 });
@@ -711,6 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
 });
+
 
 
 

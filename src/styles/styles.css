@@ -1211,15 +1211,13 @@ nav a:hover {
   width: max-content; /* Ensure track is wide enough */
 }
 
-/* Row 1: Scroll Left */
-.marquee-left {
+/* .marquee-left {
   animation: scrollLeft 60s linear infinite;
 }
 
-/* Row 2: Scroll Right */
 .marquee-right {
   animation: scrollRight 60s linear infinite;
-}
+} */
 
 /* The Word Pill */
 .vocab-pill {
@@ -1837,13 +1835,13 @@ html, body {
 }
 
 /* Animations - Adjusted to 40s for better vocabulary flow */
-.marquee-left {
+/* .marquee-left {
   animation: scrollLeft 40s linear infinite;
-}
+} */
 
-.marquee-right {
+/* .marquee-right {
   animation: scrollRight 40s linear infinite;
-}
+} */
 
 /* Pause on hover to allow users to read specific words */
 .marquee-container:hover .marquee-track {
@@ -1889,7 +1887,7 @@ html, body {
 .prompt-pill:hover {
   border-color: var(--accent);
 }
-
+/* 
 @keyframes scrollLeft {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -1898,7 +1896,7 @@ html, body {
 @keyframes scrollRight {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
-}
+} */
 
 
 
@@ -3077,4 +3075,37 @@ html, body {
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Disable the old CSS animations */
+.z-scroll-left, .z-scroll-right, .marquee-left, .marquee-right {
+  animation: none !important; 
+}
+
+.js-draggable-marquee {
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+  display: flex !important; /* Ensure items stay in a row */
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: none !important; /* Prevents JS updates from fighting CSS transitions */
+  will-change: transform;
+  width: max-content !important;
+  white-space: nowrap !important;
+}
+
+.js-draggable-marquee:active {
+  cursor: grabbing;
 }

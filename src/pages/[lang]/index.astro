@@ -295,25 +295,25 @@ const {
                 
                 <div class="zigzag-marquee-wrapper">
                   
-                  <div class="z-marquee-track z-scroll-left">
+                  <div class="z-marquee-track z-scroll-left js-draggable-marquee">
                     {[...item.words, ...item.words, ...item.words].map((word, i) => (
                       <div class={`z-word-pill ${i % 5 === 0 ? 'highlight' : ''}`}>{word}</div>
                     ))}
                   </div>
     
-                  <div class="z-marquee-track z-scroll-right">
+                  <div class="z-marquee-track z-scroll-right js-draggable-marquee">
                     {[...item.words, ...item.words, ...item.words].reverse().map((word, i) => (
                       <div class={`z-word-pill ${i % 3 === 0 ? 'highlight' : ''}`}>{word}</div>
                     ))}
                   </div>
     
-                  <div class="z-marquee-track z-scroll-left">
+                  <div class="z-marquee-track z-scroll-left js-draggable-marquee">
                     {[...item.words, ...item.words, ...item.words].map((word, i) => (
                       <div class="z-word-pill">{word}</div>
                     ))}
                   </div>
     
-                   <div class="z-marquee-track z-scroll-right">
+                   <div class="z-marquee-track z-scroll-right js-draggable-marquee">
                     {[...item.words, ...item.words, ...item.words].reverse().map((word, i) => (
                       <div class="z-word-pill">{word}</div>
                     ))}
@@ -919,7 +919,7 @@ const {
     <div class="marquee-wrapper space-y-6">
       
       <div class="marquee-container">
-        <div class="marquee-track marquee-left">
+        <div class="marquee-track marquee-left js-draggable-marquee">
           {[...promptMarquee.row1, ...promptMarquee.row1].map((word) => (
             <div class="prompt-pill">
               <span class="sparkle">✦</span>
@@ -930,7 +930,7 @@ const {
       </div>
   
       <div class="marquee-container">
-        <div class="marquee-track marquee-right">
+        <div class="marquee-track marquee-right js-draggable-marquee">
           {[...promptMarquee.row2, ...promptMarquee.row2].map((word) => (
             <div class="prompt-pill">
               <span class="sparkle">✦</span>
@@ -941,7 +941,7 @@ const {
       </div>
   
       <div class="marquee-container">
-        <div class="marquee-track marquee-left">
+        <div class="marquee-track marquee-left js-draggable-marquee">
           {[...promptMarquee.row3, ...promptMarquee.row3].map((word) => (
             <div class="prompt-pill">
               <span class="sparkle">✦</span>
