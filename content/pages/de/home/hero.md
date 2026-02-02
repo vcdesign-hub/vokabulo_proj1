@@ -1,11 +1,11 @@
 ---
-title: "Vokabulo – Smarter Learning"
-description: "Language learning coming alive - AI-powered, community-inspired, pure magic"
-ctaText: "Discover the Magic of Vokabulo"
+title: "Vokabulo – Smarter Lernen"
+description: "Sprachenlernen neu gedacht."
+ctaText: "Kostenlos starten"
 ctaHref: "#feature-blocks"
 ---
 
-# Every journey begins<br />with the right words
+# Sprachenlernen wird lebendig.
 
-Language learning coming alive - AI-powered, community-inspired, pure magic
+KI-gestützt, von der Community inspiriert, einfach magisch.
 

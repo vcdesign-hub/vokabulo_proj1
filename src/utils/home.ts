@@ -19,21 +19,69 @@ export type VisualData = {
   zigzagFeatures: {
     kicker: string;
     heading: string;
+    featureLabel: string;
     items: Array<{
       title: string;
       description: string;
       words: string[]; // The relevant words for the marquee
     }>;
   };
+
+
+
+  productShowcase: {
+    precisionBadge: string;
+    precisionHeading: string;
+    ctaText: string;
+    familyHeading: string;
+    familyBody: string;
+    pingHeading: string;
+    pingBody: string;
+    warmHeading: string;
+    warmBody: string;
+    warmBadge1Title: string; // <--- NEW (14 Days)
+    warmBadge1Sub: string;   // <--- NEW (On fire!)
+    warmBadge2Title: string; // <--- NEW (+5 New)
+    warmBadge2Sub: string;   // <--- NEW (Words learned)
+    images: {
+      precision1: string;
+      precision2: string;
+      ping: string;
+    };
+  };
+
+
+
+
 };
 
 // --- 2. DEFINE DATA FOR EACH LANGUAGE ---
 const VISUALS_BY_LANG: Record<string, VisualData> = {
   en: {
-    // NEW DATA START
+    productShowcase: {
+      precisionBadge: "Precision Finding",
+      precisionHeading: "With a speaker that's 50% louder and up to a 1.5x greater range.",
+      ctaText: "Buy Now",
+      familyHeading: "Make finding a family affair.",
+      familyBody: "Share items with up to five people. So items that everyone uses — like an umbrella, a bike, or the family car keys — can be tracked by friends and family.",
+      pingHeading: "Ping it. Find it.",
+      pingBody: "Misplacing something like your keys doesn't have to be a big deal when it has an AirTag attached. Open the app or ask Siri for help.",
+      warmHeading: "Cold. Warm. Warmer. Hot.",
+      warmBody: "If your AirTag is nearby, your iPhone can lead you straight to it. Thanks to Ultra Wideband technology, you'll see the exact distance and direction.",
+      warmBadge1Title: "14 Days",      // <--- NEW
+      warmBadge1Sub: "On fire! 🔥",    // <--- NEW
+      warmBadge2Title: "+5 New",       // <--- NEW
+      warmBadge2Sub: "Words learned",  // <--- NEW
+      images: {
+        precision1: "https://images.pexels.com/photos/27212302/pexels-photo-27212302.jpeg",
+        precision2: "https://images.pexels.com/photos/8346914/pexels-photo-8346914.jpeg",
+        ping: "https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg"
+      }
+    },
     zigzagFeatures: {
       kicker: "Deep Dive",
       heading: "Mastery in every detail.",
+      featureLabel: "Feature", // <--- NEW
       items: [
         {
           title: "Keep every project moving forward",
@@ -242,9 +290,30 @@ const VISUALS_BY_LANG: Record<string, VisualData> = {
   
   // --- GERMAN TRANSLATIONS ---
   de: {
+    productShowcase: {
+      precisionBadge: "Präzisionssuche",
+      precisionHeading: "Mit einem Lautsprecher, der 50% lauter ist und bis zu 1,5x mehr Reichweite hat.",
+      ctaText: "Jetzt kaufen",
+      familyHeading: "Finden wird zur Familiensache.",
+      familyBody: "Teile Gegenstände mit bis zu fünf Personen. So können Dinge, die jeder nutzt – wie ein Regenschirm, ein Fahrrad oder die Autoschlüssel – von Freunden und Familie geortet werden.",
+      pingHeading: "Anpingen. Finden.",
+      pingBody: "Etwas wie deine Schlüssel zu verlegen ist keine große Sache, wenn ein AirTag daran befestigt ist. Öffne die App oder frag Siri um Hilfe.",
+      warmHeading: "Kalt. Warm. Wärmer. Heiß.",
+      warmBody: "Wenn dein AirTag in der Nähe ist, führt dich dein iPhone direkt hin. Dank Ultra-Wideband-Technologie siehst du die genaue Entfernung und Richtung.",
+      warmBadge1Title: "14 Tage",      // <--- NEW
+      warmBadge1Sub: "Läuft! 🔥",      // <--- NEW
+      warmBadge2Title: "+5 Neue",      // <--- NEW
+      warmBadge2Sub: "Wörter gelernt", // <--- NEW
+      images: {
+        precision1: "https://images.pexels.com/photos/27212302/pexels-photo-27212302.jpeg",
+        precision2: "https://images.pexels.com/photos/8346914/pexels-photo-8346914.jpeg",
+        ping: "https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg"
+      }
+    },
     zigzagFeatures: {
       kicker: "Tiefgang",
       heading: "Meisterschaft im Detail.",
+      featureLabel: "Funktion", // <--- NEW
       items: [
         {
           title: "Halte jedes Projekt am Laufen",

@@ -41,7 +41,8 @@ const {
   testimonials, 
   faq, 
   promptMarquee,
-  zigzagFeatures
+  zigzagFeatures,
+  productShowcase
 } = visuals;
 ---
 
@@ -273,7 +274,7 @@ const {
             
             <div class="w-full md:w-1/2 space-y-6">
               <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
-                Feature {index + 1}
+                {zigzagFeatures.featureLabel} {index + 1}
               </div>
               <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{item.title}</h2>
               <p class="text-lg leading-relaxed text-slate-700 sm:text-xl">
@@ -337,14 +338,14 @@ const {
       <div class="space-y-12">
         <div class="max-w-3xl mx-auto text-center space-y-6">
           <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-transparent backdrop-blur px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 shadow-sm">
-            Precision Finding
+            {productShowcase.precisionBadge}
           </div>
           <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            With a speaker that's 50% louder and up to a 1.5x greater range.
+             {productShowcase.precisionHeading}
           </h2>
           <div class="pt-4 py-12">
              <a class="bg-accent text-white px-8 py-3 rounded-full font-bold text-sm shadow-lg transition-all duration-300 hover:scale-105 inline-flex items-center gap-2" href="#">
-                Buy Now
+                {productShowcase.ctaText}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
              </a>
           </div>
@@ -353,7 +354,7 @@ const {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
            <div class="product-clean-card group">
               <img 
-                src="https://images.pexels.com/photos/27212302/pexels-photo-27212302.jpeg" 
+                src={productShowcase.images.precision1} 
                 alt="Product Close Up" 
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -361,7 +362,7 @@ const {
            
            <div class="product-clean-card group">
                <img 
-                 src="https://images.pexels.com/photos/8346914/pexels-photo-8346914.jpeg" 
+                 src={productShowcase.images.precision2} 
                  alt="Product Lifestyle" 
                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                />
@@ -371,15 +372,31 @@ const {
 
       <div class="space-y-4 py-24 ">
          <div class="text-center space-y-4 max-w-2xl mx-auto">
-            <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Make finding a family affair.</h2>
+            <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              {productShowcase.familyHeading}
+            </h2>
             <p class="text-lg leading-relaxed text-slate-700 sm:text-xl">
-               Share items with up to five people. So items that everyone uses — like an umbrella, a bike, or the family car keys — can be tracked by friends and family.
+               {productShowcase.familyBody}
             </p>
          </div>
 
          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end justify-items-center w-full relative">
-            
-            <div class="iphone-13 scale-[0.8] md:scale-[0.9] origin-bottom transform translate-y-0">
+            {/* ... Keep the 3 iPhone divs exactly as they are in your original code ... */}
+             <div class="iphone-13 scale-[0.8] md:scale-[0.9] origin-bottom transform translate-y-0">
+               <div class="outside-border">
+                  <div class="silencer"></div>
+                  <div class="volume-up"></div>
+                  <div class="volume-down"></div>
+                  <div class="button-on"></div>
+                  <div class="inside-border">
+                    <div class="screen-content overflow-hidden relative">
+                       <video src="/images/home/hero-video.mp4" loop muted playsinline autoplay class="w-full h-full object-cover absolute inset-0"></video>
+                    </div>
+                    <div class="bottom-line"></div>
+                  </div>
+               </div>
+            </div>
+             <div class="iphone-13 scale-[0.8] md:scale-[0.9] origin-bottom transform translate-y-0">
                <div class="outside-border">
                   <div class="silencer"></div>
                   <div class="volume-up"></div>
@@ -393,9 +410,7 @@ const {
                   </div>
                </div>
             </div>
-
-            <div class="iphone-13 scale-[0.8] md:scale-[0.9] origin-bottom transform translate-y-0">
-
+             <div class="iphone-13 scale-[0.8] md:scale-[0.9] origin-bottom transform translate-y-0">
                <div class="outside-border">
                   <div class="silencer"></div>
                   <div class="volume-up"></div>
@@ -409,36 +424,22 @@ const {
                   </div>
                </div>
             </div>
-
-            <div class="iphone-13 scale-[0.8] md:scale-[0.9] origin-bottom transform translate-y-0">
-               <div class="outside-border">
-                  <div class="silencer"></div>
-                  <div class="volume-up"></div>
-                  <div class="volume-down"></div>
-                  <div class="button-on"></div>
-                  <div class="inside-border">
-                    <div class="screen-content overflow-hidden relative">
-                        <video src="/images/home/hero-video.mp4" loop muted playsinline autoplay class="w-full h-full object-cover absolute inset-0"></video>
-                    </div>
-                    <div class="bottom-line"></div>
-                  </div>
-               </div>
-            </div>
-
          </div>
       </div>
 
       <div class="product-showcase-grid ">
          <div class="space-y-6 text-left">
-            <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Ping it. Find it.</h2>
+            <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              {productShowcase.pingHeading}
+            </h2>
             <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-               Misplacing something like your keys doesn't have to be a big deal when it has an AirTag attached. Open the app or ask Siri for help.
+               {productShowcase.pingBody}
             </p>
          </div>
          <div class="flex items-center justify-center w-full">
             <div class="product-clean-card group w-full max-w-[400px] aspect-square">
                <img 
-                  src="https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg" 
+                  src={productShowcase.images.ping} 
                   alt="Ping it find it" 
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                />
@@ -449,33 +450,33 @@ const {
       <div class="product-showcase-grid reverse ">
          
          <div class="space-y-6 text-left">
-            <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Cold. Warm. Warmer. Hot.</h2>
+            <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              {productShowcase.warmHeading}
+            </h2>
             <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-               If your AirTag is nearby, your iPhone can lead you straight to it. Thanks to Ultra Wideband technology, you'll see the exact distance and direction.
+               {productShowcase.warmBody}
             </p>
          </div>
 
          <div class="flex items-center justify-center relative py-6 w-full">
-            
             <div class="floating-badge absolute z-50 animate-float-slow" style="top: 20%; right: 50px; animation-delay: 0.5s; opacity: 1;">
-               <div class="flex items-center justify-center w-8 h-8 bg-orange-100 rounded-full text-orange-500">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
-               </div>
-               <div>
-                 <div class="badge-title">14 Days</div>
-                 <div class="badge-sub text-orange-600">On fire! 🔥</div>
-               </div>
-            </div>
-
+              <div class="flex items-center justify-center w-8 h-8 bg-orange-100 rounded-full text-orange-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
+              </div>
+              <div>
+                <div class="badge-title">{productShowcase.warmBadge1Title}</div>
+                <div class="badge-sub text-orange-600">{productShowcase.warmBadge1Sub}</div>
+              </div>
+           </div>
             <div class="floating-badge absolute z-50 animate-float-slow" style="bottom: 20%; left: 20px; animation-delay: 1.5s; opacity: 1;">
-               <div class="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full text-blue-600">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-               </div>
-               <div>
-                 <div class="badge-title">+5 New</div>
-                 <div class="badge-sub">Words learned</div>
-               </div>
-            </div>
+              <div class="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </div>
+              <div>
+                <div class="badge-title">{productShowcase.warmBadge2Title}</div>
+                <div class="badge-sub">{productShowcase.warmBadge2Sub}</div>
+              </div>
+           </div>
 
             <div class="iphone-13 scale-[0.9] origin-center shadow-2xl relative z-10">
                <div class="outside-border">
@@ -494,7 +495,6 @@ const {
 
          </div>
       </div>
-
     </section>
    
 
